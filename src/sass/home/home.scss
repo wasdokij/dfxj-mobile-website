@@ -1,27 +1,51 @@
 .display-box{display: -webkit-box;}
-.box-align{
-    display:-webkit-box;
-    -webkit-box-align:center;
-    box-align:center;
-}
+.box-align{  display:-webkit-box;  -webkit-box-align:center;  box-align:center;}
 .color-9b{color: #9B9B9B;}
 .color-6f{color: #6f6f6f;}
-/*TOP*/
-.home-top{  display: -webkit-box;}
-.home-top-l>div{padding: 5px 0}
-.home-top-time{display: -webkit-box;}
-.home-top-time .date{
-    font-size: 26px;
-    color: #9B9B9B;
+
+.home-top{
+  width: 100%;
+  background: #FB4631;
 }
-.home-top-time  .month{
-    font-size: 10px;
-    color: #9B9B9B;
+.home-top .bg-linear{
+  width: 80%;
+  padding: 20px;
+  margin: auto;
+  background-image: linear-gradient(-180deg, #FF4646 0%, #FC5959 100%);
 }
-.user{background-color: #f7f7f7;}
-.home-top .user-vip{
-    position: absolute;
-    right: -25px;
+.home-top .home-log-bg{
+  width: 70%;
+  padding-top: 30%;
+  margin: auto;
+  background-size: cover;
+  background-image: url("../../images/king-logo.png");
+}
+.home-data{padding: 20px 0}
+.asset-btn{
+  width: 40%;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  border-radius: 100px;
+  background-image: linear-gradient(-90deg, #FA3935 0%, #F65E5C 100%);
+  box-shadow: 0 5px 10px 0 rgba(247,91,91,0.45);
+}
+.xj-avatar-tiled{
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 200px;
+  overflow: hidden;
+}
+.xj-avatar-tiled>span{
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -webkit-border-radius: 200px;
+}
+.user-vip {
     width: 20px;
     height: 14px;
     line-height: 14px;
@@ -29,248 +53,4 @@
     color: #fff;
     border-radius: 4px;
     background-color: #ffcb00;
-}
-.home-top-r>li{
-    font-size: 14px;
-    margin-right: 10px;
-}
-.home-top-r>li:nth-child(2){
-  margin-left: 10px;
-  margin-right: 0;
-}
-.home-top-r .tab-active{
-    padding:0 2px;
-    font-size: 18px;
-    color: #000;
-    border-bottom: 3px solid #000;
-}
-
-/*一度人脉--信息资产*/
-.home-data{padding: 15px 0}
-.asset-btn{
-    width: 45%;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    color: #fff;
-    border-radius: 100px;
-    box-shadow: 0 2px 5px rgba(240, 73, 72, 0.3);;
-    background-image: linear-gradient(90deg,#fa9580 0%,#f04948 100%);
-}
-.item-card>.home-row>li{
-  width: 24.99%;
-  height: 95px;
-  position: relative;
-  display: -webkit-box;
-  -webkit-box-flex: 1;
-  -webkit-box-sizing: border-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-pack: center;
-  -webkit-box-align: center;
-}
-@media all and (max-width: 320px){
-    .item-card>.home-row>li{
-        height: 80px;
-    }
-}
-.main-nav-icon{
-    width: 50px;
-    height: 35px;
-    background-size: 600%;
-    background-size: calc(600%);
-    background-image: url(../../images/home-main-nav-icon.png);
-    background-repeat: no-repeat;
-    box-sizing: content-box;
-}
-.kongdian-img{
-    width: 100%;
-    padding-top: 23%;
-    background-size: cover;
-}
-/*空店专卖*/
-.item-card-lable {
-    margin-right: 5px;
-    width: 3px;
-    height: 23px;
-    background-color: #ff3e2a;
-}
-.kong-product{
-    margin-left: 10px;
-    text-align: center;
-    border: 1px solid #e6e6e6;
-}
-.kong-product h4{
-    color: #4a4a4a;
-    padding-top: 5px;
-}
-.kong-product div{
-    padding: 5px 0;
-}
-.lately-buy-btn{
-    width: 70px;
-    height: 18px;
-    margin: 5px 0;
-    line-height: 18px;
-    text-align: center;
-    color: #fff;
-    border-radius: 4px;
-    background-color: #fb5561;
-}
-.ui-list-img-v {
-    width: 80px !important;
-    height: 60px !important;
-}
-.ui-list-img-v span{
-    border-radius: 4px;
-}
-.map-bg{
-    width: 100%;
-    background-size: 50%;
-    background-position: right 5px;
-    background-repeat: no-repeat;
-    background-image: url("../../images/home-map-bg.png");
-}
-/*附近社区空店*/
-.shop-icon{
-    display:-webkit-box;
-    -webkit-box-align:center;
-    -webkit-box-pack: center;
-    width: 24px;
-    height: 24px;
-    margin: 5px 10px 5px 0;
-    color: #fff;
-    border-radius: 4px;
-    background-color: #ff3e2a;
-}
-.kd-list-item .c-title-info {
-    display: -webkit-box;
-    width: 100%;
-    -webkit-box-align: center;
-}
-.kd-list-item .c-title-info h4 {
-    -webkit-box-flex: 1;
-}
-.kd-list-item .position {
-    display: -webkit-box;
-    -webkit-box-align: center;
-}
-.kd-list-item .position .address {
-    -webkit-box-flex: 1;
-}
-.store-null{
-    width: 30%;
-    padding-top: 19%;
-    margin: auto;
-    background-size: cover;
-    background-image: url("../../images/home-store-null.png");
-}
-.store-null-txt{
-    padding-top: 20px;
-    padding-bottom: 50px;
-}
-
-/*名片*/
-.carte-de-visite{width: 100%;padding-top: 5px;padding-bottom: 5px}
- .phone-btn,.redact-btn{
-    line-height: 40px;
-    text-align: center;
-    color: #fff;
-}
-.phone-btn{  background-color: #8bdc53;}
-.redact-btn{
-    position: absolute;
-    right: 0;
-    background-color: #ffcb00;
-}
-.carte-de-visite .post-btn{
-    padding: 2px 5px;
-    color: #FF8D17;
-    border-radius: 3px;
-    border: 1px solid #fbe7d3;
-    background-color: #fff1e3;
-}
-.carte-de-visite-list{
-    position: relative;
-    width: 100%;
-    padding: 20px 15px;
-}
-.carte-de-visite-list>li{
-    display:-webkit-box;
-    -webkit-box-align:center;
-    padding: 3px 0;
-    line-height: 1.4;
-}
-.carte-de-visite-list .dian{
-    color: #ff402c;
-}
-.add{
-    -webkit-box-flex: 1;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-box-pack: center;
-}
-/*二维码*/
-#carte-de-visite-list .code {
-    width: 100%;
-    padding: 30px 0;
-    background-color: #fff;
-}
-#carte-de-visite-list .code-img {
-    width: 150px;
-    height: 150px;
-}
-#carte-de-visite-list .code p {
-    width: 150px;
-    text-align: center;
-}
-/*名片编辑*/
-.save-book-list>li{
-    margin-right: 15px ;
-}
-@media (max-width: 320px){
-    .save-book-list>li{
-        margin-right: 15px ;
-    }
-    .carte-de-visite-list{
-        width: 100%;
-        padding: 20px 10px;
-    }
-}
-.save-book-list label {
-    display: block;
-    width: 60px;
-    height: 100%;
-    padding: 12px 0;
-    text-align: left;
-    box-sizing: border-box;
-    color: #6f6f6f;
-}
-.save-book-list input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    color: #777;
-}
-.save-book-list textarea {
-    width: 100%;
-    min-height: 80px;
-    border: none;
-    color: #777;
-    resize: none;
-}
-.save-btn>div{
-    width: 70%;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 100px;
-}
-.save-btn-yes{
-    color: #fff;
-    background-color: #ff4c42;
-    box-shadow: 0 9px 9px rgba(255, 76, 66, 0.3);
-}
-.save-btn-no{
-    color: #6f6f6f;
-    border: 1px solid #bbb;
 }
