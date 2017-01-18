@@ -11,16 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.3",
-    "mint-ui": "^2.0.6",
-    "v-tap": "^2.0.2",
     "v-vuerify-next": "^0.2.0",
     "vue": "^2.1.8",
-    "vue-router": "^0.7.13",
-    "vue-weui": "^0.3.2",
-    "vuerify": "^0.3.5",
-    "vuex": "^0.6.2",
-    "vux": "^0.1.3",
-    "weui": "^1.1.0"
+    "vue-router": "^2.1.1",
+    "vuex": "^2.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.3",
