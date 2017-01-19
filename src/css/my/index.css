@@ -1,0 +1,63 @@
+
+.header_pic {
+    height: 74px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+}
+.txt-center{text-align: center;}
+.index-nav-ul{
+    padding: 15px 0;
+    display: -webkit-box;
+    line-height: 1.4
+-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    /*-webkit-padding-start: 40px;*/
+}
+/*¿í*/
+.width-80{
+    width:80%;
+}
+.width-30{
+    width:30%;
+}
+.width-20{
+    width:20%;
+}
+
+.box-left{
+    border-left:1px solid #ddd;
+}
+/*×ÖÌåÑÕÉ«*/
+.txt-color-9b{
+    color:#9B9B9B;
+}
+.txt-color-f75c{
+    color:#f75c5c;
+}
+/*±³¾°ÑÕÉ«*/
+.bg-fe8{
+    background:#FFE8E8;
+}
+
+/*ÂÒ*/
+.nav-title{
+    display: -webkit-box;
+    -webkit-box-align: center;
+    box-align: center;
+    padding:5px 0;
+}
+.pos-ret{
+    position: relative;
+}
+
+.box{
+    display: flex;
+}
+
+
