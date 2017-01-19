@@ -2,6 +2,7 @@
 .box-align{  display:-webkit-box;  -webkit-box-align:center;  box-align:center;}
 .color-9b{color: #9B9B9B;}
 .color-6f{color: #6f6f6f;}
+.color-f75c{color: #F75C5C;}
 
 .home-top{
   width: 100%;
@@ -14,7 +15,7 @@
   background-image: linear-gradient(-180deg, #FF4646 0%, #FC5959 100%);
 }
 .home-top .home-log-bg{
-  width: 70%;
+  width: 80%;
   padding-top: 30%;
   margin: auto;
   background-size: cover;
@@ -34,6 +35,7 @@
 .xj-avatar-tiled{
   width: 30px;
   height: 30px;
+  margin: 10px 10px 10px 0;
   -webkit-border-radius: 200px;
   overflow: hidden;
 }
@@ -53,4 +55,27 @@
     color: #fff;
     border-radius: 4px;
     background-color: #ffcb00;
+}
+//列表
+.item-card-lable {
+  margin-right: 10px;
+  width: 5px;
+  height: 20px;
+  background: #FFC234;
+}
+.exchange-name{
+  -webkit-box-flex: 1;
+  line-height: 1.4;
+}
+.jin-list-info {
+  -webkit-box-flex: 1;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+.jin-list-link .jin-list-info {
+  -webkit-box-orient: horizontal;
 }
