@@ -2,7 +2,7 @@
     <div>
         <div class="home-top home-log-bg"></div>
 		<div class="ui-whitespace margin-b-10 ui-justify-flex box-align bg-white">
-            <div class="box-align home-data">
+            <div class="box-align home-data"  v-if="isLogin">
                 <div class="xj-avatar-tiled margin-r-10">
                     <span style="background-image:url(http://placeholder.qiniudn.com/60x60)"></span>
                 </div>
@@ -10,6 +10,12 @@
                     <div class="margin-r-5 font14 color-9b">这是标题，加ui-no</div>
                     <div class="user-vip text-center font10">Lv2</div>
                 </div>
+            </div>
+            <div class="box-align color-9b" v-else="">
+                 <div class="xj-avatar-tiled isLog margin-r-10">
+                     <i class="jin-icon jin-icon-user1"></i>
+                </div>
+                <div class="font14 color-9b">未登录</div>
             </div>
 			<div class="asset-btn">邀请好友</div>
 		</div>
@@ -81,18 +87,39 @@
     </div>
 </template>
 <style>
+.isLog{
+  display: -webkit-box;
+  -webkit-box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  background: #F4F3F3;
+}
     .margin-b-25 {
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+   }
 </style>
 <script>
+import "../../js/ajax";
     export default{
         data(){
             return{
+                isLogin:false
             }
+        },
+        created(){
+            this.onIsLogin()
         },
         components:{
         },
         methods: {
+            onIsLogin(){
+                var load = layer.open({ type: 2,shadeClose: false})
+                XHRPost('/oriental_treasure/Index/isLogin', function (response) {
+                    console.log(response)
+                    layer.close(load);
+                });
+            }
         },
     }
 </script>
