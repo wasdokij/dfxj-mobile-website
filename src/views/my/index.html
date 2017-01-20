@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>我的</title>
     <link rel="stylesheet" href="../../css/my/index.css"/>
-    <link rel="stylesheet" href="../../css/kong-base.css"/>
+    <link rel="stylesheet" href="../../css/jin-base.css"/>
     <link rel="stylesheet" href="../../css/frozen.css"/>
 </head>
 <body>
@@ -17,41 +17,158 @@
                 </div>
             </div>
             <ul class="txt-center index-nav-ul width-80"  >
-                <li class=" width-30 box-left">
-                    <h4 class="font14">5600</h4>
-                    <div class="font12 txt-color-9b">信息资产</div>
+                <li class=" width-33 box-left">
+                    <h4 class="font18">{{info.assets}}</h4>
+                    <div class="font12 txt-color-bbb">信息资产</div>
                 </li>
-                <li class="width-30  box-left" >
-                    <h4 class="font14">3300</h4>
-                    <div class="font12 txt-color-9b">小金积分</div>
+                <li class="width-33  box-left" >
+                    <h4 class="font18">{{info.integral}}</h4>
+                    <div class="font12 txt-color-bbb">小金积分</div>
                 </li>
-                <li class=" width-30  box-left">
-                    <h4 class="font14">银卡</h4>
-                    <div class="font12 txt-color-9b">会员中心</div>
+                <li class="width-33  box-left">
+                    <h4 class="font18">银卡</h4>
+                    <div class="font12 txt-color-bbb">会员中心</div>
                 </li>
             </ul>
         </div>
         <!--02-->
         <div class="bg-fe8 ui-whitespace">
-            <div class="nav-title txt-color-9b">
+            <div class="nav-title txt-color-9b pos-ret">
                     <div class="font26 txt-color-f75c">17</div>
                     <div class="font10 margin-l-10 txt-color-f75c">
                         <div>10月</div>
                         <div>星期一</div>
                     </div>
                 <div class="margin-l-10" style="width:70%;">
-                    <ul class="k-list-link txt-color-f75c">
-                        <li class="ui-border-l line-h-16 pos-ret padding-l-10">
-                            <h4 class="ui-nowrap">邀请好友一起赚钱</h4>
+                    <ul class="jin-list-link txt-color-f75c">
+                        <li class="border-l line-h-16 padding-l-016 margin-l-10">
+                            <h4 class="ui-nowrap font14" style="font-weight: bold;">邀请好友一起赚钱</h4>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <!--03-->
-        <!--04-->
-        <!--05-->
+        <div class="box pos-ret padding-b-20 padding-t-20">
+            <div class="padding-l-10">
+                <h4 class="font36 txt-color-f75c">{{info.commissions}}</h4>
+                <div class="font12 txt-color-9b">可提现金额（元）</div>
+            </div>
+            <div class="pos-abs right-10">
+                <span class="dis-b zd margin-t-15 txt-center txt-color-4A font14 cur-p">账单</span>
+            </div>
 
+        </div>
+        <!--04-->
+        <div class="padding-b-20 padding-t-20">
+            <ul class="box">
+                <li class="width-50">
+                    <div class="padding-l-20">
+                        <h4 class="font20 ">{{info.bonus}}</h4>
+                        <div class="font12 txt-color-9b">上月分红（元）</div>
+                    </div>
+                </li>
+                <li class="border-l-ddd width-50">
+                    <div class="padding-l-20">
+                        <h4 class="font20 ">{{info.commission}}</h4>
+                        <div class="font12 txt-color-9b">上月佣金（元）</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--05-->
+        <div class="box padding-b-20 padding-t-20">
+            <div class="width-50">
+                <span class="dis-b span-button bg-tx txt-center txt-color-fff margin-l-05 cur-p" v-on:click="goToLogin">提现</span>
+            </div>
+            <div class="width-50">
+                <span class="dis-b span-button bg-jf txt-center txt-color-fff margin-l-05 cur-p" v-on:click="getData">积分商城</span>
+            </div>
+        </div>
+        <!--06-->
+        <div>
+            <ul class="box ui-border-b ui-border-t">
+                <li class="width-50 yz ui-border-r">
+                    <span class="font16 padding-t-20 padding-l-20">身份认证</span>
+                    <span class="txt-color-9b padding-b-20 padding-l-20 font14">全**</span>
+                </li>
+                <li class="width-50 yz">
+                    <span class="font16 padding-t-20 padding-l-20">银行卡</span>
+                    <span class="txt-color-9b padding-b-20  padding-l-20 font14">3张</span>
+                </li>
+            </ul>
+            <ul class="box ui-border-b">
+                <li class="width-50 yz ui-border-r">
+                    <span class="font16 padding-t-20 padding-l-20">个人设置</span>
+                    <span class="txt-color-9b padding-b-20 padding-l-20 font14">修改个人信息</span>
+                </li>
+                <li class="width-50 yz">
+                </li>
+            </ul>
+        </div>
+        <!--07-->
+        <div class="ui-dialog" v-bind:class='{"show" :info.isA,"hide" :info.isB}'>
+            <div class="ui-dialog-cnt padding-t-80 pos-ret">
+                <div class="ui-dialog-bd">
+                    <span class="font18 dis-blk">请先开通实名验证</span>
+                    <span class="font14 txt-color-4a">你的账户未实名验证，无法操作此步骤，请先前往实名验证</span>
+                </div>
+                <div class="ui-dialog-ft" >
+                    <button type="button" data-role="button" >去开通</button>
+                </div>
+                <div class="ui-dialog-ft">
+                    <button type="button" data-role="button" class="txt-color-red">关闭</button>
+                </div>
+                <span class="dis-blk id-alert"></span>
+            </div>
+        </div>
+        <!--08-->
+        <div class="ui-dialog" v-bind:class='{"show" :info.isC,"hide" :info.isD}'>
+            <div class="ui-dialog-cnt padding-t-80 pos-ret">
+                <div class="ui-dialog-bd">
+                    <span class="font18 dis-blk">您还未添加银行卡</span>
+                    <span class="font14 txt-color-4a">您还未添加银行卡，无法操作此步骤，请先前往添加银行卡</span>
+                </div>
+                <div class="ui-dialog-ft" >
+                    <button type="button" data-role="button" >去添加</button>
+                </div>
+                <div class="ui-dialog-ft">
+                    <button type="button" data-role="button" class="txt-color-red">关闭</button>
+                </div>
+                <span class="dis-blk bank-alert"></span>
+            </div>
+        </div>
+        <!--09-->
+        <!--10-->
     </div>
+    <script src="../../js/lib/vue.js"></script>
+    <script>
+        var login = new Vue({
+            el: "#container",
+            data: {
+                info:{
+                    assets:"5600",
+                    integral:"3300",
+                    commissions:"678.85",
+                    bonus:"3392",
+                    commission:"1009.00",
+                    isA:false,
+                    isB:true,
+                    isC:false,
+                    isD:true
+                }
+            },
+            goToLogin:function(){
+                this.info.isA = true;
+                this.info.isB = false;
+            },
+            getData:function(){
+                this.info.isC = true;
+                this.info.isD = false;
+            }
+
+        });
+
+    </script>
 </body>
 </html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>空店邀请人</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../css/kong-base.css"/>
+    <link rel="stylesheet" href="../../css/information/index.css"/>
+    <link rel="stylesheet" href="../../css/frozen.css"/>
+</head>
+<body style="max-width:100%;" >
+<div id="container" class="container">
+ <div class="jin-wrap" style="margin-top:10px;"  id="yqr">
+    <!--01-->
+    <div class="font14 margin-b-10">
+        <label class="margin-l-10">当前邀请人：</label>
+        <span class="">七叔</span>
+    </div>
+
+    <!--02-->
+    <div class="possword border-b-1 border-t-1" >
+        <ul class="ui-list ul-all ui-list-active">
+            <li data-href="#">
+                <div class= "ui-list-info rle" id="s2" >
+                    <label class="ui-nowrap">手机号</label>
+                    <!--<input type="text" placeholder="输入邀请人手机号" style="border:0;" v-model="invite[msg].phone" />-->
+                    <!--<span class="abs txt-color-d6" style="right:10px;">{{invite[msg].name}}</span>-->
+                    <input type="text" placeholder="输入邀请人手机号" style="border:0;" id="phone" v-on:blur="test" v-model="open[1].input" />
+                    <span class="abs txt-color-d6" style="right:10px;" id="app-3" v-if="seen">{{open[1].name}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--03-->
+    <div class="ui-btn-wrap">
+        <button  class="ui-btn-kd ui-btn-yellow" v-on:click="getData"  id="s99" :disabled=disabled>更改</button>
+    </div>
+
+    <!--04-->
+    <div class="font12">
+        <label class="margin-l-10 txt-color-ddd">温馨提示：</label>
+        <span class="txt-color-d6">在成为微股东之前，你有一次修改的机会</span>
+    </div>
+    <!--05-->
+    <div class="ui-dialog" v-bind:class='{"hide":isB,"show":isA}' id="h5">
+        <div class="ui-dialog-cnt" style="">
+            <div class="ui-dialog-bd">
+                <div class="text-center" >你确定更改邀请人吗？</div>
+            </div>
+            <div class="ui-dialog-ft" style="border:0;">
+                <button type="button" data-role="button" class="border-t-1 border-r-1" v-on:click="goQuxiao">取消</button>
+                <button type="button" data-role="button" class="border-t-1"  v-on:click="goToLogin">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!--06-->
+    <loading v-if="loadingShow"></loading>
+    <!--07-->
+    <div class="ui-loading-block hide" >
+        <div class="ui-loading-cnt">
+            <i style="display:block;width:100%;height:80px;line-height:80px;font-size:60px;" class="k-icon-dagouxuanzhong"></i>
+            <p>成功</p>
+        </div>
+    </div>
+
+    <!--底部-->
+    <footer class="ui-footer k-footer-nav">
+        <ul class="ui-tiled ui-border-t">
+            <li data-href="">
+                <span id="current_footer_1" class="k-icon-arrowleftcircle"></span><i>首页</i>
+            </li>
+            <li data-href="">
+                <span id="current_footer_2" class="k-icon-addressbook"></span><i>人脉</i>
+            </li>
+            <li data-href="">
+                <span id="current_footer_3" class="k-icon-discover"></span><i>发现</i>
+            </li>
+            <li data-href="">
+                <span id="current_footer_4" class="k-icon-my"></span><i>我</i>
+            </li>
+        </ul>
+    </footer>
+
+    <!--底部00-->
+    <!--08-->
+ </div>
+</div>
+<script src="../../js/lib/vue.js"></script>
+<script src="../../js/information/inviter.js"></script>
+<script>
+//先注释01--vue中异步处理数据
+//    new Vue({
+//        el:'#app',
+//        data:{data:""},
+//        created:function(){
+//            var url="json.jsp";
+//            this.$http.get(url).then(function(data){
+//                var json=data.body;
+//                this.data=eval("(" + json +")");
+//            },function(response){
+//                console.info(response);
+//            })
+//        }
+//    });
+
+//正则验证手机号02
+//   function checkPhone(){
+//        var phone = document.getElementById('phone').value.innerHTML;
+//        if(!(/^1[34578]\d{9}$/.test(phone))){
+//            console.log("手机号码有误，请重填");
+//        }
+//        else{
+//            console.log("手机号码正确");
+//        }
+//    }
+//    checkPhone();
+
+
+
+
+
+</script>
+
+</body>
+</html>
