@@ -1,8 +1,8 @@
-//import Vue from 'vue';
-import axios from 'axios';
-import '../mock/test.js';
+
+//import '../mock/test.js';
 import '../lib/layer.js';
 import '../lib/layer.css';
+import { XHRPost } from '../ajax.js';
 
 var login = new Vue({
 	el: '#login',
@@ -19,11 +19,11 @@ var login = new Vue({
 			});
 			console.log(data)
 			var load = layer.open({ type: 2,shadeClose: false})
-			axios.post('/api_login',data).then(function(response){
+			XHRPost('/api_login', data, function (response) {
 				console.log(response)
 				layer.close(load);
 				if (response.data.status === 1) {
-					window.location.href = 'register.html'
+					window.location.href = '/index.php/index.html'
 				} else {
 					layer.open({
 						content: response.data.info,
