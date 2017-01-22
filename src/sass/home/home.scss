@@ -92,7 +92,7 @@
 }
 //邀请
 .invite-btn{
-  width: 87%;
+  width: 88%;
   height: 40px;
   line-height: 40px;
   margin: auto;
@@ -101,10 +101,12 @@
   background-image: linear-gradient(-90deg, #FA3935 0%, #F65E5C 100%);
   box-shadow: 0 5px 10px 0
 }
-.invite-course-avatar{width: 87%;margin: auto}
-.invite-course-avatar>li{
+.invite-course-avatar{width: 88%;margin: auto}
+.invite-course-avatar>li .course-avatar{
+  display: block;
   width: 50px;
   height: 50px;
+  margin: auto;
   background-size: 100%;
   background-size: calc(100%);
   background-repeat: no-repeat;
@@ -112,7 +114,7 @@
   background-image: url("../../images/icon-list.png");
 }
 .invite-info-list>li{
-  width: 87%;
+  width: 88%;
   padding: 15px 0;
   margin: auto;
   display: -webkit-box;
@@ -130,7 +132,7 @@
   background: #FFC234;
 }
 .invite-rule-list{
-  width: 87%;
+  width: 88%;
   margin: auto;
 }
 .invite-rule-dian{

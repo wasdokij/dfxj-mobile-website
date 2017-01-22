@@ -100,7 +100,7 @@
    }
 </style>
 <script>
-import "../../js/ajax";
+import { XHRPost } from '../../js/ajax.js'
     export default{
         data(){
             return{

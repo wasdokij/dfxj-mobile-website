@@ -2,17 +2,30 @@
     <div class="jin-wrap">
         <div class="home-top home-invite-bg"></div>
         <div class="bg-white margin-b-10 ui-border-b">
-            <div class="padding-tb-25">
+            <div class="padding-tb-25" @click="onInvite">
                 <div class="invite-btn font14">
                     立即邀请
                 </div>
             </div>
-            <ul class="invite-course-avatar jin-justify-flex padding-b-20">
-                <li style="background-position: 0 -55px;"></li>
-                <li style="background-position: 20px 10px;"></li>
-                <li style="background-position: 0 -130px;"></li>
-                <li style="background-position: 20px 10px;"></li>
-                <li style="background-position: 0 -205px;"></li>
+            <ul class="invite-course-avatar jin-justify-flex padding-b-20 color-9b">
+                <li>
+                    <i class="course-avatar" style="background-position: 0 -55px;"></i>
+                    <div class="margin-t-10 font12">邀请好友</div>
+                </li>
+                <li>
+                    <i class="course-avatar margin-b-30" style="background-position: 20px 10px;"></i>
+                </li>
+                <li>
+                    <i class="course-avatar" style="background-position: 0 -130px;"></i>
+                    <div class="margin-t-10 font12">好友注册并交易</div>
+                </li>
+                <li>
+                    <i class="course-avatar margin-b-30" style="background-position: 20px 10px;"></i>
+                </li>
+                <li>
+                    <i class="course-avatar" style="background-position: 0 -205px;"></i>
+                    <div class="margin-t-10 font12">一起赚钱</div>
+                </li>
             </ul>
         </div>
         <div class="bg-white">
@@ -51,7 +64,7 @@
                 </ul>
             </div>
         </div>
-        <home-invite-modal></home-invite-modal>
+        <home-invite-modal v-if="modal" @close="modal = false"></home-invite-modal>
     </div>
 </template>
 <style>
@@ -59,18 +72,25 @@
   padding-top: 25px;
   padding-bottom: 25px;
   }
+  .margin-b-30{
+  margin-bottom:30px !important;
+  }
 </style>
 <script>
     import HomeInviteModal from 'components/home/home-invite-modal.vue';
     export default{
         data(){
             return{
+                modal:false,
             }
         },
         components:{
             HomeInviteModal
         },
         methods: {
+            onInvite(){
+                this.modal = true
+            }
         },
     }
 </script>

@@ -6,7 +6,7 @@
         <div class="packet rlt">
              <div class="packet-btn abs font18">壹仟元红包</div>
             <div class="ui-txt-white abs font18" style="  right: 10px;
-    top: 10px;">X</div>
+    top: 10px;" @click="$emit('close')">X</div>
             <div class="packet-user text-center">
                 <ul>
                     <li class="packet-user-qr jin-box-center" style="margin: auto;" v-if="!user">
