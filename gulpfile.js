@@ -41,7 +41,7 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-        'axios': 'Axios',
+//      'axios': 'axios',
         'vue-router': 'VueRouter'
     },
 	module: {

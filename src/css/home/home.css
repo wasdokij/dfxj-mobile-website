@@ -31,13 +31,13 @@
   background-size: cover; }
 
 .home-log-bg {
-  background-image: url("/jin2.0/images/home-banner.png"); }
+  background-image: url("../../images/home-banner.png"); }
 
 .home-invite-bg {
-  background-image: url("/jin2.0/images/invite-pre.png"); }
+  background-image: url("../../images/invite-pre.png"); }
 
 .home-accept-bg {
-  background-image: url("/jin2.0/images/invite-banner.png"); }
+  background-image: url("../../images/invite-banner.png"); }
 
 .home-data {
   padding: 10px 0; }
@@ -134,7 +134,7 @@
   background-size: calc(100%);
   background-repeat: no-repeat;
   box-sizing: content-box;
-  background-image: url("/jin2.0/images/icon-list.png"); }
+  background-image: url("../../images/icon-list.png"); }
 
 .invite-info-list > li {
   width: 87%;
