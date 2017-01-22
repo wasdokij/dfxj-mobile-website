@@ -5,7 +5,7 @@ import '../mock/test.js';
  import '../lib/layer.js';
 import '../../css/information/index.css'
 var login = new Vue({
-        el: "#yqr",
+        el: "#container",
         data: {
             input:"",
             seen:'',

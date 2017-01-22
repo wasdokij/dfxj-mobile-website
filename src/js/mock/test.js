@@ -76,7 +76,7 @@ Mock.mock('/api_information',{
 });
 Mock.mock('/api_information01',{
 	'status|0-1': 0,
-	'info': " <div class='ui-loading-block show'> <div class='ui-loading-cnt'>  <i style='display:block;width:100%;height:80px;line-height:80px;font-size:60px;' class='k-icon-dagouxuanzhong'></i><p>成功</p></div></div>"
+	'info': " <div class='ui-loading-block show'> <div class='ui-loading-cnt'>  <i style='display:block;width:100%;height:80px;line-height:80px;font-size:60px;' class='k-icon jin-icon-dagouxuanzhong'></i><p>成功</p></div></div>"
 });
 Mock.mock('/api_bank',{
 	'status|0-1': 0

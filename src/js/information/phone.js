@@ -5,7 +5,7 @@ import '../mock/test.js';
 import '../lib/layer.js';
 import '../lib/layer.css';
 var login = new Vue({
-    el: "#sjh",
+    el: "#container",
     data : {
         info: {
             phone: '18587596820',

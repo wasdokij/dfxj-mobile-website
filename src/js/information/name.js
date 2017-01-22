@@ -6,7 +6,7 @@ import '../lib/layer.js';
 import '../../css/information/index.css'
 
 var login = new Vue({
-    el: '#zym',
+    el: '#container',
     data: {
         phone:'',
         loadingShow: false
