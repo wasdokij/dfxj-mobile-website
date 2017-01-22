@@ -39,13 +39,6 @@
 .home-accept-bg {
   background-image: url("../../images/invite-banner.png"); }
 
-.home-top .home-log-bg {
-  width: 80%;
-  padding-top: 30%;
-  margin: auto;
-  background-size: cover;
-  background-image: url("../../images/king-logo.png"); }
-
 .home-data {
   padding: 10px 0; }
 
