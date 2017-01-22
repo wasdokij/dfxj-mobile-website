@@ -76,9 +76,9 @@ Mock.mock('/api_information',{
 });
 Mock.mock('/api_information01',{
 	'status|0-1': 0,
-	'info': " <div class='ui-loading-block show'> <div class='ui-loading-cnt'>  <i style='display:block;width:100%;height:80px;line-height:80px;font-size:60px;' class='k-icon-dagouxuanzhong'></i><p>成功</p>       </div></div>"
-
-
-
-
+	'info': " <div class='ui-loading-block show'> <div class='ui-loading-cnt'>  <i style='display:block;width:100%;height:80px;line-height:80px;font-size:60px;' class='k-icon-dagouxuanzhong'></i><p>成功</p></div></div>"
+});
+Mock.mock('/api_bank',{
+	'status|0-1': 0,
+	'info':"<span class='font18 dis-blk'>请先开通实名验证</span> <span class='font14 txt-color-4a s1 dis-blk'>你的账户未实名验证，无法操作此步骤，请先前往实名验证</span><span class='dis-blk id-alert'></span>"
 });

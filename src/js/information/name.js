@@ -1,4 +1,4 @@
-import Vue from 'vue';
+//import Vue from 'vue';
 import axios from 'axios';
 import Loading from '../../components/common/loading.vue';
 import '../mock/test.js';

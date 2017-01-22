@@ -1,4 +1,4 @@
-import Vue from 'vue';
+//import Vue from 'vue';
 import axios from 'axios';
 import Loading from '../../components/common/loading.vue';
 import '../mock/test.js';
@@ -34,7 +34,7 @@ var login = new Vue({
                 const _this = this;
                 //60秒时间
                 function timer(){
-                    var intDiff = parseInt(60);
+                    var intDiff = parseInt(59);
                     var second=0;
                     window.setInterval(function(){
                         if(intDiff > 0) {

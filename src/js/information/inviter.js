@@ -64,8 +64,6 @@ var login = new Vue({
                 console.log(response.data.status == 0);//可以注释，只是用来显示输出
                 console.log(response.data.status == 1);//可以注释，只是用来显示输出
             });
-
-
             //...
         }
 

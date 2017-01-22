@@ -175,4 +175,18 @@
   left: 75px;
   top: -30px; }
 
+/*����*/
+.layui-m-layersection {
+  position: relative; }
+
+.layui-m-layer0 .layui-m-layersection > .layui-m-layerchild {
+  width: 270px; }
+
+.layui-m-layerchild > .layui-m-layercont {
+  padding-top: 100px;
+  padding-bottom: 50px; }
+
+.layui-m-layercont > .s1 {
+  text-align: left; }
+
 /*# sourceMappingURL=../maps/my/index.css.map */
