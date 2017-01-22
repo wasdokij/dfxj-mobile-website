@@ -44,7 +44,7 @@ var login = new Vue({
                                 _this.info.isA = true;
                                 _this.info.isB = false;
                             }
-                       console.log(second);//可以注释，只是用来显示输出
+                       //console.log(second);//可以注释，只是用来显示输出
                         intDiff--;
                         }
                     },1000);

@@ -23,8 +23,6 @@
             <li data-href="#">
                 <div class= "ui-list-info rle" id="s2" >
                     <label class="ui-nowrap">手机号</label>
-                    <!--<input type="text" placeholder="输入邀请人手机号" style="border:0;" v-model="invite[msg].phone" />-->
-                    <!--<span class="abs txt-color-d6" style="right:10px;">{{invite[msg].name}}</span>-->
                     <input type="text" placeholder="输入邀请人手机号" style="border:0;" id="phone" v-on:blur="test" v-model="open[1].input" />
                     <span class="abs txt-color-d6" style="right:10px;" id="app-3" v-if="seen">{{open[1].name}}</span>
                 </div>
@@ -33,7 +31,7 @@
     </div>
     <!--03-->
     <div class="ui-btn-wrap">
-        <button  class="ui-btn-kd ui-btn-yellow" v-on:click="getData"  id="s99" :disabled=disabled>更改</button>
+        <button  class="ui-btn-kd ui-btn-yellow" v-on:click="getData" :disabled=disabled>更改</button>
     </div>
 
     <!--04-->
@@ -84,21 +82,6 @@
 //            })
 //        }
 //    });
-
-//正则验证手机号02
-//   function checkPhone(){
-//        var phone = document.getElementById('phone').value.innerHTML;
-//        if(!(/^1[34578]\d{9}$/.test(phone))){
-//            console.log("手机号码有误，请重填");
-//        }
-//        else{
-//            console.log("手机号码正确");
-//        }
-//    }
-//    checkPhone();
-
-
-
 
 
 </script>
