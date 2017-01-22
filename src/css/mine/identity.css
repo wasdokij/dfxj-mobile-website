@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  color: #000;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0; }
+
+.bank-card-dashboard {
+  color: #FFFFFF;
+  padding: 15px;
+  background: #6aaefd;
+  height: 185px; }
+
+.fanhui, .tianjia {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 100px;
+  display: inline-block; }
+
+.fanhui {
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  vertical-align: middle;
+  float: left; }
+
+.fanhui:before {
+  color: white;
+  font-size: 16px; }
+
+.button-group {
+  position: relative; }
+
+h1 {
+  font-size: 40px;
+  color: #FFFFFF;
+  letter-spacing: 0.31px;
+  height: 56px;
+  line-height: 56px;
+  margin-top: 14px; }
+
+.number {
+  letter-spacing: 0.28px;
+  font-size: 36px; }
+
+.p-l-7 {
+  padding-left: 7px; }
+
+.b0 {
+  bottom: 8px; }
+
+.notyet {
+  bottom: 30px;
+  display: flex; }
+  .notyet .notyet-icon:before, .notyet .notyet-icon {
+    font-size: 14px;
+    height: 18px;
+    line-height: 18px; }
+  .notyet .notyet-text {
+    font-size: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: 200;
+    letter-spacing: 0.14px;
+    display: inline-block;
+    padding-left: 7px; }
+
+.legend {
+  background: #fcf7ec;
+  padding: 12px 10px;
+  font-size: 14px; }
+  .legend span {
+    color: #ddaf7c;
+    letter-spacing: 0.11px;
+    line-height: 18px; }
+
+.my-cells {
+  margin-top: 0; }
+  .my-cells .weui-cell {
+    height: 55px;
+    line-height: 55px; }
+  .my-cells .weui-cell:before {
+    left: 0 !important; }
+  .my-cells .weui-cell__hd label {
+    font-size: 14px;
+    color: #9b9b9b; }
+  .my-cells .weui-vcode-btn {
+    border: 0 !important;
+    background: #FFCB00;
+    border-radius: 4px;
+    width: 85px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: white;
+    padding: 0;
+    margin-right: 10px; }
+  .my-cells .vcode-ing {
+    background: #ddd;
+    letter-spacing: 0.11px; }
+
+.button-panel {
+  padding: 25px 10px 25px 10px;
+  background: #edecf3; }
+  .button-panel a {
+    border-radius: 3px;
+    background: #ffcb00;
+    font-size: 16px;
+    letter-spacing: 0.12px; }
+
+.uploader .weui-cells_form {
+  margin-top: 0; }
+  .uploader .weui-cells_form .weui-cell {
+    padding-top: 18px; }
+  .uploader .weui-cells_form .weui-uploader__hd {
+    padding-bottom: 20px; }
+  .uploader .weui-cells_form p.weui-uploader__title {
+    text-align: center;
+    color: #4a4a4a;
+    letter-spacing: 0.12px;
+    font-weight: 200; }
+  .uploader .weui-cells_form .weui-uploader__file {
+    width: 100%; }
+  .uploader .weui-cells_form .weui-uploader__input-box {
+    width: 100%;
+    height: 50px; }
+    .uploader .weui-cells_form .weui-uploader__input-box:before {
+      height: 25.5px; }
+    .uploader .weui-cells_form .weui-uploader__input-box:after {
+      width: 50.5px; }
+  .uploader .weui-cells_form .weui-uploader__bd {
+    margin: 0; }
+
+.my-dialog .weui-dialog {
+  width: 250px;
+  border-radius: 5px; }
+  .my-dialog .weui-dialog .weui-dialog__bd {
+    padding: 25px 32px 9px 32px; }
+    .my-dialog .weui-dialog .weui-dialog__bd p {
+      font-size: 18px;
+      color: #000;
+      padding-bottom: 5px; }
+    .my-dialog .weui-dialog .weui-dialog__bd span {
+      display: inline-block;
+      width: 151px;
+      font-size: 14px;
+      color: #888;
+      line-height: 18px; }
+
+.my-dialog a {
+  color: #4990e2;
+  font-size: 18px; }
+
+span.weui-input {
+  font-size: 14px;
+  color: #000; }
+  span.weui-input.colored {
+    color: #13BF7B; }
+
+.tlr {
+  text-align: right; }

@@ -1,11 +1,7 @@
 <template>
     <div>
-        <div class="home-top">
-            <div class="bg-linear">
-                <div class="home-log-bg"></div>
-            </div>
-        </div>
-		<div class="ui-whitespace ui-justify-flex box-align">
+        <div class="home-top home-log-bg"></div>
+		<div class="ui-whitespace margin-b-10 ui-justify-flex box-align bg-white">
             <div class="box-align home-data">
                 <div class="xj-avatar-tiled margin-r-10">
                     <span style="background-image:url(http://placeholder.qiniudn.com/60x60)"></span>
@@ -17,29 +13,77 @@
             </div>
 			<div class="asset-btn">邀请好友</div>
 		</div>
-        <ul class="ui-list jin-list-link ">
-            <li class="margin-l-0">
-                <div class="item-card-lable"></div>
-                <div class="ui-list-info font14">空店专卖</div>
-                <span class="font12 color-9b">更多产品</span>
-            </li>
-        </ul>
-        <ul class="ui-list ui-list-one jin-list-link ui-border-tb">
-            <li>
-                <div class="xj-avatar-tiled">
-                    <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
-                </div>
-                <div class="jin-list-info">
-                    <div class="ui-nowrap exchange-name">
-                        <div class="font14">广东深文所</div>
-                        <div class="font12 color-9b">止盈止损人性化</div>
-                    </div>
-                    <div class="font12 color-f75c">立即体验</div>
-                </div>
-            </li>
-        </ul>
+        <!--小娱乐-->
+        <div class="bg-white margin-b-25">
+            <ul class="ui-list jin-list-link ">
+                <li class="margin-l-0">
+                    <div class="item-card-lable"></div>
+                    <div class="ui-list-info font14">小娱乐</div>
+                    <span class="font12 color-9b">注意事项</span>
+                </li>
+            </ul>
+            <div>
+                <ul class="ui-list ui-list-one jin-list-link ui-border-t">
+                    <li>
+                        <div class="xj-avatar-tiled">
+                            <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                        </div>
+                        <div class="jin-list-info">
+                            <div class="ui-nowrap exchange-name">
+                                <div class="font14">广东深文所</div>
+                                <div class="font12 color-9b">止盈止损人性化</div>
+                            </div>
+                            <div class="font12 color-f75c">立即体验</div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="ui-list ui-list-one jin-list-link ui-border-t">
+                    <li>
+                        <div class="xj-avatar-tiled">
+                            <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                        </div>
+                        <div class="jin-list-info">
+                            <div class="ui-nowrap exchange-name">
+                                <div class="font14">广东深文所</div>
+                                <div class="font12 color-9b">止盈止损人性化</div>
+                            </div>
+                            <div class="font12 color-f75c">立即体验</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
+        </div>
+        <!--发售模式-->
+        <div class="bg-white margin-b-25">
+            <ul class="ui-list ui-list-text">
+                <li class="margin-l-0">
+                    <div class="item-card-lable"></div>
+                    <div class="ui-list-info font14">发售模式</div>
+                </li>
+            </ul>
+            <div>
+                <ul class="ui-list jin-sell-list ui-whitespace ui-border-t">
+                    <li class="margin-l-0 ui-border-t">
+                        <div class="ui-avatar">
+                            <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                        </div>
+                        <div class="ui-nowrap exchange-name line-h-16">
+                            <h4 class="fnot14">吉商发售</h4>
+                            <p class="font12 color-9b">开户审核中</p>
+                        </div>
+                        <div class="dredge-btn">立即开户</div>
+                    </li>
+                </ul>
+            </div>
+            <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
+        </div>
     </div>
 </template>
+<style>
+    .margin-b-25 {
+  margin-bottom: 25px; }
+</style>
 <script>
     export default{
         data(){
