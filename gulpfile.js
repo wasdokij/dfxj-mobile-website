@@ -271,9 +271,9 @@ gulp.task('build', function () {
 	}));
 	build(function() {
 		del(['./src/tmp']);
-		cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+		cp('./public/**/*','../kongdian_api/public/jin2.0/');
 		// cp('./public/**/*','../test/');
-		cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+		cp('./public/views/loginRegister/*.html', '../kongdian_api/application/xiaojin/view/login_register');
 		// cp('./public/views/**/*.html', '../test/');
 	});
 });
