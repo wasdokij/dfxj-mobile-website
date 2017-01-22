@@ -23,7 +23,8 @@ var login = new Vue({
 				return false;
 			}
 			this.getCodeBtnDisable = false;
-			XHRPost('/oriental_treasure/register_and_login/sendPhoneCode', this.phone, function (response) {
+			const phone = encrypt(this.phone);
+			XHRPost('/oriental_treasure/register_and_login/sendPhoneCode', {cellphone: phone}, function (response) {
 				if (response.data.status === 1) {
 					const _this = this;
 					countdown(60,function (time) {
