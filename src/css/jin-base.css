@@ -52,7 +52,7 @@ button {
   src: url("../fonts/jin/iconfont.eot") format("embedded-opentype"), url("../fonts/jin/iconfont.woff") format("woff"), url("../fonts/jin/iconfont.ttf") format("truetype"), url("../fonts/jin/iconfont.svg#jin-iconfont") format("svg");
   /* iOS 4.1- */ }
 
-.jin-iconfont {
+.jin-icon {
   font-family: "jin-iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -88,6 +88,15 @@ button {
 
 .jin-icon-xinxi:before {
   content: "\e648"; }
+
+.jin-icon-fanhui:before {
+  content: "\e632"; }
+
+.jin-icon-gantanhao:before {
+  content: "\e6a2"; }
+
+.jin-icon-icon:before {
+  content: "\e6a9"; }
 
 /*白色背景*/
 .bg-white {
@@ -154,8 +163,8 @@ button {
 
 /*文字换行的截断方式*/
 .word-break {
-  word-wrap: breajin-word;
-  word-break: breajin-all; }
+  word-wrap: break-word;
+  word-break: break-all; }
 
 /*定义通用行高*/
 .line-h-nor {
@@ -453,7 +462,5 @@ body,
 
 .line-clamp-4 {
   -webkit-line-clamp: 4; }
-
-/*# sourceMappingURL=maps/kong-base.css.map */
 
 /*# sourceMappingURL=maps/jin-base.css.map */
