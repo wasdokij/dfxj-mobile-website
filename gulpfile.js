@@ -41,7 +41,11 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
+<<<<<<< HEAD
         'axios': 'axios',
+=======
+//      'axios': 'axios',
+>>>>>>> 1c17a7e7ba2826d2b88db1a66cff2ffe6c493c80
         'vue-router': 'VueRouter'
     },
 	module: {
@@ -223,7 +227,7 @@ gulp.task('js:build', function () {
 });
 gulp.task('ugjs:build', function () {
 	return gulp.src('./src/tmp/**/*.js')
-	.pipe(ifElse(BUILD === 'PUBLIC', ugjs))
+	// .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
 	// .pipe(rev())
 	.pipe(gulp.dest('./public/'))
 	// .pipe(rev.manifest())
@@ -271,11 +275,19 @@ gulp.task('build', function () {
 	}));
 	build(function() {
 		del(['./src/tmp']);
-		cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+		cp('./public/**/*','../kongdian_api/public/jin2.0/');
+
 		// cp('./public/**/*','../test/');
-		cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+		cp('./public/views/loginRegister/*.html', '../kongdian_api/application/xiaojin/view/login_register');
 		// cp('./public/views/**/*.html', '../test/');
 	});
+	// build的过程也要watch
+    watch([src.js]).on('change', function () {
+        // console.log('change', arguments);
+        runSequence('js:build', 'ugjs:build', function () {
+            cp('./public/**/*','../kongdian_api/public/jin2.0/');
+        })
+    })
 });
 gulp.task('css:build', function () {
 	return gulp.src(src.css)
