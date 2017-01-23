@@ -54,8 +54,12 @@
 				}
 				this.getCodeBtnDisable = false;
 				this.conut_time = '...';
-				const phone = encrypt(this.phone);
-				XHRPost('/oriental_treasure/register_and_login/sendPhoneCode', {cellphone: phone}, function (response) {
+				
+				const data = {
+					cellphone: encrypt(this.phone),
+					exist: encrypt('1')
+				}
+				XHRPost('/oriental_treasure/register_and_login/sendPhoneCode', data, function (response) {
 					
 					if (response.data.status === 1) {
 						const _this = this;
@@ -71,7 +75,10 @@
 						this.getCodeBtnDisable = true;
 					}
 					
-				}.bind(this));
+				}.bind(this), function (error) {
+				this.errorTip(response.data.info);
+				this.getCodeBtnDisable = true;
+			}.bind(this));
 				
 			},
 			goToNext: function () {

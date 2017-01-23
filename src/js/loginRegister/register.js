@@ -23,12 +23,17 @@ var login = new Vue({
 				return false;
 			}
 			this.getCodeBtnDisable = false;
-			const phone = encrypt(this.phone);
-			XHRPost('/oriental_treasure/register_and_login/sendPhoneCode', {cellphone: phone}, function (response) {
+			this.conut_time = '...';
+
+			const data = {
+				cellphone: encrypt(this.phone),
+				exist: encrypt('0')
+			}
+			XHRPost('/oriental_treasure/register_and_login/sendPhoneCode', data, function (response) {
 				if (response.data.status === 1) {
 					const _this = this;
 					countdown(60,function (time) {
-						_this.conut_time = time;
+						_this.conut_time = time + 's';
 						if (time === 0) {
 							_this.getCodeBtnDisable = true;
 						}
@@ -39,6 +44,9 @@ var login = new Vue({
 					this.getCodeBtnDisable = true;
 				}
 				
+			}.bind(this), function (error) {
+				this.errorTip(response.data.info);
+				this.getCodeBtnDisable = true;
 			}.bind(this));
 			
 		},
