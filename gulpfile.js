@@ -42,7 +42,8 @@ var webpackConfig = {
     externals: {
         'vue': 'Vue',
         'axios': 'axios',
-        'vue-router': 'VueRouter'
+        'vue-router': 'VueRouter',
+        'vue-infinite-scroll': 'infiniteScroll'
     },
 	module: {
 		noParse: [/vue.js/],
@@ -282,7 +283,13 @@ gulp.task('build', function () {
         runSequence('js:build', 'ugjs:build', function () {
             cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
         })
-    })
+    });
+
+    watch([src.views]).on('change', function() {
+		runSequence('views:build', function () {
+            cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+        })
+	});
 });
 gulp.task('css:build', function () {
 	return gulp.src(src.css)

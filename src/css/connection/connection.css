@@ -219,3 +219,9 @@ body {
   text-align: center;
   line-height: 20px;
   padding: 0 0.8em; }
+
+.weui-cells:after {
+  border-bottom: 0; }
+
+.weui-cells {
+  margin-top: 0; }
