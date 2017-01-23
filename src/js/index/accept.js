@@ -8,7 +8,7 @@ var V = new Vue({
     el: '#container',
     data: {
     	getCodeBtnDisable: true,
-    }
+    },
     components: {
         HomeInviteAccept
     },
