@@ -62,14 +62,12 @@
   }
 </style>
 <script>
-    import HomeInviteModal from 'components/home/home-invite-modal.vue';
     export default{
         data(){
             return{
             }
         },
         components:{
-            HomeInviteModal
         },
         methods: {
         },

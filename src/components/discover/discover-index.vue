@@ -47,19 +47,19 @@
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
                         <div class="swiper-slide jin-product  line-h-nor" style="width: 40%;">
                             <div class="unfinished">
-                                <i class="jin-icon jin-icon-construction font50 ui-txt-muted"></i>
+                                <i class="jin-icon jin-icon-construction font50 color-2e"></i>
                                 <div class="margin-t-10 font14 color-9b">功能正在开发中</div>
                             </div>
                         </div>
                         <div class="swiper-slide jin-product  line-h-nor" style="width: 40%;">
                             <div class="unfinished">
-                                <i class="jin-icon jin-icon-construction font50 ui-txt-muted"></i>
+                                <i class="jin-icon jin-icon-construction font50 color-2e"></i>
                                 <div class="margin-t-10 font14 color-9b">功能正在开发中</div>
                             </div>
                         </div>
                         <div class="swiper-slide jin-product line-h-nor" style="width: 40%;">
                             <div class="unfinished">
-                                <i class="jin-icon jin-icon-construction font50 ui-txt-muted"></i>
+                                <i class="jin-icon jin-icon-construction font50 color-2e"></i>
                                 <div class="margin-t-10 font14 color-9b">功能正在开发中</div>
                             </div>
                         </div>

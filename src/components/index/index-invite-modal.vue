@@ -24,8 +24,8 @@
                 <div class="packet-user-like margin-b-15"></div>
                 <h4 class="font14">点击右上角立即分享</h4>
                 <div class="padding-tb-25 font12 color-f8" @click="userQr">
-                    <h5 v-if="user" >生成分享二维码</h5>
-                    <h5 v-else="">返回</h5>
+                    <div v-if="user" >生成分享二维码</div>
+                    <div v-else="">返回</div>
                 </div>
             </div>
         </div>
@@ -38,6 +38,7 @@
   }
 </style>
 <script>
+    import { XHRGet } from '../../js/ajax.js'
     export default{
         data(){
             return{
@@ -49,7 +50,11 @@
         methods: {
             userQr(){
                 this.user=!this.user;
-            }
+                   XHRGet('/oriental_treasure/Index/createInvitingQrcode', {},function (response) {
+                    console.log(response)
+                });
+            },
+
         },
     }
 </script>

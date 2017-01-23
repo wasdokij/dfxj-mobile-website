@@ -3,6 +3,7 @@
 .color-9b{color: #9B9B9B;}
 .color-4a{color: #4a4a4a;}
 .color-6f{color: #6f6f6f;}
+.color-2e{color: #e2e2e2;}
 .color-7d{color: #7d7d7d;}
 .color-f8{color: #F8E81C;}
 .color-f75c{color: #F75C5C;}
@@ -45,7 +46,7 @@
 //软件下载
 .download-tab{
   width: 90%;
-  margin: 20px auto;
+  margin: auto;
   display: -webkit-box;
   -webkit-box-flex: 1;
   -webkit-box-sizing: border-box;
@@ -116,6 +117,17 @@ box-shadow: 0 2px 5px 0 rgba(255,62,41,0.34);
   -webkit-box-pack: center;
   -webkit-box-align: center
 }
+.credits-top>li .credits-icon{
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 5px;
+  background-size: 100%;
+  background-size: calc(100%);
+  background-repeat: no-repeat;
+  box-sizing: content-box;
+  background-image: url("../../images/shop-nav.png");
+}
 .credits-exchange-list>li{
   float: left;
   width: 49.99%;
@@ -176,4 +188,32 @@ box-shadow: 0 2px 5px 0 rgba(255,62,41,0.34);
   .credits-exchange-list>li{
     height: 150px;
   }
+}
+
+/*积分详情*/
+.discover-message-top{
+    padding: 20px 0;
+}
+.discover-message-top .message-nav-btn{
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #9B9B9B;
+    background: #F7F7F7;
+    border: 1px solid #DADADA;
+    border-radius: 100px;
+}
+.discover-message-top .return-btn{
+    width: 34px;
+}
+.discover-message-top .filtrate-btn{
+    width: 60px;
+}
+.discover-message-panel-null{
+  width: 50%;
+  padding-top: 34%;
+  margin-left: auto;
+  margin-right: auto;
+  background-size: cover;
+  background-image: url("../../images/null-data.png");
 }

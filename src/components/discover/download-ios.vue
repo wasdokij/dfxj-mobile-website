@@ -3,7 +3,7 @@
         <ul class="ui-list download-list ui-whitespace ui-border-b">
             <li class="margin-l-0">
                 <div class="ui-list-thumb">
-                    <span style="background-image:url(../../images/app1.png)"></span>
+                    <span style="background-image:url(/jin2.0/images/app1.png)"></span>
                 </div>
                 <div class="ui-nowrap download-name line-h-16">
                     <h4 class="fnot14">川商藏品中心</h4>
@@ -15,7 +15,7 @@
         <ul class="ui-list download-list ui-whitespace ui-border-b">
             <li class="margin-l-0">
                 <div class="ui-list-thumb">
-                    <span style="background-image:url(../../images/app2.png)"></span>
+                    <span style="background-image:url(/jin2.0/images/app2.png)"></span>
                 </div>
                 <div class="ui-nowrap download-name line-h-16">
                     <h4 class="fnot14">吉林国际</h4>
@@ -27,7 +27,7 @@
         <ul class="ui-list download-list ui-whitespace ui-border-b">
             <li class="margin-l-0">
                 <div class="ui-list-thumb">
-                    <span style="background-image:url(../../images/app3.png)"></span>
+                    <span style="background-image:url(/jin2.0/images/app3.png)"></span>
                 </div>
                 <div class="ui-nowrap download-name line-h-16">
                     <h4 class="fnot14">深文所</h4>

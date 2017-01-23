@@ -17,7 +17,7 @@
                 </div>
                 <div class="font14 color-9b">未登录</div>
             </div>
-			<div class="asset-btn">邀请好友</div>
+			<div class="asset-btn" @click="onLogin">邀请好友</div>
 		</div>
         <!--小娱乐-->
         <div class="bg-white margin-b-25">
@@ -50,8 +50,8 @@
                         </div>
                         <div class="jin-list-info">
                             <div class="ui-nowrap exchange-name">
-                                <div class="font14">广东深文所</div>
-                                <div class="font12 color-9b">止盈止损人性化</div>
+                                <div class="font14">吉林国际商品交易中心</div>
+                                <div class="font12 color-9b">5元起步，低门槛</div>
                             </div>
                             <div class="font12 color-f75c">立即体验</div>
                         </div>
@@ -100,7 +100,7 @@
    }
 </style>
 <script>
-import { XHRPost } from '../../js/ajax.js'
+import { XHRGet } from '../../js/ajax.js'
     export default{
         data(){
             return{
@@ -108,25 +108,36 @@ import { XHRPost } from '../../js/ajax.js'
             }
         },
         created(){
-            this.onIsLogin()
+            this.onIsLogin();
         },
         components:{
         },
         methods: {
             onIsLogin(){
+                var _this = this;
                 var load = layer.open({ type: 2,shadeClose: false})
-                XHRGet('/oriental_treasure/Index/isLogin', function (response) {
-                    if (response.status==1){
-                        this.loginUserBaseInfo()
+                XHRGet('/oriental_treasure/Index/isLogin', {},function (response) {
+                    console.log(response.data.status)
+                    if (response.data.status==0){
+                        _this.isLogin=false;
+                    }else {
+                        _this.isLogin=true;
+                        _this.loginUserBaseInfo()
                     }
-                    console.log(response)
                     layer.close(load);
                 });
             },
             loginUserBaseInfo(){
-                XHRGet('/oriental_treasure/Index/loginUserBaseInfo', function (response) {
+                XHRGet('/oriental_treasure/Index/loginUserBaseInfo', {},function (response) {
                     console.log(response)
                 });
+            },
+            onLogin(){
+                if (true){
+                    window.location.href="/xiaojin/login_register/login.html"
+                }else {
+                    window.location.href="/xiaojin/index/invite.html"
+                }
             }
         },
     }

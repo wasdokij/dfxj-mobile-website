@@ -64,7 +64,7 @@
                 </ul>
             </div>
         </div>
-        <home-invite-modal v-if="modal" @close="modal = false"></home-invite-modal>
+        <index-invite-modal v-if="modal" @close="modal = false"></index-invite-modal>
     </div>
 </template>
 <style>
@@ -77,23 +77,33 @@
   }
 </style>
 <script>
-    import HomeInviteModal from 'components/home/home-invite-modal.vue';
+    import { XHRGet } from '../../js/ajax.js'
+    import IndexInviteModal from 'components/index/index-invite-modal.vue';
     export default{
         data(){
             return{
                 modal:false,
+                userData:null
             }
         },
         components:{
-            HomeInviteModal
+            IndexInviteModal
+        },
+        created(){
+            this.invitingData()
         },
         methods: {
             onInvite(){
                 this.modal = true
             },
-              onIsLogin(){
+              invitingData(){
                 var load = layer.open({ type: 2,shadeClose: false})
-                XHRPost('/oriental_treasure/Index/isLogin', function (response) {
+                XHRGet('/oriental_treasure/Index/invitingData',{}, function (response) {
+                     if (response.data.status==0){
+                      window.location.href="/xiaojin/index/index.html"
+                    }else {
+                         this.userData=response.data;
+                    }
                     console.log(response)
                     layer.close(load);
                 });
