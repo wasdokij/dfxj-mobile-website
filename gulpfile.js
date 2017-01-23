@@ -223,7 +223,7 @@ gulp.task('js:build', function () {
 });
 gulp.task('ugjs:build', function () {
 	return gulp.src('./src/tmp/**/*.js')
-	.pipe(ifElse(BUILD === 'PUBLIC', ugjs))
+	// .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
 	// .pipe(rev())
 	.pipe(gulp.dest('./public/'))
 	// .pipe(rev.manifest())
@@ -272,10 +272,18 @@ gulp.task('build', function () {
 	build(function() {
 		del(['./src/tmp']);
 		cp('./public/**/*','../kongdian_api/public/jin2.0/');
+
 		// cp('./public/**/*','../test/');
 		cp('./public/views/loginRegister/*.html', '../kongdian_api/application/xiaojin/view/login_register');
 		// cp('./public/views/**/*.html', '../test/');
 	});
+	// build的过程也要watch
+    watch([src.js]).on('change', function () {
+        // console.log('change', arguments);
+        runSequence('js:build', 'ugjs:build', function () {
+            cp('./public/**/*','../kongdian_api/public/jin2.0/');
+        })
+    })
 });
 gulp.task('css:build', function () {
 	return gulp.src(src.css)
