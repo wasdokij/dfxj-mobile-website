@@ -76,7 +76,7 @@
 					}
 					
 				}.bind(this), function (error) {
-				this.errorTip(response.data.info);
+				this.errorTip(error);
 				this.getCodeBtnDisable = true;
 			}.bind(this));
 				
