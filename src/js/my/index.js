@@ -2,7 +2,7 @@
 import axios from 'axios';
 import Banking from '../../components/my/Bankcard.vue';
 import '../lib/layer.js';
-import '../mock/test.js';
+//import '../mock/test.js';
 import '../lib/layer.css';
 //import '../../css/my/index.css'
 import { XHRGet } from '../ajax.js';
