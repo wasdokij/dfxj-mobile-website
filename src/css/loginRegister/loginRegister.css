@@ -43,7 +43,7 @@ header {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: url(../../images/login/wave.png);
+  background-image: url(/jin2.0/images/login/wave.png);
   background-position: bottom;
   background-size: 100%;
   background-repeat: no-repeat; }
@@ -52,7 +52,7 @@ header {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: url(../../images/login/wave.png);
+  background-image: url(/jin2.0/images/login/wave.png);
   background-position: bottom;
   background-size: 100%;
   background-repeat: no-repeat; }
@@ -106,5 +106,3 @@ header {
 
 .under-line {
   text-decoration: underline; }
-
-/*# sourceMappingURL=../maps/loginRegister/loginRegister.css.map */

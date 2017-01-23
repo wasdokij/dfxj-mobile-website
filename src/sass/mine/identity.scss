@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  color: #000;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+}
+.bank-card-dashboard {
+  color: #FFFFFF;
+  padding:15px;
+  background: #6aaefd;
+  height: 185px;
+}
+.fanhui, .tianjia {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 100px;
+  display: inline-block;
+}
+.fanhui {
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  vertical-align: middle;
+  float: left;
+}
+.fanhui:before {
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+}
+.button-group {
+  position: relative;
+}
+h1 {
+  font-size: 40px;
+  color: #FFFFFF;
+  letter-spacing: 0.31px;
+  height:56px;
+  line-height:56px;
+  margin-top:14px;
+}
+.number {
+  letter-spacing: 0.28px;
+  font-size:36px;
+}
+.p-l-7 {
+  padding-left:7px;}
+.b0 {
+  bottom:8px;
+}
+//图标字体对齐解决方案
+.notyet {
+  bottom:30px;
+  display: flex;
+  .notyet-icon:before, .notyet-icon {
+    font-size: 14px;
+    height: 18px;
+    line-height: 18px;
+  }
+  .notyet-text {
+    font-size: 18px;
+    height:18px;
+    line-height: 18px;
+    font-weight: 200;
+    letter-spacing: 0.14px;
+    display: inline-block;
+    padding-left: 7px;
+  }
+}
+// 身份证号等信息
+.legend {
+  //height: 60px;
+  background: #fcf7ec;
+  padding: 12px 10px;
+  font-size: 14px;
+  span {
+    color: #ddaf7c;
+    letter-spacing: 0.11px;
+    line-height: 18px;
+  }
+}
+// 覆盖weui样式
+.my-cells {
+  margin-top:0;
+  .weui-cell {
+    height:55px;
+    line-height:55px;
+  }
+  .weui-cell:before {
+    left: 0 !important;
+  }
+  .weui-cell__hd {
+    label {
+      font-size: 14px;
+      color: #9b9b9b;
+    }
+  }
+  .weui-vcode-btn {
+    border: 0 !important;
+    background: #FFCB00;
+    border-radius: 4px;
+    width: 85px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: white;
+    padding: 0;
+    margin-right:10px;
+  }
+  .vcode-ing {
+    background: #ddd;
+    letter-spacing: 0.11px;
+  }
+}
+// 按钮
+.button-panel {
+    padding: 25px 10px 25px 10px;
+    background: #edecf3;
+    a {
+      border-radius: 3px;
+      background: #ffcb00;
+      font-size: 16px;
+      letter-spacing: 0.12px;
+    }
+  }
+//添加图像资料
+.uploader {
+  .weui-cells_form {
+    margin-top:0;
+    .weui-cell {
+      padding-top: 18px;
+    }
+    .weui-uploader__hd {
+      padding-bottom: 20px;
+    }
+    p.weui-uploader__title {
+      text-align: center;
+      color: #4a4a4a;
+      letter-spacing: 0.12px;
+      font-weight: 200;
+    }
+    // 图片预览
+    .weui-uploader__file {
+      width: 100%;
+    }
+    // 十字图标
+    .weui-uploader__input-box {
+      width: 100%;
+      height: 50px;
+      &:before {
+        height: 25.5px;
+      }
+      &:after {
+        width: 50.5px;
+      }
+    }
+    // 容器
+    .weui-uploader__bd {
+      margin: 0;
+    }
+  }
+}
+//提示框
+.my-dialog {
+  .weui-dialog {
+    width: 250px;
+    border-radius: 5px;
+    .weui-dialog__bd {
+      padding: 25px 32px 9px 32px;
+      p {
+        font-size: 18px;
+        color: #000;
+        padding-bottom:5px;
+      }
+      span {
+        display: inline-block;
+        width:151px;
+        font-size: 14px;
+        color: #888;
+        line-height: 18px;
+      }
+    }
+  }
+  a {
+    color: #4990e2;
+    font-size: 18px;
+  }
+}
+// 当前状态
+span.weui-input {
+  font-size: 14px;
+  color: #000;
+  &.colored {
+    color: #13BF7B;
+  }
+}
+.tlr {
+  text-align: right;
+}
