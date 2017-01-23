@@ -41,7 +41,7 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-        'axios': 'Axios',
+        'axios': 'axios',
         'vue-router': 'VueRouter'
     },
 	module: {
@@ -223,7 +223,7 @@ gulp.task('js:build', function () {
 });
 gulp.task('ugjs:build', function () {
 	return gulp.src('./src/tmp/**/*.js')
-	.pipe(ifElse(BUILD === 'PUBLIC', ugjs))
+	// .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
 	// .pipe(rev())
 	.pipe(gulp.dest('./public/'))
 	// .pipe(rev.manifest())
@@ -270,12 +270,19 @@ gulp.task('build', function () {
 		NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'production'
 	}));
 	build(function() {
-		del(['./src/tmp']);
+		// del(['./src/tmp']);
 		cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
 		// cp('./public/**/*','../test/');
 		cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
 		// cp('./public/views/**/*.html', '../test/');
 	});
+	// build的过程也要watch
+    watch([src.js]).on('change', function () {
+        // console.log('change', arguments);
+        runSequence('js:build', 'ugjs:build', function () {
+            cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+        })
+    })
 });
 gulp.task('css:build', function () {
 	return gulp.src(src.css)

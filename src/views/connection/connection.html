@@ -7,6 +7,12 @@
 	    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
 	    <meta name="apple-mobile-web-app-capable" content="yes"/>
 	    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <!--开发选项 不使用缓存-->
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-control" content="no-cache">
+        <meta http-equiv="Cache" content="no-cache">
+        <!---->
 	    <title>人脉</title>
         <link rel="stylesheet" href="../../css/weui.css"/>
         <link rel="stylesheet" href="../../css/jin-base.css"/>
@@ -32,63 +38,38 @@
         <!--信息汇总-->
         <div class="info-overall bg-white">
             <div class="first">
-                <div class="number">
-                    <p>459</p>
+                <div class="number text-center">
+                    <p>{{totalRows}}</p>
+                    <div class="second font12 color9b">
+                        <span>一度人脉总人数</span>
+                    </div>
                 </div>
                 <div class="filter">
                     <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_default">筛选</a>
                 </div>
             </div>
-            <div class="second font12 color9b">
-                <span>一度人脉总人数</span>
-            </div>
             <div class="third">
                 <div class="text-center">
-                    <p class="normal-num">400</p>
+                    <p class="normal-num">{{other_count.register_count}}</p>
                     <p class="normal-txt">注册用户</p>
                 </div>
                 <div class="detail-group">
                     <div class="text-center">
-                        <p class="normal-num">20</p>
+                        <p class="normal-num">{{other_count.gudong_count}}</p>
                         <p class="normal-txt">微股东</p>
                     </div>
                     <div class="text-center">
-                        <p class="normal-num">30</p>
+                        <p class="normal-num">{{other_count.silver_count}}</p>
                         <p class="normal-txt">银卡</p>
                     </div>
                     <div class="text-center">
-                        <p class="normal-num">9</p>
+                        <p class="normal-num">{{other_count.gold_count}}</p>
                         <p class="normal-txt">金卡</p>
                     </div>
                 </div>
 
             </div>
         </div>
-        <!--面板-->
-        <!--<div class="weui-panel my-weui-panel">-->
-            <!--<div class="weui-panel__bd">-->
-                <!--<div class="weui-media-box weui-media-box_small-appmsg">-->
-                    <!--<div class="weui-cells">-->
-                        <!--<a class="weui-cell weui-cell_access my-weui-cell" href="javascript:;">-->
-                            <!--<div class="weui-cell__hd">-->
-                                <!--<span class="jin-icon-construction jin-iconfont zhiyuan"></span>-->
-                            <!--</div>-->
-                            <!--<div class="weui-cell__bd weui-cell_primary">-->
-                                <!--<p>新的朋友</p>-->
-                            <!--</div>-->
-                        <!--</a>-->
-                        <!--<a class="weui-cell weui-cell_access my-weui-cell" href="javascript:;">-->
-                            <!--<div class="weui-cell__hd">-->
-                                <!--<span class="jin-icon-construction jin-iconfont zhiyuan zuzhi"></span>-->
-                            <!--</div>-->
-                            <!--<div class="weui-cell__bd weui-cell_primary">-->
-                                <!--<p>一度人脉(18)</p>-->
-                            <!--</div>-->
-                        <!--</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
         <!--我的邀请人-->
         <div class="weui-cells__title">我的邀请人</div>
         <div class="weui-cells inviter">
@@ -107,27 +88,31 @@
             </div>
         </div>
         <!--通讯录-->
-        <div class="weui-cells__title">A</div>
-        <div class="weui-cells">
-            <div class="weui-cell weui-cell_access my-weui-cell">
-                <div class="weui-cell__hd my-img">
-                    <img class="img" src="https://team.weui.io/avatar/gaby.jpg" alt="">
-                </div>
-                <div class="weui-cell__bd margin-l-10">
-                    <h4 class="weui-media-box__title font14 fw500">安一奇</h4>
-                    <p class="weui-media-box__desc font12 line-h-16">真实姓名：安然</p>
-                </div>
-                <div class="red-spot"></div>
-            </div>
+        <div v-for="(val, key) in data">
+            <div v-for="(item, index) in val">
+                <div class="weui-cells__title">{{key}}</div>
+                    <div class="weui-cells" :key="item.user_sn">
+                        <div class="weui-cell weui-cell_access my-weui-cell">
+                            <div class="weui-cell__hd my-img">
+                                <img class="img" :src="item.wechat_avatar" alt="">
+                            </div>
+                            <div class="weui-cell__bd margin-l-10">
+                                <h4 class="weui-media-box__title font14 fw500">{{item.user_name}}</h4>
+                                <p class="weui-media-box__desc font12 line-h-16">真实姓名：{{item.real_name ? item.real_name : '未实名'}}</p>
+                            </div>
+                            <div class="red-spot"></div>
+                        </div>
 
-            <div class="weui-cell weui-cell_access my-weui-cell">
-                <div class="weui-cell__hd my-img">
-                    <img class="img" src="https://team.weui.io/avatar/rongle.jpg" alt="" >
-                </div>
-                <div class="weui-cell__bd margin-l-10">
-                    <h4 class="weui-media-box__title font14 fw500">哎呀呀</h4>
-                    <p class="weui-media-box__desc font12 line-h-16">真实姓名：<span class="unnamed font10">未实名</span></p>
-                </div>
+                        <div class="weui-cell weui-cell_access my-weui-cell">
+                            <div class="weui-cell__hd my-img">
+                                <img class="img" src="https://team.weui.io/avatar/rongle.jpg" alt="" >
+                            </div>
+                            <div class="weui-cell__bd margin-l-10">
+                                <h4 class="weui-media-box__title font14 fw500">哎呀呀</h4>
+                                <p class="weui-media-box__desc font12 line-h-16">真实姓名：<span class="unnamed font10">未实名</span></p>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
         <!--新的朋友-->
