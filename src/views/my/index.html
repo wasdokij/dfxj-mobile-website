@@ -21,11 +21,11 @@
             </div>
             <ul class="txt-center index-nav-ul width-80"  >
                 <li class=" width-33 box-left">
-                    <h4 class="font18">{{info.assets}}</h4>
+                    <h4 class="font18">{{assets}}</h4>
                     <div class="font12 txt-color-bbb">信息资产</div>
                 </li>
                 <li class="width-33  box-left" >
-                    <h4 class="font18">{{info.integral}}</h4>
+                    <h4 class="font18">{{integral}}</h4>
                     <div class="font12 txt-color-bbb">小金积分</div>
                 </li>
                 <li class="width-33  box-left">
@@ -54,26 +54,25 @@
         <!--03-->
         <div class="box pos-ret padding-b-20 padding-t-20">
             <div class="padding-l-10">
-                <h4 class="font36 txt-color-f75c">{{info.commissions}}</h4>
+                <h4 class="font36 txt-color-f75c">{{commissions}}</h4>
                 <div class="font12 txt-color-9b">可提现金额（元）</div>
             </div>
             <div class="pos-abs right-10">
                 <span class="dis-b zd margin-t-15 txt-center txt-color-4A font14 cur-p">账单</span>
             </div>
-
         </div>
         <!--04-->
         <div class="padding-b-20 padding-t-20">
             <ul class="box">
                 <li class="width-50">
                     <div class="padding-l-20">
-                        <h4 class="font20 ">{{info.bonus}}</h4>
+                        <h4 class="font20 ">{{bonus}}</h4>
                         <div class="font12 txt-color-9b">上月分红（元）</div>
                     </div>
                 </li>
                 <li class="border-l-ddd width-50">
                     <div class="padding-l-20">
-                        <h4 class="font20 ">{{info.commission}}</h4>
+                        <h4 class="font20 ">{{commission}}</h4>
                         <div class="font12 txt-color-9b">上月佣金（元）</div>
                     </div>
                 </li>
@@ -117,7 +116,7 @@
                     <span class="font14 txt-color-4a">你的账户未实名验证，无法操作此步骤，请先前往实名验证</span>
                 </div>
                 <div class="ui-dialog-ft" >
-                    <button type="button" data-role="button" >去开通</button>
+                    <button type="button" data-role="button" onclick="location.href='../information/phone.html'">去开通</button>
                 </div>
                 <div class="ui-dialog-ft">
                     <button type="button" data-role="button" class="txt-color-red">关闭</button>
@@ -134,7 +133,7 @@
                     <span class="font14 txt-color-4a">您还未添加银行卡，无法操作此步骤，请先前往添加银行卡</span>
                 </div>
                 <div class="ui-dialog-ft" >
-                    <button type="button" data-role="button" >去添加</button>
+                    <button type="button"  onclick="location.href='../information/phone.html'">去添加</button>
                 </div>
                 <div class="ui-dialog-ft">
                     <button type="button" data-role="button" class="txt-color-red">关闭</button>
@@ -143,6 +142,23 @@
             </div>
         </div>
         <!--09-->
+        <footer class="ui-footer jin-footer-nav">
+            <ul class="ui-tiled ui-border-t">
+                <li onclick="location.href='number.html'">
+                    <span id="current_footer_1" class="jin-icon jin-icon-home"></span><i>首页</i>
+                </li>
+                <li onclick="location.href='number.html'">
+                    <span id="current_footer_2" class="jin-icon jin-icon-addressbook"></span><i>人脉</i>
+                </li>
+                <li onclick="location.href='number.html'">
+                    <span id="current_footer_3" class="jin-icon jin-icon-discover"></span><i>发现</i>
+                </li>
+                <li onclick="location.href='number.html'">
+                    <span id="current_footer_4" class="jin-icon jin-icon-my"></span><i>我</i>
+                </li>
+            </ul>
+        </footer>
+
         <!--10-->
     </div>
     <script src="../../js/lib/vue.js"></script>
