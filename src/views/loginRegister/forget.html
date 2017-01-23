@@ -22,10 +22,11 @@
 	</head>
 	<body class="bg-white">
 		<div class="forget wrapper" id="forget">
-			<forget-check></forget-check>			
+			<forget-check @go-to-next="nextFn" v-if="nextStep==false"></forget-check>	
 			<forget-new-password v-if="nextStep"></forget-new-password>	
 		</div>
 		<script src="../../js/lib/vue.js"></script>
+		<script src="../../js/lib/jsencrypt.js"></script>
 		<script src="../../js/loginRegister/forget.js"></script>
 	</body>
 </html>
