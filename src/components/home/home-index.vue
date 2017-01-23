@@ -115,9 +115,17 @@ import { XHRPost } from '../../js/ajax.js'
         methods: {
             onIsLogin(){
                 var load = layer.open({ type: 2,shadeClose: false})
-                XHRPost('/oriental_treasure/Index/isLogin', function (response) {
+                XHRGet('/oriental_treasure/Index/isLogin', function (response) {
+                    if (response.status==1){
+                        this.loginUserBaseInfo()
+                    }
                     console.log(response)
                     layer.close(load);
+                });
+            },
+            loginUserBaseInfo(){
+                XHRGet('/oriental_treasure/Index/loginUserBaseInfo', function (response) {
+                    console.log(response)
                 });
             }
         },

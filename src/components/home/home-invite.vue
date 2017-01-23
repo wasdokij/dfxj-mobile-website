@@ -90,6 +90,13 @@
         methods: {
             onInvite(){
                 this.modal = true
+            },
+              onIsLogin(){
+                var load = layer.open({ type: 2,shadeClose: false})
+                XHRPost('/oriental_treasure/Index/isLogin', function (response) {
+                    console.log(response)
+                    layer.close(load);
+                });
             }
         },
     }
