@@ -4,7 +4,8 @@ import Banking from '../../components/my/Bankcard.vue';
 import '../lib/layer.js';
 import '../mock/test.js';
 import '../lib/layer.css';
-import '../../css/my/index.css'
+//import '../../css/my/index.css'
+import { XHRGet } from '../ajax.js';
 //var login = new Vue({
 //    el: "#container",
 //    data: {
@@ -88,7 +89,7 @@ var login=new Vue({
     methods: {
         showData: function () {
             var _self = this;
-            $.ajax({
+            XHRGet({
                 type: 'GET',
                 url: '/oriental_treasure/my_center/index',
                 success: function (data) {
@@ -102,39 +103,40 @@ var login=new Vue({
         },
         //提现
             goToLogin: function () {
-                let data = {
-                    assets: this.info.assets,
-                    integral: this.info. integral
-                };
-                console.log(data);
+                //let data = {
+                    //assets: this.info.assets,
+                    //integral: this.info.integral
+                //};
+                //console.log(data);
                 const _this = this;
-                axios.get('/api_bank',data).then(function(response){
+                XHRGet('/oriental_treasure/my_center/index', function (response) {
                     console.log(response);
-                    if (response.data.status == 0||1) {
+                    if (response.data.status == 1) {
+                        window.location.href = '#'
+                    }else{
                         _this.info.isA = true;
                         _this.info.isB = false;
-                    }else{
-                        location.href = 'phone.html';
                     }
-                    console.log(response.data.status == 0||1);//可以注释，只是用来显示输出
-                    // console.log( _this.BankingShow);//可以注释，只是用来显示输出
+                    console.log(response.data.status == 1);//可以注释，只是用来显示输出
                 });
             },
         //积分商城
             getData: function () {
-                let data = {
-                    assets: this.info.assets,
-                    integral: this.info. integral
-                };
-                console.log(data);
+                //let data = {
+                    //assets: this.info.assets,
+                    //integral: this.info. integral
+                //};
+                //console.log(data);
                 const _this = this;
-                axios.get('/api_bank',data).then(function(response){
+                axios.get('/oriental_treasure/my_center/index').then(function(response){
                     console.log(response);
-                    if (response.data.status == 0||1) {
+                    if (response.data.status == 1) {
+                        window.location.href = '#'
+                    }else{
                         _this.info.isC = true;
                         _this.info.isD = false;
                     }
-                    console.log(response.data.status == 0||1);//可以注释，只是用来显示输出
+                    console.log(response.data.status == 1);//可以注释，只是用来显示输出
                     // console.log( _this.BankingShow);//可以注释，只是用来显示输出
                 });
             }
