@@ -134,7 +134,7 @@
   height: 35px;
   background-size: 600%;
   background-size: calc(600%);
-  background-image: url(/jin2.0/images/home/main-nav-icon.png);
+  background-image: url(../../images/home/main-nav-icon.png);
   background-repeat: no-repeat;
   box-sizing: content-box; }
 
