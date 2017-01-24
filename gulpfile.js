@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-// 二哲 - 2016年08月15日
->>>>>>> 3a4c7ea630d33a3dcd41845a240a9f5d39d85baa
 const path = require('path');
 const gulp = require('gulp');
 const ugjs = require('gulp-uglify');
@@ -44,8 +40,8 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-//      'axios': 'axios',
-        'vue-router': 'VueRouter'
+        'axios': 'axios',
+        'vue-router': 'VueRouter',
         'vue-infinite-scroll': 'infiniteScroll'
     },
 	module: {
