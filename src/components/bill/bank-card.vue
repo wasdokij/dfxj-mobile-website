@@ -7,7 +7,7 @@
                 </div>
                 <ul class="ui-list ui-list-active padding-b-20">
                     <li class="ui-border-b" v-for="key in data" @click="onSelect(key)">
-                        <div class="k-avatar-s ui-list-thumb">
+                        <div class="jin-avatar-s ui-list-thumb">
                             <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>
                         </div>
                         <div class="ui-list-info line-h-14 text-left" >

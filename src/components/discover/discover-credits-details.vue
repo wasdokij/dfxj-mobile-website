@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div  class="discover-message-top bg-white">
+        <div  class="discover-credit-top bg-white">
             <div class="ui-whitespace jin-justify-flex margin-b-15">
-                <div class="message-nav-btn return-btn" @click="creditsHref">
+                <div class="credit-nav-btn return-btn" @click="creditsHref">
                     <i class="jin-icon jin-icon-fanhui line-h-nor  font18"></i>
                 </div>
-                <div class="message-nav-btn filtrate-btn font14" >筛选</div>
+                <div class="credit-nav-btn filtrate-btn font14" >筛选</div>
             </div>
             <div class="jin-box-align ui-whitespace line-h-12 font40">
                 兑换记录
@@ -13,7 +13,7 @@
         </div>
         <!--空缺状态 start -->
         <div class="padding-tb-30 margin-t-10 bg-white">
-            <div class="discover-message-panel-null">
+            <div class="discover-credit-panel-null">
             </div>
             <div class="margin-t-10 text-center font14 color-9b">空旷到可以成为一片森林</div>
         </div>

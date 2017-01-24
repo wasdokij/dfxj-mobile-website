@@ -1,6 +1,6 @@
-import WalletBill from 'components/wallet/wallet-bill.vue';
-import WalletWithdraw from 'components/wallet/wallet-withdraw.vue';
-import WalletBillDetails from 'components/wallet/wallet-bill-details.vue';
+import BillIndex from 'components/bill/bill-index.vue';
+import BillWithdraw from 'components/bill/bill-withdraw.vue';
+import BillDetails from 'components/bill/bill-details.vue';
 
 const scrollBehavior = (to, from, savedPosition) => {
   if (savedPosition) {
@@ -20,10 +20,10 @@ const scrollBehavior = (to, from, savedPosition) => {
 }
 
 const routes = [
-    { path: '/bill', component: WalletBill},
-    { path: '/withdraw', component: WalletWithdraw},
-    { path: '/bill/billDetails', component: WalletBillDetails},
-    {path: '*', component: WalletBill}
+     {path: '/', component: BillIndex},
+    { path: '/withdraw', component: BillWithdraw},
+    { path: '/bill/billDetails', component: BillDetails},
+    {path: '*', component: BillIndex}
 ]
 
 const router = new VueRouter({

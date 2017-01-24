@@ -14,13 +14,13 @@
             </ul>
             <div class="ui-whitespace margin-b-20 bg-white">
                 <div class="padding-t-15 font12 color-4a">提现金额</div>
-                <div class="k-box-align  padding-t-15 padding-b-20 line-h-nor ">
+                <div class="jin-box-align  padding-t-15 padding-b-20 line-h-nor ">
                     <div class="margin-r-10 font30 color-4a">￥</div>
                     <div class="recharge-input  font28 color-4a">
                         <input type="tel"  placeholder="请输入金额" v-model="withdrawAll"  @focus="">
                     </div>
                 </div>
-                <div class="k-justify-flex padding-t-10  padding-b-10 ui-border-t">
+                <div class="jin-justify-flex padding-t-10  padding-b-10 ui-border-t">
                     <div class="font12 color-9b">可用金额 {{data.money}}元</div>
                     <div class="font12" @click="onAll"><a>全部提现</a></div>
                 </div>
@@ -41,7 +41,6 @@
                 v-bind:bank="bank"
                 v-bind:info="data.info"
         ></wallet-bank-card>
-        <wallet-recharge-execute-pass v-if="executePass"></wallet-recharge-execute-pass>
         <wallet-execute-failure  v-if="executeFailure"></wallet-execute-failure>
     </div>
 </template>
@@ -49,14 +48,12 @@
 
 </style>
 <script>
-    import WalletBankCard from 'components/wallet/wallet-bank-card.vue';
-    import WalletRechargeExecutePass from 'components/wallet/wallet-recharge-execute-pass.vue';
-    import WalletExecuteFailure from 'components/wallet/wallet-execute-failure.vue';
+    import BankCard from 'components/bill/bank-card.vue';
+    import ExecuteFailure from 'components/bill/execute-failure.vue';
     export default{
         data(){
             return{
                 bank:false,
-                executePass:false,
                 executeFailure:false,
                 data:{
                     info:[
@@ -79,7 +76,7 @@
             }
         },
         components:{
-            WalletBankCard,WalletRechargeExecutePass,WalletExecuteFailure
+            BankCard,ExecuteFailure
         },
         watch: {
         withdrawAll: function (val, oldVal) {

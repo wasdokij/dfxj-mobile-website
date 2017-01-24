@@ -1,8 +1,8 @@
 <template>
     <div class="filtrate-tk af-up-before af-up-move" style="opacity: 1;">
         <div class="bg-white">
-            <div class="k-box-center">
-                <div class="k-box-align  k-box-pack padding-t-15 padding-b-20">
+            <div class="jin-box-center">
+                <div class="jin-box-align  jin-box-pack padding-t-15 padding-b-20">
                     <div class="bill-details-avatar">
                         <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
                     </div>
@@ -14,11 +14,11 @@
                 <div class="margin-b-20 font14 color-9b">订单已完成</div>
             </div>
             <ul class=" buil-list  ui-border-t">
-                <li class="k-justify-flex ui-border-b">
+                <li class="jin-justify-flex ui-border-b">
                     <div class="font14 color-4a">付款方式</div>
                     <div class="font12 color-9b">微股东支付</div>
                 </li>
-                <li class="k-justify-flex ui-border-b">
+                <li class="jin-justify-flex ui-border-b">
                     <div class="font14 color-4a">文章标题</div>
                     <div class="font12 color-9b like-icon">  有没有可以称得上是真正的英雄的人有没</div>
                 </li>

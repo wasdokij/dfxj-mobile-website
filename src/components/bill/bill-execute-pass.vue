@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="k-box-center">
+        <div class="jin-box-center">
             <div class="execute-pass-avatar">
                 <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
             </div>

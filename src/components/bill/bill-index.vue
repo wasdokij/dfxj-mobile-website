@@ -6,36 +6,36 @@
             class="app"
     >
         <div  class="discover-message-top">
-            <div class="ui-whitespace k-justify-flex margin-b-15">
+            <div class="ui-whitespace jin-justify-flex margin-b-15">
                 <div class="message-nav-btn return-btn">
                     <router-link class="display-b color-9b" to="/">
-                        <i class="k-icon k-icon-fanhui line-h-nor  font18"></i>
+                        <i class="jin-icon jin-icon-fanhui line-h-nor  font18"></i>
                     </router-link>
                 </div>
                 <div class="message-nav-btn filtrate-btn font14" @click="onClick">筛选</div>
             </div>
-            <div class="k-box-align ui-whitespace line-h-12 font40">
+            <div class="jin-box-align ui-whitespace line-h-12 font40">
                 账单
                 <div class="ui-list-info padding-r-0 text-right font18 color-4a">{{walletType}}</div>
             </div>
         </div>
-        <wallet-bill-list
+        <bill-list
                 :bil-list="data"
                 @brother-data="brotherData"
-        ></wallet-bill-list>
-        <discover-message-filtrate
+        ></bill-list>
+        <bill-filtrate
                 v-if="showModal"
                 @close="showModal = false"
                 :keyword="keyword"
                 :show-modal="showModal"
                 @child-data="childData"
         >
-        </discover-message-filtrate>
-        <wallet-bill-details
+        </bill-filtrate>
+        <bill-details
                 v-if="billDetails"
                 :brother-data="billDetails"
                 @close="billDetails = false"
-        ></wallet-bill-details>
+        ></bill-details>
         <div class="nsr-card-loading">
             <nsr-loading :hide-loading="data.limit>0"></nsr-loading>
         </div>
@@ -64,10 +64,10 @@
             ]
         }],
         limit:0};
-    import DiscoverMessageFiltrate from 'components/wallet/message-filtrate.vue';
-    import WalletBillList from 'components/wallet/wallet-bill-list.vue';
-    import WalletBillDetails from 'components/wallet/wallet-bill-details.vue';
-    import Loading from 'components/wallet/loading.vue';
+    import BillFiltrate from 'components/bill/bill-filtrate.vue';
+    import BillList from 'components/bill/bill-list.vue';
+    import BillDetails from 'components/bill/bill-details.vue';
+    import Loading from 'components/bill/loading.vue';
     export default{
         data(){
             return{
@@ -90,7 +90,7 @@
             }
         },
         components:{
-            DiscoverMessageFiltrate,WalletBillList,'nsr-loading':Loading,WalletBillDetails
+            BillFiltrate,BillList,'nsr-loading':Loading,BillDetails
         },
         created() {
             this.data=initialData.data;

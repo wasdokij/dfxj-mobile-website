@@ -24,6 +24,18 @@
 .color-f75c {
   color: #F75C5C; }
 
+.color-a8 {
+  color: #A82600; }
+
+.gw-bg {
+  background: #FFDADA; }
+
+.jl-bg {
+  background: #FFE5C2; }
+
+.jsfs-bg {
+  background: #D8D8D8; }
+
 .home-top {
   width: 100%;
   padding-top: 47%;
@@ -31,13 +43,13 @@
   background-size: cover; }
 
 .home-log-bg {
-  background-image: url("/jin2.0/images/home-banner.png"); }
+  background-image: url("../../images/home-banner.png"); }
 
 .home-invite-bg {
-  background-image: url("/jin2.0/images/invite-pre.png"); }
+  background-image: url("../../images/invite-pre.png"); }
 
 .home-accept-bg {
-  background-image: url("/jin2.0/images/invite-banner.png"); }
+  background-image: url("../../images/invite-banner.png"); }
 
 .home-data {
   padding: 10px 0; }
@@ -68,8 +80,7 @@
   -webkit-border-radius: 200px; }
 
 .user-vip {
-  width: 20px;
-  height: 14px;
+  padding: 2px 2px;
   line-height: 14px;
   font-size: 8px;
   color: #fff;
@@ -136,7 +147,7 @@
   background-size: calc(100%);
   background-repeat: no-repeat;
   box-sizing: content-box;
-  background-image: url("/jin2.0/images/icon-list.png"); }
+  background-image: url("../../images/icon-list.png"); }
 
 .invite-info-list > li {
   width: 88%;
@@ -178,7 +189,7 @@
   width: 100%;
   padding-top: 35%;
   background-size: cover;
-  background-image: url("/jin2.0/images/light.png"); }
+  background-image: url("../../images/light.png"); }
 
 .invite-modal .packet {
   width: 82%;
@@ -201,12 +212,12 @@
   border-radius: 100px; }
 
 .invite-modal .packet .packet-user {
-  padding: 45px 50px 0 50px;
+  padding: 20% 50px 0;
   color: #fff; }
 
 .invite-modal .packet .packet-user-avatar {
-  width: 50px;
-  height: 50px;
+  width: 53px;
+  height: 53px;
   overflow: hidden;
   border-radius: 100%;
   border: 3px solid #FFFFFF; }
@@ -226,7 +237,8 @@
 
 .invite-modal .packet-user-qr > img {
   width: 130px;
-  height: 130px; }
+  height: 130px;
+  margin-top: -15px; }
 
 .invite-modal .packet-user-like {
   width: 90%;

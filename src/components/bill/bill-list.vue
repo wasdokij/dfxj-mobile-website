@@ -28,7 +28,7 @@
                                     <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
                                 </div>
                                 <div class="ui-list-info padding-r-0">
-                                    <ul class="k-justify-flex">
+                                    <ul class="jin-justify-flex">
                                         <li  v-bind:class="{'color-money':key.money >0}">{{key.money}}</li>
                                         <li class="font14 color-money-type">{{key.content}}</li>
                                     </ul>

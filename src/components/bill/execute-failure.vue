@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="k-box-center">
+        <div class="jin-box-center">
             <div class="execute-pass-avatar">
-                <span><i class="k-icon k-icon-gantanhao"></i></span>
+                <span><i class="jin-icon jin-icon-gantanhao"></i></span>
             </div>
             <div class="text-center font20 color-4a">操作失败</div>
         </div>

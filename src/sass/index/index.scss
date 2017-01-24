@@ -6,6 +6,13 @@
 .color-7d{color: #7d7d7d;}
 .color-f8{color: #F8E81C;}
 .color-f75c{color: #F75C5C;}
+.color-a8{color: #A82600;}
+
+//小娱乐avatar
+.gw-bg{background: #FFDADA;}
+.jl-bg{background: #FFE5C2;}
+//发售avatar
+.jsfs-bg{background: #D8D8D8;}
 
 .home-top{
   width: 100%;
@@ -43,13 +50,12 @@
   -webkit-border-radius: 200px;
 }
 .user-vip {
-    width: 20px;
-    height: 14px;
-    line-height: 14px;
-    font-size: 8px;
-    color: #fff;
-    border-radius: 4px;
-    background-color: #ffcb00;
+  padding: 2px 2px;
+  line-height: 14px;
+  font-size: 8px;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #ffcb00;
 }
 //列表
 .item-card-lable {
@@ -177,12 +183,12 @@
   border-radius: 100px;
 }
 .invite-modal .packet .packet-user{
-  padding: 45px 50px 0 50px;
+  padding: 20% 50px 0;
   color: #fff;
 }
 .invite-modal .packet .packet-user-avatar{
-  width: 50px;
-  height: 50px;
+  width: 53px;
+  height: 53px;
   overflow: hidden;
   border-radius: 100%;
   border: 3px solid #FFFFFF;
@@ -203,6 +209,7 @@
 .invite-modal .packet-user-qr >img{
   width: 130px;
   height: 130px;
+  margin-top: -15px;
 }
 .invite-modal .packet-user-like{
   width: 90%;

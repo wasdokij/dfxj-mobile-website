@@ -4,7 +4,7 @@
             <div class="ui-searchbar filtrate-input ">
                     <i class="ui-icon-search line-h-nor" @click="onSeek"></i>
                 <div class="ui-searchbar-input">
-                    <input v-model="inputValue" type="text" class="k-box-align font14"  placeholder="输入消息相关信息" autocapitalize="off"  v-auto-focus="focusStatus" @blur="">
+                    <input v-model="inputValue" type="text" class="jin-box-align font14"  placeholder="输入消息相关信息" autocapitalize="off"  v-auto-focus="focusStatus" @blur="">
                 </div>
             </div>
             <button class="ui-searchbar-cancel font14"

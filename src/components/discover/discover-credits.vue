@@ -1,7 +1,7 @@
 <template>
     <div class="jin-wrap ui-border-b">
         <ul class="credits-top jin-justify-flex margin-b-10 bg-white">
-            <li @click="onDeveloping">
+            <li @click="latelyHref">
                 <i class="credits-icon" style=""></i>
                 <div><i class="color-f75c">0</i>积分</div>
             </li>
@@ -51,6 +51,9 @@
         methods: {
             onDeveloping(){
                 this.developing = true
+            },
+            latelyHref(){
+                window.location.href="/xiaojin/discover/credits_lately_details.html"
             },
             ruleHref(){
                 window.location.href="/xiaojin/discover/rule.html"
