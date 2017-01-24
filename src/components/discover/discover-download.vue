@@ -1,8 +1,10 @@
 <template>
     <div>
-        <ul class="download-tab"  >
-            <li :class="{'active': key.tabText === currentView}" v-for="key in nav" @click="toggleTabs(key.tabText)">{{key.name}}</li>
-        </ul>
+        <div class="padding-t-20 padding-b-20 bg-white">
+            <ul class="download-tab" >
+                <li :class="{'active': key.tabText === currentView}" v-for="key in nav" @click="toggleTabs(key.tabText)">{{key.name}}</li>
+            </ul>
+        </div>
         <div class="download-hint-panel ui-whitespace" v-if="close">
             <i class="ui-icon-close close abs font35 line-h-nor" @click="onClose"></i>
             <p class="download-hint-txt margin-l-5">

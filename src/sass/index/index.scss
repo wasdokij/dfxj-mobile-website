@@ -1,0 +1,275 @@
+.display-box{display: -webkit-box;}
+.box-align{  display:-webkit-box;  -webkit-box-align:center;  box-align:center;}
+.color-9b{color: #9B9B9B;}
+.color-4a{color: #4a4a4a;}
+.color-6f{color: #6f6f6f;}
+.color-7d{color: #7d7d7d;}
+.color-f8{color: #F8E81C;}
+.color-f75c{color: #F75C5C;}
+.color-a8{color: #A82600;}
+
+//小娱乐avatar
+.gw-bg{background: #FFDADA;}
+.jl-bg{background: #FFE5C2;}
+//发售avatar
+.jsfs-bg{background: #D8D8D8;}
+
+.home-top{
+  width: 100%;
+  padding-top: 47%;
+  margin: auto;
+  background-size: cover;
+}
+.home-log-bg{background-image: url("../../images/home-banner.png")}
+.home-invite-bg{background-image: url("../../images/invite-pre.png")}
+.home-accept-bg{background-image: url("../../images/invite-banner.png")}
+.home-data{padding: 10px 0}
+.asset-btn{
+  width: 40%;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  border-radius: 100px;
+  background-image: linear-gradient(-90deg, #FA3935 0%, #F65E5C 100%);
+  box-shadow: 0 5px 10px 0 rgba(247,91,91,0.45);
+}
+.xj-avatar-tiled{
+  width: 30px;
+  height: 30px;
+  margin: 10px 10px 10px 0;
+  -webkit-border-radius: 200px;
+  overflow: hidden;
+}
+.xj-avatar-tiled>span{
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -webkit-border-radius: 200px;
+}
+.user-vip {
+  padding: 2px 2px;
+  line-height: 14px;
+  font-size: 8px;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #ffcb00;
+}
+//列表
+.item-card-lable {
+  margin-right: 10px;
+  width: 5px;
+  height: 20px;
+  background: #FFC234;
+}
+.exchange-name{
+  -webkit-box-flex: 1;
+  line-height: 1.4;
+}
+.jin-list-info {
+  -webkit-box-flex: 1;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+.jin-list-link .jin-list-info {
+  -webkit-box-orient: horizontal;
+}
+//发售
+.jin-sell-list>li{
+  position: relative;
+  -webkit-box-align: center;
+}
+.dredge-btn{
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+  color: #FFFFFF;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 100px;
+  background-image: linear-gradient(-90deg, #FFC300 3%, #FFC947 98%);
+  box-shadow: 0 5px 5px 0 rgba(209,167,0,0.40);
+}
+//邀请
+.invite-btn{
+  width: 88%;
+  height: 40px;
+  line-height: 40px;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+  background-image: linear-gradient(-90deg, #FA3935 0%, #F65E5C 100%);
+  box-shadow: 0 5px 10px 0
+}
+.invite-course-avatar{width: 88%;margin: auto}
+.invite-course-avatar>li .course-avatar{
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  background-size: 100%;
+  background-size: calc(100%);
+  background-repeat: no-repeat;
+  box-sizing: content-box;
+  background-image: url("../../images/icon-list.png");
+}
+.invite-info-list>li{
+  width: 88%;
+  padding: 15px 0;
+  margin: auto;
+  display: -webkit-box;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+  border-bottom: 1px dashed #BBBBBB;
+}
+.invite-info-list>li:last-child{
+   border-bottom: 1px solid #BBBBBB;
+}
+.item-rule-lable{
+  width: 3px;
+  height: 15px;
+  margin-right: 5px;
+  background: #FFC234;
+}
+.invite-rule-list{
+  width: 88%;
+  margin: auto;
+}
+.invite-rule-dian{
+    position: relative;
+    top: 3px;
+  color: #000;
+}
+//弹框
+.invite-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0,0,0,.6);
+}
+.invite-modal .light{
+  width: 100%;
+  padding-top: 35%;
+  background-size: cover;
+  background-image: url("../../images/light.png");
+}
+.invite-modal .packet{
+  width: 82%;
+  margin: auto;
+  background: #FF423F;
+  border-radius: 5px;
+}
+.invite-modal .packet .packet-btn{
+  width: 50%;
+  height: 40px;
+  line-height: 40px;
+  top: -20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #FF3731;
+  text-align: center;
+  background: #FFDC00;
+  box-shadow: -4px 4px 4px 0 rgba(165,55,53,0.50);
+  border-radius: 100px;
+}
+.invite-modal .packet .packet-user{
+  padding: 20% 50px 0;
+  color: #fff;
+}
+.invite-modal .packet .packet-user-avatar{
+  width: 53px;
+  height: 53px;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 3px solid #FFFFFF;
+}
+.invite-modal .packet .packet-user-avatar>span{
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  -webkit-border-radius: 200px;
+  background-size: cover;
+  background-position: center;
+}
+.invite-modal .packet .packet-user-qr{
+  width: 100%;
+  height: 100%;
+}
+.invite-modal .packet-user-qr >img{
+  width: 130px;
+  height: 130px;
+  margin-top: -15px;
+}
+.invite-modal .packet-user-like{
+  width: 90%;
+  height: 4px;
+  margin: 15px auto;
+  border-radius: 100px;
+  background-image: -webkit-radial-gradient(rgb(226, 30, 27), rgb(255, 66, 63));
+}
+//邀请接受
+.invite-accept-panel{
+  width: 90%;
+  margin: 20px auto;
+  background: #EFF3F6;
+  border-radius: 5px;
+}
+.invite-accept-panel .invite-accept-input{
+  width: 90%;
+  margin-top: 15px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.invite-accept-panel .invite-accept-input>input{
+  width: 99%;
+  margin-left: 10px;
+  height: 36px;
+  line-height: 36px;
+  -webkit-appearance: none;
+  border: 0;
+  background: 0 0;
+}
+.invite-accept-gain{
+  padding: 3px 9px;
+  margin-right: 5px;
+  color: #fff;
+  text-align: center;
+  background: #FFC234;
+  border-radius: 3px;
+}
+.invite-accept-btn{
+  width: 90%;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  background-image: linear-gradient(-90deg, #FA3935 0%, #F65E5C 100%);
+  box-shadow: 0 5px 10px 0 rgba(247,91,91,0.45);
+}
+.item-accept-lable{
+  width: 5px;
+  height: 20px;
+  margin-right: 5px;
+  background: #FFC234;
+  border-radius: 100px;
+}
+.invite-accept-rule-list{
+  background-color: #fff;
+  padding: 20px 0;
+}
+.invite-accept-rule-list>li{
+  width: 90%;
+  margin-bottom: 30px;
+}

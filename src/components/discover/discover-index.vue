@@ -2,7 +2,7 @@
     <div>
         <div class="bg-white margin-b-10 ui-border-b">
             <ul class="discover-course-avatar jin-justify-flex ui-whitespace">
-                <li class="ui-border-b">
+                <li class="ui-border-b" @click="creditsHref">
                     <div  class="discover-icon" style="background-position: 0 -321px;"></div>
                     <div>
                         <h4 class="font14">软件下载</h4>
@@ -25,7 +25,7 @@
                         <div class="font12 color-9b">东方小金公众号</div>
                     </div>
                 </li>
-                <li>
+                <li @click="inviteHref">
                     <div  class="discover-icon" style="background-position: 3px -418px;"></div>
                     <div>
                         <h4 class="font14">邀请好友</h4>
@@ -36,7 +36,7 @@
         </div>
         <ul>
             <li>
-                <ul class="ui-list jin-list-link ">
+                <ul class="ui-list jin-list-link " @click="creditsHref">
                     <li class="padding-t-5 padding-b-5">
                         <div class="item-quan"></div>
                         <div class="ui-list-info font14">积分商城</div>
@@ -47,19 +47,19 @@
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
                         <div class="swiper-slide jin-product  line-h-nor" style="width: 40%;">
                             <div class="unfinished">
-                                <i class="jin-icon jin-icon-construction font50 ui-txt-muted"></i>
+                                <i class="jin-icon jin-icon-construction font50 color-2e"></i>
                                 <div class="margin-t-10 font14 color-9b">功能正在开发中</div>
                             </div>
                         </div>
                         <div class="swiper-slide jin-product  line-h-nor" style="width: 40%;">
                             <div class="unfinished">
-                                <i class="jin-icon jin-icon-construction font50 ui-txt-muted"></i>
+                                <i class="jin-icon jin-icon-construction font50 color-2e"></i>
                                 <div class="margin-t-10 font14 color-9b">功能正在开发中</div>
                             </div>
                         </div>
                         <div class="swiper-slide jin-product line-h-nor" style="width: 40%;">
                             <div class="unfinished">
-                                <i class="jin-icon jin-icon-construction font50 ui-txt-muted"></i>
+                                <i class="jin-icon jin-icon-construction font50 color-2e"></i>
                                 <div class="margin-t-10 font14 color-9b">功能正在开发中</div>
                             </div>
                         </div>
@@ -91,6 +91,15 @@
         components:{
         },
         methods: {
+            creditsHref(){
+                window.location.href="/xiaojin/discover/credits.html"
+            },
+            inviteHref(){
+                window.location.href="/xiaojin/index/invite.html"
+            },
+            downloadHref(){
+                window.location.href="/xiaojin/discover/download.html"
+            }
         },
     }
 </script>
