@@ -13,12 +13,24 @@ var styleMap = {
     3: { background: '#dadada', color: '#fff'},
     4: { background: '#ffc234', color: '#fff'},
 };
+var searchTypeMap = {
+    'default': '手机号/姓名/昵称',
+    0: '搜索全部',
+    1: '搜索注册用户',
+    2: '搜索合格微股东',
+    3: '搜索银卡VIP',
+    4: '搜索金卡VIP'
+};
+
 import Vue from 'vue';
 import axios from 'axios';
 import infiniteScroll from 'vue-infinite-scroll';
 new Vue({
   directives: {infiniteScroll}
 });
+
+var firstTime = true;
+var oldSearch = '';
 
 function login() {
     axios.post(loginUrl, {
@@ -51,9 +63,18 @@ window.app = new Vue({
         search: '',
         isFocus: false,
         isSearch: false,
-        searchResult: [],
+        searchResult: {
+            data: [],
+            page: '',
+            listRows: 10,
+            totalRows: 0
+        },
+        beginSearching: false, // 只有开始搜索并且没有搜索结果时，才会返回nullResult
+        searchType: '0',
+        showSearchType: false,
+        searching: false, // 配合debounce
         data: {
-            C: [{
+            A: [{
                 user_name: '',
                 wechat_avatar: '',
                 user_sn: '',
@@ -73,15 +94,27 @@ window.app = new Vue({
     },
     computed: {
         nullResult: function () {
-            return this.searchResult.length === 0 && this.isSearch;
+            return this.searchResult.data.length === 0 && this.isSearch && this.beginSearching;
+        },
+        showSearchResult: function () {
+            return this.beginSearching && this.isSearch && this.searchResult.data.length > 0;
         },
         totalPage: function () {
             return Math.ceil(this.totalRows / this.listRows);
+        },
+        searchBgWhite: function () {
+            return this.isSearch ? 'background: #fff' : '';
+        },
+        searchPlaceHolder: function () {
+            return searchTypeMap[this.searchType];
+        },
+        searchTotalPage: function () {
+            return Math.ceil(this.searchResult.totalRows / this.searchResult.listRows);
         }
     },
     mounted: function () {
         // if (window.isLogin) {
-            console.log('mounted');
+            console.log('mounteded');
             this.$nextTick(function () {
                 axios.post(dataUrl, {
                     page: encrypt('1')
@@ -103,13 +136,25 @@ window.app = new Vue({
     },
     methods: {
         cancelSearch() {
+            this.search = '';
             this.isFocus = false;
+            this.showSearchType = true;
+            this.searchType = '0';
+            app.searchResult = {
+                data: [],
+                page: '',
+                listRows: 10,
+                totalRows: 0
+            };
+            this.beginSearching = false;
         },
         focusSearch() {
             this.isFocus = true;
+            this.showSearchType = false;
         },
         clearSearch() {
             this.search = '';
+            this.showSearchType = true;
         },
         assignData(obj, data) {
             Object.keys(data).forEach(function (key) {
@@ -128,9 +173,34 @@ window.app = new Vue({
         },
         loadMore() {
             (debounce(trueLoadMore, 1000)).call(this);
+        },
+        beginSearch() {
+            this.isSearch = true;
+            window.history.pushState({state: 'frontPage'}, null, window.location.href);
+            this.showSearchType = true;
+        },
+        onSearch() {
+            if (this.searching) {
+                return;
+            }
+            this.searching = true;
+            this.beginSearching = true;
+            (debounce(searchMore, 300)).call(this);
+        },
+        changeSearchType(type) {
+            this.searchType = type;
+            this.showSearchType = false;
+            this.focusSearch();
         }
     }
 });
+
+window.onpopstate = function (event) {
+    console.log('event', event);
+    if (event.state.state === 'frontPage') {
+        app.isSearch = false;
+    }
+};
 
 function deepClone(data) {
     var t = type(data), o, i, ni;
@@ -231,5 +301,54 @@ function trueLoadMore() {
             _self.assignData(app, plainObj);
             _self.busy = false;
         }.bind(_self))
+    }
+}
+
+function searchMore() {
+    console.log('tap');
+    console.log('true', this === app);
+    if (firstTime) {
+
+    } else if (this.searching) {
+        // return;
+    }
+    if(!app.search) {
+        this.searching = false;
+        return;
+    }
+    firstTime = false;
+    var _self = this;
+    if (parseInt(this.searchResult.page || '0') < (this.searchTotalPage) || 1) {
+        console.log('beginSearch');
+        oldSearch = app.search;
+        axios.post(filterDataUrl, {
+            search: encrypt(_self.search),
+            type: encrypt(_self.searchType),
+            page: encrypt(_self.searchResult.page || '1')
+        }).then(function (res) {
+            console.log('searchRes', res);
+            app.searching = false;
+            if (res.data.status == 0) {
+                app.searchResult = {
+                    data: [],
+                    page: '',
+                    listRows: 10,
+                    totalRows: 0
+                }
+            } else if (res.data.status == 1) {
+                assignSearchResult(app.searchResult, res.data);
+            }
+        }.bind(_self))
+    }
+
+}
+
+function assignSearchResult(obj, data) {
+    // var tmp = obj.data.concat(data.data);
+    Object.keys(data).forEach(function (key) {
+        obj[key] = deepClone(data[key]);
+    });
+    if (oldSearch === app.search) {
+        // obj.data = tmp;
     }
 }
