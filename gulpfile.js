@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// 二哲 - 2016年08月15日
+>>>>>>> 3a4c7ea630d33a3dcd41845a240a9f5d39d85baa
 const path = require('path');
 const gulp = require('gulp');
 const ugjs = require('gulp-uglify');
@@ -42,6 +46,7 @@ var webpackConfig = {
         'vue': 'Vue',
 //      'axios': 'axios',
         'vue-router': 'VueRouter'
+        'vue-infinite-scroll': 'infiniteScroll'
     },
 	module: {
 		noParse: [/vue.js/],
@@ -274,6 +279,7 @@ gulp.task('build', function () {
 
 		// cp('./public/**/*','../test/');
 		cp('./public/views/*.html', '../kongdian_api/application/xiaojin/view/');
+		// del(['./src/tmp']);
 		// cp('./public/views/**/*.html', '../test/');
 	});
 	// build的过程也要watch
@@ -283,6 +289,13 @@ gulp.task('build', function () {
             cp('./public/**/*','../kongdian_api/public/jin2.0/');
         })
     })
+
+    watch([src.views]).on('change', function() {
+		runSequence('views:build', function () {
+            cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+        })
+	});
+
 });
 gulp.task('css:build', function () {
 	return gulp.src(src.css)
@@ -314,3 +327,4 @@ gulp.task('clean', function () {
 		'public/**/*'
 	]);
 });
+
