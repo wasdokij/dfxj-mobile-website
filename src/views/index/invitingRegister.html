@@ -7,26 +7,17 @@
 	    <meta name="viewport" content="width=device-width, user-scalable=no"/>
 	    <meta name="apple-mobile-web-app-capable" content="yes"/>
 	    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-	    <title>忘记密码</title>
+	    <title>一起赚钱吧！</title>
 		<link rel="stylesheet" href="../../css/frozen.css">
 		<link rel="stylesheet" href="../../css/jin-base.css"/>
-		<link rel="stylesheet" href="../../css/loginRegister/loginRegister.css"/>
-		<style>
-			.forget {
-				padding-top: 50px;
-			}
-			.form-item-bg-gray {
-				background-color: #EBEBED;
-			}
-		</style>
+        <link rel="stylesheet" href="../../css/index/home.css"/>
 	</head>
-	<body class="bg-white">
-		<div class="forget wrapper" id="forget">
-			<forget-check @go-to-next="nextFn" v-if="nextStep==false"></forget-check>	
-			<forget-new-password v-if="nextStep"></forget-new-password>	
-		</div>
+	<body>
+		<div id="container">
+            <index-invite-accept :user-sn="userSn"></index-invite-accept>
+        </div>
 		<script src="../../js/lib/vue.js"></script>
 		<script src="../../js/lib/jsencrypt.js"></script>
-		<script src="../../js/loginRegister/forget.js"></script>
+		<script src="../../js/index/accept.js"></script>
 	</body>
 </html>
