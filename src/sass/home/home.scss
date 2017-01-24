@@ -1,27 +1,48 @@
 .display-box{display: -webkit-box;}
-.box-align{
-    display:-webkit-box;
-    -webkit-box-align:center;
-    box-align:center;
-}
+.box-align{  display:-webkit-box;  -webkit-box-align:center;  box-align:center;}
 .color-9b{color: #9B9B9B;}
+.color-4a{color: #4a4a4a;}
 .color-6f{color: #6f6f6f;}
-/*TOP*/
-.home-top{  display: -webkit-box;}
-.home-top-l>div{padding: 5px 0}
-.home-top-time{display: -webkit-box;}
-.home-top-time .date{
-    font-size: 26px;
-    color: #9B9B9B;
+.color-7d{color: #7d7d7d;}
+.color-f8{color: #F8E81C;}
+.color-f75c{color: #F75C5C;}
+
+.home-top{
+  width: 100%;
+  padding-top: 47%;
+  margin: auto;
+  background-size: cover;
 }
-.home-top-time  .month{
-    font-size: 10px;
-    color: #9B9B9B;
+.home-log-bg{background-image: url("../../images/home-banner.png")}
+.home-invite-bg{background-image: url("../../images/invite-pre.png")}
+.home-accept-bg{background-image: url("../../images/invite-banner.png")}
+.home-data{padding: 10px 0}
+.asset-btn{
+  width: 40%;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  border-radius: 100px;
+  background-image: linear-gradient(-90deg, #FA3935 0%, #F65E5C 100%);
+  box-shadow: 0 5px 10px 0 rgba(247,91,91,0.45);
 }
-.user{background-color: #f7f7f7;}
-.home-top .user-vip{
-    position: absolute;
-    right: -25px;
+.xj-avatar-tiled{
+  width: 30px;
+  height: 30px;
+  margin: 10px 10px 10px 0;
+  -webkit-border-radius: 200px;
+  overflow: hidden;
+}
+.xj-avatar-tiled>span{
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -webkit-border-radius: 200px;
+}
+.user-vip {
     width: 20px;
     height: 14px;
     line-height: 14px;
@@ -30,247 +51,211 @@
     border-radius: 4px;
     background-color: #ffcb00;
 }
-.home-top-r>li{
-    font-size: 14px;
-    margin-right: 10px;
+//列表
+.item-card-lable {
+  margin-right: 10px;
+  width: 5px;
+  height: 20px;
+  background: #FFC234;
 }
-.home-top-r>li:nth-child(2){
-  margin-left: 10px;
-  margin-right: 0;
-}
-.home-top-r .tab-active{
-    padding:0 2px;
-    font-size: 18px;
-    color: #000;
-    border-bottom: 3px solid #000;
-}
-
-/*一度人脉--信息资产*/
-.home-data{padding: 15px 0}
-.asset-btn{
-    width: 45%;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    color: #fff;
-    border-radius: 100px;
-    box-shadow: 0 2px 5px rgba(240, 73, 72, 0.3);;
-    background-image: linear-gradient(90deg,#fa9580 0%,#f04948 100%);
-}
-.item-card>.home-row>li{
-  width: 24.99%;
-  height: 95px;
-  position: relative;
-  display: -webkit-box;
+.exchange-name{
   -webkit-box-flex: 1;
-  -webkit-box-sizing: border-box;
+  line-height: 1.4;
+}
+.jin-list-info {
+  -webkit-box-flex: 1;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-pack: center;
   -webkit-box-align: center;
 }
-@media all and (max-width: 320px){
-    .item-card>.home-row>li{
-        height: 80px;
-    }
+.jin-list-link .jin-list-info {
+  -webkit-box-orient: horizontal;
 }
-.main-nav-icon{
-    width: 50px;
-    height: 35px;
-    background-size: 600%;
-    background-size: calc(600%);
-    background-image: url(../../images/home-main-nav-icon.png);
-    background-repeat: no-repeat;
-    box-sizing: content-box;
+//发售
+.jin-sell-list>li{
+  position: relative;
+  -webkit-box-align: center;
 }
-.kongdian-img{
-    width: 100%;
-    padding-top: 23%;
-    background-size: cover;
+.dredge-btn{
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+  color: #FFFFFF;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 100px;
+  background-image: linear-gradient(-90deg, #FFC300 3%, #FFC947 98%);
+  box-shadow: 0 5px 5px 0 rgba(209,167,0,0.40);
 }
-/*空店专卖*/
-.item-card-lable {
-    margin-right: 5px;
-    width: 3px;
-    height: 23px;
-    background-color: #ff3e2a;
+//邀请
+.invite-btn{
+  width: 87%;
+  height: 40px;
+  line-height: 40px;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+  background-image: linear-gradient(-90deg, #FA3935 0%, #F65E5C 100%);
+  box-shadow: 0 5px 10px 0
 }
-.kong-product{
-    margin-left: 10px;
-    text-align: center;
-    border: 1px solid #e6e6e6;
+.invite-course-avatar{width: 87%;margin: auto}
+.invite-course-avatar>li{
+  width: 50px;
+  height: 50px;
+  background-size: 100%;
+  background-size: calc(100%);
+  background-repeat: no-repeat;
+  box-sizing: content-box;
+  background-image: url("../../images/icon-list.png");
 }
-.kong-product h4{
-    color: #4a4a4a;
-    padding-top: 5px;
+.invite-info-list>li{
+  width: 87%;
+  padding: 15px 0;
+  margin: auto;
+  display: -webkit-box;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+  border-bottom: 1px dashed #BBBBBB;
 }
-.kong-product div{
-    padding: 5px 0;
+.invite-info-list>li:last-child{
+   border-bottom: 1px solid #BBBBBB;
 }
-.lately-buy-btn{
-    width: 70px;
-    height: 18px;
-    margin: 5px 0;
-    line-height: 18px;
-    text-align: center;
-    color: #fff;
-    border-radius: 4px;
-    background-color: #fb5561;
+.item-rule-lable{
+  width: 3px;
+  height: 15px;
+  margin-right: 5px;
+  background: #FFC234;
 }
-.ui-list-img-v {
-    width: 80px !important;
-    height: 60px !important;
+.invite-rule-list{
+  width: 87%;
+  margin: auto;
 }
-.ui-list-img-v span{
-    border-radius: 4px;
-}
-.map-bg{
-    width: 100%;
-    background-size: 50%;
-    background-position: right 5px;
-    background-repeat: no-repeat;
-    background-image: url("../../images/home-map-bg.png");
-}
-/*附近社区空店*/
-.shop-icon{
-    display:-webkit-box;
-    -webkit-box-align:center;
-    -webkit-box-pack: center;
-    width: 24px;
-    height: 24px;
-    margin: 5px 10px 5px 0;
-    color: #fff;
-    border-radius: 4px;
-    background-color: #ff3e2a;
-}
-.kd-list-item .c-title-info {
-    display: -webkit-box;
-    width: 100%;
-    -webkit-box-align: center;
-}
-.kd-list-item .c-title-info h4 {
-    -webkit-box-flex: 1;
-}
-.kd-list-item .position {
-    display: -webkit-box;
-    -webkit-box-align: center;
-}
-.kd-list-item .position .address {
-    -webkit-box-flex: 1;
-}
-.store-null{
-    width: 30%;
-    padding-top: 19%;
-    margin: auto;
-    background-size: cover;
-    background-image: url("../../images/home-store-null.png");
-}
-.store-null-txt{
-    padding-top: 20px;
-    padding-bottom: 50px;
-}
-
-/*名片*/
-.carte-de-visite{width: 100%;padding-top: 5px;padding-bottom: 5px}
- .phone-btn,.redact-btn{
-    line-height: 40px;
-    text-align: center;
-    color: #fff;
-}
-.phone-btn{  background-color: #8bdc53;}
-.redact-btn{
-    position: absolute;
-    right: 0;
-    background-color: #ffcb00;
-}
-.carte-de-visite .post-btn{
-    padding: 2px 5px;
-    color: #FF8D17;
-    border-radius: 3px;
-    border: 1px solid #fbe7d3;
-    background-color: #fff1e3;
-}
-.carte-de-visite-list{
+.invite-rule-dian{
     position: relative;
-    width: 100%;
-    padding: 20px 15px;
+    top: 3px;
+  color: #000;
 }
-.carte-de-visite-list>li{
-    display:-webkit-box;
-    -webkit-box-align:center;
-    padding: 3px 0;
-    line-height: 1.4;
+//弹框
+.invite-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0,0,0,.6);
 }
-.carte-de-visite-list .dian{
-    color: #ff402c;
+.invite-modal .light{
+  width: 100%;
+  height: 114.5px;
+  background-image: linear-gradient(-180deg, #FCF53C 5%, rgba(247,231,27,0.00) 100%);
 }
-.add{
-    -webkit-box-flex: 1;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-box-pack: center;
+.invite-modal .packet{
+  width: 82%;
+  margin: auto;
+  background: #FF423F;
+  border-radius: 5px;
 }
-/*二维码*/
-#carte-de-visite-list .code {
-    width: 100%;
-    padding: 30px 0;
-    background-color: #fff;
+.invite-modal .packet .packet-btn{
+  width: 50%;
+  height: 40px;
+  line-height: 40px;
+  top: -20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #FF3731;
+  text-align: center;
+  background: #FFDC00;
+  box-shadow: -4px 4px 4px 0 rgba(165,55,53,0.50);
+  border-radius: 100px;
 }
-#carte-de-visite-list .code-img {
-    width: 150px;
-    height: 150px;
+.invite-modal .packet .packet-user{
+  padding: 45px 50px 0 50px;
+  color: #fff;
 }
-#carte-de-visite-list .code p {
-    width: 150px;
-    text-align: center;
+.invite-modal .packet .packet-user-avatar{
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 3px solid #FFFFFF;
 }
-/*名片编辑*/
-.save-book-list>li{
-    margin-right: 15px ;
+.invite-modal .packet .packet-user-avatar>span{
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  -webkit-border-radius: 200px;
+  background-size: cover;
+  background-position: center;
 }
-@media (max-width: 320px){
-    .save-book-list>li{
-        margin-right: 15px ;
-    }
-    .carte-de-visite-list{
-        width: 100%;
-        padding: 20px 10px;
-    }
+.invite-modal .packet .packet-user-qr{
+  width: 100%;
+  height: 100%;
 }
-.save-book-list label {
-    display: block;
-    width: 60px;
-    height: 100%;
-    padding: 12px 0;
-    text-align: left;
-    box-sizing: border-box;
-    color: #6f6f6f;
+.invite-modal .packet-user-like{
+  width: 90%;
+  height: 4px;
+  margin: 15px auto;
+  border-radius: 100px;
+  background-image: -webkit-radial-gradient(rgb(226, 30, 27), rgb(255, 66, 63));
 }
-.save-book-list input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    color: #777;
+//邀请接受
+.invite-accept-panel{
+  width: 90%;
+  margin: 20px auto;
+  background: #EFF3F6;
+  border-radius: 5px;
 }
-.save-book-list textarea {
-    width: 100%;
-    min-height: 80px;
-    border: none;
-    color: #777;
-    resize: none;
+.invite-accept-panel .invite-accept-input{
+  width: 90%;
+  margin-top: 15px;
+  border-radius: 5px;
+  background-color: #fff;
 }
-.save-btn>div{
-    width: 70%;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 100px;
+.invite-accept-panel .invite-accept-input>input{
+  width: 99%;
+  margin-left: 10px;
+  height: 36px;
+  line-height: 36px;
+  -webkit-appearance: none;
+  border: 0;
+  background: 0 0;
 }
-.save-btn-yes{
-    color: #fff;
-    background-color: #ff4c42;
-    box-shadow: 0 9px 9px rgba(255, 76, 66, 0.3);
+.invite-accept-gain{
+  padding: 3px 9px;
+  margin-right: 5px;
+  color: #fff;
+  text-align: center;
+  background: #FFC234;
+  border-radius: 3px;
 }
-.save-btn-no{
-    color: #6f6f6f;
-    border: 1px solid #bbb;
+.invite-accept-btn{
+  width: 90%;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  background-image: linear-gradient(-90deg, #FA3935 0%, #F65E5C 100%);
+  box-shadow: 0 5px 10px 0 rgba(247,91,91,0.45);
+}
+.item-accept-lable{
+  width: 5px;
+  height: 20px;
+  margin-right: 5px;
+  background: #FFC234;
+  border-radius: 100px;
+}
+.invite-accept-rule-list{
+  background-color: #fff;
+  padding: 20px 0;
+}
+.invite-accept-rule-list>li{
+  width: 90%;
+  margin-bottom: 30px;
 }

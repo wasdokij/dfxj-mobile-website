@@ -1,3 +1,6 @@
+body{
+    background:#fff;
+}
 .header_pic {
     height: 74px;
     display: -webkit-box;
@@ -14,7 +17,6 @@
     -webkit-margin-after: 1em;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
-
 }
 /*宽*/
 .width-80{
@@ -33,10 +35,13 @@
     width:50%;
 }
 
-
 .box-left{
     border-left:1px solid #f4f3f3;
 }
+.box-right{
+    border-right:1px solid #f4f3f3;
+}
+
 /*字体颜色*/
 .txt-color-9b{
     color:#9B9B9B;
@@ -159,23 +164,10 @@
     top:-30px;
 }
 /*后面*/
-.layui-m-layersection{
-    position:relative;
-}
-.layui-m-layer0 .layui-m-layersection>.layui-m-layerchild{
-    width:270px;
-}
-
-.layui-m-layerchild>.layui-m-layercont{
-    padding-top:100px;
-    padding-bottom:50px;
-}
-.layui-m-layercont>.s1{
-    text-align:left;
-}
-.jin-footer-nav {
-    color: rgb(120, 121, 121);
-    font-size: 10px;
-    background-color: rgb(247, 247, 247);
-    right: 0;
+.ui-avatar>img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -webkit-border-radius: 200px;
+    overflow: hidden;
 }

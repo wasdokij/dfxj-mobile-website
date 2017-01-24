@@ -24,7 +24,7 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const revCollector = require('gulp-rev-collector');
 const exec = require('child_process').exec;
-const CDN = '/Public';
+const CDN = '/jin2.0';
 var webpackConfig = {
 	resolve: {
 		root: path.join(__dirname, 'node_modules'),
@@ -39,6 +39,15 @@ var webpackConfig = {
 		filename: 'js/[name].js',
 		chunkFilename: 'js/[id].js?[hash]'
 	},
+    externals: {
+        'vue': 'Vue',
+<<<<<<< HEAD
+        'axios': 'axios',
+=======
+//      'axios': 'axios',
+>>>>>>> 1c17a7e7ba2826d2b88db1a66cff2ffe6c493c80
+        'vue-router': 'VueRouter'
+    },
 	module: {
 		noParse: [/vue.js/],
 		loaders: [
@@ -125,12 +134,12 @@ gulp.task('views', function () {
 });
 gulp.task('sass', function () {
 	return gulp.src(src.sass)
-	.pipe(sourcemaps.init())
+	// .pipe(sourcemaps.init())
 	.pipe(sass().on('error', sass.logError))
 	.pipe(ifElse(BUILD === 'PUBLIC', function() {
 		return replace('../../',CDN + '/')
 	}))
-	.pipe(sourcemaps.write('./maps'))
+	// .pipe(sourcemaps.write('./maps')) // maps有点麻烦，先不用了
 	.pipe(gulp.dest('./src/css'))
 	.pipe(gulp.dest('./public/css'));
 });
@@ -218,11 +227,11 @@ gulp.task('js:build', function () {
 });
 gulp.task('ugjs:build', function () {
 	return gulp.src('./src/tmp/**/*.js')
-	.pipe(ifElse(BUILD === 'PUBLIC', ugjs))
-	.pipe(rev())
+	// .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
+	// .pipe(rev())
 	.pipe(gulp.dest('./public/'))
-	.pipe(rev.manifest())
-	.pipe(gulp.dest('./public/'))
+	// .pipe(rev.manifest())
+	// .pipe(gulp.dest('./public/'))
 });
 function compileJS(path,dest) {
 	dest = dest || './public';
@@ -251,9 +260,9 @@ function cp(from,to) {
 
 gulp.task('views:build', function () {
 	return gulp.src(['./public/**/*.json', src.views])
-	.pipe(revCollector({
-		replaceReved: true
-	}))
+	// .pipe(revCollector({
+	// 	replaceReved: true
+	// })) // 暂时不加版本控制
 	.pipe(replace('../../', ''+ CDN +'/')) // 替换html页面静态资源地址
 	.pipe(replace('../', ''+ CDN +'/')) // 替换html页面静态资源地址
 	.pipe(gulp.dest(dist.views));
@@ -265,8 +274,20 @@ gulp.task('build', function () {
 		NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'production'
 	}));
 	build(function() {
-		del(['./src/tmp'])
+		del(['./src/tmp']);
+		cp('./public/**/*','../kongdian_api/public/jin2.0/');
+
+		// cp('./public/**/*','../test/');
+		cp('./public/views/loginRegister/*.html', '../kongdian_api/application/xiaojin/view/login_register');
+		// cp('./public/views/**/*.html', '../test/');
 	});
+	// build的过程也要watch
+    watch([src.js]).on('change', function () {
+        // console.log('change', arguments);
+        runSequence('js:build', 'ugjs:build', function () {
+            cp('./public/**/*','../kongdian_api/public/jin2.0/');
+        })
+    })
 });
 gulp.task('css:build', function () {
 	return gulp.src(src.css)
@@ -277,10 +298,10 @@ gulp.task('css:build', function () {
 	.pipe(ifElse(BUILD === 'PUBLIC', function () {
 		return postcss(processes)
 	}))
-	.pipe(rev())
+	// .pipe(rev()) // 暂时不加版本控制
 	.pipe(gulp.dest(dist.css))
-	.pipe(rev.manifest())
-	.pipe(gulp.dest(dist.css))
+	// .pipe(rev.manifest()) 暂时不加版本控制
+	// .pipe(gulp.dest(dist.css))
 	
 });
 function build(cb) {

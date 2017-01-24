@@ -8,7 +8,8 @@ Random.id();
 
 Mock.setup({
 	timeout: 2000
-})
+});
+
 
 //邀请页面
 Mock.mock('/api_invite',{
@@ -27,16 +28,11 @@ Mock.mock('/api_assets_list',{
 		'ranke|+1': 1,
 		'assetsNumber|100-10000': 200
 	},
-	'firstThree|3':[{
-		'userName': '@cname',
-		'avatar': '@image',
-		'ranke|+1': 1,
-		'assetsNumber|100-10000': 200
-	}],
+
 	'list|5-20': [{
 		'userName': '@cname',
 		'avatar': '@image',
-		'ranke|+1': 4,
+		'ranke|+1': 1,
 		'assetsNumber|100-10000': 200
 	}],
 });
@@ -62,10 +58,40 @@ Mock.mock('/api_assets',{
 	'userAssets': '2,130',
 });
 
+//登陆注册
+
 Mock.mock('/api_login',{
 	'status|0-1': 0,
 	'info': '登陆成功！'
 });
+
+////个人中心
+Mock.mock('/api_personal_center',{
+	'user': {
+		'userId': '021322',
+		'userSn': '4001365',
+		'userName': '@cname',
+		'avatar': '@image',
+		'level|1-5': 1,
+	},
+	'isIdCard|0-1': 1,//是否认证
+	'isBankCard|0-1': 1,//是否添加银行卡
+	'isBase|0-1': 1,//是否绑定基站
+	'isCom|0-1': 0,//是否开社区店
+	'isBindPhone|0-1': 0,//是否已经绑定手机号
+	//列表信息
+	'listInfo': {
+		'wallet': '105.12',
+		'assets': '2,000',
+		'bank': '建设银行',
+		'idName': '@cname',//实名认证姓名
+		'shopRecord|0-100': 1,//购物记录
+		'baseStation|0-5': 0,//基站数量
+		'order|0-1000': 0,//已下单
+		'comAddress': '[南宁]百花苑社区店',
+	}
+});
+//information页面
 Mock.mock('/api_name',{
 	'status|0-1': 0,
 	'info': 'v'
@@ -76,8 +102,5 @@ Mock.mock('/api_information',{
 });
 Mock.mock('/api_information01',{
 	'status|0-1': 0,
-	'info': " <div class='ui-loading-block show'> <div class='ui-loading-cnt'>  <i style='display:block;width:100%;height:80px;line-height:80px;font-size:60px;' class='k-icon jin-icon-dagouxuanzhong'></i><p>成功</p></div></div>"
-});
-Mock.mock('/api_bank',{
-	'status|0-1': 0
+	'info': ""
 });

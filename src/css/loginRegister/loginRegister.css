@@ -1,0 +1,114 @@
+header {
+  padding-top: 30px;
+  padding-bottom: 20px; }
+
+.form-item {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  background: #fff;
+  border-radius: 50px;
+  overflow: hidden; }
+
+.form-item label {
+  position: absolute;
+  top: 50%;
+  margin-top: -14px;
+  margin-left: 15px; }
+
+.form-item input {
+  width: 100%;
+  height: 100%;
+  padding: 5px 5px 5px 45px;
+  font-size: 16px;
+  border: none;
+  border-radius: none;
+  background: none; }
+
+.form-item-btn-r {
+  padding-right: 85px; }
+
+.fixed-wrap {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; }
+
+.login {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../../images/login/wave.png);
+  background-position: bottom;
+  background-size: 100%;
+  background-repeat: no-repeat; }
+
+.register {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../../images/login/wave.png);
+  background-position: bottom;
+  background-size: 100%;
+  background-repeat: no-repeat; }
+
+.jin-btn {
+  display: block;
+  width: 100%;
+  min-width: 120px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  background-color: #ccc;
+  border-radius: 50px; }
+
+.jin-btn-red-gradient {
+  background-color: #FA3935;
+  background-image: linear-gradient(90deg, #FA3935 0%, #F65E5C 100%);
+  box-shadow: 0 5px 10px 0 rgba(247, 91, 91, 0.45); }
+
+.jin-btn-red-gradient:active {
+  background-color: #b51b18;
+  background-image: linear-gradient(90deg, #b51b18 0%, #de5957 100%);
+  box-shadow: 0 5px 10px 0 rgba(247, 91, 91, 0.45);
+  color: #ddd; }
+
+.text-color-red-dark {
+  color: #A82600; }
+
+.wrapper {
+  padding-left: 40px;
+  padding-right: 40px; }
+
+.bg-gradient {
+  background-color: #FE6D6A;
+  background-image: linear-gradient(-180deg, #FE6D6A 0%, #FFC95E 53%, #FFFBC3 100%); }
+
+.code-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 12px;
+  color: #4A4A4A;
+  background-color: #FFC947;
+  background-image: linear-gradient(90deg, #FEE419 3%, #FFC947 98%);
+  border-radius: 100px;
+  border: none; }
+
+.under-line {
+  text-decoration: underline; }
+
+[disabled] {
+  background-color: #dadada;
+  background-image: linear-gradient(90deg, #dadada 3%, #c5c4c4 98%); }

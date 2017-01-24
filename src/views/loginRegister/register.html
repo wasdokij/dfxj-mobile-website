@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+	    <meta name="author" content="ISUX"/>
+	    <meta name="format-detection" content="telephone=no"/>
+	    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+	    <meta name="apple-mobile-web-app-capable" content="yes"/>
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	    <title>注册</title>
+		<link rel="stylesheet" href="../../css/frozen.css">
+		<link rel="stylesheet" href="../../css/jin-base.css"/>
+		<link rel="stylesheet" href="../../css/loginRegister/loginRegister.css"/>
+	</head>
+	<body class="bg-gradient">
+		<div class="register" id="register">
+			<header class="text-center">
+				<img class="ver-middle" src="../../images/loginRegister/king-logo.png" width="60%"/>
+			</header>
+			<div class="wrapper">
+				<div class="form-item form-item-btn-r">
+					<label class="jin-icon jin-icon-chongzhi font20 text-color-red-dark" style="margin-top: -16px;"></label>
+					<input class="text-color-red-dark" type="tel" name="phone" v-model="phone" placeholder="手机号" />
+					<span class="code-btn" @click.prevent="getCode" v-if="getCodeBtnDisable">
+						{{ conut_time === 0 ? '重新获取' : '获取验证码' }}
+					</span>
+					<span class="code-btn" disabled v-if="getCodeBtnDisable == false">{{ conut_time }}</span>
+				</div>
+				<div class="form-item">
+					<label class="jin-icon jin-icon-xinxi font18 text-color-red-dark"></label>
+					<input class="text-color-red-dark" type="text" name="code" v-model="code" placeholder="输入验证码" />
+				</div>
+				<div class="form-item">
+					<label class="jin-icon jin-icon-mima font18 text-color-red-dark"></label>
+					<input class="text-color-red-dark" type="password" name="pwd" v-model="pwd" placeholder="设置登陆密码" />
+				</div>
+				<div class="padding-t-5">
+					<button class="jin-btn jin-btn-red-gradient" v-on:click="goToRegister">立即注册</button>
+				</div>
+				<p class="margin-t-20 padding-t-10 text-center font14">
+					<a class="under-line text-color-red-dark" href="/xiaojin/login_register/login.html">已有账号，直接登陆</a>
+				</p>
+				
+			</div>
+		</div>
+		<script src="../../js/lib/vue.js"></script>
+		<script src="../../js/lib/jsencrypt.js"></script>
+		<script src="../../js/loginRegister/register.js"></script>
+	</body>
+</html>

@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="../../css/jin-base.css"/>
     <link rel="stylesheet" href="../../css/information/index.css"/>
     <link rel="stylesheet" href="../../css/frozen.css"/>
-
 </head>
 <body style="max-width:100%;">
 <div id="container" class="container">
  <div class="jin-wrap margin-t-10">
     <!--01-->
-    <div class="border-b-1 border-t-1" id="nihao">
+    <div class="border-b-1 border-t-1">
         <ul class="ui-list ul-all ui-list-active">
             <li data-href="#">
                 <div class="rlt width-100">
@@ -34,12 +33,13 @@
    </div>
     <!--04-->
     <loading v-if="loadingShow"></loading>
-
+    <successing v-if="successingShow"></successing>
     <!--底部-->
 
  </div>
 </div>
 <script src="../../js/lib/vue.js"></script>
+<script src="../../js/lib/axios.js"></script>
 <script src="../../js/information/name.js"></script>
 <script>
 

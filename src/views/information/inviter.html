@@ -16,7 +16,6 @@
         <label class="margin-l-10">当前邀请人：</label>
         <span class="">七叔</span>
     </div>
-
     <!--02-->
     <div class="possword border-b-1 border-t-1" >
         <ul class="ui-list ul-all ui-list-active">
@@ -40,7 +39,7 @@
         <span class="txt-color-d6">在成为微股东之前，你有一次修改的机会</span>
     </div>
     <!--05-->
-    <div class="ui-dialog" v-bind:class='{"hide":isB,"show":isA}' id="h5">
+    <div class="ui-dialog" v-bind:class='{"hide":isB,"show":isA}'>
         <div class="ui-dialog-cnt" style="">
             <div class="ui-dialog-bd">
                 <div class="text-center" >你确定更改邀请人吗？</div>
@@ -54,34 +53,23 @@
 
     <!--06-->
     <loading v-if="loadingShow"></loading>
+     <successing v-if="successingShow"></successing>
     <!--07-->
-    <div class="ui-loading-block hide" >
-        <div class="ui-loading-cnt">
-            <i style="display:block;width:100%;height:80px;line-height:80px;font-size:60px;" class="k-icon-dagouxuanzhong"></i>
-            <p>成功</p>
-        </div>
-    </div>
+    <!--<div class="ui-loading-block hide" >-->
+        <!--<div class="ui-loading-cnt">-->
+            <!--<i style="display:block;width:100%;height:80px;line-height:80px;font-size:60px;" class="k-icon-dagouxuanzhong"></i>-->
+            <!--<p>成功</p>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <!--08-->
  </div>
 </div>
 <script src="../../js/lib/vue.js"></script>
+<script src="../../js/lib/axios.js"></script>
+<script src="../../js/lib/layer.js"></script>
 <script src="../../js/information/inviter.js"></script>
 <script>
-//先注释01--vue中异步处理数据
-//    new Vue({
-//        el:'#app',
-//        data:{data:""},
-//        created:function(){
-//            var url="json.jsp";
-//            this.$http.get(url).then(function(data){
-//                var json=data.body;
-//                this.data=eval("(" + json +")");
-//            },function(response){
-//                console.info(response);
-//            })
-//        }
-//    });
 
 
 </script>
