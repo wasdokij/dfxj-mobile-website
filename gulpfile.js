@@ -273,7 +273,7 @@ gulp.task('build', function () {
 		cp('./public/**/*','../kongdian_api/public/jin2.0/');
 
 		// cp('./public/**/*','../test/');
-		cp('./public/views/loginRegister/*.html', '../kongdian_api/application/xiaojin/view/login_register');
+		cp('./public/views/*.html', '../kongdian_api/application/xiaojin/view/');
 		// cp('./public/views/**/*.html', '../test/');
 	});
 	// build的过程也要watch
