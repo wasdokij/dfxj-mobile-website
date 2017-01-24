@@ -1,4 +1,4 @@
-import HomeInvite from 'components/home/home-invite.vue';
+import HomeInvite from 'components/index/home-invite.vue';
 
 var V = new Vue({
     el: '#container',
