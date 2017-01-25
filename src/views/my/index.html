@@ -141,25 +141,41 @@
                 <span class="dis-blk bank-alert"></span>
             </div>
         </div>
+
+        <!--9-->
+        <!--<development v-if="developmentShow"></development>-->
         <!--09-->
+            <div class="ui-dialog" v-bind:class='{"show" :info.isE,"hide" :info.isF}'>
+                <div class="ui-dialog-cnt padding-t-80 pos-ret">
+                    <div class="ui-dialog-bd">
+                        <span class="font18 dis-blk">功能正在开发中</span>
+                        <span class="font14 txt-color-4a">程序员正在加班加点开发，请耐心等待上线</span>
+                    </div>
+                    <div class="ui-dialog-ft" >
+                        <button type="button" v-on:click="getKnow">我知道了</button>
+                    </div>
+                    <span class="dis-blk know-alert"></span>
+                </div>
+            </div>
+        <!--10-->
         <footer class="ui-footer jin-footer-nav">
             <ul class="ui-tiled ui-border-t">
                 <li onclick="location.href='number.html'">
-                    <span id="current_footer_1" class="jin-icon jin-icon-home"></span><i>首页</i>
+                    <span id="current_footer_1" class="jin-iconfont jin-icon-store"></span><i>首页</i>
                 </li>
                 <li onclick="location.href='number.html'">
-                    <span id="current_footer_2" class="jin-icon jin-icon-addressbook"></span><i>人脉</i>
+                    <span id="current_footer_2" class="jin-iconfont jin-icon-renmai"></span><i>人脉</i>
                 </li>
                 <li onclick="location.href='number.html'">
-                    <span id="current_footer_3" class="jin-icon jin-icon-discover"></span><i>发现</i>
+                    <span id="current_footer_3" class="jin-iconfont jin-icon-earth"></span><i>发现</i>
                 </li>
                 <li onclick="location.href='number.html'">
-                    <span id="current_footer_4" class="jin-icon jin-icon-my"></span><i>我</i>
+                    <span id="current_footer_4" class="jin-iconfont jin-icon-user"></span><i>我</i>
                 </li>
             </ul>
         </footer>
 
-        <!--10-->
+
     </div>
     <script src="../../js/lib/vue.js"></script>
     <script src="../../js/lib/axios.js"></script>

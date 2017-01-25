@@ -41,11 +41,7 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-<<<<<<< HEAD
         'axios': 'axios',
-=======
-//      'axios': 'axios',
->>>>>>> 1c17a7e7ba2826d2b88db1a66cff2ffe6c493c80
         'vue-router': 'VueRouter'
     },
 	module: {
@@ -275,17 +271,18 @@ gulp.task('build', function () {
 	}));
 	build(function() {
 		del(['./src/tmp']);
-		cp('./public/**/*','../kongdian_api/public/jin2.0/');
+		cp('./public/**/*','../StartKit/public/jin2.0/');
 
 		// cp('./public/**/*','../test/');
-		cp('./public/views/loginRegister/*.html', '../kongdian_api/application/xiaojin/view/login_register');
+		cp('./public/views/my/*.html', '../StartKit/application/xiaojin/view/my');
+		// cp('./public/views/**/*.html', '../test/');
 		// cp('./public/views/**/*.html', '../test/');
 	});
 	// build的过程也要watch
     watch([src.js]).on('change', function () {
         // console.log('change', arguments);
         runSequence('js:build', 'ugjs:build', function () {
-            cp('./public/**/*','../kongdian_api/public/jin2.0/');
+            cp('./public/**/*','../StartKit/public/jin2.0/');
         })
     })
 });
