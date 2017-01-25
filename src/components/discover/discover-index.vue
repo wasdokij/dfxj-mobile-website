@@ -142,8 +142,6 @@
 
             }
         },
-        components:{
-        },
         methods: {
             creditsHref(){
                 window.location.href="/xiaojin/discover/credits.html"
@@ -155,13 +153,6 @@
                 window.location.href="/xiaojin/discover/download.html"
             }
         },
-
-
-            }
-        },
-        components:{
-
-        }
 
     }
 </script>

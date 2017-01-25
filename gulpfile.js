@@ -285,6 +285,14 @@ gulp.task('build', function () {
 //          cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
         })
     })
+    
+    watch([src.components]).on('change', function () {
+        // console.log('change', arguments);
+        runSequence('components:build', function () {
+               cp('./public/**/*','../kongdian_api/public/jin2.0/');
+//          cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+        })
+    })
 
     watch([src.views]).on('change', function() {
 		runSequence('views:build', function () {
