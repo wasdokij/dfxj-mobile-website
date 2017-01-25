@@ -1,6 +1,17 @@
 <template>
     <div class="jin-wrap bg-white">
         <div class="home-top home-accept-bg"></div>
+        <ul class="ui-list jin-list ui-whitespace"  :style="{backgroundColor: '#EFF3F6'}">
+        	<li>
+        		<div class="ui-avatar">
+        			<span :style="{backgroundImage: 'url('+ avatar +')'}"></span>
+        		</div>
+        		<div class="ui-list-info">
+        			<h4>你的好友{{ name }}</h4>
+        			<div class="font16" :style="{color: '#F69F06'}">邀请你一起赚钱</div>
+        		</div>
+        	</li>
+        </ul>
         <ul class="invite-accept-panel jin-box-center padding-b-20">
             <li class="invite-accept-input font14">
                  <input type="tel" placeholder="输入您的手机号" />
@@ -65,11 +76,24 @@
     export default{
         data(){
             return{
+            	avatar: '',
+            	name: '',
             }
         },
-        components:{
+        mounted: function () {
+        	this.getUserInfo();
         },
+
         methods: {
+        	getUserInfo () {
+        		XHRGet('/oriental_treasure/Index/loginUserBaseInfo',{},function (responese) {
+        			console.log(responese.data.data)
+        			if (responese.data.status === 1) {
+        				this.avatar = responese.data.data.wechat_avatar;
+        				this.name = responese.data.data.user_name;
+        			}
+        		}.bind(this));
+        	},
         },
     }
 </script>
