@@ -115,6 +115,11 @@ var login = new Vue({
             this.info.isC = false;
             this.info.isD = true;
         },
+        //账单
+        getBill:function(){
+            this.info.isE = true;
+            this.info.isF = false;
+        },
         //我知道了
         getKnow:function(){
             this.info.isE = false;
