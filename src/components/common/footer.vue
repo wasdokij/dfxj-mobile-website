@@ -31,9 +31,9 @@
 			return {
 				type: 1,
 				indexUrl: '/xiaojin/index/index.html',
-				contactUrl: '/xiaojin/',
-				foundUrl: '/xiaojin/',
-				mineUrl: 'xiaojin/',
+				contactUrl: '/xiaojin/connection/connection.html',
+				foundUrl: '/xiaojin/discover/index.html',
+				mineUrl: 'xiaojin/my/index.html',
 			}
 		},
 		created: function () {
