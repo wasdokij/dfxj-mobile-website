@@ -13,13 +13,13 @@
         <meta http-equiv="Cache-control" content="no-cache">
         <meta http-equiv="Cache" content="no-cache">
         <!---->
-	    <title>人脉 new</title>
+	    <title>人脉</title>
         <link rel="stylesheet" href="../../css/weui.css"/>
         <link rel="stylesheet" href="../../css/jin-base.css"/>
         <link rel="stylesheet" href="../../css/connection/connection.css">
     </head>
 	<body>
-    <div id="container" class="container" :style="searchBgWhite">
+    <div id="container" class="container" :style="searchBgWhite" v-cloak>
         <!--信息汇总-->
         <div class="info-overall bg-white" v-show="visible.homePage">
             <div class="first">
@@ -116,10 +116,10 @@
                     <a class="weui-icon-clear" @click="clearSearch"></a>
                 </div>
             </form>
-            <a class="weui-search-bar__cancel-btn search-text" @click="clearSearch">取消</a>
+            <a class="weui-search-bar__cancel-btn search-text" @click="cancelSearch">返回</a>
         </div>
         <!--搜索筛选-->
-        <div v-show="visible.searchType" style="margin-bottom: 20px">
+        <div v-show="visible.searchType" style="padding-bottom: 20px">
             <div class="weui-flex one-floor">
                 <div class="weui-flex__item" @click="changeSearchType('0')"><div class="placeholder">全部</div></div>
                 <div class="weui-flex__item" @click="changeSearchType('1')"><div class="placeholder">注册用户</div></div>
@@ -170,7 +170,7 @@ color: #888888;height: 40px;line-height: 40px;">找不到该用户</span>
 
     </div>
     <script src="../../js/lib/vue.js"></script>
-    <script src="../../js/lib/vue-router.js"></script>
+    <!--<script src="../../js/lib/vue-router.js"></script>-->
     <script src="../../js/lib/vue-infinite-scroll.js"></script>
     <script src="../../js/lib/axios.js"></script>
     <script src="../../js/lib/jsencrypt.js"></script>
