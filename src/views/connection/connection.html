@@ -13,57 +13,71 @@
         <meta http-equiv="Cache-control" content="no-cache">
         <meta http-equiv="Cache" content="no-cache">
         <!---->
-	    <title>人脉</title>
+	    <title>人脉 new</title>
         <link rel="stylesheet" href="../../css/weui.css"/>
         <link rel="stylesheet" href="../../css/jin-base.css"/>
         <link rel="stylesheet" href="../../css/connection/connection.css">
     </head>
 	<body>
-    <div id="container" class="container">
+    <div id="container" class="container" :style="searchBgWhite">
         <!--搜索-->
-        <div class="weui-search-bar" :class="{ 'weui-search-bar_focusing': isFocus }">
-            <form class="weui-search-bar__form">
-                <div class="weui-search-bar__box">
-                    <i class="weui-icon-search"></i>
-                    <input v-focus="isFocus" v-model="search" type="search" class="weui-search-bar__input" placeholder="搜索" required/>
-                    <a class="weui-icon-clear" @click="clearSearch"></a>
-                </div>
-                <label class="weui-search-bar__label" @click="focusSearch">
-                    <i class="weui-icon-search"></i>
-                    <span>搜索</span>
-                </label>
-            </form>
-            <a class="weui-search-bar__cancel-btn" @click="cancelSearch">取消</a>
-        </div>
+        <!--<div v-show="isSearch" class="weui-search-bar" :class="{ 'weui-search-bar_focusing': isFocus }">-->
+            <!--<form class="weui-search-bar__form">-->
+                <!--<div class="weui-search-bar__box">-->
+                    <!--<i class="weui-icon-search"></i>-->
+                    <!--<input v-focus="isFocus" v-model="search" type="search"  class="weui-search-bar__input" ref="input" :placeholder="searchPlaceHolder" @input="onSearch"/>-->
+                    <!--<input type='text' style='display:none'/>-->
+                    <!--<a class="weui-icon-clear" @click="clearSearch"></a>-->
+                <!--</div>-->
+                <!--<label class="weui-search-bar__label" @click="focusSearch">-->
+                    <!--<i class="weui-icon-search"></i>-->
+                    <!--<span>搜索</span>-->
+                <!--</label>-->
+            <!--</form>-->
+            <!--<a class="weui-search-bar__cancel-btn search-text" @click="cancelSearch">取消</a>-->
+        <!--</div>-->
+        <!--搜索筛选-->
+        <!--<div v-show="isSearch && showSearchType" style="margin-bottom: 20px">-->
+            <!--<div class="weui-flex one-floor">-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('0')"><div class="placeholder">全部</div></div>-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('1')"><div class="placeholder">注册用户</div></div>-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('2')"><div class="placeholder no-border">合格微股东</div></div>-->
+            <!--</div>-->
+            <!--<div class="weui-flex two-floor">-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('3')"><div class="placeholder">银卡VIP</div></div>-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('4')"><div class="placeholder">金卡VIP</div></div>-->
+                <!--<div class="weui-flex__item"><div class="placeholder no-border"></div></div>-->
+            <!--</div>-->
+        <!--</div>-->
         <!--信息汇总-->
         <div class="info-overall bg-white">
             <div class="first">
                 <div class="number text-center">
-                    <p>{{totalRows}}</p>
+                    <p>{{peopleData.totalRows}}</p>
                     <div class="second font12 color9b">
                         <span>一度人脉总人数</span>
                     </div>
                 </div>
                 <div class="filter">
-                    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_default">筛选</a>
+                    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_default" @click="beginSearch">筛选</a>
                 </div>
             </div>
             <div class="third">
                 <div class="text-center">
-                    <p class="normal-num">{{other_count.register_count}}</p>
+                    <p class="normal-num">{{peopleData.other_count.register_count}}</p>
                     <p class="normal-txt">注册用户</p>
                 </div>
                 <div class="detail-group">
                     <div class="text-center">
-                        <p class="normal-num">{{other_count.gudong_count}}</p>
+                        <p class="normal-num">{{peopleData.other_count.gudong_count}}</p>
                         <p class="normal-txt">微股东</p>
                     </div>
                     <div class="text-center">
-                        <p class="normal-num">{{other_count.silver_count}}</p>
+                        <p class="normal-num">{{peopleData.other_count.silver_count}}</p>
                         <p class="normal-txt">银卡</p>
                     </div>
                     <div class="text-center">
-                        <p class="normal-num">{{other_count.gold_count}}</p>
+                        <p class="normal-num">{{peopleData.other_count.gold_count}}</p>
                         <p class="normal-txt">金卡</p>
                     </div>
                 </div>
@@ -71,26 +85,29 @@
             </div>
         </div>
         <!--我的邀请人-->
-        <div class="weui-cells__title">我的邀请人</div>
-        <div class="weui-cells inviter">
-            <div class="weui-cell weui-cell_access my-weui-cell">
-                <div class="weui-cell__hd my-img">
-                    <img class="img" src="https://team.weui.io/avatar/gaby.jpg" alt="">
-                </div>
-                <div class="weui-cell__bd margin-l-10">
-                    <h4 class="weui-media-box__title font14 fw500">安一奇</h4>
-                    <p class="weui-media-box__desc font12 line-h-16">真实姓名：安然</p>
-                </div>
-                <div class="red-spot"></div>
-                <div class="badge">
-                    金卡VIP
+        <div>
+            <div class="weui-cells__title">我的邀请人</div>
+            <div class="weui-cells inviter">
+                <div class="weui-cell weui-cell_access my-weui-cell">
+                    <div class="weui-cell__hd my-img">
+                        <img class="img" :src="peopleData.my_inviting.wechat_avatar" alt="">
+                    </div>
+                    <div class="weui-cell__bd margin-l-10">
+                        <h4 class="weui-media-box__title font14 fw500">{{peopleData.my_inviting.user_name}}</h4>
+                        <p class="weui-media-box__desc font12 line-h-16">真实姓名：{{peopleData.my_inviting.real_name}}</p>
+                    </div>
+                    <div class="red-spot"></div>
+                    <div :style="badge(peopleData.my_inviting.level_name)" class="badge">
+                        {{peopleData.my_inviting.level_name}}
+                    </div>
                 </div>
             </div>
         </div>
         <!--通讯录-->
-        <div v-for="(val, key) in data">
-            <div v-for="(item, index) in val">
+        <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0" infinite-scroll-immediate-check="false" style="margin-bottom: 92px" >
+            <template v-for="(items, key) in peopleData.data" >
                 <div class="weui-cells__title">{{key}}</div>
+                <template v-for="item in items">
                     <div class="weui-cells" :key="item.user_sn">
                         <div class="weui-cell weui-cell_access my-weui-cell">
                             <div class="weui-cell__hd my-img">
@@ -98,90 +115,59 @@
                             </div>
                             <div class="weui-cell__bd margin-l-10">
                                 <h4 class="weui-media-box__title font14 fw500">{{item.user_name}}</h4>
-                                <p class="weui-media-box__desc font12 line-h-16">真实姓名：{{item.real_name ? item.real_name : '未实名'}}</p>
+                                <p class="weui-media-box__desc font12 line-h-16">
+                                    真实姓名：
+                                    <span :class="{ unnamed: !item.real_name, font10: true }">{{item.real_name ? item.real_name : '未实名'}}</span>
+                                </p>
                             </div>
-                            <div class="red-spot"></div>
-                        </div>
-
-                        <div class="weui-cell weui-cell_access my-weui-cell">
-                            <div class="weui-cell__hd my-img">
-                                <img class="img" src="https://team.weui.io/avatar/rongle.jpg" alt="" >
-                            </div>
-                            <div class="weui-cell__bd margin-l-10">
-                                <h4 class="weui-media-box__title font14 fw500">哎呀呀</h4>
-                                <p class="weui-media-box__desc font12 line-h-16">真实姓名：<span class="unnamed font10">未实名</span></p>
+                            <div :style="badge(item.level)" class="badge">
+                                {{item.level}}
                             </div>
                         </div>
                     </div>
-            </div>
+                </template>
+            </template>
         </div>
-        <!--新的朋友-->
-        <!--<div class="weui-cells__title">新的朋友</div>-->
-        <!--<div class="weui-cells new-friend">-->
-            <!--<div class="weui-cell weui-cell_access active">-->
-                <!--<div class="weui-cell__hd my-img">-->
-                    <!--<img class="img" src="https://team.weui.io/avatar/gaby.jpg" alt="">-->
-                <!--</div>-->
-                <!--<div class="weui-cell__bd margin-l-10">-->
-                    <!--<h4 class="weui-media-box__title font14 fw500 line-h-16 mt-n-5">安一奇</h4>-->
-                    <!--<p class="weui-media-box__desc font12 line-h-16">真实姓名：安然 <span class="unnamed b-red font10">已实名</span></p>-->
-                    <!--<p class="weui-media-box__desc font12 line-h-20">请求添加你为好友</p>-->
-                <!--</div>-->
-                <!--<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary add-button">添加</a>-->
-            <!--</div>-->
-
-            <!--<div class="weui-cell weui-cell_access">-->
-                <!--<div class="weui-cell__hd my-img">-->
-                    <!--<img class="img" src="https://team.weui.io/avatar/rongle.jpg" alt="" >-->
-                <!--</div>-->
-                <!--<div class="weui-cell__bd margin-l-10">-->
-                    <!--<h4 class="weui-media-box__title font14 fw500 line-h-16 mt-n-5">哎呀呀</h4>-->
-                    <!--<p class="weui-media-box__desc font12 line-h-16">真实姓名：<span class="unnamed font10">未实名</span></p>-->
-                    <!--<p class="weui-media-box__desc font12 line-h-20">请求添加你为好友</p>-->
-                <!--</div>-->
-                <!--<a href="javascript:;" class="weui-btn_mini add-button gray-badge font12">已添加</a>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--搜索结果-->
-        <!--<div class="weui-cells__title">新的朋友-搜索结果</div>-->
-        <!--<div class="weui-cells">-->
-            <!--<div class="weui-cell weui-cell_access my-weui-cell">-->
-                <!--<div class="weui-cell__hd my-img">-->
-                    <!--<img class="img" src="https://team.weui.io/avatar/gaby.jpg" alt="">-->
-                <!--</div>-->
-                <!--<div class="weui-cell__bd margin-l-10">-->
-                    <!--<h4 class="weui-media-box__title font14 fw500">安一奇</h4>-->
-                    <!--<p class="weui-media-box__desc font12 line-h-16">真实姓名：安然</p>-->
-                <!--</div>-->
-                <!--<div class="red-spot"></div>-->
-                <!--<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary add-button top20">添加</a>-->
-            <!--</div>-->
-
-            <!--<div class="weui-cell weui-cell_access my-weui-cell">-->
-                <!--<div class="weui-cell__hd my-img">-->
-                    <!--<img class="img" src="https://team.weui.io/avatar/rongle.jpg" alt="" >-->
-                <!--</div>-->
-                <!--<div class="weui-cell__bd margin-l-10">-->
-                    <!--<h4 class="weui-media-box__title font14 fw500">哎呀呀</h4>-->
-                    <!--<p class="weui-media-box__desc font12 line-h-16">真实姓名：<span class="unnamed font10">未实名</span></p>-->
-                <!--</div>-->
-                <!--<a href="javascript:;" class="weui-btn_mini add-button gray-badge top20 em-6 font12">等待对方确认</a>-->
-            <!--</div>-->
-        <!--</div>-->
         <!--找不到该用户-->
-        <div class="weui-cells__title">找不到该用户</div>
-        <div class="weui-cells null-result">
-            <div class="weui-cell">
-                <img src="../../images/null-result.png" alt="" style="width:60px;">
-            </div>
+        <div v-show="false">
+            <template >
+                <div class="weui-cells null-result">
+                    <div class="weui-cell">
+                        <img src="../../images/null-result.png" alt="" style="width:60px;">
+                        <span style="font-size: 14px;
+color: #888888;height: 40px;line-height: 40px;">找不到该用户</span>
+                    </div>
+                </div>
+            </template>
         </div>
-
-
+        <!--搜索结果-->
+        <!--<div v-show="false">-->
+            <!--<template v-for="(data, index) in searchResult.data">-->
+                <!--<div class="weui-cells" :key="data.user_sn" :class="borderBottom(index)">-->
+                    <!--<div class="weui-cell weui-cell_access my-weui-cell">-->
+                        <!--<div class="weui-cell__hd my-img">-->
+                            <!--<img class="img" :src="data.wechat_avatar" alt="">-->
+                        <!--</div>-->
+                        <!--<div class="weui-cell__bd margin-l-10">-->
+                            <!--<h4 class="weui-media-box__title font14 fw500">{{data.user_name}}</h4>-->
+                            <!--<p class="weui-media-box__desc font12 line-h-16">-->
+                                <!--真实姓名：-->
+                                <!--<span :class="{ unnamed: !data.real_name, font10: true }">{{data.real_name ? data.real_name : '未实名'}}</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div :style="badge(data.level)" class="badge">-->
+                            <!--{{data.level}}-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</template>-->
+        <!--</div>-->
 
 
     </div>
     <script src="../../js/lib/vue.js"></script>
     <script src="../../js/lib/vue-router.js"></script>
+    <script src="../../js/lib/vue-infinite-scroll.js"></script>
     <script src="../../js/lib/axios.js"></script>
     <script src="../../js/lib/jsencrypt.js"></script>
     <script src="../../js/lib/fastclick.js"></script>

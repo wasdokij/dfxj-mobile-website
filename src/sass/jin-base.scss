@@ -45,14 +45,15 @@ button {
   box-sizing: border-box; }
 
 /*自定义icon字体*/
-@font-face {
-  font-family: "jin-iconfont";
-  src: url("../fonts/jin/iconfont.eot");
-  /* IE9*/
-  src: url("../fonts/jin/iconfont.eot") format("embedded-opentype"), url("../fonts/jin/iconfont.woff") format("woff"), url("../fonts/jin/iconfont.ttf") format("truetype"), url("../fonts/jin/iconfont.svg#jin-iconfont") format("svg");
-  /* iOS 4.1- */ }
+@font-face {font-family: "jin-iconfont";
+  src: url('../fonts/jin/iconfont.eot'); /* IE9*/
+  src: url('../fonts/jin/iconfont.eot') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/jin/iconfont.woff') format('woff'), /* chrome, firefox */
+  url('../fonts/jin/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/jin/iconfont.svg#jin-iconfont') format('svg'); /* iOS 4.1- */
+}
 
-.jin-iconfont {
+.jin-icon {
   font-family: "jin-iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -157,8 +158,8 @@ button {
 
 /*文字换行的截断方式*/
 .word-break {
-  word-wrap: breajin-word;
-  word-break: breajin-all; }
+  word-wrap: break-word;
+  word-break: break-all; }
 
 /*定义通用行高*/
 .line-h-nor {
@@ -178,7 +179,9 @@ body {
   background-color: #EDECF3; }
 
 /*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
+body,
 .container {
+
   max-width: 480px;
   min-width: 320px;
   margin: 0 auto; }

@@ -1,4 +1,3 @@
-// 二哲 - 2016年08月15日
 const path = require('path');
 const gulp = require('gulp');
 const ugjs = require('gulp-uglify');
@@ -30,7 +29,7 @@ var webpackConfig = {
 		root: path.join(__dirname, 'node_modules'),
 		alias: {
 			components: '../../components', // 组件别名,js里引用路径可直接 'components/xxx/yyy'
-            // 'vux-components': 'vux/src/components/'
+			// 'vux-components': 'vux/src/components/'
 		},
 		extensions: ['', '.js', '.vue', '.scss', '.css']
 	},
@@ -39,24 +38,25 @@ var webpackConfig = {
 		filename: 'js/[name].js',
 		chunkFilename: 'js/[id].js?[hash]'
 	},
-    externals: {
-        'vue': 'Vue',
-        'axios': 'axios',
-        'vue-router': 'VueRouter'
-    },
+	externals: {
+		'vue': 'Vue',
+		'axios': 'axios',
+		'vue-router': 'VueRouter',
+		'vue-infinite-scroll': 'infiniteScroll'
+	},
 	module: {
 		noParse: [/vue.js/],
 		loaders: [
 			{test: /\.vue$/, loader: 'vue'},
 			{test: /\.js$/, loader: 'babel', exclude: /node_modules/},
-            {test: /[\/\\]node_modules[\/\\]vux[\/\\]src[\/\\].*\.js$/, loader: 'babel'},
+			{test: /[\/\\]node_modules[\/\\]vux[\/\\]src[\/\\].*\.js$/, loader: 'babel'},
 			{
 				test: /\.(png|jpe?g|gif)(\?.*)?$/,
-                 // test: /[\/\\]src[\/\\]images[\/\\](.*)[\/\\](.*)\.(png|jpe?g|gif)(\?.*)?$/,
+				// test: /[\/\\]src[\/\\]images[\/\\](.*)[\/\\](.*)\.(png|jpe?g|gif)(\?.*)?$/,
 				loader: 'url',
 				query: {
 					limit: 5000, // 换成你想要得大小
-                  /*  regExp: 'images[\\/\\\\](.*)$',*/
+					/*  regExp: 'images[\\/\\\\](.*)$',*/
 					name: 'images/[name].[ext]?[hash:10]'
 				}
 			},
@@ -69,15 +69,15 @@ var webpackConfig = {
 				}
 			},
 			// mint-ui的内嵌全局CSS
-            {
-                test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
-                loaders: ['style', 'css']
-            },
-            // lib文件夹下部分插件的样式
-            {
-                test: /[\/\\]src[\/\\].*\.css$/,
-                loaders: ['style', 'css']
-            }
+			{
+				test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
+				loaders: ['style', 'css']
+			},
+			// lib文件夹下部分插件的样式
+			{
+				test: /[\/\\]src[\/\\].*\.css$/,
+				loaders: ['style', 'css']
+			}
 
 		]
 	},
@@ -126,21 +126,21 @@ const dist = {
 var BUILD = "DEV";
 gulp.task('views', function () {
 	return gulp.src(src.views)
-	.pipe(gulp.dest(dist.views));
+		.pipe(gulp.dest(dist.views));
 });
 gulp.task('sass', function () {
 	return gulp.src(src.sass)
-	// .pipe(sourcemaps.init())
-	.pipe(sass().on('error', sass.logError))
-	.pipe(ifElse(BUILD === 'PUBLIC', function() {
-		return replace('../../',CDN + '/')
-	}))
-	// .pipe(sourcemaps.write('./maps')) // maps有点麻烦，先不用了
-	.pipe(gulp.dest('./src/css'))
-	.pipe(gulp.dest('./public/css'));
+		// .pipe(sourcemaps.init())
+		.pipe(sass().on('error', sass.logError))
+		.pipe(ifElse(BUILD === 'PUBLIC', function() {
+			return replace('../../',CDN + '/')
+		}))
+		// .pipe(sourcemaps.write('./maps')) // maps有点麻烦，先不用了
+		.pipe(gulp.dest('./src/css'))
+		.pipe(gulp.dest('./public/css'));
 });
 gulp.task('reload', function () {
-	
+
 	webpackConfig.plugins.push(new webpack.DefinePlugin({
 		NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'dev'
 	}));
@@ -153,9 +153,9 @@ gulp.task('reload', function () {
 			notify: false
 		});
 		dev();// watch
-		
+
 	});
-	
+
 });
 function dev() {
 	watch([src.views]).on('change', function() {
@@ -181,7 +181,7 @@ function dev() {
 	watch([src.js], function (event) {
 		var paths = watchPath(event, src.js, './public/js/');
 		var sp = paths.srcPath.indexOf('\\') > -1 ? '\\' : '/';
-		
+
 		if(paths.srcPath.split(sp).length === 3) { // 共有库情况,要编译所有js
 			compileJS(['./src/js/**/*.js','!./src/js/lib/*.js']);
 		} else { // 否则 只编译变动js
@@ -211,11 +211,11 @@ gulp.task('js', function () {
 
 gulp.task('images', function () {
 	gulp.src(src.images)
-	.pipe(gulp.dest(dist.images));
+		.pipe(gulp.dest(dist.images));
 });
 gulp.task('fonts', function () {
 	return gulp.src(src.fonts)
-	.pipe(gulp.dest(dist.fonts));
+		.pipe(gulp.dest(dist.fonts));
 });
 gulp.task('js:build', function () {
 	cp('./src/js/lib/*.js','./src/tmp/js/lib');
@@ -223,45 +223,45 @@ gulp.task('js:build', function () {
 });
 gulp.task('ugjs:build', function () {
 	return gulp.src('./src/tmp/**/*.js')
-	// .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
-	// .pipe(rev())
-	.pipe(gulp.dest('./public/'))
+		// .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
+		// .pipe(rev())
+		.pipe(gulp.dest('./public/'))
 	// .pipe(rev.manifest())
 	// .pipe(gulp.dest('./public/'))
 });
 function compileJS(path,dest) {
 	dest = dest || './public';
 	webpackConfig.output.publicPath = BUILD === 'PUBLIC' ? ''+ CDN +'/' : '/';
-	
+
 	return gulp.src(path)
-	.pipe(named(function (file) {
-		var path = JSON.parse(JSON.stringify(file)).history[0];
-		var sp = path.indexOf('\\') > -1 ? '\\js\\' : '/js/';
-		var target = path.split(sp)[1];
-		return target.substring(0,target.length - 3);
-	}))
-	.pipe(webpackStream(webpackConfig))
-	.on('error',function(err) {
-		this.end()
-	})
-	.pipe(browserSync.reload({
-		stream: true
-	}))
-	.pipe(gulp.dest(dest))
+		.pipe(named(function (file) {
+			var path = JSON.parse(JSON.stringify(file)).history[0];
+			var sp = path.indexOf('\\') > -1 ? '\\js\\' : '/js/';
+			var target = path.split(sp)[1];
+			return target.substring(0,target.length - 3);
+		}))
+		.pipe(webpackStream(webpackConfig))
+		.on('error',function(err) {
+			this.end()
+		})
+		.pipe(browserSync.reload({
+			stream: true
+		}))
+		.pipe(gulp.dest(dest))
 }
 function cp(from,to) {
 	gulp.src(from)
-	.pipe(gulp.dest(to));
+		.pipe(gulp.dest(to));
 }
 
 gulp.task('views:build', function () {
 	return gulp.src(['./public/**/*.json', src.views])
-	// .pipe(revCollector({
-	// 	replaceReved: true
-	// })) // 暂时不加版本控制
-	.pipe(replace('../../', ''+ CDN +'/')) // 替换html页面静态资源地址
-	.pipe(replace('../', ''+ CDN +'/')) // 替换html页面静态资源地址
-	.pipe(gulp.dest(dist.views));
+		// .pipe(revCollector({
+		// 	replaceReved: true
+		// })) // 暂时不加版本控制
+		.pipe(replace('../../', ''+ CDN +'/')) // 替换html页面静态资源地址
+		.pipe(replace('../', ''+ CDN +'/')) // 替换html页面静态资源地址
+		.pipe(gulp.dest(dist.views));
 });
 
 gulp.task('build', function () {
@@ -271,44 +271,52 @@ gulp.task('build', function () {
 	}));
 	build(function() {
 		del(['./src/tmp']);
-		cp('./public/**/*','../StartKit/public/jin2.0/');
+		cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+		// cp('./public/**/*','../kongdian_api/public/jin2.0/');
 
-		// cp('./public/**/*','../test/');
-		cp('./public/views/my/*.html', '../StartKit/application/xiaojin/view/my');
-		// cp('./public/views/**/*.html', '../test/');
-		// cp('./public/views/**/*.html', '../test/');
+		// cp('./public/views/*.html', '../kongdian_api/application/xiaojin/view/');
+		cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
 	});
 	// build的过程也要watch
-    watch([src.js]).on('change', function () {
-        // console.log('change', arguments);
-        runSequence('js:build', 'ugjs:build', function () {
-            cp('./public/**/*','../StartKit/public/jin2.0/');
-        })
-    })
+	watch([src.js]).on('change', function () {
+		// console.log('change', arguments);
+		runSequence('js:build', 'ugjs:build', function () {
+			// cp('./public/**/*','../kongdian_api/public/jin2.0/');
+			cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+		})
+	})
+
+	watch([src.views]).on('change', function() {
+		runSequence('views:build', function () {
+			// cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+			cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+		})
+	});
+
 });
 gulp.task('css:build', function () {
 	return gulp.src(src.css)
-	.pipe(base64({
-		extensions: ['png', /\.jpg#datauri$/i],
-		maxImageSize: 10 * 1024 // bytes,
-	}))
-	.pipe(ifElse(BUILD === 'PUBLIC', function () {
-		return postcss(processes)
-	}))
-	// .pipe(rev()) // 暂时不加版本控制
-	.pipe(gulp.dest(dist.css))
+		.pipe(base64({
+			extensions: ['png', /\.jpg#datauri$/i],
+			maxImageSize: 10 * 1024 // bytes,
+		}))
+		.pipe(ifElse(BUILD === 'PUBLIC', function () {
+			return postcss(processes)
+		}))
+		// .pipe(rev()) // 暂时不加版本控制
+		.pipe(gulp.dest(dist.css))
 	// .pipe(rev.manifest()) 暂时不加版本控制
 	// .pipe(gulp.dest(dist.css))
-	
+
 });
 function build(cb) {
 	runSequence('clean','sass', 'css:build','js:build', 'ugjs:build', 'views:build', 'images', 'fonts',function() {
 		// 上传静态资源文件到CDN
 		cb && cb();
 		/*exec('node upload.js', function (err, output) {
-			if(err) console.log(err);
-			console.log(output);
-		});*/
+		 if(err) console.log(err);
+		 console.log(output);
+		 });*/
 	});
 }
 gulp.task('clean', function () {

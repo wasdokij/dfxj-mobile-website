@@ -85,7 +85,7 @@ body {
   border-radius:100px;
   width: 40px;
   text-align: center;
-  margin-left:5px;
+  //margin-left:5px;
   &.b-red {
     border:1px solid #FB5561;
     color: #FB5561;
@@ -247,3 +247,42 @@ body {
   line-height: 20px;
   padding: 0 0.8em;
 }
+.weui-cells:after {
+  border-bottom: 0;
+}
+.weui-cells {
+  margin-top:0;
+}
+.search-text {
+  font-size: 14px;
+  color: #4990E2;
+  letter-spacing: 0.11px;
+}
+.placeholder {
+  text-align: center;
+  font-size: 14px;
+  color: #4A4A4A;
+  letter-spacing: 0.11px;
+  height: 25px;
+  line-height:25px;
+  border-right: 1px solid #f0f0f0;
+}
+.one-floor .placeholder {
+  margin-top:20px;
+}
+.placeholder.no-border {
+  border-right: 0;
+}
+.two-floor .placeholder {
+  margin-top:15px;
+}
+.container {
+  min-height: 100vh;
+}
+.add-border-bottom:after {
+    bottom: 0;
+    border-bottom: 1px solid #d9d9d9 !important;
+    transform-origin: 0 100%;
+    transform: scaleY(.5);
+}
+
