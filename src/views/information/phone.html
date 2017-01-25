@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>空店个人手机号</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../css/frozen.css"/>
+    <link rel="stylesheet" href="../../css/jin-base.css"/>
+    <link rel="stylesheet" href="../../css/information/index.css"/>
+
+</head>
+<body>
+<div id="container" class="container">
+ <div class="jin-wrap margin-t-10" v-bind:class='{"dis_n" :info.isC,"dsp_p" :info.isD}'>
+    <!--01-->
+    <div class="border-b-1 border-t-1">
+        <ul class="ui-list ul-all ui-list-active" >
+            <li data-href="#">
+                <div class="rlt width-100">
+                    <label class="ui-nowrap abs top-10">手机号</label>
+                    <input type="text"  class="ui-form-item input width-100 txt-color-d6" :placeholder="info.phone" style="text-align:right;" id="name"/>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <!--02-->
+    <div class="ui-btn-wrap">
+        <button  class="ui-btn-kd ui-btn-yellow" v-on:click="goGenggai">更改手机号</button>
+    </div>
+    <!--03-->
+    <div class="font12">
+        <span class="margin-l-10 txt-color-ddd">一个手机号码只能作为一个账号的登录名，请谨慎更换</span>
+    </div>
+ </div>
+    <!--04-->
+    <loading v-if="loadingShow"></loading>
+
+    <!--下一个页面-->
+    <div class="k-wrap" style="margin-top:10px;"  v-bind:class='{"dis_n" :info.isD,"dsp_b" :info.isC}'>
+        <!--01-->
+        <div class="font14 margin-b-10 margin-l-10">
+            <span class="txt-color-555">请输入你要绑定的手机号</span>
+        </div>
+
+        <!--02-->
+        <div class="possword border-b-1 border-t-1">
+            <ul class="ui-list ul-all ui-list-active" >
+                <li data-href="#" class="border-b-1">
+                    <div class="rlt width-100">
+                        <label class="ui-nowrap abs top-10">手机号</label>
+                        <input type="text"  placeholder="输入手机号" class="ui-form-item input width-100 padding-l-60"   v-model="info.input"/>
+                    </div>
+
+                </li>
+                <li data-href="#">
+                    <div class="rle width-100">
+                        <label class="ui-nowrap">验证码</label>
+                        <input type="text" placeholder="输入验证码" class="ui-form-item input" style="border:0;padding-left:9px;"  v-model="info.yzm"/>
+                        <span  class="abs yzm cursor-pir a-r bg-yellow" v-bind:class='{"dis_n" :info.isB,"dsp_b" :info.isA}' v-on:click="getData">获取</span>
+                        <span  class="abs yzm cursor-pir a-r bg-ddd" v-bind:class='{"dis_n":info.isA, "dsp_b":info.isB}'  id="time_show" disabled="disabled"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--03-->
+        <div class="ui-btn-wrap">
+            <button  class="ui-btn-kd ui-btn-yellow" v-on:click="goToLogin">提交</button>
+        </div>
+        <!---->
+
+ </div>
+</div>
+<script src="../../js/lib/vue.js"></script>
+<script src="../../js/lib/axios.js"></script>
+<script src="../../js/lib/layer.js"></script>
+<script src="../../js/information/phone.js" ></script>
+<script>
+
+
+</script>
+
+</body>
+</html>
