@@ -157,8 +157,8 @@ button {
 
 /*文字换行的截断方式*/
 .word-break {
-  word-wrap: breajin-word;
-  word-break: breajin-all; }
+  word-wrap: break-word;
+  word-break: break-all; }
 
 /*定义通用行高*/
 .line-h-nor {
@@ -178,7 +178,7 @@ body {
   background-color: #EDECF3; }
 
 /*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
-.container {
+body,.container {
   max-width: 480px;
   min-width: 320px;
   margin: 0 auto; }

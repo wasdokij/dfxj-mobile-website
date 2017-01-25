@@ -1,10 +1,8 @@
 //import Vue from 'vue';
 import axios from 'axios';
-//import development from '../../components/development/development.vue';
 import '../lib/layer.js';
-//import '../mock/test.js';
 import '../lib/layer.css';
-//import '../../css/my/index.css'
+import jinFooter from '../../components/common/footer.vue';
 import { XHRGet } from '../ajax.js';
 
 var login = new Vue({
@@ -29,7 +27,10 @@ var login = new Vue({
             isD: true,
             isE:false,
             isF:true
-        }
+        },
+    },
+    components: {
+        jinFooter
     },
     mounted: function () {
         const _this = this;
