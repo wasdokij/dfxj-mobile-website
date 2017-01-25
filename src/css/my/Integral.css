@@ -1,0 +1,20 @@
+body {
+  background: #ddd; }
+
+.top_pic {
+  position: relative;
+  display: -webkit-box;
+  width: 100%;
+  height: 100%;
+  -webkit-box-flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center; }
+
+.a11-pic {
+  width: 50px;
+  height: 35px;
+  background-size: calc(600%);
+  background-image: url(../../images/my/main-nav-icon.png);
+  background-repeat: no-repeat;
+  box-sizing: content-box; }

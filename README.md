@@ -13,7 +13,7 @@
 第二步：git add *
 第三步：git commit -m "your comment"
 第四步：git pull origin master (或者origin的其它分支)
-第五步（重要）：git checkout -- gulpfile.js (恢复gulpfile.js至你的本地版本）
+第五步（重要）：git checkout [<commit>] -- gulpfile.js (恢复gulpfile.js至你的本地版本）
 第六步：解决冲突,然后 git add * => git commit -m "your merge comment"
 第七步：git push origin master (或者origin的其它分支)
 

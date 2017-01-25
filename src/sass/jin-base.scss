@@ -93,6 +93,7 @@ button {
 .jin-icon-xinxi:before { content: "\e648"; }
 
 
+
 /*白色背景*/
 .bg-white {
   background-color: #fff; }
@@ -179,9 +180,9 @@ body {
   background-color: #EDECF3; }
 
 /*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
-/*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
 body,
 .container {
+
   max-width: 480px;
   min-width: 320px;
   margin: 0 auto; }
@@ -459,6 +460,7 @@ body,
 
 .line-clamp-4 {
   -webkit-line-clamp: 4; }
+
 
 
 

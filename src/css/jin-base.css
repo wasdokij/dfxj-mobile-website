@@ -193,7 +193,6 @@ body {
   background-color: #EDECF3; }
 
 /*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
-/*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
 body,
 .container {
   max-width: 480px;

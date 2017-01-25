@@ -1,0 +1,251 @@
+.display-box{display: -webkit-box;}
+.box-align{  display:-webkit-box;  -webkit-box-align:center;  box-align:center;}
+.color-9b{color: #9B9B9B;}
+.color-4a{color: #4a4a4a;}
+.color-6f{color: #6f6f6f;}
+.color-2e{color: #e2e2e2;}
+.color-7d{color: #7d7d7d;}
+.color-f8{color: #F8E81C;}
+.color-f75c{color: #F75C5C;}
+.color-4ca{color: #4CAF50;}
+.bg-credits{background: #FC5E58;}
+
+.discover-course-avatar>li {
+  position: relative;
+  width: 49.99%;
+  height: 80px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  -webkit-box-sizing: border-box;
+  -webkit-box-align: center;
+}
+.discover-course-avatar>li .discover-icon{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  background-size: 160%;
+  background-size: calc(160%);
+  background-repeat: no-repeat;
+  box-sizing: content-box;
+  background-image: url("../../images/icon-list.png");
+}
+.jin-product {
+  margin-left: 15px;
+  text-align: center;
+  border: 1px solid #e6e6e6;
+}
+.unfinished{
+  padding: 40px 10px;
+}
+.item-quan{
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 200px;
+  background: #FFFFFF;
+  border: 3px solid #F75C5C;
+}
+//软件下载
+.download-tab{
+  width: 90%;
+  margin: auto;
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  -webkit-box-sizing: border-box;
+  -webkit-box-align: center;
+  border: 1px solid #F75C5C;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.download-tab>li{
+  width: 50%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #F75C5C;
+  font-size: 14px;
+  background-color: #fff;
+}
+.download-list .ui-list-thumb{
+    margin: 15px 10px 15px 0 !important;
+}
+.download-tab>li.active{
+   color: #fff;
+  background: #F75C5C;
+}
+.download-hint-panel{
+  position: relative;
+  background: #FFF3D6;
+}
+.download-hint-panel .download-hint-txt{
+  width: 95%;
+  padding: 12px 0;
+  font-size: 12px;
+  color: #E28D02;
+  line-height: 16px;
+}
+.download-hint-panel .close{
+  top: 0;
+  right: 0;
+  color: #FFC234
+}
+.download-list>li{
+  position: relative;
+  -webkit-box-align: center;
+}
+.download-list .download-name {
+    -webkit-box-flex: 1;
+     line-height: 1.4;
+}
+.download-list .download--btn{
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  border-radius: 100px;
+  background-image: linear-gradient(-90deg, #FA9580 0%, #F14948 100%);
+box-shadow: 0 2px 5px 0 rgba(255,62,41,0.34);
+}
+
+//积分详情
+.credits-top>li{
+  width: 33.33%;
+  padding: 15px 0;
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  -webkit-box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center
+}
+.credits-top>li .credits-icon{
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 5px;
+  background-size: 100%;
+  background-size: calc(100%);
+  background-repeat: no-repeat;
+  box-sizing: content-box;
+  background-image: url("../../images/shop-nav.png");
+}
+.credits-exchange-list>li{
+  float: left;
+  width: 49.99%;
+  height: 180px;
+  background-color: #fff;
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  -webkit-box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center
+}
+.credits-exchange-list>li:nth-child(2n) {
+  border-left: 1px solid #F4F3F3;
+}
+//开发中 弹框
+.developing-panel{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  z-index: 999;
+  background: rgba(0,0,0,.6);
+}
+.developing-panel .frame{
+  width: 85%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  background-color: #fff;
+}
+.developing-panel .top-log{
+  width: 40%;
+  padding-top: 35%;
+  top: -30px;
+    background-size: cover;
+  box-sizing: content-box;
+  background-image: url("../../images/deve-alert.png");
+}
+.developing-panel .text{
+  width: 85%;
+  padding: 10px 0 25px  0;
+  line-height: 18px;
+}
+@media (max-width: 320px) {
+  .jin-product {
+    margin-left: 10px;
+  }
+  .unfinished{
+    padding: 25px 10px;
+  }
+  .credits-exchange-list>li{
+    height: 150px;
+  }
+}
+
+/*积分详情*/
+.discover-credit-top{
+    padding: 20px 0;
+}
+.discover-credit-top .credit-nav-btn{
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #9B9B9B;
+    background: #F7F7F7;
+    border: 1px solid #DADADA;
+    border-radius: 100px;
+}
+.discover-credit-top .return-btn{
+    width: 34px;
+}
+.discover-credit-top .filtrate-btn{
+    width: 60px;
+}
+.discover-credit-panel-null{
+  width: 50%;
+  padding-top: 34%;
+  margin-left: auto;
+  margin-right: auto;
+  background-size: cover;
+  background-image: url("../../images/null-data.png");
+}
+//最近兑换详情
+.discover-credit-top .credit-lately-nav-btn{
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 100px;
+}
+.discover-credit-top .credit-lately-nav-btn {
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 100px;
+}
+.credit-lately-btn{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  background-image: linear-gradient(-90deg, #FFC300 3%, #FFC947 98%);
+}
+.credit-lately-details-title{
+  height: 34px;
+  line-height: 34px;
+}
