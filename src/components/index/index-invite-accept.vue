@@ -46,8 +46,8 @@
   	}
 </style>
 <script>
- 	import { XHRPost, XHRGet } from '../../js/ajax.js';
-	import { countdown } from '../../js/tools.js';
+ 	import { XHRPost } from '../../js/ajax.js';
+	import { countdown, getQueryString } from '../../js/tools.js';
 	import acceptText from 'components/index/index-invite-accept-text.vue';
     export default{
     	props: ['userSn'],
@@ -71,14 +71,15 @@
             acceptText
         },
         
-         mounted: function () {
-        	this.getUserInfo();
+        created: function () {
+        	this.getUserInfo ();
         },
         
        	methods: {
        		getUserInfo () {
-        		XHRGet('/oriental_treasure/Index/loginUserBaseInfo',{},function (responese) {
-        			console.log(responese.data.data)
+        		XHRPost('/oriental_treasure/Index/getUserInfoByUserSn',
+        		{user_sn: encrypt(this.inviting_sn)},function (responese) {
+        			console.log(responese)
         			if (responese.data.status === 1) {
         				this.avatar = responese.data.data.wechat_avatar;
         				this.name = responese.data.data.user_name;
