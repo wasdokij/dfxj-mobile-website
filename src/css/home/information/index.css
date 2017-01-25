@@ -2,8 +2,8 @@
 @media (min-width: 320px) {
   @font-face {
     font-family: "k-iconfont";
-    src: url(/jin2.0/fonts/jin/iconfont.eot);
-    src: url(/jin2.0/fonts/jin/iconfont.eot?#iefix) format("embedded-opentype"), url(/jin2.0/fonts/jin/iconfont.woff) format("woff"), url(/jin2.0/fonts/jin/iconfont.ttf) format("truetype"), url(/jin2.0/fonts/jin/iconfont.svg#iconfont) format("svg"); }
+    src: url(../../fonts/jin/iconfont.eot);
+    src: url(../../fonts/jin/iconfont.eot?#iefix) format("embedded-opentype"), url(../../fonts/jin/iconfont.woff) format("woff"), url(../../fonts/jin/iconfont.ttf) format("truetype"), url(../../fonts/jin/iconfont.svg#iconfont) format("svg"); }
   .k-icon,
   [class^=k-icon-] {
     font-family: "k-iconfont" !important;
@@ -82,7 +82,7 @@
     position: relative;
     width: 100%;
     padding-top: 60%;
-    background-image: url(/jin2.0/images/information/user-bg.png);
+    background-image: url(../../images/information/user-bg.png);
     background-position: center;
     background-size: cover;
     box-sizing: border-box; }
@@ -198,7 +198,7 @@
     height: 25px;
     background-size: 1000%;
     background-size: calc(1000%);
-    background-image: url(/jin2.0/images/information/main-nav-icon.png);
+    background-image: url(../../images/information/main-nav-icon.png);
     background-repeat: no-repeat;
     box-sizing: content-box; }
   .user-all-footer-main {
