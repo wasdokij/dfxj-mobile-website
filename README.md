@@ -20,5 +20,9 @@
 2) 解除git对某个文件的版本控制：
 
 在第四步以后，第六步之前执行：
+
 git rm --cached -rf src/css/maps
+rm src/css/maps
+
 git rm --cached -rf src/tmp
+rm src/tmp
