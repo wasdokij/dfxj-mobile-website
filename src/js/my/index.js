@@ -8,6 +8,7 @@ import { XHRGet } from '../ajax.js';
 var login = new Vue({
     el: '#container',
     data: {
+    	invite_url: '',
         can_user_money: "",
         info_asset: "",
         last_month_commission: "",
@@ -35,6 +36,8 @@ var login = new Vue({
     mounted: function () {
         const _this = this;
         XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
+        	console.info(response.data.data.user_sn)
+        	_this.invite_url = '/xiaojin/index/invite.html?user_sn=' + response.data.data.user_sn;
             var date = new Date();
             var a = new Array("日", "一", "二", "三", "四", "五", "六");
             var week = new Date().getDay();
@@ -66,6 +69,10 @@ var login = new Vue({
     },
 
     methods: {
+    	//路由导航
+    	changeLouter: function (url) {
+    		window.location.href = url;
+    	},
         //提现
         getWithdrawal: function () {
             //let data = {
