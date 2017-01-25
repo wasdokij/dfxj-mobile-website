@@ -45,28 +45,33 @@ button {
   box-sizing: border-box; }
 
 /*自定义icon字体*/
-@font-face {font-family: "jin-iconfont";
-  src: url('../fonts/jin/iconfont.eot'); /* IE9*/
-  src: url('../fonts/jin/iconfont.eot') format('embedded-opentype'), /* IE6-IE8 */
-  url('../fonts/jin/iconfont.woff') format('woff'), /* chrome, firefox */
-  url('../fonts/jin/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('../fonts/jin/iconfont.svg#jin-iconfont') format('svg'); /* iOS 4.1- */
-}
+@font-face {
+  font-family: "jin-iconfont";
+  src: url("../fonts/jin/iconfont.eot");
+  /* IE9*/
+  src: url("../fonts/jin/iconfont.eot") format("embedded-opentype"), url("../fonts/jin/iconfont.woff") format("woff"), url("../fonts/jin/iconfont.ttf") format("truetype"), url("../fonts/jin/iconfont.svg#jin-iconfont") format("svg");
+  /* iOS 4.1- */ }
 
-.jin-icon {
-
-  font-family:"jin-iconfont" !important;
-  font-size:16px;
-  font-style:normal;
+.jin-iconfont {
+  font-family: "jin-iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  -moz-osx-font-smoothing: grayscale; }
 
 .jin-icon-weixin:before { content: "\e60a"; }
 
 .jin-icon-xiangyou:before { content: "\e600"; }
 
 .jin-icon-chongzhi:before { content: "\e608"; }
+
+.jin-icon-user1:before { content: "\e6a0"; }
+
+.jin-icon-fanhui:before { content: "\e632"; }
+
+.jin-icon-jia:before { content: "\e603"; }
+
+.jin-icon-icon:before { content: "\e6a9"; }
 
 .jin-icon-construction:before { content: "\e62c"; }
 
@@ -76,17 +81,15 @@ button {
 
 .jin-icon-user:before { content: "\e6ad"; }
 
+.jin-icon-gantanhao:before { content: "\e6a2"; }
+
 .jin-icon-mima:before { content: "\e61b"; }
+
+.jin-icon-dagou:before { content: "\e612"; }
 
 .jin-icon-renmai:before { content: "\e77f"; }
 
 .jin-icon-xinxi:before { content: "\e648"; }
-
-.jin-icon-fanhui:before { content: "\e632"; }
-
-.jin-icon-gantanhao:before { content: "\e6a2"; }
-
-.jin-icon-icon:before { content: "\e6a9"; }
 
 
 /*白色背景*/
@@ -154,8 +157,8 @@ button {
 
 /*文字换行的截断方式*/
 .word-break {
-  word-wrap: break-word;
-  word-break: break-all; }
+  word-wrap: breajin-word;
+  word-break: breajin-all; }
 
 /*定义通用行高*/
 .line-h-nor {
@@ -175,11 +178,11 @@ body {
   background-color: #EDECF3; }
 
 /*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
-body,
 .container {
   max-width: 480px;
   min-width: 320px;
   margin: 0 auto; }
+
 
 /*当页面有底部导航时在外层元素加这个class保证内容不被底部导航覆盖*/
 .jin-wrap {
@@ -453,5 +456,11 @@ body,
 
 .line-clamp-4 {
   -webkit-line-clamp: 4; }
+
+
+
+
+/*# sourceMappingURL=maps/kong-base.css.map */
+/*# sourceMappingURL=maps/jin-base.css.map */
 
 /*# sourceMappingURL=maps/jin-base.css.map */
