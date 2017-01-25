@@ -52,7 +52,7 @@ button {
   src: url("../fonts/jin/iconfont.eot") format("embedded-opentype"), url("../fonts/jin/iconfont.woff") format("woff"), url("../fonts/jin/iconfont.ttf") format("truetype"), url("../fonts/jin/iconfont.svg#jin-iconfont") format("svg");
   /* iOS 4.1- */ }
 
-.jin-iconfont {
+.jin-icon {
   font-family: "jin-iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -193,7 +193,8 @@ body {
   background-color: #EDECF3; }
 
 /*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
-body, .container {
+body,
+.container {
   max-width: 480px;
   min-width: 320px;
   margin: 0 auto; }
