@@ -47,7 +47,7 @@
                     </li>
                 </ul>
                 <ul class="ui-list ui-list-one jin-list-link ui-border-t">
-                    <li @click="changeLouter('http://wp88.jilinpme.com/tradewx/app/access/weixin?paycode=wxdcbafc192f16db2d&peerid=16284&orgid=17271&brokerid=-1')">
+                    <li @click="changeLouter('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdcbafc192f16db2d&redirect_uri=http%3A%2F%2Fwp88.jilinpme.com%2Ftradewx%2fapp%2faccess%2fweixin%3fpaycode%3dwxdcbafc192f16db2d%26peerid%3d16284%26orgid%3d17271%26brokerid%3d-1&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect')">
                         <div class="xj-avatar-tiled">
                             <span class="jl-bg"></span>
                         </div>
