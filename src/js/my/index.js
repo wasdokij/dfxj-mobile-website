@@ -27,7 +27,7 @@ var login = new Vue({
             isD: true,
             isE:false,
             isF:true
-        },
+        }
     },
     components: {
         jinFooter
@@ -47,16 +47,22 @@ var login = new Vue({
                 _this.last_month_commission = response.data.data.last_month_commission,
                 _this.last_month_divident = response.data.data.last_month_divident,
                 _this.level_name = response.data.data.level_name,
-                _this.real_name = response.data.data.real_name,
                 _this.score = response.data.data.score,
-                _this.user_bank_count = response.data.data.user_bank_count,
-                _this.wechat_avatar = response.data.data.wechat_avatar,
-
-
-                console.log(response.data.data.can_user_money);//测试  可以删除
-            console.log(_this.info_asset);//测试  可以删除
+                _this.wechat_avatar = response.data.data.wechat_avatar
+            //
+            if(response.data.data.real_name === ' '){
+                _this.real_name = "未验证";
+            }else{
+                _this.real_name = response.data.data.real_name;
+            }
+            //
+            if(response.data.data.user_bank_count === ' '){
+                _this.user_bank_count = "未提交";
+            }else{
+                _this.user_bank_count = response.data.data.user_bank_count;
+            }
         });
-        //console.log(this.can_user_money);
+
     },
 
     methods: {
@@ -71,15 +77,12 @@ var login = new Vue({
             XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
                 console.log(response);
                 if (response.data.status == 1) {
-                    //window.location.href = '#'
-                    _this.info.isE=true;
-                    _this.info.isf=false;
+                    window.location.href = 'http://jin.weigudong.cn/index.php/Withdraw/widthdrawal.html'
 
             }else{
                     _this.info.isA = true;
                     _this.info.isB = false;
                 }
-                console.log(response.data.status);//可以注释，只是用来显示输出
             });
         },
         //积分商城
@@ -101,8 +104,7 @@ var login = new Vue({
                     _this.info.isC = true;
                     _this.info.isD = false;
                 }
-                console.log(response.data.status == 1);//可以注释，只是用来显示输出
-                // console.log( _this.BankingShow);//可以注释，只是用来显示输出
+
             });
         },
         //未实名关闭
@@ -115,7 +117,7 @@ var login = new Vue({
             this.info.isC = false;
             this.info.isD = true;
         },
-        //账单
+        //功能正在开发中
         getBill:function(){
             this.info.isE = true;
             this.info.isF = false;
