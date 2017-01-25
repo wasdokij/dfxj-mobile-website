@@ -279,3 +279,10 @@ body {
 .container {
   min-height: 100vh;
 }
+.add-border-bottom:after {
+    bottom: 0;
+    border-bottom: 1px solid #d9d9d9 !important;
+    transform-origin: 0 100%;
+    transform: scaleY(.5);
+}
+
