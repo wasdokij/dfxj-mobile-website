@@ -36,7 +36,7 @@
 				indexUrl: '/xiaojin/index/index.html',
 				contactUrl: '/xiaojin/connection/connection.html',
 				foundUrl: '/xiaojin/discover/index.html',
-				mineUrl: 'xiaojin/my/index.html',
+				mineUrl: '/xiaojin/my/index.html',
 			}
 		},
 		created: function () {

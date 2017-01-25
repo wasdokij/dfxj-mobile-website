@@ -76,11 +76,11 @@
                     <li class="margin-l-0 ui-border-t" 
                     	@click="changeLouter('http://jin.weigudong.cn/index.php/Jishang/info.html')">
                         <div class="ui-avatar">
-                            <span class="jsfs-bg"></span>
+                            <span class="jsfs-bg" :style="{backgroundImage: '/jin2.0/images/jscp.png'}"></span>
                         </div>
                         <div class="ui-nowrap exchange-name line-h-16">
                             <h4 class="fnot14">吉商发售</h4>
-                            <p class="font12 color-9b">开户审核中</p>
+                            <!--<p class="font12 color-9b">开户审核中</p>-->
                         </div>
                         <div class="dredge-btn" @click.stop="changeLouter('http://spfskh.jilinpme.com:2088/index.php/online/default/register?code=105010001')">
                         	立即开户
@@ -104,11 +104,11 @@
                     <li class="margin-l-0 ui-border-t"
                     	@click="changeLouter('http://jin.weigudong.cn/index.php/Gdcee/detail.html')">
                         <div class="ui-avatar">
-                            <span class="jsfs-bg"></span>
+                            <span class="jsfs-bg" :style="{backgroundImage: '/jin2.0/images/app3.png'}"></span>
                         </div>
                         <div class="ui-nowrap exchange-name line-h-16">
                             <h4 class="fnot14">广东深文所</h4>
-                            <p class="font12 color-9b">开户审核中</p>
+                            <!--<p class="font12 color-9b">开户审核中</p>-->
                         </div>
                         <div class="dredge-btn" 
                         	@click.stop="changeLouter('http://jin.weigudong.cn/index.php/Gdcee/index.html')">
@@ -135,12 +135,12 @@
    }
 </style>
 <script>
-import { XHRGet } from '../../js/ajax.js'
+	import { XHRGet } from '../../js/ajax.js';
     export default{
         data(){
             return{
                 isLogin:false,
-                userData:""
+                userData:"",
             }
         },
         created(){
@@ -169,12 +169,13 @@ import { XHRGet } from '../../js/ajax.js'
             loginUserBaseInfo(){
                 var _this = this;
                 XHRGet('/oriental_treasure/Index/loginUserBaseInfo', {},function (response) {
+                	console.info(response)
                     _this.userData = response.data.data;
                 });
             },
             onLogin(){
                 if (this.isLogin){
-                    window.location.href="/xiaojin/index/invite.html"
+                    window.location.href="/xiaojin/index/invite.html?user_sn="+ this.userData.user_sn;
                 }else {
                     window.location.href="/xiaojin/login_register/login.html"
                 }
