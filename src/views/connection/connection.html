@@ -21,39 +21,39 @@
 	<body>
     <div id="container" class="container" :style="searchBgWhite">
         <!--搜索-->
-        <div v-show="isSearch" class="weui-search-bar" :class="{ 'weui-search-bar_focusing': isFocus }">
-            <form class="weui-search-bar__form">
-                <div class="weui-search-bar__box">
-                    <i class="weui-icon-search"></i>
-                    <input v-focus="isFocus" v-model="search" type="search"  class="weui-search-bar__input" ref="input" :placeholder="searchPlaceHolder" @input="onSearch"/>
-                    <input type='text' style='display:none'/>
-                    <a class="weui-icon-clear" @click="clearSearch"></a>
-                </div>
-                <label class="weui-search-bar__label" @click="focusSearch">
-                    <i class="weui-icon-search"></i>
-                    <span>搜索</span>
-                </label>
-            </form>
-            <a class="weui-search-bar__cancel-btn search-text" @click="cancelSearch">取消</a>
-        </div>
+        <!--<div v-show="isSearch" class="weui-search-bar" :class="{ 'weui-search-bar_focusing': isFocus }">-->
+            <!--<form class="weui-search-bar__form">-->
+                <!--<div class="weui-search-bar__box">-->
+                    <!--<i class="weui-icon-search"></i>-->
+                    <!--<input v-focus="isFocus" v-model="search" type="search"  class="weui-search-bar__input" ref="input" :placeholder="searchPlaceHolder" @input="onSearch"/>-->
+                    <!--<input type='text' style='display:none'/>-->
+                    <!--<a class="weui-icon-clear" @click="clearSearch"></a>-->
+                <!--</div>-->
+                <!--<label class="weui-search-bar__label" @click="focusSearch">-->
+                    <!--<i class="weui-icon-search"></i>-->
+                    <!--<span>搜索</span>-->
+                <!--</label>-->
+            <!--</form>-->
+            <!--<a class="weui-search-bar__cancel-btn search-text" @click="cancelSearch">取消</a>-->
+        <!--</div>-->
         <!--搜索筛选-->
-        <div v-show="isSearch && showSearchType" style="margin-bottom: 20px">
-            <div class="weui-flex one-floor">
-                <div class="weui-flex__item" @click="changeSearchType('0')"><div class="placeholder">全部</div></div>
-                <div class="weui-flex__item" @click="changeSearchType('1')"><div class="placeholder">注册用户</div></div>
-                <div class="weui-flex__item" @click="changeSearchType('2')"><div class="placeholder no-border">合格微股东</div></div>
-            </div>
-            <div class="weui-flex two-floor">
-                <div class="weui-flex__item" @click="changeSearchType('3')"><div class="placeholder">银卡VIP</div></div>
-                <div class="weui-flex__item" @click="changeSearchType('4')"><div class="placeholder">金卡VIP</div></div>
-                <div class="weui-flex__item"><div class="placeholder no-border"></div></div>
-            </div>
-        </div>
+        <!--<div v-show="isSearch && showSearchType" style="margin-bottom: 20px">-->
+            <!--<div class="weui-flex one-floor">-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('0')"><div class="placeholder">全部</div></div>-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('1')"><div class="placeholder">注册用户</div></div>-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('2')"><div class="placeholder no-border">合格微股东</div></div>-->
+            <!--</div>-->
+            <!--<div class="weui-flex two-floor">-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('3')"><div class="placeholder">银卡VIP</div></div>-->
+                <!--<div class="weui-flex__item" @click="changeSearchType('4')"><div class="placeholder">金卡VIP</div></div>-->
+                <!--<div class="weui-flex__item"><div class="placeholder no-border"></div></div>-->
+            <!--</div>-->
+        <!--</div>-->
         <!--信息汇总-->
-        <div class="info-overall bg-white" v-show="!isSearch">
+        <div class="info-overall bg-white">
             <div class="first">
                 <div class="number text-center">
-                    <p>{{totalRows}}</p>
+                    <p>{{peopleData.totalRows}}</p>
                     <div class="second font12 color9b">
                         <span>一度人脉总人数</span>
                     </div>
@@ -64,20 +64,20 @@
             </div>
             <div class="third">
                 <div class="text-center">
-                    <p class="normal-num">{{other_count.register_count}}</p>
+                    <p class="normal-num">{{peopleData.other_count.register_count}}</p>
                     <p class="normal-txt">注册用户</p>
                 </div>
                 <div class="detail-group">
                     <div class="text-center">
-                        <p class="normal-num">{{other_count.gudong_count}}</p>
+                        <p class="normal-num">{{peopleData.other_count.gudong_count}}</p>
                         <p class="normal-txt">微股东</p>
                     </div>
                     <div class="text-center">
-                        <p class="normal-num">{{other_count.silver_count}}</p>
+                        <p class="normal-num">{{peopleData.other_count.silver_count}}</p>
                         <p class="normal-txt">银卡</p>
                     </div>
                     <div class="text-center">
-                        <p class="normal-num">{{other_count.gold_count}}</p>
+                        <p class="normal-num">{{peopleData.other_count.gold_count}}</p>
                         <p class="normal-txt">金卡</p>
                     </div>
                 </div>
@@ -85,27 +85,27 @@
             </div>
         </div>
         <!--我的邀请人-->
-        <div v-show="!isSearch">
+        <div>
             <div class="weui-cells__title">我的邀请人</div>
             <div class="weui-cells inviter">
                 <div class="weui-cell weui-cell_access my-weui-cell">
                     <div class="weui-cell__hd my-img">
-                        <img class="img" :src="my_inviting.wechat_avatar" alt="">
+                        <img class="img" :src="peopleData.my_inviting.wechat_avatar" alt="">
                     </div>
                     <div class="weui-cell__bd margin-l-10">
-                        <h4 class="weui-media-box__title font14 fw500">{{my_inviting.user_name}}</h4>
-                        <p class="weui-media-box__desc font12 line-h-16">真实姓名：{{my_inviting.real_name}}</p>
+                        <h4 class="weui-media-box__title font14 fw500">{{peopleData.my_inviting.user_name}}</h4>
+                        <p class="weui-media-box__desc font12 line-h-16">真实姓名：{{peopleData.my_inviting.real_name}}</p>
                     </div>
                     <div class="red-spot"></div>
-                    <div :style="badge(my_inviting.level_name)" class="badge">
-                        {{my_inviting.level_name}}
+                    <div :style="badge(peopleData.my_inviting.level_name)" class="badge">
+                        {{peopleData.my_inviting.level_name}}
                     </div>
                 </div>
             </div>
         </div>
         <!--通讯录-->
-        <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10" infinite-scroll-immediate-check="false" v-show="!isSearch" style="margin-bottom: 92px" >
-            <template v-for="(items, key) in data" >
+        <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0" infinite-scroll-immediate-check="false" style="margin-bottom: 92px" >
+            <template v-for="(items, key) in peopleData.data" >
                 <div class="weui-cells__title">{{key}}</div>
                 <template v-for="item in items">
                     <div class="weui-cells" :key="item.user_sn">
@@ -129,7 +129,7 @@
             </template>
         </div>
         <!--找不到该用户-->
-        <div v-show="nullResult">
+        <div v-show="false">
             <template >
                 <div class="weui-cells null-result">
                     <div class="weui-cell">
@@ -141,27 +141,27 @@ color: #888888;height: 40px;line-height: 40px;">找不到该用户</span>
             </template>
         </div>
         <!--搜索结果-->
-        <div v-show="showSearchResult">
-            <template v-for="(data, index) in searchResult.data">
-                <div class="weui-cells" :key="data.user_sn">
-                    <div class="weui-cell weui-cell_access my-weui-cell">
-                        <div class="weui-cell__hd my-img">
-                            <img class="img" :src="data.wechat_avatar" alt="">
-                        </div>
-                        <div class="weui-cell__bd margin-l-10">
-                            <h4 class="weui-media-box__title font14 fw500">{{data.user_name}}</h4>
-                            <p class="weui-media-box__desc font12 line-h-16">
-                                真实姓名：
-                                <span :class="{ unnamed: !data.real_name, font10: true }">{{data.real_name ? data.real_name : '未实名'}}</span>
-                            </p>
-                        </div>
-                        <div :style="badge(data.level)" class="badge">
-                            {{data.level}}
-                        </div>
-                    </div>
-                </div>
-            </template>
-        </div>
+        <!--<div v-show="false">-->
+            <!--<template v-for="(data, index) in searchResult.data">-->
+                <!--<div class="weui-cells" :key="data.user_sn" :class="borderBottom(index)">-->
+                    <!--<div class="weui-cell weui-cell_access my-weui-cell">-->
+                        <!--<div class="weui-cell__hd my-img">-->
+                            <!--<img class="img" :src="data.wechat_avatar" alt="">-->
+                        <!--</div>-->
+                        <!--<div class="weui-cell__bd margin-l-10">-->
+                            <!--<h4 class="weui-media-box__title font14 fw500">{{data.user_name}}</h4>-->
+                            <!--<p class="weui-media-box__desc font12 line-h-16">-->
+                                <!--真实姓名：-->
+                                <!--<span :class="{ unnamed: !data.real_name, font10: true }">{{data.real_name ? data.real_name : '未实名'}}</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div :style="badge(data.level)" class="badge">-->
+                            <!--{{data.level}}-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</template>-->
+        <!--</div>-->
 
 
     </div>
