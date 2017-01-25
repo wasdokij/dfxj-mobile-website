@@ -68,6 +68,18 @@ button {
 .jin-icon-chongzhi:before {
   content: "\e608"; }
 
+.jin-icon-user1:before {
+  content: "\e6a0"; }
+
+.jin-icon-fanhui:before {
+  content: "\e632"; }
+
+.jin-icon-jia:before {
+  content: "\e603"; }
+
+.jin-icon-icon:before {
+  content: "\e6a9"; }
+
 .jin-icon-construction:before {
   content: "\e62c"; }
 
@@ -80,23 +92,20 @@ button {
 .jin-icon-user:before {
   content: "\e6ad"; }
 
+.jin-icon-gantanhao:before {
+  content: "\e6a2"; }
+
 .jin-icon-mima:before {
   content: "\e61b"; }
+
+.jin-icon-dagou:before {
+  content: "\e612"; }
 
 .jin-icon-renmai:before {
   content: "\e77f"; }
 
 .jin-icon-xinxi:before {
   content: "\e648"; }
-
-.jin-icon-fanhui:before {
-  content: "\e632"; }
-
-.jin-icon-gantanhao:before {
-  content: "\e6a2"; }
-
-.jin-icon-icon:before {
-  content: "\e6a9"; }
 
 /*白色背景*/
 .bg-white {
@@ -183,6 +192,7 @@ button {
 body {
   background-color: #EDECF3; }
 
+/*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
 /*页面的安全宽度，如果是使用固定定位fixed的就需要添加.container*/
 body,
 .container {
@@ -463,4 +473,6 @@ body,
 .line-clamp-4 {
   -webkit-line-clamp: 4; }
 
+/*# sourceMappingURL=maps/kong-base.css.map */
+/*# sourceMappingURL=maps/jin-base.css.map */
 /*# sourceMappingURL=maps/jin-base.css.map */

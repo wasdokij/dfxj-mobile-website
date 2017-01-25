@@ -10,6 +10,7 @@ Mock.setup({
 	timeout: 2000
 });
 
+
 //邀请页面
 Mock.mock('/api_invite',{
 	'userName': '@cname',
@@ -27,6 +28,7 @@ Mock.mock('/api_assets_list',{
 		'ranke|+1': 1,
 		'assetsNumber|100-10000': 200
 	},
+
 	'list|5-20': [{
 		'userName': '@cname',
 		'avatar': '@image',
@@ -57,6 +59,7 @@ Mock.mock('/api_assets',{
 });
 
 //登陆注册
+
 Mock.mock('/api_login',{
 	'status|0-1': 0,
 	'info': '登陆成功！'
@@ -86,5 +89,18 @@ Mock.mock('/api_personal_center',{
 		'baseStation|0-5': 0,//基站数量
 		'order|0-1000': 0,//已下单
 		'comAddress': '[南宁]百花苑社区店',
-	},
+	}
+});
+//information页面
+Mock.mock('/api_name',{
+	'status|0-1': 0,
+	'info': 'v'
+});
+Mock.mock('/api_information',{
+	'status|0-1': 0,
+	'info': '恭喜，修改成功！'
+});
+Mock.mock('/api_information01',{
+	'status|0-1': 0,
+	'info': ""
 });
