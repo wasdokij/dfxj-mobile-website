@@ -24,6 +24,18 @@
 .color-f75c {
   color: #F75C5C; }
 
+.color-a8 {
+  color: #A82600; }
+
+.gw-bg {
+  background: #FFDADA; }
+
+.jl-bg {
+  background: #FFE5C2; }
+
+.jsfs-bg {
+  background: #D8D8D8; }
+
 .home-top {
   width: 100%;
   padding-top: 47%;
@@ -31,13 +43,13 @@
   background-size: cover; }
 
 .home-log-bg {
-  background-image: url("../../images/home-banner.png"); }
+  background-image: url("/jin2.0/images/home-banner.png"); }
 
 .home-invite-bg {
-  background-image: url("../../images/invite-pre.png"); }
+  background-image: url("/jin2.0/images/invite-pre.png"); }
 
 .home-accept-bg {
-  background-image: url("../../images/invite-banner.png"); }
+  background-image: url("/jin2.0/images/invite-banner.png"); }
 
 .home-data {
   padding: 10px 0; }
@@ -68,8 +80,7 @@
   -webkit-border-radius: 200px; }
 
 .user-vip {
-  width: 20px;
-  height: 14px;
+  padding: 2px 2px;
   line-height: 14px;
   font-size: 8px;
   color: #fff;
@@ -114,7 +125,7 @@
   box-shadow: 0 5px 5px 0 rgba(209, 167, 0, 0.4); }
 
 .invite-btn {
-  width: 87%;
+  width: 88%;
   height: 40px;
   line-height: 40px;
   margin: auto;
@@ -124,20 +135,22 @@
   box-shadow: 0 5px 10px 0; }
 
 .invite-course-avatar {
-  width: 87%;
+  width: 88%;
   margin: auto; }
 
-.invite-course-avatar > li {
+.invite-course-avatar > li .course-avatar {
+  display: block;
   width: 50px;
   height: 50px;
+  margin: auto;
   background-size: 100%;
   background-size: calc(100%);
   background-repeat: no-repeat;
   box-sizing: content-box;
-  background-image: url("../../images/icon-list.png"); }
+  background-image: url("/jin2.0/images/icon-list.png"); }
 
 .invite-info-list > li {
-  width: 87%;
+  width: 88%;
   padding: 15px 0;
   margin: auto;
   display: -webkit-box;
@@ -155,7 +168,7 @@
   background: #FFC234; }
 
 .invite-rule-list {
-  width: 87%;
+  width: 88%;
   margin: auto; }
 
 .invite-rule-dian {
@@ -174,8 +187,9 @@
 
 .invite-modal .light {
   width: 100%;
-  height: 114.5px;
-  background-image: linear-gradient(-180deg, #FCF53C 5%, rgba(247, 231, 27, 0) 100%); }
+  padding-top: 35%;
+  background-size: cover;
+  background-image: url("/jin2.0/images/light.png"); }
 
 .invite-modal .packet {
   width: 82%;
@@ -198,12 +212,12 @@
   border-radius: 100px; }
 
 .invite-modal .packet .packet-user {
-  padding: 45px 50px 0 50px;
+  padding: 20% 50px 0;
   color: #fff; }
 
 .invite-modal .packet .packet-user-avatar {
-  width: 50px;
-  height: 50px;
+  width: 53px;
+  height: 53px;
   overflow: hidden;
   border-radius: 100%;
   border: 3px solid #FFFFFF; }
@@ -220,6 +234,11 @@
 .invite-modal .packet .packet-user-qr {
   width: 100%;
   height: 100%; }
+
+.invite-modal .packet-user-qr > img {
+  width: 130px;
+  height: 130px;
+  margin-top: -15px; }
 
 .invite-modal .packet-user-like {
   width: 90%;

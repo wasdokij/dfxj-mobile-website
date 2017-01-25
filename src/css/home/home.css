@@ -114,7 +114,7 @@
   box-shadow: 0 5px 5px 0 rgba(209, 167, 0, 0.4); }
 
 .invite-btn {
-  width: 87%;
+  width: 88%;
   height: 40px;
   line-height: 40px;
   margin: auto;
@@ -124,12 +124,14 @@
   box-shadow: 0 5px 10px 0; }
 
 .invite-course-avatar {
-  width: 87%;
+  width: 88%;
   margin: auto; }
 
-.invite-course-avatar > li {
+.invite-course-avatar > li .course-avatar {
+  display: block;
   width: 50px;
   height: 50px;
+  margin: auto;
   background-size: 100%;
   background-size: calc(100%);
   background-repeat: no-repeat;
@@ -137,7 +139,7 @@
   background-image: url("../../images/icon-list.png"); }
 
 .invite-info-list > li {
-  width: 87%;
+  width: 88%;
   padding: 15px 0;
   margin: auto;
   display: -webkit-box;
@@ -155,7 +157,7 @@
   background: #FFC234; }
 
 .invite-rule-list {
-  width: 87%;
+  width: 88%;
   margin: auto; }
 
 .invite-rule-dian {
@@ -174,8 +176,9 @@
 
 .invite-modal .light {
   width: 100%;
-  height: 114.5px;
-  background-image: linear-gradient(-180deg, #FCF53C 5%, rgba(247, 231, 27, 0) 100%); }
+  padding-top: 35%;
+  background-size: cover;
+  background-image: url("/jin2.0/images/light.png"); }
 
 .invite-modal .packet {
   width: 82%;
