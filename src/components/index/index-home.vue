@@ -33,7 +33,7 @@
             </ul>
             <div>
                 <ul class="ui-list ui-list-one jin-list-link ui-border-t">
-                    <li>
+                    <li @click="changeLouter('http://weixin008.gdcee.cc/')">
                         <div class="xj-avatar-tiled">
                             <span class="gw-bg"></span>
                         </div>
@@ -47,7 +47,7 @@
                     </li>
                 </ul>
                 <ul class="ui-list ui-list-one jin-list-link ui-border-t">
-                    <li>
+                    <li @click="changeLouter('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdcbafc192f16db2d&redirect_uri=http%3A%2F%2Fwp88.jilinpme.com%2Ftradewx%2fapp%2faccess%2fweixin%3fpaycode%3dwxdcbafc192f16db2d%26peerid%3d16284%26orgid%3d17271%26brokerid%3d-1')">
                         <div class="xj-avatar-tiled">
                             <span class="jl-bg"></span>
                         </div>
@@ -73,15 +73,47 @@
             </ul>
             <div>
                 <ul class="ui-list jin-sell-list ui-whitespace ui-border-t">
-                    <li class="margin-l-0 ui-border-t">
+                    <li class="margin-l-0 ui-border-t" 
+                    	@click="changeLouter('http://jin.weigudong.cn/index.php/Jishang/info.html')">
                         <div class="ui-avatar">
-                            <span class="jsfs-bg"></span>
+                            <span class="jsfs-bg" :style="{backgroundImage: '/jin2.0/images/jscp.png'}"></span>
                         </div>
                         <div class="ui-nowrap exchange-name line-h-16">
                             <h4 class="fnot14">吉商发售</h4>
-                            <p class="font12 color-9b">开户审核中</p>
+                            <!--<p class="font12 color-9b">开户审核中</p>-->
                         </div>
-                        <div class="dredge-btn">立即开户</div>
+                        <div class="dredge-btn" @click.stop="changeLouter('http://spfskh.jilinpme.com:2088/index.php/online/default/register?code=105010001')">
+                        	立即开户
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
+        </div>
+        
+        <!--大娱乐-->
+        <div class="bg-white margin-b-25">
+            <ul class="ui-list ui-list-text">
+                <li class="margin-l-0">
+                    <div class="item-card-lable"></div>
+                    <div class="ui-list-info font14">大娱乐</div>
+                </li>
+            </ul>
+            <div>
+                <ul class="ui-list jin-sell-list ui-whitespace ui-border-t">
+                    <li class="margin-l-0 ui-border-t"
+                    	@click="changeLouter('http://jin.weigudong.cn/index.php/Gdcee/detail.html')">
+                        <div class="ui-avatar">
+                            <span class="jsfs-bg" :style="{backgroundImage: '/jin2.0/images/app3.png'}"></span>
+                        </div>
+                        <div class="ui-nowrap exchange-name line-h-16">
+                            <h4 class="fnot14">广东深文所</h4>
+                            <!--<p class="font12 color-9b">开户审核中</p>-->
+                        </div>
+                        <div class="dredge-btn" 
+                        	@click.stop="changeLouter('http://jin.weigudong.cn/index.php/Gdcee/index.html')">
+                        	立即开户
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -103,12 +135,12 @@
    }
 </style>
 <script>
-import { XHRGet } from '../../js/ajax.js'
+	import { XHRGet } from '../../js/ajax.js';
     export default{
         data(){
             return{
                 isLogin:false,
-                userData:""
+                userData:"",
             }
         },
         created(){
@@ -117,6 +149,10 @@ import { XHRGet } from '../../js/ajax.js'
         components:{
         },
         methods: {
+        	//路由导航
+        	changeLouter: function (url) {
+        		window.location.href = url;
+        	},
             onIsLogin(){
                 var _this = this;
                 var load = layer.open({ type: 2,shadeClose: false})
@@ -133,12 +169,13 @@ import { XHRGet } from '../../js/ajax.js'
             loginUserBaseInfo(){
                 var _this = this;
                 XHRGet('/oriental_treasure/Index/loginUserBaseInfo', {},function (response) {
+                	console.info(response)
                     _this.userData = response.data.data;
                 });
             },
             onLogin(){
                 if (this.isLogin){
-                    window.location.href="/xiaojin/index/invite.html"
+                    window.location.href="/xiaojin/index/invite.html?user_sn="+ this.userData.user_sn;
                 }else {
                     window.location.href="/xiaojin/login_register/login.html"
                 }

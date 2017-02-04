@@ -166,7 +166,11 @@ body {
 .id-alert {
   width: 100px;
   height: 120px;
+<<<<<<< HEAD
   background: url(../../images/my/id-alert.png);
+=======
+  background: url(/jin2.0/images/id-alert.png);
+>>>>>>> 749a6a3fae946f04c88cdfb7f0bff60d9fefaafc
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -175,7 +179,20 @@ body {
 .bank-alert {
   width: 120px;
   height: 120px;
+<<<<<<< HEAD
   background: url(../../images/my/bank-alert.png);
+=======
+  background: url(/jin2.0/images/bank-alert.png);
+  background-size: 100% 100%;
+  position: absolute;
+  left: 75px;
+  top: -30px; }
+
+.know-alert {
+  width: 120px;
+  height: 120px;
+  background: url(/jin2.0/images/deve-alert.png);
+>>>>>>> 749a6a3fae946f04c88cdfb7f0bff60d9fefaafc
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -188,3 +205,15 @@ body {
   display: block;
   -webkit-border-radius: 200px;
   overflow: hidden; }
+
+.jin-footer-nav span {
+  position: relative;
+  display: block;
+  font-size: 24px;
+  line-height: normal; }
+
+.jin-footer-nav {
+  color: #787979;
+  font-size: 10px;
+  background-color: #f7f7f7;
+  right: 0; }

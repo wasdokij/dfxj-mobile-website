@@ -1,5 +1,5 @@
 <template>
-    <div class="jin-wrap">
+    <div>
         <div class="home-top home-invite-bg"></div>
         <div class="bg-white margin-b-10 ui-border-b">
             <div class="padding-tb-25" @click="onInvite">

@@ -7,14 +7,15 @@
 	    <meta name="viewport" content="width=device-width, user-scalable=no"/>
 	    <meta name="apple-mobile-web-app-capable" content="yes"/>
 	    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-	    <title>home</title>
+	    <title>发现</title>
 		<link rel="stylesheet" href="../../css/frozen.css">
 		<link rel="stylesheet" href="../../css/jin-base.css"/>
         <link rel="stylesheet" href="../../css/discover/discover.css"/>
 	</head>
 	<body>
-		<div id="container">
+		<div class="jin-wrap" id="container">
             <discover-index></discover-index>
+            <jin-footer :current="3"></jin-footer>
         </div>
 		<script src="../../js/lib/vue.js"></script>
 		<script src="../../js/discover/index.js"></script>

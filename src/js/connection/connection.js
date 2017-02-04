@@ -4,88 +4,108 @@ import { backgroundMap, styleMap, searchTypeMap, bindFastClick} from './constant
 import Vue from 'vue';
 import axios from 'axios';
 import infiniteScroll from 'vue-infinite-scroll';
+import footerVue from '../../components/common/footer.vue';
 Vue.use(infiniteScroll);
-login();
+// login();
 bindFastClick();
 
 window.app = new Vue({
     el: '#container',
+    components: {
+        'footer-vue': footerVue
+    },
     data: {
-        // search: '',
-        // isFocus: false,
-        // isSearch: false,
-        // searchResult: {
-        //     data: [],
-        //     page: '',
-        //     listRows: 10,
-        //     totalRows: 0
-        // },
-        // beginSearching: false, // 只有开始搜索并且没有搜索结果时，才会返回nullResult
-        // searchType: '0',
-        // showSearchType: false,
-        // searching: false, // 配合debounce
-        // visible: {
-        //     homePage: true,
-        //     searchPage: false
-        // },
         peopleData: {
             data: {},
-            page: '1',
+            page: 0,
             listRows: 10,
             totalRows: 0,
             other_count: {},
-            my_inviting: {}
+            my_inviting: {},
+            status: 0
         },
-        searchPeopleData: {
-
+        searchPeopleState: {
+            searchType: '',
+            search: ''
         },
-        busy: false
+        searchPeopleResult: {
+            data: [],
+            page: '',
+            listRows: 10,
+            totalRows: 0
+        },
+        busy: true,
+        searchBusy: false, // 筛选页的搜索
+        hash: ''
     },
     computed: {
         totalPage: function () {
-            return Math.ceil(this.totalRows / this.listRows);
+            if (this.peopleData.status == 0) {
+                return 1;
+            }
+            return Math.ceil(this.peopleData.totalRows / this.peopleData.listRows);
         },
         searchBgWhite: function () {
-            return this.isSearch ? 'background: #fff' : '';
+            return this.visible.searchPage ? 'background: #fff' : '';
         },
         searchPlaceHolder: function () {
-            return searchTypeMap[this.searchType];
+            var type = this.searchPeopleState.searchType;
+            return type ? searchTypeMap[type] : '手机号/姓名/昵称';
         },
+        visible: function () {
+            // console.log('calculate');
+            let searchPage = this.hash === '#search';
+            let search = this.searchPeopleState.search;
+            let data = this.searchPeopleResult.data;
+            return {
+                homePage: !this.hash,
+                searchPage,
+                searchType: !search && searchPage,
+                searchResult: data.length > 0,
+                nullResult: data.length === 0 && !!search
+            }
+        }
     },
     mounted: function () {
         console.log('mounteded');
+        this.hash = window.location.hash;
         this.$nextTick(getPeopleData('1'));
     },
     directives: {
         focus: {
-            update(el, binding) {
-                if (binding.value) {
-                    el.focus();
-                }
-            }
+            // bind: function (el) {
+            //     console.log('bind', arguments);
+            // },
+            inserted: function (el) {
+                // console.log('inserted', arguments);
+                el.focus();
+            },
+            update: function (el) {
+                // console.log('update', arguments);
+                el.focus();
+            },
+            // componentUpdated: function (el) {
+            //     console.log('componentUpdated', arguments);
+            // },
+            // unbind: function (el) {
+            //     console.log('unbind', arguments);
+            // }
         }
     },
     methods: {
-        cancelSearch() {
-            this.search = '';
-            this.isFocus = false;
-            this.showSearchType = true;
-            this.searchType = '0';
-            app.searchResult = {
+        clearSearch() {
+            this.searchPeopleState.search = '';
+            this.searchPeopleState.searchType = '';
+            this.searchPeopleResult = {
                 data: [],
                 page: '',
                 listRows: 10,
                 totalRows: 0
             };
-            this.beginSearching = false;
         },
-        focusSearch() {
-            this.isFocus = true;
-            this.showSearchType = false;
-        },
-        clearSearch() {
-            this.search = '';
-            this.showSearchType = true;
+        cancelSearch() {
+            this.clearSearch();
+            history.back();
         },
         badge(levelName) {
             var ret = {};
@@ -97,129 +117,134 @@ window.app = new Vue({
             return ret;
         },
         borderBottom(index) {
-            if (index === this.searchResult.data.length - 1) {
+            if (index === this.searchPeopleResult.data.length - 1) {
                 return 'add-border-bottom';
             }
             return;
         },
         loadMore() {
             this.busy = true;
-
-
-            // console.log('hehe', arguments);
+            console.log('app.busy');
+            console.time('app.busy');
+            _loadMore();
         },
-        beginSearch() {
-            this.isSearch = true;
-            window.history.pushState({state: 'frontPage'}, null, window.location.href);
-            this.showSearchType = true;
+        enterSearchPage() {
+            this.hash = '#search';
+            window.history.pushState({ hash: '#search' }, null, '#search');
         },
-        onSearch() {
-            if (this.searching) {
-                return;
+        onSearch(e) {
+            if (!this.searchBusy) { // this.searchBusy初始状态是false
+                this.searchBusy = true;
+                if (this.searchPeopleState.search) {
+                    console.log('beginSearch', arguments);
+                    _searchMore.call(this);
+                } else {
+                    this.searchBusy = false;
+                }
+            } else {
+                console.log('这次请求被驳回');
             }
-            this.searching = true;
-            this.beginSearching = true;
-            (debounce(searchMore, 300)).call(this);
+
         },
         changeSearchType(type) {
-            this.searchType = type;
-            this.showSearchType = false;
-            this.focusSearch();
+            this.searchPeopleState.searchType = type;
         }
     }
 });
 
-window.onpopstate = function (event) {
-    console.log('event', event);
-    if (event.state.state === 'frontPage') {
-        app.isSearch = false;
-    }
+window.onpopstate = function () {
+    app.hash = '';
 };
 
 function _loadMore() {
-
+    let currentPage = parseInt(app.peopleData.page);
+    let totalPage = parseInt(app.totalPage);
+    if (currentPage < totalPage) {
+        axios.post(dataUrl, { page: encrypt((currentPage + 1) + '')})
+            .then(function (res) {
+                console.log('res', res);
+                if (res.data.status == 1) {
+                    mergePeopleData(app.peopleData, res.data);
+                } else if (res.data.status == 0) {
+                    //
+                }
+                console.timeEnd('app.busy');
+                // setTimeout(function () {
+                //     app.busy = false;
+                // }, 2000);
+                app.busy = false;
+            })
+            .catch(function (e) {
+                // catch 也会捕捉到then中的错误
+                if (e) {
+                    console.log('test for error', e);
+                    // app.busy = false;
+                }
+            })
+    } else {
+        app.busy = false;
+    }
 }
 
-// function trueLoadMore() {
-//     this.busy = true;
-//     console.log('begin');
-//     if (parseInt(this.page) < this.totalPage) {
-//         var page = (parseInt(this.page) + 1) + '';
-//         console.log('page', page);
-//         var _self = this;
-//         var tmp = [];
-//         var plainObj = {};
-//
-//         axios.post(dataUrl, {
-//             page: encrypt(page)
-//         }).then(function (res) {
-//             console.log('res', res);
-//             var finalKey = '';
-//             Object.keys(res.data.data).forEach(function (key) {
-//                 Object.keys(app.data).forEach(function (keyOwn) {
-//                     if (keyOwn === key) {
-//                         finalKey = keyOwn;
-//                         console.log('finalKey', finalKey);
-//                     }
-//                 })
-//             });
-//             if (finalKey) {
-//                 tmp = app.data[finalKey].concat(res.data.data[finalKey]);
-//             }
-//             _self.assignData(plainObj, res.data);
-//             Object.keys(plainObj.data).forEach(function (key) {
-//                 app.data[key] = plainObj.data[key];
-//             });
-//             if (tmp.length > 0) {
-//                 app.data[finalKey] = tmp;
-//             }
-//             delete plainObj.data;
-//             _self.assignData(app, plainObj);
-//             _self.busy = false;
-//         }.bind(_self))
-//     }
-// }
+function _searchMore() {
+    axios.post(searchUrl, {
+        search: encrypt(this.searchPeopleState.search),
+        type: encrypt(this.searchPeopleState.searchType || '0'),
+        page: encrypt('1')
+    })
+        .then(function (res) {
+            console.log('res', res);
+            if (res.data.status == 1) {
+                assignData(this.searchPeopleResult, res.data);
+            }
+            if (res.data.status == 0) {
+                this.searchPeopleResult = {
+                    data: [],
+                    page: '',
+                    listRows: 10,
+                    totalRows: 0
+                };
+            }
+            this.searchBusy = false;
+    }.bind(this))
+        .catch(function () {
+            this.searchBusy = false;
+    }.bind(this))
+}
 
-// function searchMore() {
-//     console.log('tap');
-//     console.log('true', this === app);
-//     if (firstTime) {
-//
-//     } else if (this.searching) {
-//         // return;
-//     }
-//     if(!app.search) {
-//         this.searching = false;
-//         return;
-//     }
-//     firstTime = false;
-//     var _self = this;
-//     if (parseInt(this.searchResult.page || '0') < (this.searchTotalPage) || 1) {
-//         console.log('beginSearch');
-//         oldSearch = app.search;
-//         axios.post(searchUrl, {
-//             search: encrypt(_self.search),
-//             type: encrypt(_self.searchType),
-//             page: encrypt(_self.searchResult.page || '1')
-//         }).then(function (res) {
-//             console.log('searchRes', res);
-//             app.searching = false;
-//             if (res.data.status == 0) {
-//                 app.searchResult = {
-//                     data: [],
-//                     page: '',
-//                     listRows: 10,
-//                     totalRows: 0
-//                 }
-//             } else if (res.data.status == 1) {
-//                 assignSearchResult(app.searchResult, res.data);
-//             }
-//         }.bind(_self))
-//     }
-//
-// }
-//
-
+function mergePeopleData(obj, data) {
+    let objKeyArray = Object.keys(obj.data);
+    let dataKeyArray = Object.keys(data.data);
+    let finalKey = '';
+    let tmp = '';
+    let firstTime = true;
+    // 拿到finalKey
+    objKeyArray.forEach(function (objKey) {
+        dataKeyArray.forEach(function (dataKey) {
+            if (dataKey === objKey) {
+                console.log(dataKey, objKey);
+                if (!firstTime) throw new Error('在这个循环中finalKey重复赋值了');
+                firstTime = false;
+                finalKey = objKey;
+            }
+        })
+    });
+    // 拿到finalKey代表的数据
+    console.log('finalKey', finalKey);
+    if (finalKey) {
+        tmp = obj['data'][finalKey].concat(data.data[finalKey]);
+        let tmpData = Object.assign({}, data.data);
+        tmpData[finalKey] = tmp;
+        delete data.data; // 不然会覆盖的
+        assignData(obj.data, tmpData);
+        assignData(obj, data);
+    } else {
+        let tmpData = Object.assign({}, data.data);
+        delete data.data;
+        assignData(obj.data, tmpData);
+        assignData(obj, data);
+    }
+}
 
 function login() {
     axios.post(loginUrl, {
@@ -249,9 +274,12 @@ function _getPeopleData(page) {
         return res.data;
     }).then(function (res) {
         if (res.status == 0) {
-            //
+            // 没有数据
         }
-    }).catch(function () {
+    }).then(function () {
+        app.busy = false;
+    }).
+    catch(function () {
         //
     })
 }

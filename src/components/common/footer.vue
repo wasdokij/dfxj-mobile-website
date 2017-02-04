@@ -1,7 +1,7 @@
 
 <template>
-	<div class="margin-t-20">
-		<div class="footer bg-white">
+	<div>
+		<div class="footer container bg-white">
 			<a v-bind:class="{ current: type === 1 }" :href="indexUrl" @click="setCurrentIndex(1)">
 				<span class="jin-icon jin-icon-store font24"></span>
 				<div class="text font10">首页</div>
@@ -25,15 +25,18 @@
 <script>
 	export default {
 		props: {
-			current: Number,
+			current: {
+				type: Number,
+				default: 1
+			},
 		},
 		data () {
 			return {
-				type: 1,
+				type: '',
 				indexUrl: '/xiaojin/index/index.html',
-				contactUrl: '/xiaojin/',
-				foundUrl: '/xiaojin/',
-				mineUrl: 'xiaojin/',
+				contactUrl: '/xiaojin/connection/connection.html',
+				foundUrl: '/xiaojin/discover/index.html',
+				mineUrl: '/xiaojin/my/index.html',
 			}
 		},
 		created: function () {
@@ -48,7 +51,15 @@
 </script>
 
 <style scoped>
+    .container {
+
+    }
 	.footer {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
 		display: -webkit-box;
 		width: 100%;
 		height: 55px;
