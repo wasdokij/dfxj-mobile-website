@@ -43,7 +43,7 @@ header {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: url(/jin2.0/images/loginRegister/wave.png);
+  background-image: url(../../images/loginRegister/wave.png);
   background-position: bottom;
   background-size: 100%;
   background-repeat: no-repeat; }
@@ -52,7 +52,7 @@ header {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: url(/jin2.0/images/loginRegister/wave.png);
+  background-image: url(../../images/loginRegister/wave.png);
   background-position: bottom;
   background-size: 100%;
   background-repeat: no-repeat; }

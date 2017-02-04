@@ -52,7 +52,7 @@
   background-size: calc(160%);
   background-repeat: no-repeat;
   box-sizing: content-box;
-  background-image: url("/jin2.0/images/icon-list.png"); }
+  background-image: url("../../images/icon-list.png"); }
 
 .jin-product {
   margin-left: 15px;
@@ -150,7 +150,7 @@
   background-size: calc(100%);
   background-repeat: no-repeat;
   box-sizing: content-box;
-  background-image: url("/jin2.0/images/shop-nav.png"); }
+  background-image: url("../../images/shop-nav.png"); }
 
 .credits-exchange-list > li {
   float: left;
@@ -194,7 +194,7 @@
   top: -30px;
   background-size: cover;
   box-sizing: content-box;
-  background-image: url("/jin2.0/images/deve-alert.png"); }
+  background-image: url("../../images/deve-alert.png"); }
 
 .developing-panel .text {
   width: 85%;
@@ -234,7 +234,7 @@
   margin-left: auto;
   margin-right: auto;
   background-size: cover;
-  background-image: url("/jin2.0/images/null-data.png"); }
+  background-image: url("../../images/null-data.png"); }
 
 .discover-credit-top .credit-lately-nav-btn {
   height: 34px;
