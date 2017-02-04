@@ -26,7 +26,7 @@
                         <div class="font12 color-9b">东方小金公众号</div>
                     </div>
                 </li>
-                <li @click="changeLouter('/xiaojin/index/invite.html')">
+                <li @click="changeLouter(invit_url)">
                     <div  class="discover-icon" style="background-position: 3px -418px;"></div>
                     <div>
                         <h4 class="font14">邀请好友</h4>
@@ -80,16 +80,30 @@
 
 </style>
 <script>
+	import { XHRGet } from '../../js/ajax.js';
     export default{
         data(){
             return{
-
+				invit_url: '',
             }
         },
+        created: function () {
+        	this.getUserInfo();
+        },
+        
         methods: {
         	//路由导航
         	changeLouter: function (url) {
         		window.location.href = url;
+        	},
+        	
+        	getUserInfo () {
+        		XHRGet('/oriental_treasure/Index/loginUserBaseInfo',{},function (responese) {
+        			console.log(responese.data.data.user_sn)
+        			if (responese.data.status === 1) {
+        				this.invit_url = '/xiaojin/index/invite.html?user_sn=' + responese.data.data.user_sn;
+        			}
+        		}.bind(this));
         	},
         	
         	//关注公众号
