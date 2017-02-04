@@ -6,7 +6,7 @@ import axios from 'axios';
 import infiniteScroll from 'vue-infinite-scroll';
 import footerVue from '../../components/common/footer.vue';
 Vue.use(infiniteScroll);
-login();
+// login();
 bindFastClick();
 
 window.app = new Vue({
@@ -35,6 +35,7 @@ window.app = new Vue({
             totalRows: 0
         },
         busy: true,
+        searchBusy: false, // 筛选页的搜索
         hash: ''
     },
     computed: {
@@ -72,29 +73,39 @@ window.app = new Vue({
     },
     directives: {
         focus: {
-            bind: function (el) {
-                console.log('bind', arguments);
-            },
+            // bind: function (el) {
+            //     console.log('bind', arguments);
+            // },
             inserted: function (el) {
-                console.log('inserted', arguments);
+                // console.log('inserted', arguments);
                 el.focus();
             },
             update: function (el) {
-                console.log('update', arguments);
+                // console.log('update', arguments);
                 el.focus();
             },
-            componentUpdated: function (el) {
-                console.log('componentUpdated', arguments);
-            },
-            unbind: function (el) {
-                console.log('unbind', arguments);
-            }
+            // componentUpdated: function (el) {
+            //     console.log('componentUpdated', arguments);
+            // },
+            // unbind: function (el) {
+            //     console.log('unbind', arguments);
+            // }
         }
     },
     methods: {
         clearSearch() {
             this.searchPeopleState.search = '';
             this.searchPeopleState.searchType = '';
+            this.searchPeopleResult = {
+                data: [],
+                page: '',
+                listRows: 10,
+                totalRows: 0
+            };
+        },
+        cancelSearch() {
+            this.clearSearch();
+            history.back();
         },
         badge(levelName) {
             var ret = {};
@@ -122,10 +133,18 @@ window.app = new Vue({
             window.history.pushState({ hash: '#search' }, null, '#search');
         },
         onSearch(e) {
-            console.log('beginSearch', arguments);
-            if (this.searchPeopleState.search) {
-                _searchMore();
+            if (!this.searchBusy) { // this.searchBusy初始状态是false
+                this.searchBusy = true;
+                if (this.searchPeopleState.search) {
+                    console.log('beginSearch', arguments);
+                    _searchMore.call(this);
+                } else {
+                    this.searchBusy = false;
+                }
+            } else {
+                console.log('这次请求被驳回');
             }
+
         },
         changeSearchType(type) {
             this.searchPeopleState.searchType = type;
@@ -169,13 +188,28 @@ function _loadMore() {
 
 function _searchMore() {
     axios.post(searchUrl, {
-        search: encrypt(app.searchPeopleState.search),
-        type: encrypt(app.searchPeopleState.searchType || '0'),
+        search: encrypt(this.searchPeopleState.search),
+        type: encrypt(this.searchPeopleState.searchType || '0'),
         page: encrypt('1')
-    }).then(function (res) {
-        console.log('res', res);
-        assignData(app.searchPeopleResult, res.data);
     })
+        .then(function (res) {
+            console.log('res', res);
+            if (res.data.status == 1) {
+                assignData(this.searchPeopleResult, res.data);
+            }
+            if (res.data.status == 0) {
+                this.searchPeopleResult = {
+                    data: [],
+                    page: '',
+                    listRows: 10,
+                    totalRows: 0
+                };
+            }
+            this.searchBusy = false;
+    }.bind(this))
+        .catch(function () {
+            this.searchBusy = false;
+    }.bind(this))
 }
 
 function mergePeopleData(obj, data) {
