@@ -26,8 +26,6 @@ export function getQueryString(name) {
     }
     return null;
 }
-<<<<<<< HEAD
-=======
 
 // 防抖动函数
 /* 使用方法
@@ -110,4 +108,4 @@ export function loginError(res) {
         window.location.pathname = '/xiaojin/login_register/login';
     }
 }
->>>>>>> master
+
