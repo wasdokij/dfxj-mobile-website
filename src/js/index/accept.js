@@ -18,4 +18,8 @@ var V = new Vue({
     	this.userSn = userSn;
     },
     
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> master

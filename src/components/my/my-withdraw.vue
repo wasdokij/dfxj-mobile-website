@@ -1,7 +1,7 @@
 <template>
     <div>
         <template v-if="!executePass && !executeFailure">
-            <ul class="ui-list ui-list-link margin-t-15 margin-b-15 ui-border-tb">
+            <ul class="ui-list jin-list-link margin-t-15 margin-b-15 ui-border-tb">
                 <li class="" @click="onBank">
                     <div class="ui-list-icon">
                         <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="ui-whitespace padding-t-10">
-                <div class="recharge-btn btn-yellow  text-center">确认提现</div>
+                <div class="recharge-btn btn-yellow  text-center" @click="executePass=true">确认提现</div>
                 <div class="padding-t-20">
                     <p class="margin-b-5 font14 color-4a">温馨提示：</p>
                     <p class=" font12 color-9b line-h-14">
@@ -35,26 +35,32 @@
                 </div>
             </div>
         </template>
-        <wallet-bank-card
+        <bank-card
                 v-if="bank"
                 @close="onSelectBank"
                 v-bind:bank="bank"
                 v-bind:info="data.info"
-        ></wallet-bank-card>
-        <wallet-execute-failure  v-if="executeFailure"></wallet-execute-failure>
+        ></bank-card>
+        <execute-failure  v-if="executeFailure" @failure="executeFailure=false"></execute-failure>
+        <execute-pass v-if="executePass"
+                      :pass-bank="defaultInfo"
+                      :pass-money="withdrawAll"
+        ></execute-pass>
     </div>
 </template>
 <style>
-
+.padding-t-30{padding-top:30px}
 </style>
 <script>
-    import BankCard from 'components/bill/bank-card.vue';
-    import ExecuteFailure from 'components/bill/execute-failure.vue';
+    import BankCard from 'components/my/bank-card.vue';
+    import ExecuteFailure from 'components/my/execute-failure.vue';
+    import ExecutePass from 'components/my/execute-pass.vue';
     export default{
         data(){
             return{
                 bank:false,
                 executeFailure:false,
+                executePass:false,
                 data:{
                     info:[
                         {
@@ -76,7 +82,7 @@
             }
         },
         components:{
-            BankCard,ExecuteFailure
+            BankCard,ExecutePass,ExecuteFailure
         },
         watch: {
         withdrawAll: function (val, oldVal) {

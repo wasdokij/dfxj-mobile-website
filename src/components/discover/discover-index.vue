@@ -2,14 +2,15 @@
     <div>
         <div class="bg-white margin-b-10 ui-border-b">
             <ul class="discover-course-avatar jin-justify-flex ui-whitespace">
-                <li class="ui-border-b" @click="creditsHref">
+                <li class="ui-border-b" @click="changeLouter('/xiaojin/discover/download.html')">
                     <div  class="discover-icon" style="background-position: 0 -321px;"></div>
                     <div>
                         <h4 class="font14">软件下载</h4>
                         <div class="font12 color-9b">移动端交易软件</div>
                     </div>
                 </li>
-                <li class="ui-border-b">
+                <li class="ui-border-b" 
+                	@click="changeLouter('http://www.jinyinbbs.com/forum-69-1.html')">
                     <div  class="discover-icon" style="background-position: 4px -268px;"></div>
                     <div>
                         <h4 class="font14">金银百家</h4>
@@ -18,14 +19,14 @@
                 </li>
             </ul>
             <ul class="discover-course-avatar jin-justify-flex ui-whitespace">
-                <li>
+                <li @click="gotofouc">
                     <div  class="discover-icon" style="background-position: 0 -371px;"></div>
                     <div>
                         <h4 class="font14">关注公众号</h4>
                         <div class="font12 color-9b">东方小金公众号</div>
                     </div>
                 </li>
-                <li @click="inviteHref">
+                <li @click="changeLouter(invit_url)">
                     <div  class="discover-icon" style="background-position: 3px -418px;"></div>
                     <div>
                         <h4 class="font14">邀请好友</h4>
@@ -36,7 +37,7 @@
         </div>
         <ul>
             <li>
-                <ul class="ui-list jin-list-link " @click="creditsHref">
+                <ul class="ui-list jin-list-link " @click="changeLouter('/xiaojin/discover/credits.html')">
                     <li class="padding-t-5 padding-b-5">
                         <div class="item-quan"></div>
                         <div class="ui-list-info font14">积分商城</div>
@@ -66,40 +67,57 @@
                     </div>
                 </div>
             </li>
-            <li>
-                <ul class="ui-list jin-list-link ">
-                    <li class="padding-t-5 padding-b-5">
-                        <div class="item-quan"></div>
-                        <div class="ui-list-info font14">技术文章</div>
-                        <span class="font12">更多文章</span>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        </ul>   
     </div>
 </template>
 <style>
     .margin-b-25 {
-  margin-bottom: 25px; }
+  		margin-bottom: 25px; 
+  	}
+  	.layui-m-layercont {
+  		padding: 10px !important;
+  	}
+
 </style>
 <script>
+	import { XHRGet } from '../../js/ajax.js';
     export default{
         data(){
             return{
+				invit_url: '',
             }
         },
-        components:{
+        created: function () {
+        	this.getUserInfo();
         },
+        
         methods: {
-            creditsHref(){
-                window.location.href="/xiaojin/discover/credits.html"
-            },
-            inviteHref(){
-                window.location.href="/xiaojin/index/invite.html"
-            },
-            downloadHref(){
-                window.location.href="/xiaojin/discover/download.html"
-            }
+        	//路由导航
+        	changeLouter: function (url) {
+        		window.location.href = url;
+        	},
+        	
+        	getUserInfo () {
+        		XHRGet('/oriental_treasure/Index/loginUserBaseInfo',{},function (responese) {
+        			console.log(responese.data.data.user_sn)
+        			if (responese.data.status === 1) {
+        				this.invit_url = '/xiaojin/index/invite.html?user_sn=' + responese.data.data.user_sn;
+        			}
+        		}.bind(this));
+        	},
+        	
+        	//关注公众号
+        	gotofouc: function () {
+        		layer.open({
+        			title: '长按识别二维码关注',
+        			content: '<img class="ver-middle" src="/jin2.0/images/qc-kd.jpg" width="100%">',
+        			btn: ['关闭'],
+        			yes: function () {
+        				layer.closeAll();
+        			}
+        		});
+        	},
         },
+
     }
 </script>

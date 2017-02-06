@@ -4,6 +4,10 @@
 node_modules
 public
 src/css/maps
+<<<<<<< HEAD
 gulpfile.js
 src/tmp
 
+=======
+src/tmp
+>>>>>>> master

@@ -31,11 +31,19 @@
                 </p>
             </div>
         </li>
+<<<<<<< HEAD
         <li>
+=======
+        <!--<li>
+>>>>>>> master
             <div class="box-align">
                 <div class="item-accept-lable"></div>
                 <div class="font14 color-4a">东方小金积分规则</div>
             </div>
+<<<<<<< HEAD
         </li>
+=======
+        </li>-->
+>>>>>>> master
     </ul>
 </template>

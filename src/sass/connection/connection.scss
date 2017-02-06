@@ -277,5 +277,19 @@ body {
   margin-top:15px;
 }
 .container {
+<<<<<<< HEAD
   min-height: 100vh;
 }
+=======
+  //min-height: 100vh;
+}
+.add-border-bottom:after {
+    bottom: 0;
+    border-bottom: 1px solid #d9d9d9 !important;
+    transform-origin: 0 100%;
+    transform: scaleY(.5);
+}
+[v-cloak]{
+    display:none;
+}
+>>>>>>> master

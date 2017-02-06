@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="bill-border-t" v-for="key2 in info">
-            <ul class="ui-list bill-list-one ui-list-link ">
+            <ul class="ui-list bill-list-one jin-list-link">
                 <li class="">
-                    <div class="bill-list-info">
+                    <div class="bill-list-info padding-r-0 ">
                         <h4 class="font14">{{key2.title}}</h4>
-                        <div class="padding-r-15 font12 color-9b" >查看月账单</div>
+                        <div class="font12 color-9b" >查看月账单</div>
                     </div>
                 </li>
             </ul>
@@ -24,13 +24,13 @@
                     <div class="bill-list-type">
                         <ul class="ui-list" @click="billDetails(key)">
                             <li class="">
-                                <div class="ui-avatar">
+                                <div class="ui-avatar-s">
                                     <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
                                 </div>
                                 <div class="ui-list-info padding-r-0">
                                     <ul class="jin-justify-flex">
                                         <li  v-bind:class="{'color-money':key.money >0}">{{key.money}}</li>
-                                        <li class="font14 color-money-type">{{key.content}}</li>
+                                        <li class="font12 color-money-type">{{key.content}}</li>
                                     </ul>
                                     <div class="font14 color-9b">空店专卖[罗汉果]收益发放</div>
                                 </div>
@@ -42,17 +42,20 @@
         </div>
         <!--空缺状态 start -->
         <div class="margin-b-10" v-if="info.length == ' ' ">
-            <div class="discover-message--panel-null">
+            <div class="bill--panel-null">
             </div>
             <div class="margin-t-10 text-center font14 color-9b">空旷到可以成为一片森林</div>
         </div>
         <!--空缺状态 end-->
     </div>
 </template>
-<style>
+<style scoped>
     .bill-border-t  .bill-list-nor:last-child >li{
         border-bottom: 0;
     }
+    .ui-avatar-s{
+  margin: 16px 10px 16px 0 !important;
+}
 </style>
 <script>
     var data={"date":"今天13:50","type_name":"佣金发放","money":"+877.13","content":"保险佣金",type:true};
