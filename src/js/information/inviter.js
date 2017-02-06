@@ -3,7 +3,7 @@ import axios from 'axios';
 import Loading from '../../components/common/loading.vue';
 import successing from '../../components/common/success.vue';
 import '../mock/test.js';
- import '../lib/layer.js';
+import '../lib/layer.js';
 //import '../../css/information/index.css'
 var login = new Vue({
         el: "#container",

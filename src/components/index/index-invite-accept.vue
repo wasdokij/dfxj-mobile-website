@@ -3,166 +3,73 @@
         <div class="home-top home-accept-bg"></div>
         <ul class="invite-accept-panel jin-box-center padding-b-20">
             <li class="invite-accept-input font14">
-                 <input type="tel" v-model="phone" placeholder="输入您的手机号" />
+                 <input type="tel" placeholder="输入您的手机号" />
             </li>
             <li class="invite-accept-input jin-justify-flex font14">
-                <input type="text" v-model="code" placeholder="输入验证码" />
-                <div class="invite-accept-gain font12" v-if="getCodeBtnDisable === true" @click="getCode">
-                	{{ conut_time === 0 ? '重新获取' : '获取' }}
-                </div>
-                <div class="invite-accept-gain btn-gray font12" v-if="getCodeBtnDisable === false">
-                	{{ conut_time }}
-                </div>
+                 <input placeholder="输入验证码" />
+                <div class="invite-accept-gain font14">获取</div>
             </li>
             <li class="invite-accept-input font14">
-                 <input type="password" v-model="pwd" placeholder="设置登录密码" />
+                 <input placeholder="设置登录密码" />
             </li>
-            <li class="invite-accept-btn margin-t-15" @click="goToRegister">立即领取</li>
+            <li class="invite-accept-btn margin-t-15">立即领取</li>
         </ul>
-        <accept-text></accept-text>
+        <ul class="invite-accept-rule-list  jin-box-center">
+            <li>
+                <div class="box-align">
+                    <div class="item-accept-lable"></div>
+                    <div class="font14 color-4a">什么是东方小金</div>
+                </div>
+                <div class="font12 color-7d">
+                    <p class="margin-t-15">
+                        “东方小金”成立于2015年1月，是冠通天下控股集团在空店平台上推出的“互联网+金融”独立运营项目，历经两年的蓬勃发展，已成为独树一帜的泛金融行业的领导品牌，堪称“移动互联网金融开创者”。
+                    </p>
+                    <p class="margin-t-15">
+                        2017年东方小金进行全新的品牌定位与升级，不断地拓展项目，从泛金融产品到股票证券、基金投资、海外资产管理，不断为为投资者、创业者提供广阔的投资、理财、创业渠道。
+                    </p>
+                    <p class="margin-t-15">
+                        现在，东方小金项目内已涵盖五大业务板块：大数据运营、软件开发、百家财经、娱乐传媒、商品交易，赚钱娱乐化是东方小金的主要宗旨，致力于打造让娱乐金融普惠大众，拿起手机随时随地开心赚钱的平台。
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="box-align">
+                    <div class="item-accept-lable"></div>
+                    <div class="font14 color-4a">东方小金积分规则</div>
+                </div>
+                <div class="font12 color-7d">
+                    <p class="margin-t-15">
+                        2017年1月1日起，东方积分计划正式启动，只要您是空店平台用户，并且参与东方小金金融项目交易活动，就可参与东方小金积分计划。
+                    </p>
+                    <p class="margin-t-15">
+                        东方小金积分可在积分商城中兑换相应产品，如空店专卖品、发售模式配售等，其中发售模式配售的积分兑换活动每次只能使用200积分。（具体以商城在单个商品上的标注和活动通知为准。）
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="box-align">
+                    <div class="item-accept-lable"></div>
+                    <div class="font14 color-4a">东方小金积分规则</div>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
-<style scoped>
-	.btn-gray {
-		background-color: #DDDDDD;
-	}
-   	.padding-tb-25 {
-		padding-top: 25px;
-		padding-bottom: 25px;
-  	}
-  	.invite-accept-gain {
-  		min-width: 40px;
-  	}
+<style>
+   .padding-tb-25 {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  }
 </style>
 <script>
-	import { XHRPost } from '../../js/ajax.js';
-	import { countdown } from '../../js/tools.js';
-	import acceptText from 'components/index/index-invite-accept-text.vue';
     export default{
-    	props: ['userSn'],
-        data () {
+        data(){
             return{
-            	phone: '',
-				code: '',
-				pwd: '',
-				inviting_sn: this.userSn,
-				conut_time: 60,
-				getCodeBtnDisable: true,
-				url: {
-					getCodeUrl: '/oriental_treasure/register_and_login/sendPhoneCode',
-					registerUrl: '/oriental_treasure/register_and_login/goRegister',
-				}
             }
         },
         components:{
-            acceptText
         },
-        
-       	methods: {
-	    	//验证手机
-	    	checkPhone: function (phone) {
-				const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);
-				return tel;
-			},
-			
-			//错误提示方法
-			errorTip: function (msg) {
-				layer.open({
-					content: msg,
-					btn: ['确定'],
-					yes: function () {
-						layer.closeAll();
-					}
-				});
-			},
-			
-			//获取验证码
-	    	getCode: function () {
-				const tel = this.checkPhone(this.phone)
-				if (!tel) {
-					this.errorTip('手机号码有误！');
-					return false;
-				}
-				this.getCodeBtnDisable = false;
-				this.conut_time = '...';
-	
-				const data = {
-					cellphone: encrypt(this.phone),
-					exist: encrypt('0')
-				}
-				XHRPost(this.url.getCodeUrl, data, function (response) {
-					if (response.data.status === 1) {
-						const _this = this;
-						countdown(60,function (time) {
-							_this.conut_time = time + 's';
-							if (time === 0) {
-								_this.getCodeBtnDisable = true;
-							}
-						});
-						this.errorTip(response.data.info);
-					} else {
-						this.errorTip(response.data.info);
-						this.getCodeBtnDisable = true;
-					}
-					
-				}.bind(this), function (error) {
-					this.errorTip(error);
-					this.getCodeBtnDisable = true;
-				}.bind(this));
-				
-			},
-			//提交注册资料
-			goToRegister: function () {
-				console.log(this.inviting_sn)
-				var	data = {
-					cellphone: '',
-					verify_code: '',
-					password: '',
-					inviting_sn: encrypt(this.inviting_sn),
-				};
-				
-				const tel = this.checkPhone(this.phone);
-				if (tel) {
-					data.cellphone = encrypt(this.phone);
-				} else {
-					this.errorTip('手机号码有误！');
-					return false;
-				}
-				
-				if (this.code) {
-					data.verify_code = encrypt(this.code);
-				} else {
-					this.errorTip('请输入验证码');
-					return false;
-				}
-				
-				const pwd = /^(\w){6,15}$/.test(this.pwd);
-				if (pwd) {
-					data.password = encrypt(this.pwd);
-				} else {
-					this.errorTip('密码有误，只能输入6-15个字母、数字、下划线');
-					return false;
-				}
-				
-				console.log(data)
-				var load = layer.open({ type: 2,shadeClose: false});
-				XHRPost(this.url.registerUrl, data, function (response) {
-					console.log(response)
-					layer.close(load);
-					if (response.data.status === 1) {
-						layer.open({
-							content: response.data.info,
-							time: 1.5,
-							end: function () {
-								window.location.href = '/xiaojin/index/index.html';
-							}
-						});
-	
-					} else {
-						this.errorTip(response.data.info);
-					}
-				}.bind(this));
-			},
-	    }
+        methods: {
+        },
     }
 </script>

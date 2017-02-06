@@ -10,7 +10,7 @@
                 <div class="discover-message-count margin-l-10 font18">1</div>
             </div>
         </div>
-        <discover-message-list></discover-message-list>
+        <!--<discover-message-list></discover-message-list>-->
         <discover-message-filtrate v-if="showModal" @start="showModal = true"  @close="showModal = false"></discover-message-filtrate>
     </div>
 </template>

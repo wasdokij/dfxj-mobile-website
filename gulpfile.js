@@ -15,312 +15,320 @@ const browserSync = require('browser-sync').create();
 const base64 = require('gulp-base64');
 const runSequence = require('run-sequence');
 const bsReload = browserSync.reload;
-const postcss = require('gulp-postcss'); //postcssæœ¬èº«
+const postcss = require('gulp-postcss'); //postcss±¾Éí
 const autoprefixer = require('autoprefixer');
-const precss = require('precss'); //æä¾›åƒscssä¸€æ ·çš„è¯­æ³•
-const cssnano = require('cssnano');  //æ›´å¥½ç”¨çš„csså‹ç¼©!
+const precss = require('precss'); //Ìá¹©ÏñscssÒ»ÑùµÄÓï·¨
+const cssnano = require('cssnano');  //¸üºÃÓÃµÄcssÑ¹Ëõ!
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const revCollector = require('gulp-rev-collector');
 const exec = require('child_process').exec;
 const CDN = '/jin2.0';
 var webpackConfig = {
-	resolve: {
-		root: path.join(__dirname, 'node_modules'),
-		alias: {
-			components: '../../components', // ç»„ä»¶åˆ«å,jsé‡Œå¼•ç”¨è·¯å¾„å¯ç›´æ¥ 'components/xxx/yyy'
-			// 'vux-components': 'vux/src/components/'
-		},
-		extensions: ['', '.js', '.vue', '.scss', '.css']
-	},
-	output: {
-		// publicPath: 'yourcdnlink/static/',
-		filename: 'js/[name].js',
-		chunkFilename: 'js/[id].js?[hash]'
-	},
-	externals: {
-		'vue': 'Vue',
-		'axios': 'axios',
-		'vue-router': 'VueRouter',
-		'vue-infinite-scroll': 'infiniteScroll'
-	},
-	module: {
-		noParse: [/vue.js/],
-		loaders: [
-			{test: /\.vue$/, loader: 'vue'},
-			{test: /\.js$/, loader: 'babel', exclude: /node_modules/},
-			{test: /[\/\\]node_modules[\/\\]vux[\/\\]src[\/\\].*\.js$/, loader: 'babel'},
-			{
-				test: /\.(png|jpe?g|gif)(\?.*)?$/,
-				// test: /[\/\\]src[\/\\]images[\/\\](.*)[\/\\](.*)\.(png|jpe?g|gif)(\?.*)?$/,
-				loader: 'url',
-				query: {
-					limit: 5000, // æ¢æˆä½ æƒ³è¦å¾—å¤§å°
-					/*  regExp: 'images[\\/\\\\](.*)$',*/
-					name: 'images/[name].[ext]?[hash:10]'
-				}
-			},
-			{
-				test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
-				loader: 'url',
-				query: {
-					limit: 5000, // æ¢æˆä½ æƒ³è¦å¾—å¤§å°
-					name: 'fonts/[name].[hash:7].[ext]'
-				}
-			},
-			// mint-uiçš„å†…åµŒå…¨å±€CSS
-			{
-				test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
-				loaders: ['style', 'css']
-			},
-			// libæ–‡ä»¶å¤¹ä¸‹éƒ¨åˆ†æ’ä»¶çš„æ ·å¼
-			{
-				test: /[\/\\]src[\/\\].*\.css$/,
-				loaders: ['style', 'css']
-			}
+    resolve: {
+        root: path.join(__dirname, 'node_modules'),
+        alias: {
+            components: '../../components', // ×é¼ş±ğÃû,jsÀïÒıÓÃÂ·¾¶¿ÉÖ±½Ó 'components/xxx/yyy'
+            // 'vux-components': 'vux/src/components/'
+        },
+        extensions: ['', '.js', '.vue', '.scss', '.css']
+    },
+    output: {
+        // publicPath: 'yourcdnlink/static/',
+        filename: 'js/[name].js',
+        chunkFilename: 'js/[id].js?[hash]'
+    },
+    externals: {
+        'vue': 'Vue',
+        'axios': 'axios',
+        'vue-router': 'VueRouter',
+        'vue-infinite-scroll': 'infiniteScroll'
+    },
+    module: {
+        noParse: [/vue.js/],
+        loaders: [
+            {test: /\.vue$/, loader: 'vue'},
+            {test: /\.js$/, loader: 'babel', exclude: /node_modules/},
+            {test: /[\/\\]node_modules[\/\\]vux[\/\\]src[\/\\].*\.js$/, loader: 'babel'},
+            {
+                test: /\.(png|jpe?g|gif)(\?.*)?$/,
+                // test: /[\/\\]src[\/\\]images[\/\\](.*)[\/\\](.*)\.(png|jpe?g|gif)(\?.*)?$/,
+                loader: 'url',
+                query: {
+                    limit: 5000, // »»³ÉÄãÏëÒªµÃ´óĞ¡
+                    /*  regExp: 'images[\\/\\\\](.*)$',*/
+                    name: 'images/[name].[ext]?[hash:10]'
+                }
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
+                loader: 'url',
+                query: {
+                    limit: 5000, // »»³ÉÄãÏëÒªµÃ´óĞ¡
+                    name: 'fonts/[name].[hash:7].[ext]'
+                }
+            },
+            // mint-uiµÄÄÚÇ¶È«¾ÖCSS
+            {
+                test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
+                loaders: ['style', 'css']
+            },
+            // libÎÄ¼ş¼ĞÏÂ²¿·Ö²å¼şµÄÑùÊ½
+            {
+                test: /[\/\\]src[\/\\].*\.css$/,
+                loaders: ['style', 'css']
+            }
 
-		]
-	},
-	plugins: [],
-	babel: { //é…ç½®babel
-		"presets": ["es2015",'stage-2'],
-		"plugins": ["transform-runtime"]
-	}
+        ]
+    },
+    plugins: [],
+    babel: { //ÅäÖÃbabel
+        "presets": ["es2015",'stage-2'],
+        "plugins": ["transform-runtime"]
+    }
 };
 
 const processes = [
-	autoprefixer({browsers: ['last 2 version', 'safari 5', 'opera 12.1', 'ios 6', 'android 4', '> 10%']}),
-	precss,
-	cssnano
+    autoprefixer({browsers: ['last 2 version', 'safari 5', 'opera 12.1', 'ios 6', 'android 4', '> 10%']}),
+    precss,
+    cssnano
 ];
-// background: color($blue blackness(20%));  precssä¸ºäº†ç”¨è¿™æ ·çš„è¯­æ³•
+// background: color($blue blackness(20%));  precssÎªÁËÓÃÕâÑùµÄÓï·¨
 const src = {
-	css: './src/css/**/*.css',
-	fonts: './src/fonts/**/*.{eot,svg,ttf,woff}',
-	images: './src/images/**/*.{png,jpg,jpeg}',
-	js: './src/js/**/*.js',
-	sass: './src/sass/**/*.scss',
-	components: './src/components/**/*.{vue,jsx}',
-	views: './src/views/**/*.html'
+    css: './src/css/**/*.css',
+    fonts: './src/fonts/**/*.{eot,svg,ttf,woff}',
+    images: './src/images/**/*.{png,jpg,jpeg}',
+    js: './src/js/**/*.js',
+    sass: './src/sass/**/*.scss',
+    components: './src/components/**/*.{vue,jsx}',
+    views: './src/views/**/*.html'
 };
 const dist = {
-	css: './public/css/',
-	fonts: './public/fonts/',
-	images: './public/images/',
-	js: './public/js/',
-	sass: './public/sass/',
-	views: './public/views'
+    css: './public/css/',
+    fonts: './public/fonts/',
+    images: './public/images/',
+    js: './public/js/',
+    sass: './public/sass/',
+    views: './public/views'
 };
-// devå¯åŠ¨
-// 1.ç¼–è¯‘ç§»åŠ¨é¡µé¢åˆ°public          OK
-// 2.ç¼–è¯‘scss è¾“å‡ºåˆ°public         OK
-// 3.ç¼–è¯‘jsæ–‡ä»¶ è¾“å‡ºpublic         OK
-// 4.ç¼–è¯‘ç»„ä»¶                      OK
-// 5.è¾“å‡ºå›¾ç‰‡å’Œå­—ä½“æ–‡ä»¶             OK
-// 6.ç›‘å¬æ‰€æœ‰ç±»å‹æ–‡ä»¶æ‰§è¡Œä¸åŒtask    OK
+// devÆô¶¯
+// 1.±àÒëÒÆ¶¯Ò³Ãæµ½public          OK
+// 2.±àÒëscss Êä³öµ½public         OK
+// 3.±àÒëjsÎÄ¼ş Êä³öpublic         OK
+// 4.±àÒë×é¼ş                      OK
+// 5.Êä³öÍ¼Æ¬ºÍ×ÖÌåÎÄ¼ş             OK
+// 6.¼àÌıËùÓĞÀàĞÍÎÄ¼şÖ´ĞĞ²»Í¬task    OK
 
 // build
-// ç¼–è¯‘ å‹ç¼© css
-// ç¼–è¯‘ å‹ç¼© js
-// ç§»åŠ¨ å›¾ç‰‡å’Œå­—ä½“
+// ±àÒë Ñ¹Ëõ css
+// ±àÒë Ñ¹Ëõ js
+// ÒÆ¶¯ Í¼Æ¬ºÍ×ÖÌå
 var BUILD = "DEV";
 gulp.task('views', function () {
-	return gulp.src(src.views)
-		.pipe(gulp.dest(dist.views));
+    return gulp.src(src.views)
+        .pipe(gulp.dest(dist.views));
 });
 gulp.task('sass', function () {
-	return gulp.src(src.sass)
-		// .pipe(sourcemaps.init())
-		.pipe(sass().on('error', sass.logError))
-		.pipe(ifElse(BUILD === 'PUBLIC', function() {
-			return replace('../../',CDN + '/')
-		}))
-		// .pipe(sourcemaps.write('./maps')) // mapsæœ‰ç‚¹éº»çƒ¦ï¼Œå…ˆä¸ç”¨äº†
-		.pipe(gulp.dest('./src/css'))
-		.pipe(gulp.dest('./public/css'));
+    return gulp.src(src.sass)
+        // .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(ifElse(BUILD === 'PUBLIC', function() {
+            return replace('../../',CDN + '/')
+        }))
+        // .pipe(sourcemaps.write('./maps')) // mapsÓĞµãÂé·³£¬ÏÈ²»ÓÃÁË
+        .pipe(gulp.dest('./src/css'))
+        .pipe(gulp.dest('./public/css'));
 });
 gulp.task('reload', function () {
 
-	webpackConfig.plugins.push(new webpack.DefinePlugin({
-		NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'dev'
-	}));
-	runSequence('views','sass','js', 'images','fonts',function () {
-		browserSync.init(dist.views, {
-			startPath: "/views/",
-			server: {
-				baseDir : ['./public']
-			},
-			notify: false
-		});
-		dev();// watch
+    webpackConfig.plugins.push(new webpack.DefinePlugin({
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'dev'
+    }));
+    runSequence('views','sass','js', 'images','fonts',function () {
+        browserSync.init(dist.views, {
+            startPath: "/views/",
+            server: {
+                baseDir : ['./public']
+            },
+            notify: false
+        });
+        dev();// watch
 
-	});
+    });
 
 });
 function dev() {
-	watch([src.views]).on('change', function() {
-		runSequence('views', function () {
-			bsReload()
-		});
-	});
-	watch([src.sass]).on('change', function () {
-		runSequence('sass', function () {
-			bsReload();
-		});
-	});
-	watch([src.images]).on('change', function() {
-		runSequence('images', function () {
-			bsReload()
-		});
-	});
-	watch([src.fonts]).on('change', function() {
-		runSequence('fonts', function () {
-			bsReload()
-		});
-	});
-	watch([src.js], function (event) {
-		var paths = watchPath(event, src.js, './public/js/');
-		var sp = paths.srcPath.indexOf('\\') > -1 ? '\\' : '/';
+    watch([src.views]).on('change', function() {
+        runSequence('views', function () {
+            bsReload()
+        });
+    });
+    watch([src.sass]).on('change', function () {
+        runSequence('sass', function () {
+            bsReload();
+        });
+    });
+    watch([src.images]).on('change', function() {
+        runSequence('images', function () {
+            bsReload()
+        });
+    });
+    watch([src.fonts]).on('change', function() {
+        runSequence('fonts', function () {
+            bsReload()
+        });
+    });
+    watch([src.js], function (event) {
+        var paths = watchPath(event, src.js, './public/js/');
+        var sp = paths.srcPath.indexOf('\\') > -1 ? '\\' : '/';
 
-		if(paths.srcPath.split(sp).length === 3) { // å…±æœ‰åº“æƒ…å†µ,è¦ç¼–è¯‘æ‰€æœ‰js
-			compileJS(['./src/js/**/*.js','!./src/js/lib/*.js']);
-		} else { // å¦åˆ™ åªç¼–è¯‘å˜åŠ¨js
-			compileJS(paths.srcPath);
-		}
-	});
-	watch(['./src/components/**/*.vue'], function (event) {
-		var sp = event.path.indexOf('\\') > -1 ? '\\' : '/';
-		var business = event.path.split(sp).slice(-2);
-		var jsFile   = business[1].split('-')[0];
-		var path;
-		if (business[0] === 'common') {
-			path = ['./src/js/**/*.js','!./src/js/lib/*.js'];
-		} else if (business[0] === jsFile) {
-			path = './src/js/'+ business[0] +'/*.js';
-		} else {
-			path = './src/js/' + business[0] + '/' + jsFile + '.js';
-		}
-		compileJS(path);
-	})
+        if(paths.srcPath.split(sp).length === 3) { // ¹²ÓĞ¿âÇé¿ö,Òª±àÒëËùÓĞjs
+            compileJS(['./src/js/**/*.js','!./src/js/lib/*.js']);
+        } else { // ·ñÔò Ö»±àÒë±ä¶¯js
+            compileJS(paths.srcPath);
+        }
+    });
+    watch(['./src/components/**/*.vue'], function (event) {
+        var sp = event.path.indexOf('\\') > -1 ? '\\' : '/';
+        var business = event.path.split(sp).slice(-2);
+        var jsFile   = business[1].split('-')[0];
+        var path;
+        if (business[0] === 'common') {
+            path = ['./src/js/**/*.js','!./src/js/lib/*.js'];
+        } else if (business[0] === jsFile) {
+            path = './src/js/'+ business[0] +'/*.js';
+        } else {
+            path = './src/js/' + business[0] + '/' + jsFile + '.js';
+        }
+        compileJS(path);
+    })
 }
 
 gulp.task('js', function () {
-	cp('./src/js/lib/*.js','./public/js/lib');
-	return compileJS(['./src/js/**/*.js','!./src/js/lib/*.js']);
+    cp('./src/js/lib/*.js','./public/js/lib');
+    return compileJS(['./src/js/**/*.js','!./src/js/lib/*.js']);
 });
 
 gulp.task('images', function () {
-	gulp.src(src.images)
-		.pipe(gulp.dest(dist.images));
+    gulp.src(src.images)
+        .pipe(gulp.dest(dist.images));
 });
 gulp.task('fonts', function () {
-	return gulp.src(src.fonts)
-		.pipe(gulp.dest(dist.fonts));
+    return gulp.src(src.fonts)
+        .pipe(gulp.dest(dist.fonts));
 });
 gulp.task('js:build', function () {
-	cp('./src/js/lib/*.js','./src/tmp/js/lib');
-	return compileJS(['./src/js/**/*.js','!./src/js/lib/*.js'],'./src/tmp');
+    cp('./src/js/lib/*.js','./src/tmp/js/lib');
+    return compileJS(['./src/js/**/*.js','!./src/js/lib/*.js'],'./src/tmp');
 });
 gulp.task('ugjs:build', function () {
-	return gulp.src('./src/tmp/**/*.js')
-		// .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
-		// .pipe(rev())
-		.pipe(gulp.dest('./public/'))
-	// .pipe(rev.manifest())
-	// .pipe(gulp.dest('./public/'))
+    return gulp.src('./src/tmp/**/*.js')
+        // .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
+        // .pipe(rev())
+        .pipe(gulp.dest('./public/'))
+    // .pipe(rev.manifest())
+    // .pipe(gulp.dest('./public/'))
 });
 function compileJS(path,dest) {
-	dest = dest || './public';
-	webpackConfig.output.publicPath = BUILD === 'PUBLIC' ? ''+ CDN +'/' : '/';
+    dest = dest || './public';
+    webpackConfig.output.publicPath = BUILD === 'PUBLIC' ? ''+ CDN +'/' : '/';
 
-	return gulp.src(path)
-		.pipe(named(function (file) {
-			var path = JSON.parse(JSON.stringify(file)).history[0];
-			var sp = path.indexOf('\\') > -1 ? '\\js\\' : '/js/';
-			var target = path.split(sp)[1];
-			return target.substring(0,target.length - 3);
-		}))
-		.pipe(webpackStream(webpackConfig))
-		.on('error',function(err) {
-			this.end()
-		})
-		.pipe(browserSync.reload({
-			stream: true
-		}))
-		.pipe(gulp.dest(dest))
+    return gulp.src(path)
+        .pipe(named(function (file) {
+            var path = JSON.parse(JSON.stringify(file)).history[0];
+            var sp = path.indexOf('\\') > -1 ? '\\js\\' : '/js/';
+            var target = path.split(sp)[1];
+            return target.substring(0,target.length - 3);
+        }))
+        .pipe(webpackStream(webpackConfig))
+        .on('error',function(err) {
+            this.end()
+        })
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+        .pipe(gulp.dest(dest))
 }
 function cp(from,to) {
-	gulp.src(from)
-		.pipe(gulp.dest(to));
+    gulp.src(from)
+        .pipe(gulp.dest(to));
 }
 
 gulp.task('views:build', function () {
-	return gulp.src(['./public/**/*.json', src.views])
-		// .pipe(revCollector({
-		// 	replaceReved: true
-		// })) // æš‚æ—¶ä¸åŠ ç‰ˆæœ¬æ§åˆ¶
-		.pipe(replace('../../', ''+ CDN +'/')) // æ›¿æ¢htmlé¡µé¢é™æ€èµ„æºåœ°å€
-		.pipe(replace('../', ''+ CDN +'/')) // æ›¿æ¢htmlé¡µé¢é™æ€èµ„æºåœ°å€
-		.pipe(gulp.dest(dist.views));
+    return gulp.src(['./public/**/*.json', src.views])
+        // .pipe(revCollector({
+        // 	replaceReved: true
+        // })) // ÔİÊ±²»¼Ó°æ±¾¿ØÖÆ
+        .pipe(replace('../../', ''+ CDN +'/')) // Ìæ»»htmlÒ³Ãæ¾²Ì¬×ÊÔ´µØÖ·
+        .pipe(replace('../', ''+ CDN +'/')) // Ìæ»»htmlÒ³Ãæ¾²Ì¬×ÊÔ´µØÖ·
+        .pipe(gulp.dest(dist.views));
 });
 
 gulp.task('build', function () {
-	BUILD = 'PUBLIC';
-	webpackConfig.plugins.push(new webpack.DefinePlugin({
-		NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'production'
-	}));
-	build(function() {
-		del(['./src/tmp']);
-		//cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
-		 cp('./public/**/*','../kongdian_api/public/jin2.0/');
+    BUILD = 'PUBLIC';
+    webpackConfig.plugins.push(new webpack.DefinePlugin({
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'production'
+    }));
+    build(function() {
+        del(['./src/tmp']);
+        //cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+         cp('./public/**/*','../kongdian_api/public/jin2.0/');
 
-		 cp('./public/views/*.html', '../kongdian_api/application/xiaojin/view/');
-		//cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
-	});
-	// buildçš„è¿‡ç¨‹ä¹Ÿè¦watch
-	watch([src.js]).on('change', function () {
-		// console.log('change', arguments);
-		runSequence('js:build', 'ugjs:build', function () {
-			 cp('./public/**/*','../kongdian_api/public/jin2.0/');
-			//cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
-		})
-	})
+         cp('./public/views/*.html', '../kongdian_api/application/xiaojin/view/');
+        //cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+    });
+    // buildµÄ¹ı³ÌÒ²Òªwatch
+    watch([src.js]).on('change', function () {
+        // console.log('change', arguments);
+        runSequence('js:build', 'ugjs:build', function () {
+             cp('./public/**/*','../kongdian_api/public/jin2.0/');
+            //cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+        })
+    });
 
-	watch([src.views]).on('change', function() {
-		runSequence('views:build', function () {
-			// cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
-			cp('./public/views/**/*.html', '../kongdian_api/application/xiaojin/view/');
-		})
-	});
+    watch([src.components]).on('change', function () {
+        // console.log('change', arguments);
+        runSequence('js:build', 'ugjs:build', function () {
+             cp('./public/**/*','../kongdian_api/public/jin2.0/');
+            //cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+        })
+    })
+
+    watch([src.views]).on('change', function() {
+        runSequence('views:build', function () {
+            // cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+            cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+        })
+    });
 
 });
 gulp.task('css:build', function () {
-	return gulp.src(src.css)
-		.pipe(base64({
-			extensions: ['png', /\.jpg#datauri$/i],
-			maxImageSize: 10 * 1024 // bytes,
-		}))
-		.pipe(ifElse(BUILD === 'PUBLIC', function () {
-			return postcss(processes)
-		}))
-		// .pipe(rev()) // æš‚æ—¶ä¸åŠ ç‰ˆæœ¬æ§åˆ¶
-		.pipe(gulp.dest(dist.css))
-	// .pipe(rev.manifest()) æš‚æ—¶ä¸åŠ ç‰ˆæœ¬æ§åˆ¶
-	// .pipe(gulp.dest(dist.css))
+    return gulp.src(src.css)
+        .pipe(base64({
+            extensions: ['png', /\.jpg#datauri$/i],
+            maxImageSize: 10 * 1024 // bytes,
+        }))
+        .pipe(ifElse(BUILD === 'PUBLIC', function () {
+            return postcss(processes)
+        }))
+        // .pipe(rev()) // ÔİÊ±²»¼Ó°æ±¾¿ØÖÆ
+        .pipe(gulp.dest(dist.css))
+    // .pipe(rev.manifest()) ÔİÊ±²»¼Ó°æ±¾¿ØÖÆ
+    // .pipe(gulp.dest(dist.css))
 
 });
 function build(cb) {
-	runSequence('clean','sass', 'css:build','js:build', 'ugjs:build', 'views:build', 'images', 'fonts',function() {
-		// ä¸Šä¼ é™æ€èµ„æºæ–‡ä»¶åˆ°CDN
-		cb && cb();
-		/*exec('node upload.js', function (err, output) {
-		 if(err) console.log(err);
-		 console.log(output);
-		 });*/
-	});
+    runSequence('clean','sass', 'css:build','js:build', 'ugjs:build', 'views:build', 'images', 'fonts',function() {
+        // ÉÏ´«¾²Ì¬×ÊÔ´ÎÄ¼şµ½CDN
+        cb && cb();
+        /*exec('node upload.js', function (err, output) {
+         if(err) console.log(err);
+         console.log(output);
+         });*/
+    });
 }
 gulp.task('clean', function () {
-	del([
-		'public/**/*'
-	]);
+    del([
+        'public/**/*'
+    ]);
 });
