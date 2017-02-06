@@ -8,6 +8,7 @@ import { XHRGet } from '../ajax.js';
 var login = new Vue({
     el: '#container',
     data: {
+    	invite_url: '',
         can_user_money: "",
         info_asset: "",
         last_month_commission: "",
@@ -35,6 +36,8 @@ var login = new Vue({
     mounted: function () {
         const _this = this;
         XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
+        	console.info(response.data.data.user_sn)
+        	_this.invite_url = '/xiaojin/index/invite.html?user_sn=' + response.data.data.user_sn;
             var date = new Date();
             var a = new Array("日", "一", "二", "三", "四", "五", "六");
             var week = new Date().getDay();
@@ -50,22 +53,26 @@ var login = new Vue({
                 _this.score = response.data.data.score,
                 _this.wechat_avatar = response.data.data.wechat_avatar
             //
-            if(response.data.data.real_name = ' '){
+            if(response.data.data.real_name === ''){
                 _this.real_name = "未验证";
             }else{
                 _this.real_name = response.data.data.real_name;
             }
             //
-            if(response.data.data.user_bank_count = ' '){
+            if(response.data.data.user_bank_count === ''){
                 _this.user_bank_count = "未提交";
             }else{
-                _this.user_bank_count = response.data.data.user_bank_count+"张";
+                _this.user_bank_count = response.data.data.user_bank_count;
             }
         });
 
     },
 
     methods: {
+    	//路由导航
+    	changeLouter: function (url) {
+    		window.location.href = url;
+    	},
         //提现
         getWithdrawal: function () {
             //let data = {

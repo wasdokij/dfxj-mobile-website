@@ -23,12 +23,12 @@
             </div>
 		</div>
         <!--小娱乐-->
-        <div class="bg-white margin-b-25">
-            <ul class="ui-list jin-list-link ">
+        <div class="bg-white margin-b-15">
+            <ul class="ui-list jin-list">
                 <li class="margin-l-0">
                     <div class="item-card-lable"></div>
                     <div class="ui-list-info font14">小娱乐</div>
-                    <span class="font12 color-9b">注意事项</span>
+                    <!--<span class="font12 color-9b">注意事项</span>-->
                 </li>
             </ul>
             <div>
@@ -47,7 +47,7 @@
                     </li>
                 </ul>
                 <ul class="ui-list ui-list-one jin-list-link ui-border-t">
-                    <li @click="changeLouter('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdcbafc192f16db2d&redirect_uri=http%3A%2F%2Fwp88.jilinpme.com%2Ftradewx%2fapp%2faccess%2fweixin%3fpaycode%3dwxdcbafc192f16db2d%26peerid%3d16284%26orgid%3d17271%26brokerid%3d-1')">
+                    <li @click="changeLouter('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdcbafc192f16db2d&redirect_uri=http%3A%2F%2Fwp88.jilinpme.com%2Ftradewx%2fapp%2faccess%2fweixin%3fpaycode%3dwxdcbafc192f16db2d%26peerid%3d16284%26orgid%3d17271%26brokerid%3d-1&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect                     ')">
                         <div class="xj-avatar-tiled">
                             <span class="jl-bg"></span>
                         </div>
@@ -64,7 +64,7 @@
             <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
         </div>
         <!--发售模式-->
-        <div class="bg-white margin-b-25">
+        <div class="bg-white margin-b-15">
             <ul class="ui-list ui-list-text">
                 <li class="margin-l-0">
                     <div class="item-card-lable"></div>
@@ -76,7 +76,7 @@
                     <li class="margin-l-0 ui-border-t" 
                     	@click="changeLouter('http://jin.weigudong.cn/index.php/Jishang/info.html')">
                         <div class="ui-avatar">
-                            <span class="jsfs-bg" :style="{backgroundImage: '/jin2.0/images/jscp.png'}"></span>
+                            <span class="jsfs-bg" :style="{backgroundImage: 'url(/jin2.0/images/jscp-logo.png)'}"></span>
                         </div>
                         <div class="ui-nowrap exchange-name line-h-16">
                             <h4 class="fnot14">吉商发售</h4>
@@ -92,7 +92,7 @@
         </div>
         
         <!--大娱乐-->
-        <div class="bg-white margin-b-25">
+        <div class="bg-white margin-b-15">
             <ul class="ui-list ui-list-text">
                 <li class="margin-l-0">
                     <div class="item-card-lable"></div>
@@ -104,7 +104,7 @@
                     <li class="margin-l-0 ui-border-t"
                     	@click="changeLouter('http://jin.weigudong.cn/index.php/Gdcee/detail.html')">
                         <div class="ui-avatar">
-                            <span class="jsfs-bg" :style="{backgroundImage: '/jin2.0/images/app3.png'}"></span>
+                            <span class="jsfs-bg" :style="{backgroundImage: 'url(/jin2.0/images/app3.png)'}"></span>
                         </div>
                         <div class="ui-nowrap exchange-name line-h-16">
                             <h4 class="fnot14">广东深文所</h4>
@@ -151,7 +151,12 @@
         methods: {
         	//路由导航
         	changeLouter: function (url) {
-        		window.location.href = url;
+        		if (this.isLogin === true) {
+        			window.location.href = url;
+        		} else {
+        			 window.location.href="/xiaojin/login_register/login.html"
+        		}
+        		
         	},
             onIsLogin(){
                 var _this = this;
