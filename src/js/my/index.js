@@ -8,6 +8,7 @@ import { XHRGet } from '../ajax.js';
 var login = new Vue({
     el: '#container',
     data: {
+        invite_url: '',
         can_user_money: "",
         info_asset: "",
         last_month_commission: "",
@@ -20,6 +21,7 @@ var login = new Vue({
         nowMonth: "",
         nowDate: "",
         nowStr: "",
+        status:"",
         info: {
             isA: false,
             isB: true,
@@ -35,68 +37,64 @@ var login = new Vue({
     mounted: function () {
         const _this = this;
         XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
-            var date = new Date();
-            var a = new Array("日", "一", "二", "三", "四", "五", "六");
-            var week = new Date().getDay();
-            var str = a[week];
-            _this.nowMonth = date.getMonth();
-            _this.nowDate = date.getDate();
-            _this.nowStr = str;
-            _this.can_user_money = response.data.data.can_user_money,
-                _this.info_asset = response.data.data.info_asset,
-                _this.last_month_commission = response.data.data.last_month_commission,
-                _this.last_month_divident = response.data.data.last_month_divident,
-                _this.level_name = response.data.data.level_name,
-                _this.score = response.data.data.score,
-                _this.wechat_avatar = response.data.data.wechat_avatar
+            console.info(response.data.data.user_sn);
+            _this.invite_url = '/xiaojin/index/invite.html?user_sn=' + response.data.data.user_sn;
+            //var date = new Date();
+            //var a = new Array("日", "一", "二", "三", "四", "五", "六");
+            //var week = new Date().getDay();
+            //var str = a[week];
+            //_this.nowMonth = date.getMonth();
+            //_this.nowDate = date.getDate();
+            //_this.nowStr = str;
+            _this.status=response.data.status;
+            _this.can_user_money = response.data.data.can_user_money;
+            _this.info_asset = response.data.data.info_asset;
+            _this.last_month_commission = response.data.data.last_month_commission;
+            _this.last_month_divident = response.data.data.last_month_divident;
+            _this.level_name = response.data.data.level_name;
+            _this.score = response.data.data.score;
+            _this.wechat_avatar = response.data.data.wechat_avatar;
             //
-            if(response.data.data.real_name = ' '){
+            if(response.data.data.real_name === ''){
                 _this.real_name = "未验证";
             }else{
                 _this.real_name = response.data.data.real_name;
             }
             //
-            if(response.data.data.user_bank_count = ' '){
+            if(response.data.data.user_bank_count === ''){
                 _this.user_bank_count = "未提交";
             }else{
-                _this.user_bank_count = response.data.data.user_bank_count+"张";
+                _this.user_bank_count = response.data.data.user_bank_count;
             }
         });
 
     },
 
     methods: {
+        //路由导航
+        changeLouter: function (url) {
+            window.location.href = url;
+        },
         //提现
         getWithdrawal: function () {
-            //let data = {
-            //assets: this.info.assets,
-            //integral: this.info.integral
-            //};
-            //console.log(data);
             const _this = this;
-            XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
-                console.log(response);
-                if (response.data.status == 1) {
+            //XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
+            //    console.log(response);
+                if (_this.status == 1) {
                     window.location.href = 'http://jin.weigudong.cn/index.php/Withdraw/widthdrawal.html'
-
-            }else{
+                }else{
                     _this.info.isA = true;
                     _this.info.isB = false;
                 }
-            });
+            //});
         },
         //积分商城
         getIntegral: function () {
-            //let data = {
-            //assets: this.info.assets,
-            //integral: this.info. integral
-            //};
-            //console.log(data);
             const _this = this;
-            XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
-                console.log(response);
-                if (response.data.status == 1) {
-                   // window.location.href = '#'
+            //XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
+            //    console.log(response);
+                if (_this.status == 1) {
+                    // window.location.href = '#'
                     _this.info.isE=true;
                     _this.info.isF=false;
 
@@ -104,8 +102,9 @@ var login = new Vue({
                     _this.info.isC = true;
                     _this.info.isD = false;
                 }
+            console.log(_this.status);//测试输出可删除
 
-            });
+            //});
         },
         //未实名关闭
         getShutDown: function () {

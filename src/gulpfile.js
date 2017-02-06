@@ -40,7 +40,7 @@ var webpackConfig = {
     },
     externals: {
         'vue': 'Vue',
-        //'axios': 'axios',
+        'axios': 'axios',
         'vue-router': 'VueRouter',
         'vue-infinite-scroll': 'infiniteScroll'
     },
