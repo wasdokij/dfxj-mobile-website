@@ -63,7 +63,7 @@
                 {"date":"2016-11-5","type":5,"type_name":"小卖部","money":"-150","content":"空店文化衫"}
             ]
         }],
-        limit:0};
+        limit:1};
     import BillFiltrate from 'components/bill/bill-filtrate.vue';
     import BillList from 'components/bill/bill-list.vue';
     import BillDetails from 'components/bill/bill-details.vue';
@@ -77,14 +77,13 @@
                 isloadingComplete: false,
                 walletType:"全部账单",
                 keyword:[
+                    {name:'全部账单'},
+                    {name:'日结佣金'},
+                    {name:'月结佣金'},
                     {name:'佣金发放'},
+                    {name:'代理商佣金'},
                     {name:'微股东分红'},
-                    {name:'空店专卖'},
-                    {name:'小卖部'},
-                    {name:'钱包充值'},
-                    {name:'钱包提现'},
-                    {name:'打赏'},
-                    {name:'代理商佣金'}
+                    {name:'钱包提现'}
                 ],
                 data:""
             }
@@ -102,24 +101,22 @@
             // 搜索数据请求
             childData(msg){
                 this.walletType=msg;
-                /*this.data.length=0;
+                console.log(this.data.splice(0))
                 var keyBillArray= this.data;
                 const loopTitleArray = function (billArray) {
-                    for(var i= 0; i<billArray.length; i++){
+                  /*  for(var i= 0; i<billArray.length; i++){
                         const keyArray= billArray[i];
                         if (keyArray   instanceof Array){
                             loopTitleArray(keyArray)
                         }else {
                             keyBillArray.push(keyArray)
                         }
-                    };
+                    };*/
                 };
-                loopTitleArray(msg.info);*/
+                loopTitleArray(msg.info);
             },
+            // 分页
             loadMore: function () {
-        /*        var app = document.querySelector('.app')
-                var clientHeight = app.clientHeight;
-                var windowHeight= window.screen.height*/
                 var _self = this;
                 var scrollTop = document.body.scrollTop;
                 if (scrollTop + window.innerHeight >= document.body.clientHeight){

@@ -24,7 +24,7 @@
 		</div>
         <!--小娱乐-->
         <div class="bg-white margin-b-15">
-            <ul class="ui-list jin-list">
+            <ul class="ui-list ui-list-text">
                 <li class="margin-l-0">
                     <div class="item-card-lable"></div>
                     <div class="ui-list-info font14">小娱乐</div>

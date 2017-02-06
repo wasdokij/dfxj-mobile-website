@@ -1,6 +1,6 @@
 <template>
   <div class="nsr-loading-center" >
-      <div v-if="hideLoading">
+      <div class="font14">
           加载中...
       </div>
   </div>
@@ -10,7 +10,7 @@
   module.exports = {
     props:{
       hideLoading:{
-        default: false
+        default: true
       },
     },
   }
