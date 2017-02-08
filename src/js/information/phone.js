@@ -9,8 +9,7 @@ var login = new Vue({
     el: "#container",
     data : {
         info: {
-            phone: '18587596820',
-            input:'',
+            input:'18587596820',
             yzm: '',
             isA: true,
             isB: false,
@@ -66,12 +65,8 @@ var login = new Vue({
                     if (time === 0) {
                         _this.getCodeBtnDisable = true;
                     }
-                    //console.log(time === 0);
-                   // console.log(_this.conut_time);
                 });
-                //this.errorTip(response.data.info);
             } else {
-                //this.errorTip(response.data.info);
                 this.getCodeBtnDisable = true;
             }
 
@@ -85,7 +80,7 @@ var login = new Vue({
         goToNext: function () {
             const data = {
                 cellphone: '',
-                verify_code: '',
+                verify_code: ''
             };
             const telResault = this.checkPhone(this.phone);
             if (telResault) {
@@ -96,24 +91,14 @@ var login = new Vue({
                 return false;
             }
             if (this.code === '') {
-               // data.verify_code = encrypt(this.code);
+                // data.verify_code = encrypt(this.code);
                 data.verify_code = this.code;
             } else {
-                console.log(this.code);//可以注释
                 this.errorTip('请输入验证码！');
                 return false;
 
 
             }
-            //axios.post('/api_information01',data).then(function(response){
-            //    console.log(response);
-            //    if (response.data.status === 1) {
-            //        this.$emit('go-to-next')
-            //    } else {
-            //        this.errorTip(response.data.info)
-            //    }
-            //
-            //}.bind(this));
             const _this = this;
             _this.loadingShow = true;
             axios.post('/api_information', data).then(function (response) {
@@ -125,11 +110,12 @@ var login = new Vue({
                         btn: ['确定'],
                         yes: function () {
                             layer.closeAll();
-                            _this.info.phone = _this.info.input;
-                            location.href = 'phone.html';
-                            // _this.info.isC = false;
-                            //_this.info.isD = true;
-
+                            _this.info.isC = false;
+                            _this.info.isD = true;
+                            _this.info.input = _this.phone;//返回的时候手机号码是改过了那个
+                            console.log(_this.info.input);
+                            console.log(_this.phone);
+                            //location.href = 'phone.html';
                         }
                     });
                 }
@@ -144,9 +130,7 @@ var login = new Vue({
         goGenggai:function(){
             this.info.isC = true,
             this.info.isD = false
-        },
-
-
+        }
 
         }
 
