@@ -4,7 +4,7 @@ import Loading from '../../components/common/loading.vue';
 import successing from '../../components/common/success.vue';
 import '../mock/test.js';
 import '../lib/layer.js';
-//import '../../css/information/index.css'
+
 var login = new Vue({
         el: "#container",
         data: {
@@ -32,6 +32,7 @@ var login = new Vue({
                 this.disabled = false;
             }else{
                 console.log("手机号码错误，重新输入");
+                console.log(this.open[1].name);
             }
             //console.log((/^1[34578]\d{9}$/.test(this.open[1].input)));
             this.seen = (/^1[34578]\d{9}$/.test(this.open[1].input));

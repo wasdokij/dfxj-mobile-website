@@ -1,9 +1,9 @@
 @charset "UTF-8";
 @media (min-width: 320px) {
-  /**/
+
   body {
     width: 100%;
-    background: #f3f3f3;
+    background:#f4f3f3;
   }
   /**/
   ul, p, h1, h2, h3, h4, h5, h6, dl, dt {
@@ -54,9 +54,7 @@
     -webkit-box-pack: center;
     -webkit-box-align: center;
   }
-  #renmai ul li div span {
-    background-size: 100% 100%;
-  }
+
   input {
     border: 0;
     box-sizing: border-box;
@@ -64,47 +62,62 @@
     background: 0 0;
   }
 
-  /*# sourceMappingURL=../maps/information/index.css.map */
-  .ui-btn-yellow {
-    background-color: #FFCB00;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #FFCB00), to(#FFCB66));
-    color: #fff;
-    border-color: #FFCB00;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-  }
 
-  .ui-btn-yellow:not(.disabled):not(:disabled):active,
-  .ui-btn-yellow.active {
-    background: #FFCB00;
-    border-color: #FFCB00;
-    color: rgba(255, 255, 255, 0.5);
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-  }
+/*# sourceMappingURL=../maps/information/index.css.map */
+.ui-btn-yellow {
+  background-color: #FFCB00;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #FFCB00), to(#FFCB66));
+  color: #fff;
+  border-color: #FFCB00;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box; }
 
-  .ui-btn-kd {
-    height: 30px;
-    line-height: 30px;
-    padding: 0 11px;
-    min-width: 55px;
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    font-size: 15px;
-    background-color: #fdfdfd;
-    vertical-align: top;
-    -webkit-box-sizing: border-box;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border-radius: 3px;
-    font-size: 18px;
-    height: 44px;
-    line-height: 44px;
-    display: block;
-    width: 100%;
-    border-radius: 5px;
-  }
+.ui-btn-yellow:not(.disabled):not(:disabled):active,
+.ui-btn-yellow.active {
+  background: #FFCB00;
+  border-color: #FFCB00;
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box; }
+
+.ui-btn-kd {
+  padding: 0 11px;
+  min-width: 55px;
+  position: relative;
+  text-align: center;
+  background-color: #fdfdfd;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 18px;
+  height: 44px;
+  line-height: 44px;
+  display: block;
+  width: 100%;
+  border-radius: 5px; }
+
+input {
+  border: 0; }
+
+button {
+  border: 0; }
+
+.border-t-1 {
+  border-top: 1px solid #e0e0e0; }
+
+.border-r-1 {
+  border-right: 1px solid #e0e0e0; }
+
+.border-b-1 {
+  border-bottom: 1px solid #e0e0e0; }
+
+/*底部*/
+.k-footer-nav {
+  color: #787979;
+  font-size: 10px;
+  background-color: #f7f7f7;
+  right: 0; }
 
   input {
     border: 0;
