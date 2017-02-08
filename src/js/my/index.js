@@ -1,4 +1,4 @@
-//import Vue from 'vue';
+import Vue from 'vue';
 import axios from 'axios';
 import '../lib/layer.js';
 import '../lib/layer.css';
@@ -18,10 +18,11 @@ var login = new Vue({
         score: "",
         user_bank_count: "",
         wechat_avatar: "",
+        status:"",
+        //日期有关
         nowMonth: "",
         nowDate: "",
         nowStr: "",
-        status:"",
         info: {
             isA: false,
             isB: true,
@@ -35,17 +36,19 @@ var login = new Vue({
         jinFooter
     },
     mounted: function () {
+        //原生获取日期
+        var date = new Date();
+        var a = new Array("日", "一", "二", "三", "四", "五", "六");
+        var week = new Date().getDay();
+        var str = a[week];
+        this.nowMonth = date.getMonth();
+        this.nowDate = date.getDate();
+        this.nowStr = str;
         const _this = this;
+       //请求数据
         XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
             console.info(response.data.data.user_sn);
             _this.invite_url = '/xiaojin/index/invite.html?user_sn=' + response.data.data.user_sn;
-            //var date = new Date();
-            //var a = new Array("日", "一", "二", "三", "四", "五", "六");
-            //var week = new Date().getDay();
-            //var str = a[week];
-            //_this.nowMonth = date.getMonth();
-            //_this.nowDate = date.getDate();
-            //_this.nowStr = str;
             _this.status=response.data.status;
             _this.can_user_money = response.data.data.can_user_money;
             _this.info_asset = response.data.data.info_asset;
@@ -78,33 +81,25 @@ var login = new Vue({
         //提现
         getWithdrawal: function () {
             const _this = this;
-            //XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
-            //    console.log(response);
-                if (_this.status == 1) {
-                    window.location.href = 'http://jin.weigudong.cn/index.php/Withdraw/widthdrawal.html'
+                if (_this.user_bank_count == 0) {
+                    _this.info.isC = true;
+                    _this.info.isD = false;
                 }else{
-                    _this.info.isA = true;
-                    _this.info.isB = false;
+                    window.location.href = 'http://jin.weigudong.cn/index.php/Withdraw/widthdrawal.html'
                 }
-            //});
         },
         //积分商城
         getIntegral: function () {
             const _this = this;
-            //XHRGet('/oriental_treasure/my_center/index', {}, function (response) {
-            //    console.log(response);
                 if (_this.status == 1) {
-                    // window.location.href = '#'
                     _this.info.isE=true;
                     _this.info.isF=false;
 
                 } else {
-                    _this.info.isC = true;
-                    _this.info.isD = false;
+                    _this.info.isA = true;
+                    _this.info.isB = false;
                 }
-            console.log(_this.status);//测试输出可删除
-
-            //});
+            console.log(_this.user_bank_count);
         },
         //未实名关闭
         getShutDown: function () {
@@ -126,7 +121,6 @@ var login = new Vue({
             this.info.isE = false;
             this.info.isF = true;
         }
-
 
     }
 })

@@ -49,7 +49,8 @@
                 <li data-href="#" class="border-b-1">
                     <div class="rlt width-100">
                         <label class="ui-nowrap abs top-10">手机号</label>
-                        <input type="text"  placeholder="输入手机号" class="ui-form-item input width-100 padding-l-60"   v-model="info.input"/>
+                        <input type="tel" name="phone"  placeholder="输入手机号" class="ui-form-item input width-100 padding-l-60"   v-model="phone"/>
+
                     </div>
 
                 </li>
@@ -57,15 +58,19 @@
                     <div class="rle width-100">
                         <label class="ui-nowrap">验证码</label>
                         <input type="text" placeholder="输入验证码" class="ui-form-item input" style="border:0;padding-left:9px;"  v-model="info.yzm"/>
-                        <span  class="abs yzm cursor-pir a-r bg-yellow" v-bind:class='{"dis_n" :info.isB,"dsp_b" :info.isA}' v-on:click="getData">获取</span>
-                        <span  class="abs yzm cursor-pir a-r bg-ddd" v-bind:class='{"dis_n":info.isA, "dsp_b":info.isB}'  id="time_show" disabled="disabled"></span>
+                        <span class="abs yzm cursor-pir a-r bg-yellow"  @click.prevent="getCode" v-if="getCodeBtnDisable">
+                            {{ conut_time === "0s" ? '重获' : '获取' }}
+                        </span>
+                        <span  class="abs yzm cursor-pir a-r bg-ddd" disabled v-if="getCodeBtnDisable == false">{{ conut_time }}</span>
+                        <!--<span  class="abs yzm cursor-pir a-r bg-yellow" v-bind:class='{"dis_n" :info.isB,"dsp_b" :info.isA}' v-on:click="getData">获取</span>-->
+                        <!--<span  class="abs yzm cursor-pir a-r bg-ddd" v-bind:class='{"dis_n":info.isA, "dsp_b":info.isB}'  id="time_show" disabled="disabled"></span>-->
                     </div>
                 </li>
             </ul>
         </div>
         <!--03-->
         <div class="ui-btn-wrap">
-            <button  class="ui-btn-kd ui-btn-yellow" v-on:click="goToLogin">提交</button>
+            <button  class="ui-btn-kd ui-btn-yellow" v-on:click="goToNext">提交</button>
         </div>
         <!---->
 
@@ -75,6 +80,7 @@
 <script src="../../js/lib/axios.js"></script>
 <script src="../../js/lib/layer.js"></script>
 <script src="../../js/information/phone.js" ></script>
+<script src="../../js/tools.js"></script>
 <script>
 
 
