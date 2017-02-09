@@ -2,6 +2,9 @@ body{
   background: #ddd;
   font-size: 14px;
 }
+[v-cloak] {
+  display: none;
+}
 /*±³¾°ÑÕÉ«*/
 .bg-dbbe83{ background:#dbbe83; }
 .bg-df4400{background: #df4400;}

@@ -6,6 +6,9 @@ body{
     display: -webkit-box;
     -webkit-box-align: center;
 }
+[v-cloak] {
+    display: none;
+}
 .txt-center{text-align: center;}
 .index-nav-ul{
     display: -webkit-box;

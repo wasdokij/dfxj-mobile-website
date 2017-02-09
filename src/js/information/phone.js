@@ -9,8 +9,7 @@ var login = new Vue({
     el: "#container",
     data : {
         info: {
-            phone: '18587596820',
-            input:'',
+            input:'18778543910',
             yzm: '',
             isA: true,
             isB: false,
@@ -125,11 +124,9 @@ var login = new Vue({
                         btn: ['确定'],
                         yes: function () {
                             layer.closeAll();
-                            _this.info.phone = _this.info.input;
-                            location.href = 'phone.html';
-                            // _this.info.isC = false;
-                            //_this.info.isD = true;
-
+                            _this.info.input=_this.phone ;
+                             _this.info.isC =false ;
+                            _this.info.isD = true;
                         }
                     });
                 }
@@ -144,8 +141,7 @@ var login = new Vue({
         goGenggai:function(){
             this.info.isC = true,
             this.info.isD = false
-        },
-
+        }
 
 
         }
