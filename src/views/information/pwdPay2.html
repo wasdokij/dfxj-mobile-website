@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="author" content="ISUX"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<title>重置支付密码2</title>
+	<link rel="stylesheet" type="text/css" href="../../css/frozen.css">
+	<link rel="stylesheet" type="text/css" href="../../css/jin-base.css">
+</head>
+<body>
+	<div class="k-wrap container">
+		<div class="ui-border-t margin-t-15">
+		    <form action="#" id="form">		        
+		        <div class="ui-form-item ui-border-b bg-white">
+		            <label>姓名</label>
+		            <input class="text-right" type="text" name="name" value="*恩景">
+		        </div>
+		        <div class="ui-form-item ui-border-b bg-white">
+		        	<label>身份证号</label>
+		            <input type="text" id="idCard" name="idCard" placeholder="身份证号码" >
+		        </div>
+		        <div class="ui-form-item ui-form-item-link ui-border-tb bg-white margin-t-10" id="select-bank">
+		            <label>选择银行卡</label>
+		            <input type="text" id="bank" name="bank" value="" readonly="readonly"/>
+		        </div>
+		        <div class="ui-form-item ui-border-b bg-white">
+		            <label>银行卡号</label>
+		            <input type="tel" id="bank_number" name="bank_number" placeholder="输入银行卡号码" />
+		        </div>
+		    </form>
+		</div>
+		<div class="ui-whitespace font14 ui-txt-muted padding-t-5">
+			以上内容仅作为信息对比，空店将严格保密。
+		</div>	
+		<div class="ui-btn-wrap">
+		    <button class="ui-btn-lg ui-btn-primary" id="submit" disabled="disabled">下一步</button>
+		</div>
+	</div>
+	<div class="king-dialog-wrap">
+		<div class="king-dialog c-up-before padding-b-15">
+			<div class="ui-whitespace padding-t-5 padding-b-5 bg-whitesmoke">
+				<p class="font14 ui-txt-info line-h-nor">选择银行进行验证</p>
+			</div>
+			<ul class="ui-list k-list ui-list-active" d-bank>
+				<li class="ui-border-b">
+					<div class="ui-avatar k-avatar-s" style="background-image: url(../img/king/bank-jt.png);"></div>
+					<div class="ui-list-info">
+						<h4>交通银行(3546)</h4>
+					</div>
+				</li>
+				<li class="ui-border-b">
+					<div class="ui-avatar k-avatar-s" style="background-image: url(../img/king/bank-js.png);"></div>
+					<div class="ui-list-info">
+						<h4>建设银行(1546)</h4>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+
+</body>
+</html>

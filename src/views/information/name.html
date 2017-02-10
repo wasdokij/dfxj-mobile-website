@@ -18,7 +18,7 @@
             <li data-href="#">
                 <div class="rlt width-100">
                     <label class="ui-nowrap abs top-10">常用名</label>
-                    <input type="text" placeholder="输入新常用名" class="ui-form-item input width-100 padding-l-60" id="name"/>
+                    <input type="text" placeholder="输入新常用名" class="ui-form-item input width-100 padding-l-60" id="name" v-model="info.name"/>
                 </div>
             </li>
         </ul>
@@ -34,12 +34,13 @@
    </div>
     <!--04-->
     <loading v-if="loadingShow"></loading>
-    <successing v-if="successingShow"></successing>
+    <!--<successing v-if="successingShow"></successing>-->
     <!--底部-->
 
  </div>
 </div>
 <script src="../../js/lib/vue.js"></script>
+<script src="../../js/lib/jsencrypt.js"></script>
 <script src="../../js/lib/axios.js"></script>
 <script src="../../js/information/name.js"></script>
 <script>

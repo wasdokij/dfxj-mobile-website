@@ -1,40 +1,51 @@
-//import Vue from 'vue';
+import Vue from 'vue';
 import axios from 'axios';
-import Loading from '../../components/common/loading.vue';
-import successing from '../../components/common/success.vue';
 import '../mock/test.js';
 import '../lib/layer.js';
+import '../lib/layer.css';
+import Loading from '../../components/common/loading.vue';
+import { countdown } from '../tools.js';
+import { XHRPost} from '../ajax.js';
 var login = new Vue({
     el: '#container',
     data: {
-        phone:'',
-        loadingShow: false,
-        successingShow:false
+        info:{
+        name:""
+        },
+        loadingShow: false
     },
     components: {
-        Loading,
-        successing
+        Loading
     },
     methods: {
+        errorTip: function (msg) {
+            layer.open({
+                content: msg,
+                btn: ['确定'],
+                yes: function () {
+                    layer.closeAll();
+                }
+            });
+        },
         goToLogin: function() {
-            let data = {
-                input: this.phone
+            const data = {
+                user_name:encrypt(this.info.name)
             };
             const _this = this;
-            _this.loadingShow = true;
-            axios.post('/api_information01',data).then(function(response){
-                console.log(response);
-                if (response.data.status == 0||1) {
+            //console.log(this.info.name);
+                this.loadingShow = true;
+                XHRPost('/oriental_treasure/MySeting/editUserName', data, function (response) {
+                    //console.log(response);
+                    //console.log(data.input);
                     _this.loadingShow = false;
-                    _this.successingShow=true;
-                    //setInterval("layer.closeAll()",2000);
-                  //layer.open({content: response.data.info});
-                  //  setInterval("layer.closeAll()",2000);
-                }
-                console.log(response.data.status == 0);
-                console.log(response.data.status == 1);
-            });
-          //............
+
+                    if (response.data.status === 1) {
+                        window.location.href = 'password.html'
+                    }else{
+                        _this.errorTip(response.data.info);
+                    }
+                });
+
         }
     }
 });

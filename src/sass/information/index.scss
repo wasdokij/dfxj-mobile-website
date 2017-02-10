@@ -189,5 +189,20 @@ button {
 
 .dis_p {
   display: block; }
+/*键的颜色*/
+.ui-btn-primary {
+  background-color: #ffcb00;
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(.5,#ffcb00),to(#ffcb66));
+  color: #fff;
+  border-color: #ffcb00;
+  background-clip: padding-box;
+}
+.ui-btn-primary:not(.disabled):not(:disabled):active,
+.ui-btn-primary.active {
+  background: #FFCB00;
+  border-color: #FFCB00;
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box; }
 
 /*# sourceMappingURL=../maps/information/index.css.map */
