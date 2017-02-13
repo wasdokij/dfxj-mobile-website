@@ -15,59 +15,48 @@
 	<body class="bg-white">
     <div id="container" class="container">
         <!--银行卡面板-->
-        <div class="bank-card-dashboard rlt">
+        <div class="bank-card-dashboard rlt" v-show="visible.home">
             <div class="bank-card-overview">
                 <div class="button-group clearfix">
-                    <span class="jin-icon-fanhui jin-iconfont fanhui"></span>
-                    <span class="tianjia">添加</span>
+                    <span @click="goBack" class="jin-icon-fanhui jin-icon fanhui"></span>
+                    <span @click="goAddCard" class="tianjia">添加</span>
                 </div>
                 <h1>银行卡</h1>
-                <div class="p-l-7 abs b0">
-                    <span class="number">3</span>
+                <div class="p-l-7 abs b0" v-show="visible.hasCard">
+                    <span class="number">{{visible.cardNum}}</span>
                     <span class="font18">张</span>
                 </div>
-                <!--<div class="p-l-7 abs notyet">-->
-                     <!--<span class="jin-icon-icon jin-iconfont notyet-icon"></span>-->
-                    <!--<span class="notyet-text">尚未添加</span>-->
-                <!--</div>-->
+                <div class="p-l-7 abs notyet" v-show="!visible.hasCard">
+                     <span class="jin-icon-icon jin-icon notyet-icon"></span>
+                    <span class="notyet-text">尚未添加</span>
+                </div>
             </div>
         </div>
         <!--单张银行卡-->
-        <div class="bank-cards">
-            <div class="bank-card-cell some-gradient">
-                <div class="title">
-                    <img src="" alt="" class="logo">
-                    <span class="font14">光大银行</span>
-                    <span class="note font12">(用于天矿所开户)</span>
+        <div class="bank-cards" v-show="visible.hasCard">
+            <template v-for="card in bankCards.data">
+                <div class="bank-card-cell some-gradient" key="card.id">
+                    <div class="title">
+                        <img src="" alt="" class="logo">
+                        <span class="font14">{{ card.bank_name }}</span>
+                        <span class="note font12">(用于{{ card.type }}开户)</span>
+                    </div>
+                    <div class="card-number font24">
+                        ****&nbsp;****&nbsp;****&nbsp;<span>{{ card.bank_card_no }}</span>
+                    </div>
+                    <div class="card-owner font12">
+                        持卡人：{{ card.real_name }}
+                    </div>
                 </div>
-                <div class="card-number font24">
-                    ****&nbsp;****&nbsp;****&nbsp;<span>0415</span>
-                </div>
-                <div class="card-owner font12">
-                    持卡人：**贤
-                </div>
-            </div>
-            <div class="bank-card-cell some-gradient">
-                <div class="title">
-                    <img src="" alt="" class="logo">
-                    <span class="font14">光大银行</span>
-                    <span class="note font12">(用于天矿所开户)</span>
-                </div>
-                <div class="card-number font24">
-                    ****&nbsp;****&nbsp;****&nbsp;<span>0415</span>
-                </div>
-                <div class="card-owner font12">
-                    持卡人：**贤
-                </div>
-            </div>
+            </template>
         </div>
         <!--缺省状态-->
-        <div class="card-null">
+        <div class="card-null" v-show="visible.nullResult">
             <img src="../../images/null-data.png" alt="">
             <span>空旷到成为森林</span>
         </div>
         <!--添加银行卡-->
-        <div class="card-form">
+        <div class="card-form" v-show="visible.addPage">
             <div class="legend">
                 <span>*智贤</span>
                 <span>45************0019</span>
@@ -113,7 +102,7 @@
                         <button class="weui-vcode-btn vcode-ing">60s</button>
                     </div>
                 </div>
-                <div class="button-panel">
+                <div class="button-panel bank-card-panel">
                     <a href="javascript:;" class="weui-btn weui-btn_primary">绑定银行卡</a>
                 </div>
             </div>
@@ -135,10 +124,35 @@
                 <!--</div>-->
             <!--</div>-->
         <!--</div>-->
-
+        <!--实名认证提示框-->
+        <div class="js_dialog my-dialog" v-show="certDialog">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog cert-dialog">
+                <div class="weui-dialog__bd">
+                    <div class="img-div">
+                        <img class="cert-img" src="../../images/id-alert.png" alt="">
+                    </div>
+                    <p>
+                        请先开通实名认证
+                    </p>
+                    <span class="cert-span">
+                        您的账户未实名，无法操作此步骤，请先前往实名认证。
+                    </span>
+                </div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary cert ">去开通</a>
+                </div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary cert close" @click="closeDialog">关闭</a>
+                </div>
+            </div>
+        </div>
 
     </div>
     <script src="../../js/lib/vue.js"></script>
+    <!--<script src="../../js/lib/vuex.js"></script>-->
+    <!--<script src="../../js/lib/vue-router.js"></script>-->
+    <script src="../../js/lib/axios.js"></script>
     <script src="../../js/lib/fastclick.js"></script>
     <script src="../../js/mine/bank-cards.js"></script>
 	</body>

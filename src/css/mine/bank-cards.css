@@ -183,3 +183,28 @@ h1 {
 .my-dialog a {
   color: #4990e2;
   font-size: 18px; }
+
+.bank-cards {
+  padding-bottom: 39px; }
+
+.cert {
+  font-size: 16px !important; }
+  .cert.close {
+    color: #FF3E2A; }
+
+.cert-span {
+  width: 100% !important;
+  color: #4a4a4a !important; }
+
+.cert-dialog {
+  width: 265px !important;
+  overflow: visible !important; }
+
+.cert-img {
+  width: 100px;
+  position: absolute;
+  top: -26px;
+  left: 82px; }
+
+.img-div {
+  height: 58px; }

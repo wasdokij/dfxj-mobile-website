@@ -42,6 +42,7 @@ var webpackConfig = {
         'vue': 'Vue',
         'axios': 'axios',
         'vue-router': 'VueRouter',
+        'vuex': 'Vuex',
         'vue-infinite-scroll': 'infiniteScroll'
     },
 	module: {
