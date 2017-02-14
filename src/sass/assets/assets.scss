@@ -1,3 +1,4 @@
+
 /**信息资产**/
 header {
     background: #FFB200;
@@ -210,3 +211,27 @@ header .title-text {
 .asset-list-wrap input::-webkit-input-placeholder {color: #ffffff;}
 .asset-list-wrap input::-webkit-search-cancel-button {display: none;}
 
+/*下拉加载无数据提示*/
+.no-more-data {
+    position: relative;
+}
+.no-more-data:before {
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: #bbb;
+    content:'';
+}
+.no-more-data:after {
+    position: absolute;
+    top: 50%;
+    right: -50px;
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: #bbb;
+    content:'';
+}

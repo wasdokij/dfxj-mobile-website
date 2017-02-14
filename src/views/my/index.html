@@ -2,8 +2,12 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="author" content="ISUX"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>我的</title>
-    <meta name="viewport" content="width=device-width,user-scalable=no">
     <link rel="stylesheet" href="../../css/frozen.css"/>
     <link rel="stylesheet" href="../../css/jin-base.css"/>
     <link rel="stylesheet" href="../../css/my/index.css"/>
@@ -11,7 +15,7 @@
     </style>
 </head>
 <body>
- 	<div id="container" class="jin-wrap">
+ 	<div id="container" class="jin-wrap" v-cloak>
         <!--01-->
         <div class="ui-list ui-justify-flex ui-whitespace k-box-align">
             <div class="header_pic width-20">
@@ -20,7 +24,7 @@
                 </div>
             </div>
             <ul class="txt-center index-nav-ul width-80"  >
-                <li class=" width-33 box-left">
+                <li class=" width-33 box-left" @click="changeLouter('/xiaojin/assets/index.html')">
                     <h4 class="font16">{{info_asset}}</h4>
                     <div class="font12 txt-color-bbb">信息资产</div>
                 </li>
