@@ -46,18 +46,17 @@ import { XHRGet } from '../../js/ajax.js';
             	info: {},
                 id: this.$route.query.id,
                 loadingShow: true,
+                title: '获得记录详情',
             }
         },
         created: function() {
+        	document.title = this.title;
         	this.getData();
+        	
         },
-//      activated: function () {
-//      	this.id = this.$route.query.id;
-//      	this.getData();
-//      },
-//      deactivated: function () {
-//			loadingShow = true;
-//      },
+        activated: function () {
+        	document.title = this.title;
+        },
         components:{
         	Loading
         },

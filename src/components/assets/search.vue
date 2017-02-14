@@ -32,22 +32,19 @@ import { XHRGet } from '../../js/ajax.js';
 				search: this.$route.query.search,
 				nullData: false,
 				loadingShow: true,
+				title: '搜索',
 			};
 		},
 		components: {
 			Loading
 		},
 		created: function () {
+			document.title = this.title;
 			this.searchFn();
 		},
-//		activated: function () {
-//			this.search = this.$route.query.search,
-//      	this.searchFn();
-//      },
-//      deactivated: function () {
-//      	nullData = false;
-//			loadingShow = true;
-//      },
+		activated: function () {
+        	document.title = this.title;
+        },
 		methods: {
 			searchFn: function () {
 				console.error(this.search)

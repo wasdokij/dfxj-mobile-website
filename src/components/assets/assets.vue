@@ -80,15 +80,20 @@
 					this_month_profit: "--",
 					vip_count: "--",
  				},
-				loadingShow: true
+				loadingShow: true,
+				title: '信息资产',
 			};
 		},
 		components: {
 			Loading
 		},
 		created: function() {
+			document.title = this.title;
 			this.getData();
 		},
+		activated: function () {
+        	document.title = this.title;
+        },
 		methods: {
 			goBack: function () {
 				window.history.go(-1);

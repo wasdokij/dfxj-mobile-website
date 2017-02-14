@@ -15,7 +15,7 @@
 	        <div class="bill-border-t ui-border-b" v-for="items in info">
 	            <h4 class="time-tile ui-whitespace font14 ui-border-b">{{items.title}}</h4>
 	            <ul class="ui-list bill-list-nor" v-for="item in items.list">
-	                <li class="bill-border-b" >
+	                <li class="ui-border-b" >
 	                    <div class="bill-list-time padding-r-10" >
 	                        <div class="line-h-nor ui-txt-muted" v-if="item.add_time.length < 8">
 	                            <div class="margin-b-5 font14">{{item.add_time.substring(0,2)}}</div>
@@ -59,7 +59,7 @@
 	        
 	    </div>
         <!--空缺状态 start -->
-        <div class="margin-b-15 text-center" v-if="info.length == 0">
+        <div class="margin-b-15 text-center" v-if="nullData">
             <img src="/jin2.0/images/null-data.png"/>
             <div class="margin-t-10 font14 ui-txt-muted">空旷到可以成为一片森林</div>
         </div>
@@ -78,10 +78,16 @@ import { XHRGet } from '../../js/ajax.js';
                 page: 0,
                 loadMoreTip: false,
                 loadend: false,
+                nullData: false,
+                title: '获得记录',
             }
         },
-        created(){
+        created () {
+        	document.title = this.title;
             this.loadMore();
+        },
+        activated: function () {
+        	document.title = this.title;
         },
         methods:{
             loadMore: function () {
@@ -90,17 +96,32 @@ import { XHRGet } from '../../js/ajax.js';
                	XHRGet('/oriental_treasure/MyCenter/my_asset_list',{page:this.page},function (response) {
                	    this.loadingShow = false;
                	    this.loadMoreTip = false;
-                    console.info(response.data)
-                    this.info = this.info.concat(response.data.data);
-                    
-                    if (response.data.data.length === 0) {
+                    const data = response.data.data;
+                    if (this.info.length != 0) {
+                    	var beforeTitle = this.info[this.info.length - 1].title;
+                    	var lastone = this.info[this.info.length - 1];
+                    }
+                   
+                    for (let i = 0;i < data.data.length;i++) {
+                    	if (data.data[i].title === beforeTitle) {
+                    		lastone.list = lastone.list.concat(data.data[i].list)
+                    	} else {
+                    		this.info.push(data.data[i]);
+                    	}
+                    }
+                    console.log(this.info)
+                   
+                    if (data.data.length === 0) {
 				    	this.loadend = true;
 				    	this.busy = true;
 				    }
+                    if (data.total_count === 0) {
+                    	this.nullData = true;
+                    }
                	}.bind(this))
             },
             // 查看详情
-            recordDetail(id){
+            recordDetail(id) {
                 this.$router.push({path:'/recordDetail',query: { id: id  }})
             }
         }

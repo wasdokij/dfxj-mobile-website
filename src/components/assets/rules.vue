@@ -17,6 +17,17 @@
 </template>
 <script>
 	export default {
+		data () {
+			return {
+				title: '信息资产规则',
+			}
+		},
+		created: function () {
+        	document.title = this.title;
+       },
+       activated: function () {
+        	document.title = this.title;
+        },
 		methods: {
 			goBack() {
 				this.$router.go(-1)

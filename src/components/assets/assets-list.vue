@@ -86,15 +86,19 @@ import { XHRGet } from '../../js/ajax.js';
 				loadMoreTip: false,
 				loadend: false,
 				searchOption: '',
+				title: '信息资产排行榜',
 			};
 		},
 		components: {
 			Loading
 		},
 		created: function() {
+			document.title = this.title;
 			this.getData();
 		},
-		
+		activated: function () {
+        	document.title = this.title;
+        },
 		methods: {
 			getData: function() {
 				XHRGet('/oriental_treasure/MyCenter/ranking', {} , function (response) {
