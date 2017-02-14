@@ -208,3 +208,20 @@ h1 {
 
 .img-div {
   height: 58px; }
+
+.bank-card-panel {
+  padding-bottom: 25px !important; }
+
+.my-actionsheet {
+  width: calc(100% - 20px) !important;
+  margin: 0 10px 10px 10px !important;
+  background-color: transparent !important; }
+  .my-actionsheet .my-text-cell {
+    font-size: 18px;
+    color: #4990E2; }
+  .my-actionsheet .my-delete-cell {
+    font-size: 18px;
+    color: #FF3E2A; }
+  .my-actionsheet .my-small-cell {
+    font-size: 12px;
+    color: #9B9B9B; }

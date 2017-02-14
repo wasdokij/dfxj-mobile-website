@@ -9,6 +9,8 @@ const addBankCard = '/oriental_treasure/UserBank/addBankCard';
 const editBankCard = '/oriental_treasure/UserBank/editMyBankCard';
 // 删除银行卡
 const deleteBankCard = '/oriental_treasure/UserBank/delMyBankCard';
+// 获取验证码
+const verifyCode = '/oriental_treasure/register_and_login/sendPhoneCode';
 
 function baseAxios(type, url, config, cb, errCb) {
     axios[type](url, config).then(function (response) {
@@ -38,7 +40,11 @@ export function deleteCard(config, cb, errCb) {
     baseAxios('post', deleteBankCard, config, cb, errCb);
 }
 
-export function getInitialState() {
+export function getVerifyCode(config, cb, errCb) {
+    baseAxios('post', verifyCode, config, cb, errCb);
+}
+
+export function getInitialBankCardList() {
     return {
         bankCards: {
             data: [],
@@ -50,8 +56,17 @@ export function getInitialState() {
     }
 }
 
-export function assignData(obj, data) {
-    Object.keys(data).forEach(function (key) {
-        obj[key] = deepClone(data[key]);
-    });
+export function getInitialCardAddingForm() {
+    return {
+        cardAdding: {
+            bank_name: '',
+            bank_card_no: '',
+            verify_code: '',
+            counting: false,
+            countingNum: 60,
+            cellphone: '',
+            dialogShow: false,
+            message: ''
+        }
+    }
 }
