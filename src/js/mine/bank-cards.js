@@ -94,10 +94,11 @@ window.app = new Vue({
                 }, function (res) {
                     if (res.data.status === 1) {
                         console.log('添加成功', res.data);
-                        // pageManager.go('home');
-                        self.cardAdding = api.getInitialCardAddingForm();
+                        tools.assignData(self.cardAdding, api.getInitialCardAddingForm());
                         self.cardAdding.dialogShow = true;
                         self.cardAdding.message = res.data.info;
+                        self.getCard();
+                        pageManager.go('home');
                     }
                     if (res.data.status === 0) {
                         console.log('添加失败', res.data);
@@ -119,7 +120,8 @@ window.app = new Vue({
                     });
                 }
                 if (bankCards.status === 0) {
-                    // 啥都不做
+                    tools.assignData(self.bankCards, api.getInitialBankCardList());
+                    self.bankCards.data = [];
                 }
             }, function (err) {
                 console.error('err', err);
@@ -141,6 +143,9 @@ window.app = new Vue({
                     self.getCard();
                 }
             }, function() {});
+        },
+        closeDialog() {
+            this.cardAdding.dialogShow = false;
         }
     },
     filters: {
@@ -203,7 +208,7 @@ function fnFactory(app) {
 
         api.getVerifyCode({
             cellphone: encrypt(self.cardAdding.cellphone),
-            exist: encrypt('0')
+            exist: encrypt('1')
         }, function (res) {
             if (res.data.status === 1) {
                 self.cardAdding.counting = true;

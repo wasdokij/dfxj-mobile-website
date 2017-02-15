@@ -35,10 +35,10 @@
         <!--单张银行卡-->
         <div class="bank-cards" v-show="visible.hasCard">
             <template v-for="card in bankCards.data">
-                <div @click="selectCard(card)" class="bank-card-cell some-gradient" key="card.id">
+                <div @click="selectCard(card)" class="bank-card-cell" :class="card.css" key="card.id">
                     <div class="title">
-                        <img src="" alt="" class="logo">
-                        <span class="font14">{{ card.bank_name }}</span>
+                        <img :src="card.logo" alt="" class="logo">
+                        <span class="font14 p-l-38">{{ card.bank_name }}</span>
                         <span class="note font12">(用于{{ card.type }}开户)</span>
                     </div>
                     <div class="card-number font24">
@@ -128,7 +128,7 @@
                     </p>
                 </div>
                 <div class="weui-dialog__ft">
-                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" @click="cardAdding.dialogShow = false;">知道了</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" @click="closeDialog">知道了</a>
                 </div>
             </div>
         </div>

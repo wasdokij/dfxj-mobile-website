@@ -109,6 +109,34 @@ h1 {
   height: 14px;
   line-height: 14px; }
 
+.mybank-card-ny {
+  background: #25B59B;
+  background: -webkit-linear-gradient(left, #25B59B, #0D9CB6); }
+
+.mybank-card-gs {
+  background: #C22727;
+  background: -webkit-linear-gradient(left, #C22727, #9F0407); }
+
+.mybank-card-gd {
+  background: #A56CA1;
+  background: -webkit-linear-gradient(left, #A56CA1, #92458D); }
+
+.mybank-card-js {
+  background: #5888C1;
+  background: -webkit-linear-gradient(left, #5888C1, #3D5EA9); }
+
+.mybank-card-zs {
+  background: #F5515F;
+  background: -webkit-linear-gradient(left, #F5515F, #D32F30); }
+
+.mybank-card-jt {
+  background: #72A5E0;
+  background: -webkit-linear-gradient(left, #72A5E0, #4990E2); }
+
+.mybank-card-other {
+  background: #333;
+  background: -webkit-linear-gradient(left, #353535, #393939); }
+
 .card-null {
   height: calc(100vh - 185px);
   display: flex;
@@ -225,3 +253,15 @@ h1 {
   .my-actionsheet .my-small-cell {
     font-size: 12px;
     color: #9B9B9B; }
+
+.logo {
+  width: 35px;
+  position: absolute;
+  left: 10px;
+  top: 10px; }
+
+.bank-card-cell {
+  position: relative; }
+
+.p-l-38 {
+  padding-left: 38px; }
