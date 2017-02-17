@@ -204,5 +204,21 @@ button {
   color: rgba(255, 255, 255, 0.5);
   -webkit-background-clip: padding-box;
   background-clip: padding-box; }
+/*修改支付密码页面*/
+.kd-empty .logo, .notkiong-tip .logo {
+  margin: 0 auto;
+  height: 100px;
+  width: 100px;
+}
+.notkiong-tip .logo i {
+  line-height: 100px;
+  font-size: 100px;
+}
+.ui-btn-primary:before {
+   border: 1px solid #ffcb00;
+}
+[v-cloak] {
+  display: none; }
+
 
 /*# sourceMappingURL=../maps/information/index.css.map */

@@ -11,9 +11,9 @@
 //    data : {
 //        disabled:true,
 //        info: {
-//           ypwd:"",
-//           xpwd:"",
-//           xpwd1:""
+//            ypwd:"",
+//            xpwd:"",
+//            xpwd1:""
 //        }
 //
 //    },
@@ -21,7 +21,7 @@
 //        //失去焦点事件
 //        test:function(){
 //            const _this = this;
-//            if(this.info.ypwd != ""&&this.info.xpwd != ""&&this.info.xpwd1 != ""){
+//            if(this.info.ypwd!=""&&this.info.xpwd!=""&&this.info.xpwd1!=""){
 //                _this.disabled = false;
 //            }
 //        },
@@ -40,24 +40,24 @@
 //                content: msg,
 //                btn: ['确定'],
 //                yes: function () {
-//                    window.location.href = '../loginRegister/login.html'
+//                    window.location.href = 'http://www.testapi.net/xiaojin/information/password.html'
 //                }
 //            });
 //        },
 //        //保存事件
 //        goBaocun: function () {
 //            const data = {
-//                password: encrypt(this.info.ypwd),
-//                new_password:encrypt(this.info.xpwd),
+//                pay_password: encrypt(this.info.ypwd),
+//                new_pay_password:encrypt(this.info.xpwd),
 //                re_password:encrypt(this.info.xpwd1)
 //            }
 //            //const _this = this;
-//            XHRPost('/oriental_treasure/MySeting/editLoginPassword', data, function (response) {
+//            XHRPost('/oriental_treasure/MySeting/editPayPassword', data, function (response) {
 //                if (response.data.status === 1) {
 //                    this.successTip(response.data.info);
 //                    //this.successTip(1111);
 //                }else{
-//                   this.errorTip(response.data.info);
+//                    this.errorTip(response.data.info);
 //                }
 //                console.log(this.errorTip);
 //            }.bind(this))
@@ -70,11 +70,11 @@ import axios from 'axios';
 import '../mock/test.js';
 import '../lib/layer.js';
 import '../lib/layer.css';
-import close from 'components/information/close.vue';
+import pwdPay1 from 'components/information/pwdPay1.vue';
 import { countdown } from '../tools.js';
 
 const routes = [
-    { path: '/', component: close}
+    { path: '/', component: pwdPay1}
 ];
 const router = new VueRouter({
     // ES6缩写语法，相当于routes:routes
