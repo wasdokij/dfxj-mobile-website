@@ -39,7 +39,7 @@
                         </div>
                         <div class="jin-list-info">
                             <div class="ui-nowrap exchange-name">
-                                <div class="font14">广东深文所</div>
+                                <div class="font14">广文投教</div>
                                 <div class="font12 color-9b">止盈止损人性化</div>
                             </div>
                             <div class="font12 color-f75c">立即体验</div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="jin-list-info">
                             <div class="ui-nowrap exchange-name">
-                                <div class="font14">吉林国际商品交易中心</div>
+                                <div class="font14">吉商在线</div>
                                 <div class="font12 color-9b">5元起步，低门槛</div>
                             </div>
                             <div class="font12 color-f75c">立即体验</div>

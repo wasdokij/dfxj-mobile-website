@@ -470,7 +470,9 @@ body,
 .line-clamp-4 {
   -webkit-line-clamp: 4; }
 
-
+[v-cloak] {
+    display: none;
+}
 
 
 

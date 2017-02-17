@@ -114,6 +114,35 @@ h1 {
   height: 14px;
   line-height:14px;
 }
+// 多张银行卡样式
+.mybank-card-ny {
+	background: #25B59B;
+	background: -webkit-linear-gradient(left,#25B59B,#0D9CB6);
+}
+.mybank-card-gs {
+	background: #C22727;
+	background: -webkit-linear-gradient(left,#C22727,#9F0407);
+}
+.mybank-card-gd {
+	background: #A56CA1;
+	background: -webkit-linear-gradient(left,#A56CA1,#92458D);
+}
+.mybank-card-js {
+	background: #5888C1;
+	background: -webkit-linear-gradient(left,#5888C1,#3D5EA9);
+}
+.mybank-card-zs {
+	background: #F5515F;
+	background: -webkit-linear-gradient(left,#F5515F,#D32F30);
+}
+.mybank-card-jt {
+	background: #72A5E0;
+	background: -webkit-linear-gradient(left,#72A5E0,#4990E2);
+}
+.mybank-card-other {
+	background: #333;
+    background: -webkit-linear-gradient(left,#7b7575, #120f0f);
+}
 //缺省状态
 .card-null {
   height:calc(100vh - 185px);
@@ -209,16 +238,70 @@ h1 {
     font-size: 18px;
   }
 }
+// 银行卡补充
+.bank-cards {
+  padding-bottom:39px;
+}
+// 实名认证弹框
+.cert {
+  font-size:16px !important;
+  &.close {
+    color: #FF3E2A;
+  }
+}
+.cert-span {
+  width: 100% !important;
+  color: #4a4a4a !important;
+}
+.cert-dialog {
+  width:265px !important;
+  overflow: visible !important;
+}
+.cert-img {
+  width: 100px;
+  position: absolute;
+  top: -26px;
+  left: 82px;
+}
+.img-div {
+  height: 58px;
+}
+// 添加银行卡
+.bank-card-panel {
+  padding-bottom:25px !important;
+}
+// 银行卡actionSheet
+.my-actionsheet {
+  width: calc(100% - 20px) !important;
+  margin:0 10px 10px 10px !important;
+  background-color: transparent !important;
+  .my-text-cell {
+    font-size: 18px;
+    color: #4990E2;
+  }
+  .my-delete-cell {
+    font-size: 18px;
+    color: #FF3E2A;
+  }
+  .my-small-cell {
+    font-size: 12px;
+    color: #9B9B9B;
+  }
+}
+// 银行卡图标
+.logo {
+  width:35px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
 
-
-
-
-
-
-
-
-
-
+}
+.bank-card-cell {
+  position: relative;
+}
+.p-l-38 {
+  padding-left:38px;
+}
 
 ///*某个页面加载效果*/
 ///*这是背景，持续两秒*/

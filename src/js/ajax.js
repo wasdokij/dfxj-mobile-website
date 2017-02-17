@@ -30,7 +30,9 @@ export function XHRPost(url, data, callback, failBack) {
 
 //get请求
 export function XHRGet(url, data, callback, failBack) {
-	axios.get(url, data)
+	axios.get(url, {
+		params: data
+	})
   	.then(function (response) {
     	if (callback)
 		callback(response)

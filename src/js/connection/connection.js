@@ -30,9 +30,10 @@ window.app = new Vue({
         },
         searchPeopleResult: {
             data: [],
-            page: '',
+            page: 0,
             listRows: 10,
-            totalRows: 0
+            totalRows: 0,
+            status : 0
         },
         busy: true,
         searchBusy: false, // 筛选页的搜索
@@ -44,6 +45,12 @@ window.app = new Vue({
                 return 1;
             }
             return Math.ceil(this.peopleData.totalRows / this.peopleData.listRows);
+        },
+        totalSearchPage: function () {
+            if (this.searchPeopleResult.status == 0) {
+                return 1;
+            }
+            return Math.ceil(this.searchPeopleResult.totalRows / this.searchPeopleResult.listRows);
         },
         searchBgWhite: function () {
             return this.visible.searchPage ? 'background: #fff' : '';
@@ -57,13 +64,18 @@ window.app = new Vue({
             let searchPage = this.hash === '#search';
             let search = this.searchPeopleState.search;
             let data = this.searchPeopleResult.data;
+            let searchType = this.searchPeopleState.searchType;
+            let nullResult = data.length === 0 && searchType && !this.searchBusy;
             return {
                 homePage: !this.hash,
                 searchPage,
-                searchType: !search && searchPage,
-                searchResult: data.length > 0,
-                nullResult: data.length === 0 && !!search
+                searchType: !search && searchPage && !searchType,
+                searchResult: data.length > 0 && searchPage,
+                nullResult
             }
+        },
+        searchBusyComputed: function () {
+            return this.searchBusy || !this.visible.searchPage;
         }
     },
     mounted: function () {
@@ -133,10 +145,20 @@ window.app = new Vue({
             window.history.pushState({ hash: '#search' }, null, '#search');
         },
         onSearch(e) {
+            console.log('onSearch');
             if (!this.searchBusy) { // this.searchBusy初始状态是false
                 this.searchBusy = true;
-                if (this.searchPeopleState.search) {
+                if (this.searchPeopleState.search || true) {
                     console.log('beginSearch', arguments);
+                    if (arguments[0]) {
+                        this.searchPeopleResult = {
+                            data: [],
+                            page: 0,
+                            listRows: 10,
+                            totalRows: 0,
+                            status: 0
+                        };
+                    }
                     _searchMore.call(this);
                 } else {
                     this.searchBusy = false;
@@ -148,7 +170,18 @@ window.app = new Vue({
         },
         changeSearchType(type) {
             this.searchPeopleState.searchType = type;
+            this.searchPeopleResult = {
+                data: [],
+                page: 0,
+                listRows: 10,
+                totalRows: 0,
+                status: 0
+            };
+            this.onSearch();
         }
+    },
+    watch: {
+
     }
 });
 
@@ -187,29 +220,39 @@ function _loadMore() {
 }
 
 function _searchMore() {
-    axios.post(searchUrl, {
-        search: encrypt(this.searchPeopleState.search),
-        type: encrypt(this.searchPeopleState.searchType || '0'),
-        page: encrypt('1')
-    })
-        .then(function (res) {
-            console.log('res', res);
-            if (res.data.status == 1) {
-                assignData(this.searchPeopleResult, res.data);
-            }
-            if (res.data.status == 0) {
-                this.searchPeopleResult = {
-                    data: [],
-                    page: '',
-                    listRows: 10,
-                    totalRows: 0
-                };
-            }
-            this.searchBusy = false;
-    }.bind(this))
-        .catch(function () {
-            this.searchBusy = false;
-    }.bind(this))
+    let currentPage = parseInt(app.searchPeopleResult.page);
+    let totalPage = parseInt(app.totalSearchPage);
+    if (currentPage < totalPage) {
+        axios.post(searchUrl, {
+            search: encrypt(this.searchPeopleState.search),
+            type: encrypt(this.searchPeopleState.searchType || '0'),
+            page: encrypt((currentPage + 1) + '')
+        })
+            .then(function (res) {
+                console.log('res', res);
+                if (res.data.status == 1) {
+                    let tmp = Object.assign([], res.data.data);
+                    delete res.data.data;
+                    assignData(this.searchPeopleResult, res.data);
+                    this.searchPeopleResult.data = this.searchPeopleResult.data.concat(tmp);
+                }
+                if (res.data.status == 0) {
+                    this.searchPeopleResult = {
+                        data: [],
+                        page: 0,
+                        listRows: 10,
+                        totalRows: 0,
+                        status: 0
+                    };
+                }
+                this.searchBusy = false;
+        }.bind(this))
+            .catch(function () {
+                this.searchBusy = false;
+        }.bind(this))
+    } else {
+        app.searchBusy = false;
+    }
 }
 
 function mergePeopleData(obj, data) {
