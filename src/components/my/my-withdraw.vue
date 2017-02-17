@@ -55,6 +55,7 @@
     import BankCard from 'components/my/bank-card.vue';
     import ExecuteFailure from 'components/my/execute-failure.vue';
     import ExecutePass from 'components/my/execute-pass.vue';
+    import { XHRGet } from '../../js/ajax.js';
     export default{
         data(){
             return{
@@ -84,6 +85,9 @@
         components:{
             BankCard,ExecutePass,ExecuteFailure
         },
+        created(){
+            this.onWithdraw()
+        },
         watch: {
         withdrawAll: function (val, oldVal) {
             var der = parseInt(this.data.money);
@@ -112,6 +116,20 @@
             },
             onAll(){
                 this.withdrawAll=this.data.money;
+            },
+             onWithdraw(){
+                var _this = this;
+                var load = layer.open({ type: 2,shadeClose: false})
+                XHRGet('/oriental_treasure/Wallet/withdraw', {},function (response) {
+                    console.log(response)
+                    if (response.data.status==0){
+                        _this.data=response.data;
+                    }else {
+                        _this.isLogin=true;
+                        _this.loginUserBaseInfo()
+                    }
+                    layer.close(load);
+                });
             },
         }
     }

@@ -271,11 +271,11 @@ gulp.task('build', function () {
 	}));
 	build(function() {
 		del(['./src/tmp']);
-//      cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+     cp('./public/**/*','F:/dfxj2/public/jin2.0/');
 		 cp('./public/**/*','../kongdian_api/public/jin2.0/');
 
 		 cp('./public/views/**/*.html', '../kongdian_api/application/xiaojin/view/');
-//      cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
+     cp('./public/views/**/*.html', 'F:/dfxj2/application/xiaojin/view/');
 	});
 	// build的过程也要watch
     watch([src.js]).on('change', function () {
