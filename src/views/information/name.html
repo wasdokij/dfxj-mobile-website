@@ -10,37 +10,40 @@
 
 </head>
 <body>
-<div id="container" class="container">
- <div class="jin-wrap margin-t-10">
-    <!--01-->
-    <div class="border-b-1 border-t-1">
-        <ul class="ui-list ul-all ui-list-active">
-            <li data-href="#">
-                <div class="rlt width-100">
-                    <label class="ui-nowrap abs top-10">常用名</label>
-                    <input type="text" placeholder="输入新常用名" class="ui-form-item input width-100 padding-l-60" id="name" v-model="phone"/>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <!--02-->
-    <div class="ui-btn-wrap">
-        <button  class="ui-btn-kd ui-btn-yellow" style="border:0;" v-on:click="goToLogin">更改</button>
-    </div>
-    <!--03-->
-   <div class="font12">
-       <label class="margin-l-10 txt-color-ddd">温馨提示：</label>
-       <span class="txt-color-d6">在成为微股东之前，你有一次修改的机会</span>
-   </div>
-    <!--04-->
-    <loading v-if="loadingShow"></loading>
-    <successing v-if="successingShow"></successing>
-    <!--底部-->
+<div id="container" class="container" v-cloak>
+    <router-view></router-view>
+ <!--<div class="jin-wrap margin-t-10">-->
+    <!--&lt;!&ndash;01&ndash;&gt;-->
+    <!--<div class="border-b-1 border-t-1">-->
+        <!--<ul class="ui-list ul-all ui-list-active">-->
+            <!--<li data-href="#">-->
+                <!--<div class="rlt width-100">-->
+                    <!--<label class="ui-nowrap abs top-10">常用名</label>-->
+                    <!--<input type="text" placeholder="输入新常用名" class="ui-form-item input width-100 padding-l-60" id="name" v-model="info.name"/>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;02&ndash;&gt;-->
+    <!--<div class="ui-btn-wrap">-->
+        <!--<button  class="ui-btn-kd ui-btn-yellow" style="border:0;" v-on:click="goToLogin">更改</button>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;03&ndash;&gt;-->
+   <!--<div class="font12">-->
+       <!--<label class="margin-l-10 txt-color-ddd">温馨提示：</label>-->
+       <!--<span class="txt-color-d6">在成为微股东之前，你有一次修改的机会</span>-->
+   <!--</div>-->
+    <!--&lt;!&ndash;04&ndash;&gt;-->
+    <!--<loading v-if="loadingShow"></loading>-->
+    <!--&lt;!&ndash;<successing v-if="successingShow"></successing>&ndash;&gt;-->
+    <!--&lt;!&ndash;底部&ndash;&gt;-->
 
- </div>
+ <!--</div>-->
 </div>
 <script src="../../js/lib/vue.js"></script>
+<script src="../../js/lib/jsencrypt.js"></script>
 <script src="../../js/lib/axios.js"></script>
+<script src="../../js/lib/vue-router.js"></script>
 <script src="../../js/information/name.js"></script>
 <script>
 

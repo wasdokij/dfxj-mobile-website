@@ -1,0 +1,81 @@
+<template>
+<div class="jin-wrap margin-t-10">
+    <!--01-->
+    <div class="border-b-1 border-t-1">
+        <ul class="ui-list ul-all ui-list-active">
+            <li data-href="#">
+                <div class="rlt width-100">
+                    <label class="ui-nowrap abs top-10">常用名</label>
+                    <input type="text" placeholder="输入新常用名" class="ui-form-item input width-100 padding-l-60" id="name" v-model="info.name"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--02-->
+    <div class="ui-btn-wrap">
+        <button  class="ui-btn-kd ui-btn-yellow" style="border:0;" v-on:click="goToLogin">更改</button>
+    </div>
+    <!--03-->
+    <div class="font12">
+        <label class="margin-l-10 txt-color-ddd">温馨提示：</label>
+        <span class="txt-color-d6">在成为微股东之前，你有一次修改的机会</span>
+    </div>
+    <!--04-->
+    <loading v-if="loadingShow"></loading>
+    <!--<successing v-if="successingShow"></successing>-->
+    <!--底部-->
+</div>
+</template>
+<script>
+    import '../../js/lib/layer.js';
+    import '../../js/lib/layer.css';
+    import Loading from '../common/loading.vue';
+    import { countdown } from '../../js/tools.js';
+    import { XHRPost} from '../../js/ajax.js';
+
+    export default{
+        data(){
+        return{
+            info:{
+                name:""
+            },
+            loadingShow: false
+        }
+    },
+
+    components: {
+        Loading
+    },
+    methods: {
+        errorTip: function (msg) {
+            layer.open({
+                content: msg,
+                btn: ['确定'],
+                yes: function () {
+                    layer.closeAll();
+                }
+            });
+        },
+        goToLogin: function() {
+            const data = {
+                user_name:encrypt(this.info.name)
+            };
+            const _this = this;
+            //console.log(this.info.name);
+            this.loadingShow = true;
+            XHRPost('/oriental_treasure/MySeting/editUserName', data, function (response) {
+                //console.log(response);
+                //console.log(data.input);
+                _this.loadingShow = false;
+
+                if (response.data.status === 1) {
+                    window.location.href = '/xiaojin/information/password.html'
+                }else{
+                    _this.errorTip(response.data.info);
+                }
+            });
+
+        }
+    }
+    }
+</script>

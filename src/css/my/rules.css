@@ -3,6 +3,9 @@ body {
   background: #ddd;
   font-size: 14px; }
 
+[v-cloak] {
+  display: none; }
+
 /*������ɫ*/
 .bg-dbbe83 {
   background: #dbbe83; }
