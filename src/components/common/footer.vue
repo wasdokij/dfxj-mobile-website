@@ -51,6 +51,9 @@
 </script>
 
 <style scoped>
+    .container {
+
+    }
 	.footer {
 		position: fixed;
 		left: 0;

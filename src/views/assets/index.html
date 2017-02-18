@@ -7,17 +7,22 @@
 	    <meta name="viewport" content="width=device-width, user-scalable=no"/>
 	    <meta name="apple-mobile-web-app-capable" content="yes"/>
 	    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-	    <title>软件下载</title>
+	    <title>信息资产</title>
 		<link rel="stylesheet" href="../../css/frozen.css">
 		<link rel="stylesheet" href="../../css/jin-base.css"/>
-        <link rel="stylesheet" href="../../css/discover/discover.css"/>
+		<link rel="stylesheet" href="../../css/assets/assets.css"/>
 	</head>
 	<body>
-		<div class="jin-wrap" id="container">
-            <discover-download></discover-download>
-            <jin-footer :current="3"></jin-footer>
-        </div>
+		<div id="assets-app">
+			<keep-alive>
+				<router-view v-if="$route.meta.keepAlive"></router-view>
+			</keep-alive>
+			<router-view v-if="!$route.meta.keepAlive"></router-view>
+		</div>
+		
 		<script src="../../js/lib/vue.js"></script>
-		<script src="../../js/discover/download.js"></script>
+		<script src="../../js/lib/vue-router.js"></script>
+		<script src="../../js/lib/vue-infinite-scroll.js"></script>
+		<script src="../../js/assets/main.js"></script>
 	</body>
 </html>

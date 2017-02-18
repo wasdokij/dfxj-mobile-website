@@ -1,13 +1,3 @@
-//const server1 = 'https://production.server.com';
-//const server2 = 'https://dev.server.com';
-//
-//let useServer = null;
-//if(NODE_ENV === 'production') {
-//	useServer = server1;
-//} else if(NODE_ENV === 'dev') {
-//	useServer = server2;
-//}
-//export default useServer;
 
 import axios from 'axios';
 //ajax
@@ -40,7 +30,9 @@ export function XHRPost(url, data, callback, failBack) {
 
 //get请求
 export function XHRGet(url, data, callback, failBack) {
-	axios.get(url, data)
+	axios.get(url, {
+		params: data
+	})
   	.then(function (response) {
     	if (callback)
 		callback(response)

@@ -1,0 +1,232 @@
+@charset "UTF-8";
+/**信息资产**/
+header {
+  background: #FFB200; }
+
+.back-btn {
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 30px;
+  text-align: center;
+  background: #FFE580;
+  border-radius: 50%; }
+
+.rule-btn {
+  display: block;
+  width: 64px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 34px;
+  background: #FFE580; }
+
+header .title-text {
+  margin-top: 10px;
+  font-size: 36px;
+  font-weight: 600; }
+
+.available-asset-wrap {
+  padding-bottom: 20px;
+  background: #FFCB00; }
+
+.available-asset {
+  position: relative;
+  display: -webkit-box;
+  height: 120px;
+  -webkit-box-align: center; }
+
+.available-asset > i {
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: #fff; }
+
+.asset-level {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  -webkit-box-align: center; }
+
+.asset-level > li {
+  position: relative;
+  display: -webkit-box;
+  -webkit-box-pack: center; }
+
+.asset-level > li.left,
+.asset-level > li.right {
+  width: 100px; }
+
+.asset-level > li.center {
+  -webkit-box-flex: 1; }
+
+.current-asset {
+  position: relative;
+  display: -webkit-box;
+  padding: 5px;
+  width: 85px;
+  height: 85px;
+  border: 5px solid #F4F3F3;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-orient: vertical; }
+
+.asset-level > li .other {
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+  line-height: 34px;
+  text-align: center;
+  color: #000;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 3px solid #F4F3F3; }
+
+.asset-level .assets {
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  display: block;
+  width: 100%;
+  text-align: center; }
+
+.asset-yellow {
+  color: #FAB200; }
+
+.get-record-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  display: inline-block;
+  width: 75px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid #fff; }
+
+.assets-info-flex li {
+  width: 100%;
+  -webkit-box-flex: 1; }
+
+/*信息资产排行榜*/
+.body-ba {
+  background-color: #FA482A; }
+
+.asset-list-banner img {
+  width: 100%;
+  vertical-align: middle; }
+
+.asset-list-before3 {
+  display: -webkit-box;
+  -webkit-box-pack: justify;
+  -webkit-box-align: end;
+  margin-top: -18px;
+  padding-bottom: 10px; }
+
+.asset-list-before3 > li {
+  position: relative;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-orient: vertical; }
+
+.body-ba {
+  background-color: #FA482A; }
+
+.inupt-rgba {
+  background-color: rgba(255, 255, 255, 0.56); }
+
+.ui-icon-clor {
+  color: #ffffff;
+  font-size: 50px; }
+
+.ui-searchbar {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  right: 0;
+  margin: 0 auto;
+  width: 70%;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 20px;
+  color: #fff; }
+
+.headline {
+  width: 24px;
+  line-height: 60px; }
+
+.bottom-po-fi {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0; }
+
+.ui-non1,
+.ui-non2 {
+  display: block;
+  width: 24px;
+  height: 24px;
+  line-height: 26px;
+  font-size: 16px;
+  border-radius: 20px;
+  text-align: center; }
+
+.ui-non1 {
+  color: #ffffff;
+  background-color: #c1c1c1; }
+
+.ui-non2 {
+  color: #ee8146;
+  background-color: #ffc330; }
+
+.asset-posi-ab {
+  position: absolute;
+  bottom: 48px;
+  right: 2px; }
+
+.asset-list-wrap {
+  padding-bottom: 65px;
+  position: relative; }
+
+.asset-list-wrap input {
+  color: #fff; }
+
+.asset-list-wrap input::-webkit-input-placeholder {
+  color: #ffffff; }
+
+.asset-list-wrap input::-webkit-search-cancel-button {
+  display: none; }
+
+/*下拉加载无数据提示*/
+.no-more-data {
+  position: relative; }
+
+.no-more-data:before {
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #bbb;
+  content: ''; }
+
+.no-more-data:after {
+  position: absolute;
+  top: 50%;
+  right: -50px;
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #bbb;
+  content: ''; }

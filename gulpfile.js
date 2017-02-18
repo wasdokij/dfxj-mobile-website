@@ -40,8 +40,9 @@ var webpackConfig = {
     },
     externals: {
         'vue': 'Vue',
-        //'axios': 'axios',
+        'axios': 'axios',
         'vue-router': 'VueRouter',
+        'vuex': 'Vuex',
         'vue-infinite-scroll': 'infiniteScroll'
     },
     module: {
@@ -271,25 +272,33 @@ gulp.task('build', function () {
     }));
     build(function() {
         del(['./src/tmp']);
-        cp('./public/**/*','F:/kongdian_api/public/jin2.0/');
-        cp('./public/**/*','../kongdian_api/public/jin2.0/');
+        cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+        // cp('./public/**/*','../kongdian_api/public/jin2.0/');
 
-        cp('./public/views/*.html', '../kongdian_api/application/xiaojin/view/');
-        cp('./public/views/**/*.html', 'f:/kongdian_api/application/xiaojin/view/');
+        // cp('./public/views/*.html', '../kongdian_api/application/xiaojin/view/');
+        cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
     });
     // build的过程也要watch
     watch([src.js]).on('change', function () {
         // console.log('change', arguments);
         runSequence('js:build', 'ugjs:build', function () {
-            cp('./public/**/*','../kongdian_api/public/jin2.0/');
-            //cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+            // cp('./public/**/*','../kongdian_api/public/jin2.0/');
+            cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+        })
+    });
+
+    watch([src.components]).on('change', function () {
+        // console.log('change', arguments);
+        runSequence('js:build', 'ugjs:build', function () {
+            // cp('./public/**/*','../kongdian_api/public/jin2.0/');
+            cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
         })
     })
 
     watch([src.views]).on('change', function() {
         runSequence('views:build', function () {
             // cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
-            cp('./public/views/**/*.html', '../kongdian_api/application/xiaojin/view/');
+            cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
         })
     });
 

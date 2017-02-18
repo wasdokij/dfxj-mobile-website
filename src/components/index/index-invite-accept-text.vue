@@ -31,11 +31,11 @@
                 </p>
             </div>
         </li>
-        <li>
+        <!--<li>
             <div class="box-align">
                 <div class="item-accept-lable"></div>
                 <div class="font14 color-4a">东方小金积分规则</div>
             </div>
-        </li>
+        </li>-->
     </ul>
 </template>

@@ -4,7 +4,7 @@
 
         </div>
         <div class="packet rlt">
-             <div class="packet-btn abs font18">壹仟元红包</div>
+             <div class="packet-btn abs font18">邀请好友</div>
             <div class="ui-txt-white abs font18" style="  right: 10px;
     top: 10px;" @click="$emit('close')">X</div>
             <div class="packet-user text-center">
@@ -18,7 +18,7 @@
                             <span :style="{backgroundImage: 'url('+ modalData.wechat_avatar+')'}"></span>
                         </div>
                         <h4 class="text-center">
-                            {{modalData.user_name}}邀请你领取东方小金1000元红包
+                            {{modalData.user_name}}邀请你注册东方小金一起赚钱
                         </h4>
                     </li>
                 </ul>

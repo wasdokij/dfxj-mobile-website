@@ -13,22 +13,51 @@
         <link rel="stylesheet" href="../../css/mine/identity.css">
     </head>
 	<body class="bg-white">
-    <div id="container" class="container">
+    <div id="container" class="container" v-cloak>
         <!--身份认证面板-->
         <div class="bank-card-dashboard rlt">
             <div class="bank-card-overview">
-                <div class="button-group clearfix">
-                    <span class="jin-icon-fanhui jin-iconfont fanhui"></span>
+                <div class="button-group clearfix" @click="goBack">
+                    <span class="jin-icon-fanhui jin-icon fanhui"></span>
                 </div>
                 <h1>身份认证</h1>
-                <div class="p-l-7 abs notyet">
-                     <span class="jin-icon-icon jin-iconfont notyet-icon"></span>
+                <div class="p-l-7 abs notyet" v-show="visible.status0">
+                     <span class="jin-icon-icon jin-icon notyet-icon"></span>
                     <span class="notyet-text">尚未认证</span>
+                </div>
+                <div class="p-l-7 abs notyet" v-show="visible.status1">
+                    <span class="notyet-text" style="padding-left: 0">审核中</span>
+                </div>
+                <div class="p-l-7 abs notyet" v-show="visible.status2">
+                    <span class="notyet-text" style="padding-left: 0">审核完成</span>
+                </div>
+            </div>
+        </div>
+        <!--身份证号等信息-->
+        <div class="card-form" v-show="visible.idPanel">
+            <div class="weui-cells weui-cells_form my-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">真实姓名</label></div>
+                    <div class="weui-cell__bd tlr">
+                        <span class="weui-input">{{ certInfo.real_name }}</span>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">身份证号</label></div>
+                    <div class="weui-cell__bd tlr">
+                        <span class="weui-input">{{ certInfo.id_card_no }}</span>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">证件信息</label></div>
+                    <div class="weui-cell__bd tlr">
+                        <span class="weui-input colored">{{ visible.panelInfo }}</span>
+                    </div>
                 </div>
             </div>
         </div>
         <!--添加身份证号等信息-->
-        <div class="card-form">
+        <div class="card-form" v-show="visible.status0">
             <div class="legend">
                 <span>提现操作以及金融保险服务都需要核实您本人的真实身份，请务必进行身份认证。</span>
             </div>
@@ -36,13 +65,13 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">真实姓名</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="text" />
+                        <input class="weui-input" type="text" v-model="certInfo.real_name" />
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">身份证号</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number" />
+                        <input class="weui-input" type="text" v-model="certInfo.id_card_no" />
                     </div>
                 </div>
                 <div class="weui-cell weui-cell_vcode">
@@ -50,50 +79,47 @@
                         <label class="weui-label">验证码</label>
                     </div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input">
+                        <input class="weui-input" v-model="certInfo.verify_code">
                     </div>
-                    <div class="weui-cell__ft">
-                        <button class="weui-vcode-btn">获取验证码</button>
+                    <div class="weui-cell__ft" v-show="!certInfo.counting">
+                        <button @click="getVerifyCode" class="weui-vcode-btn">获取验证码</button>
                     </div>
-                </div>
-                <div class="weui-cell weui-cell_vcode">
-                    <div class="weui-cell__hd">
-                        <label class="weui-label">验证码</label>
-                    </div>
-                    <div class="weui-cell__bd">
-                        <input class="weui-input">
-                    </div>
-                    <div class="weui-cell__ft">
-                        <button class="weui-vcode-btn vcode-ing">60s</button>
+                    <div class="weui-cell__ft" v-show="certInfo.counting">
+                        <button class="weui-vcode-btn vcode-ing">{{ certInfo.countingNum }}s</button>
                     </div>
                 </div>
                 <div class="button-panel">
-                    <a href="javascript:;" class="weui-btn weui-btn_primary">下一步</a>
+                    <a @click="goNext" href="javascript:;" class="weui-btn weui-btn_primary">下一步</a>
                 </div>
             </div>
         </div>
         <!--添加图像资料-->
-        <div class="uploader">
+        <div class="uploader" v-show="visible.status1">
             <div class="weui-cells weui-cells_form">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
                         <div class="weui-uploader">
                             <div class="weui-uploader__hd">
-                                <p class="weui-uploader__title">请上传您本人的有效二代身份证</p>
+                                <p class="weui-uploader__title font16">请上传您本人的有效二代身份证</p>
                             </div>
+                            <!--上传单元-->
                             <div class="weui-uploader__bd">
-                                <ul class="weui-uploader__files" id="uploaderFiles">
-                                    <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
-                                        <div class="weui-uploader__file-content">
-                                            <i class="weui-icon-warn"></i>
-                                        </div>
+                                <ul class="weui-uploader__files">
+                                    <li v-show="imgInfo.people.serverId">
+                                        <img :src="imgInfo.people.localId" style="width:100%;">
                                     </li>
-                                    <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
-                                        <div class="weui-uploader__file-content">50%</div>
+                                    <li v-show="imgInfo.flag.serverId">
+                                        <img :src="imgInfo.flag.localId" style="width:100%;">
+                                    </li>
+                                    <li class="weui-uploader__file weui-uploader__file_status" v-show="visible.peopleImg">
+                                        <div class="weui-uploader__file-content">肖像面</div>
+                                    </li>
+                                    <li class="weui-uploader__file weui-uploader__file_status" v-show="visible.flagImg">
+                                        <div class="weui-uploader__file-content">国徽面</div>
                                     </li>
                                 </ul>
-                                <div class="weui-uploader__input-box">
-                                    <input class="weui-uploader__input" type="file" accept="image/*" multiple />
+                                <div class="weui-uploader__input-box" @click="beginUpload" v-show="visible.uploadButton">
+                                    <span class="weui-uploader__input" >上传肖像面</span>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +127,7 @@
                 </div>
             </div>
             <div class="button-panel">
-                    <a href="javascript:;" class="weui-btn weui-btn_primary">提交</a>
+                    <a href="javascript:;" class="weui-btn weui-btn_primary" @click="confirmUpload">提交</a>
                 </div>
         </div>
         <!--验证提示框-->
@@ -121,48 +147,18 @@
                 </div>
             </div>
         </div>
-        <!--当前状态(已通过认证)-->
-        <div class="bank-card-dashboard rlt">
-            <div class="bank-card-overview">
-                <div class="button-group clearfix">
-                    <span class="k-icon-fanhui k-icon fanhui"></span>
-                </div>
-                <h1>身份认证</h1>
-                <div class="p-l-7 abs notyet">
-                    <span class="notyet-text" style="padding-left: 0">已通过认证</span>
-                </div>
-            </div>
-        </div>
-        <!--添加身份证号等信息-->
-        <div class="card-form">
-            <div class="weui-cells weui-cells_form my-cells">
-                <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label">真实姓名</label></div>
-                    <div class="weui-cell__bd tlr">
-                        <span class="weui-input">哈哈</span>
-                    </div>
-                </div>
-                <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label">身份证号</label></div>
-                    <div class="weui-cell__bd tlr">
-                        <span class="weui-input">45************0019</span>
-                    </div>
-                </div>
-                <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label">证件信息</label></div>
-                    <div class="weui-cell__bd tlr">
-                        <span class="weui-input colored">证件审核中</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
 
 
     </div>
     <script src="../../js/lib/vue.js"></script>
-    <script src="../../js/lib/vue-router.js"></script>
+    <script src="../../js/lib/jsencrypt.js"></script>
+    <!--<script src="../../js/lib/vuex.js"></script>-->
+    <!--<script src="../../js/lib/vue-router.js"></script>-->
+    <script src="../../js/lib/axios.js"></script>
     <script src="../../js/lib/fastclick.js"></script>
     <script src="../../js/mine/identity.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	</body>
 </html>
