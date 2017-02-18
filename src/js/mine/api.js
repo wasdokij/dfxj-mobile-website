@@ -13,12 +13,12 @@ const deleteBankCard = '/oriental_treasure/UserBank/delMyBankCard';
 const verifyCode = '/oriental_treasure/register_and_login/sendPhoneCode';
 // 身份认证第一步，提交姓名身份证号手机号验证码
 const userInfoForID = '/oriental_treasure/UserRealInfo/index';
-// 身份证照片-正面
-const photoFront = '/oriental_treasure/UserRealInfo/uploadIdCard';
-// 身份证照片-反面
-const photoBack = '/oriental_treasure/UserRealInfo/uploadIdCardBack';
+// 身份证照片
+const photoUrl = '/oriental_treasure/UserRealInfo/uploadIdCard'; // type: id_card头像面, id_card_back国徽面
 // 确认提交身份证照片
-const confirmPhoto = '/oriental_treasure/UserRealInfo/comfirmIdCard';
+const confirmPhotoUrl = '/oriental_treasure/UserRealInfo/comfirmIdCard';
+// 拿到微信JS SDK配置
+const wxConfig = '/oriental_treasure/Wechat/getJssdkInfo';
 
 function baseAxios(type, url, config, cb, errCb) {
     axios[type](url, config).then(function (response) {
@@ -26,6 +26,18 @@ function baseAxios(type, url, config, cb, errCb) {
     }).catch(function (error) {
         if (error) errCb(error);
     })
+}
+
+export function uploadPhoto(config, cb, errCb) {
+    baseAxios('post', photoUrl, config, cb, errCb);
+}
+
+export function confirmPhoto(cb, errCb) {
+    baseAxios('get', confirmPhotoUrl, {}, cb, errCb);
+}
+
+export function getWXConfig(config, cb, errCb) {
+    baseAxios('post', wxConfig, config, cb, errCb);
 }
 
 export function isCert(cb, errCb) {

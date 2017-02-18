@@ -135,7 +135,7 @@ h1 {
 
 .mybank-card-other {
   background: #333;
-  background: -webkit-linear-gradient(left, #353535, #393939); }
+  background: -webkit-linear-gradient(left, #7b7575, #120f0f); }
 
 .card-null {
   height: calc(100vh - 185px);
