@@ -32,7 +32,7 @@
         </ul>
     </div>
     <!--03-->
-    <div class="exit border-b-1 border-t-1" onclick="location.href='/xiaojin/login_register/login.html'">
+    <div class="exit border-b-1 border-t-1" v-on:click="getGoexit">
         <span class="exit-span">退出登录</span>
     </div>
 
@@ -59,6 +59,14 @@
             _this.info.yqr = response.data.data.inviting_people;
             _this.info.phone = response.data.data.cellphone;
         })
+    },
+    methods: {
+        getGoexit:function (){
+            XHRGet('/oriental_treasure/MySeting/logOut', {}, function () {
+                window.location.href = '/xiaojin/login_register/login.html'
+            })
+
+        }
     }
     }
 </script>

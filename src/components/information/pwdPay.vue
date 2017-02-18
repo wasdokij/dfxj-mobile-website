@@ -1,7 +1,7 @@
 <template>
 <div>
 <div class="ui-whitespace padding-t-10 padding-b-10">
-    <span class="font16">你正在为15878193546重置支付密码</span>
+    <span class="font16">你正在为{{phone}}重置支付密码</span>
 </div>
 <ul class="ui-list jin-list-link ui-list-active ui-border-tb">
     <li class="ui-border-t padding-t-5 padding-b-5"  onclick="location.href='/xiaojin/information/pwdPay1.html'">
@@ -30,6 +30,7 @@
         data(){
         return{
             disabled:true,
+            phone:"",
             info: {
                 isA: true,
                 isB: false,
@@ -38,18 +39,37 @@
             }
         }
     },
+    mounted: function () {
+        const _this = this;
+        XHRGet('/oriental_treasure/MySeting/index', {}, function (response) {
+           _this.phone = response.data.data.cellphone;
+        })
+    },
 
     methods: {
+        errorTip: function (msg) {
+            layer.open({
+                content: msg,
+                btn: ['确定'],
+                yes: function () {
+                    window.location.href = '/xiaojin/mine/bank_cards'
+                }
+            });
+        },
         //没有身份证验证时间
         goAuthentication:function(){
-            XHRGet('/oriental_treasure/UserRealInfo/showInfo', {}, function (response) {
-                if (response.data.status === 0) {
+            XHRGet('/oriental_treasure/MySeting/forgetPayPassword', {}, function (response) {
+                if (response.data.data.real_name === "") {
                     window.location.href = '/xiaojin/information/authentication.html'
+                }else if(response.data.data.bank_list.length === 0){
+                    //window.location.href = '/xiaojin/mine/bank_cards'
+                    this.errorTip("你还没绑定银行卡，无法操作此步骤");
                 }else{
                     window.location.href = '/xiaojin/information/pwdPay2.html'
+                    //console.log(response.data.data.bank_list.length);
                 }
 
-            })
+            }.bind(this))
         }
     }
     }

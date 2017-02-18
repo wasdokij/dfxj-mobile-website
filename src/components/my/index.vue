@@ -6,16 +6,16 @@
             <img :src="wechat_avatar" alt=""/>
         </div>
     </div>
-    <ul class="txt-center index-nav-ul width-80"  >
-        <li class=" width-33 box-left">
+    <ul class="txt-center index-nav-ul width-80" >
+        <li class=" width-33 box-left" onclick="location.href='/xiaojin/assets.html'">
             <h4 class="font16">{{info_asset}}</h4>
             <div class="font12 txt-color-bbb">信息资产</div>
         </li>
-        <li class="width-33  box-left" >
+        <li class="width-33  box-left" onclick="location.href='/xiaojin/discover/credits_lately_details.html'">
             <h4 class="font16">{{score}}</h4>
             <div class="font12 txt-color-bbb">小金积分</div>
         </li>
-        <li class="width-33  box-left">
+        <li class="width-33  box-left"  onclick="location.href='/xiaojin/my/rules.html'">
             <h4 class="font16">{{level_name}}</h4>
             <div class="font12 txt-color-bbb">会员中心</div>
         </li>
@@ -45,7 +45,7 @@
         <div class="font12 txt-color-9b">可提现金额（元）</div>
     </div>
     <div class="pos-abs right-10">
-        <span class="dis-b zd margin-t-15 txt-center txt-color-4A font14 cur-p"  onclick="location.href='http://jin.weigudong.cn/index.php/bill/index.html'">账单</span>
+        <span class="dis-b zd margin-t-15 txt-center txt-color-4A font14 cur-p"  onclick="location.href='/xiaojin/bill'">账单</span>
     </div>
 </div>
 <!--04-->
@@ -71,7 +71,7 @@
         <span class="dis-b span-button bg-tx txt-center txt-color-fff margin-l-05 cur-p" v-on:click="getWithdrawal">提现</span>
     </div>
     <div class="width-50">
-        <span class="dis-b span-button bg-jf txt-center txt-color-fff margin-l-05 cur-p" v-on:click="getIntegral">积分商城</span>
+        <span class="dis-b span-button bg-jf txt-center txt-color-fff margin-l-05 cur-p"  onclick="location.href='/xiaojin/discover/credits.html'">积分商城</span>
     </div>
 </div>
 <!--06-->
@@ -232,12 +232,18 @@ methods: {
     //提现要修改
     getWithdrawal: function () {
         const _this = this;
-        if (_this.user_bank_count == 0) {
-            _this.info.isC = true;
-            _this.info.isD = false;
-        }else{
-            window.location.href = '/xiaojin/mine/bank_cards'
-        }
+       if (_this.user_bank_count == 0) {
+           _this.info.isC = true;
+           _this.info.isD = false;
+       }
+        else if (this.real_name === "未验证") {
+                _this.info.isA = true;
+                _this.info.isB = false;
+                console.log(5555);
+            } else {
+                window.location.href = '/xiaojin/my/withdraw.html'
+            }
+
     },
     //银行卡
     getBank: function () {
@@ -250,18 +256,18 @@ methods: {
         }
     },
     //积分商城
-    getIntegral: function () {
-        const _this = this;
-        if (_this.status == 1) {
-            _this.info.isE=true;
-            _this.info.isF=false;
-
-        } else {
-            _this.info.isA = true;
-            _this.info.isB = false;
-        }
-        console.log(_this.user_bank_count);
-    },
+//    getIntegral: function () {
+//        const _this = this;
+//        if (_this.status == 1) {
+//            _this.info.isE=true;
+//            _this.info.isF=false;
+//
+//        } else {
+//            _this.info.isA = true;
+//            _this.info.isB = false;
+//        }
+//        console.log(_this.user_bank_count);
+//    },
     //未实名关闭
     getShutDown: function () {
         this.info.isA = false;

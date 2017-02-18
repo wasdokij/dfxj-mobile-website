@@ -2,9 +2,9 @@
     <div class="filtrate-tk af-up-before " v-bind:class="{ 'af-up-move': isActive}">
         <div class="ui-searchbar-wrap ui-border-b bg-white focus">
             <div class="ui-searchbar filtrate-input ">
-                    <i class="ui-icon-search line-h-nor" @click="onSeek"></i>
+                    <i class="jin-icon jin-icon-search font24" @click="onSeek"></i>
                 <div class="ui-searchbar-input">
-                    <input v-model="inputValue" type="text" class="jin-box-align font14"  placeholder="输入消息相关信息" autocapitalize="off"  v-auto-focus="focusStatus" @blur="">
+                    <input v-model="inputValue" type="text" class="jin-box-align font14"  placeholder="输入消息相关信息" v-focus >
                 </div>
             </div>
             <button class="ui-searchbar-cancel font14"
@@ -13,12 +13,14 @@
         </div>
         <div class="margin-t-20 font14 color-4a">
             <ul class="filtrate-list  margin-b-10">
-                <li v-for="key in keywordList" @click="onKeyword(key.name)">{{key.name}}</li>
+                <li v-for="key in keywordList" @click="onKeyword(key)">{{key.name}}</li>
             </ul>
         </div>
     </div>
 </template>
 <style>
+.bg-white {
+  background-color: #fff !important}
     .af-up-before {
 	-webkit-transition-property: -webkit-transform;
     transition-property: transform;
@@ -51,12 +53,13 @@
             }, 10);
         },
         directives: {
-            'auto-focus': function (e, {value}) {
-                Vue.nextTick(function () {
-                    if (value) {
-                        e.focus();
-                    }
-                });
+            focus: {
+                inserted: function (el) {
+                    el.focus();
+                },
+                update: function (el) {
+                    el.focus();
+                },
             }
         },
         methods:{
@@ -73,7 +76,6 @@
             },
             onSeek(){
                 this.emitEvent();
-                console.log(this.inputValue);
                 this.$emit('child-data',this.inputValue);
             }
         },

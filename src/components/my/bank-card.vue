@@ -8,11 +8,11 @@
                 <ul class="ui-list ui-list-active padding-b-20">
                     <li class="ui-border-b" v-for="key in data" @click="onSelect(key)">
                         <div class="jin-avatar-s ui-list-thumb">
-                            <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>
+                            <span :style="{backgroundImage: 'url('+ key.logo +')'}"></span>
                         </div>
                         <div class="ui-list-info line-h-14 text-left" >
                             <div class="font14">{{key.bank_name}}</div>
-                            <div class="font14 color-9b">尾号{{key.number}}</div>
+                            <div class="font14 color-9b">尾号{{key.shorter_bank_no}}</div>
                         </div>
                     </li>
                 </ul>
@@ -31,11 +31,11 @@
                 data:''
             }
         },
-        props:['bank','info'],
+        props:['bank','bank-Info'],
         components:{
         },
          created: function() {
-             this.data=this.info;
+             this.data=this.bankInfo;
              let _this = this;
              setTimeout(function(){
                  _this.bankShow =_this.bank;

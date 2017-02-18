@@ -11,7 +11,7 @@
             <li data-href="#" class="border-b-1">
                 <div class="rlt width-100">
                     <label class="ui-nowrap abs top-10">手机号</label>
-                    <input type="tel" name="phone"  placeholder="输入手机号" class="ui-form-item input width-100 padding-l-60"  v-model="info.phone"/>
+                    <input type="tel"  name="phone"  placeholder="输入手机号" class="ui-form-item input width-100 padding-l-60"  v-model="info.phone"/>
 
                 </div>
 

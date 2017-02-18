@@ -31,10 +31,19 @@ import '../lib/layer.js';
 import '../lib/layer.css';
 import { XHRGet} from '../ajax.js';
 import Password from 'components/information/password.vue';
+//import name from 'components/information/name.vue';
+//import phone from 'components/information/phone.vue';
+//import inviter from 'components/information/inviter.vue';
+//import mima from 'components/information/mima.vue';
 import { countdown } from '../tools.js';
 
 const routes = [
     { path: '/', component:Password }
+    //{ path: '/name', component:name },
+    //{ path: '/phone', component:phone },
+    //{ path: '/mima', component:mima },
+    //{ path: '/inviter', component:inviter }
+
 ];
 const router = new VueRouter({
     // ES6缩写语法，相当于routes:routes

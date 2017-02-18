@@ -63,7 +63,9 @@
                 content: msg,
                 btn: ['确定'],
                 yes: function () {
-                    window.location.href = '/xiaojin/loginRegister/login.html'
+                    XHRGet('/oriental_treasure/MySeting/logOut', {}, function () {
+                        window.location.href = '/xiaojin/login_register/login.html'
+                    })
                 }
             });
         },

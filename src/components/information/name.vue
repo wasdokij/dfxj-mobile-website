@@ -1,4 +1,4 @@
-<template>
+  <template>
 <div class="jin-wrap margin-t-10">
     <!--01-->
     <div class="border-b-1 border-t-1">
@@ -14,11 +14,6 @@
     <!--02-->
     <div class="ui-btn-wrap">
         <button  class="ui-btn-kd ui-btn-yellow" style="border:0;" v-on:click="goToLogin">更改</button>
-    </div>
-    <!--03-->
-    <div class="font12">
-        <label class="margin-l-10 txt-color-ddd">温馨提示：</label>
-        <span class="txt-color-d6">在成为微股东之前，你有一次修改的机会</span>
     </div>
     <!--04-->
     <loading v-if="loadingShow"></loading>
