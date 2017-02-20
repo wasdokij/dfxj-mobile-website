@@ -180,6 +180,7 @@ import { XHRGet } from '../../js/ajax.js';
 	    border-bottom: 1px solid #e0e0e0;
 	}
 	.bill-list-type{
+		padding-bottom: 1px;
 	    -webkit-box-flex: 1;
 	    display: -webkit-box;
 	    -webkit-box-orient: vertical;
