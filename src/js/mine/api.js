@@ -68,6 +68,15 @@ export function signInID(config, cb, errCb) {
     baseAxios('post', userInfoForID, config, cb, errCb);
 }
 
+export function layerOpen(res) {
+    if (res.status === 0) {
+        layer.open({
+            content: res.info,
+            btn: '知道了'
+        })
+    }
+}
+
 export function getInitialBankCardList() {
     return {
         data: [],
