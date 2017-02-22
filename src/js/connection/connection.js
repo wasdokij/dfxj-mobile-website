@@ -65,12 +65,13 @@ window.app = new Vue({
             let search = this.searchPeopleState.search;
             let data = this.searchPeopleResult.data;
             let searchType = this.searchPeopleState.searchType;
+            let nullResult = data.length === 0 && searchType && !this.searchBusy;
             return {
                 homePage: !this.hash,
                 searchPage,
                 searchType: !search && searchPage && !searchType,
                 searchResult: data.length > 0 && searchPage,
-                nullResult: data.length === 0 && !!search
+                nullResult
             }
         },
         searchBusyComputed: function () {
@@ -144,6 +145,7 @@ window.app = new Vue({
             window.history.pushState({ hash: '#search' }, null, '#search');
         },
         onSearch(e) {
+            console.log('onSearch');
             if (!this.searchBusy) { // this.searchBusy初始状态是false
                 this.searchBusy = true;
                 if (this.searchPeopleState.search || true) {
