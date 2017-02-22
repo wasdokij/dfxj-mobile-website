@@ -5,3 +5,5 @@ node_modules
 public
 src/css/maps
 src/tmp
+.project
+Yarn.lock
