@@ -272,16 +272,16 @@ gulp.task('build', function () {
 	build(function() {
 		del(['./src/tmp']);
 //      cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
-		 cp('./public/**/*','/Users/enjing/Documents/myWebProject/kongdian_api/public/jin2.0/');
+		 cp('./public/**/*','/Users/enjing/Documents/myWebProject/client-and-server/kongdian_api/public/jin2.0/');
 
-		 cp('./public/views/**/*.html', '/Users/enjing/Documents/myWebProject/kongdian_api/application/xiaojin/view/');
+		 cp('./public/views/**/*.html', '/Users/enjing/Documents/myWebProject/client-and-server/kongdian_api/application/xiaojin/view/');
 //      cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
 	});
 	// build的过程也要watch
     watch([src.js]).on('change', function () {
         // console.log('change', arguments);
         runSequence('js:build', 'ugjs:build', function () {
-               cp('./public/**/*','/Users/enjing/Documents/myWebProject/kongdian_api/public/jin2.0/');
+               cp('./public/**/*','/Users/enjing/Documents/myWebProject/client-and-server/kongdian_api/public/jin2.0/');
 //          cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
         })
     })
@@ -289,7 +289,7 @@ gulp.task('build', function () {
       watch([src.components]).on('change', function () {
            console.log('change', arguments);
           runSequence('components:build', function () {
-                 cp('./public/**/*','/Users/enjing/Documents/myWebProject/kongdian_api/public/jin2.0/');
+                 cp('./public/**/*','/Users/enjing/Documents/myWebProject/client-and-server/kongdian_api/public/jin2.0/');
 //          cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
           })
       })
@@ -297,7 +297,7 @@ gulp.task('build', function () {
     watch([src.views]).on('change', function() {
 		runSequence('views:build', function () {
 //          cp('./public/views/**/*.html', '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/');
-            cp('./public/views/**/*.html', '/Users/enjing/Documents/myWebProject/kongdian_api/application/xiaojin/view/');
+            cp('./public/views/**/*.html', '/Users/enjing/Documents/myWebProject/client-and-server/kongdian_api/application/xiaojin/view/');
         })
 	});
 
