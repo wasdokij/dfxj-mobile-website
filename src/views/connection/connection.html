@@ -8,10 +8,10 @@
 	    <meta name="apple-mobile-web-app-capable" content="yes"/>
 	    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
         <!--开发选项 不使用缓存-->
-        <meta http-equiv="Expires" content="0">
-        <meta http-equiv="Pragma" content="no-cache">
-        <meta http-equiv="Cache-control" content="no-cache">
-        <meta http-equiv="Cache" content="no-cache">
+        <!--<meta http-equiv="Expires" content="0">-->
+        <!--<meta http-equiv="Pragma" content="no-cache">-->
+        <!--<meta http-equiv="Cache-control" content="no-cache">-->
+        <!--<meta http-equiv="Cache" content="no-cache">-->
         <!---->
 	    <title>人脉</title>
         <link rel="stylesheet" href="../../css/weui.css"/>
@@ -132,7 +132,7 @@
             </div>
         </div>
         <!--搜索结果-->
-        <div v-show="visible.searchResult" key="keywordSearch" v-infinite-scroll="onSearch" infinite-scroll-disabled="searchBusyComputed" infinite-scroll-distance="0" infinite-scroll-immediate-check="false">
+        <div v-show="visible.searchResult" key="keywordSearch" v-infinite-scroll="onSearch" infinite-scroll-disabled="searchBusyComputed" infinite-scroll-distance="0" infinite-scroll-immediate-check="false" style="min-height: 100vh">
             <template v-for="(data, index) in searchPeopleResult.data">
                 <div class="weui-cells" :key="data.user_sn" :class="borderBottom(index)">
                     <div class="weui-cell weui-cell_access my-weui-cell">

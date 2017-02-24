@@ -484,6 +484,9 @@ body,
 .line-clamp-4 {
   -webkit-line-clamp: 4; }
 
+[v-cloak] {
+  display: none; }
+
 /*# sourceMappingURL=maps/kong-base.css.map */
 /*# sourceMappingURL=maps/jin-base.css.map */
 /*# sourceMappingURL=maps/jin-base.css.map */

@@ -29,7 +29,7 @@ Mock.mock('/api_assets_list',{
 		'assetsNumber|100-10000': 200
 	},
 
-	'list|5-20': [{
+	'list|5-10': [{
 		'userName': '@cname',
 		'avatar': '@image',
 		'ranke|+1': 1,

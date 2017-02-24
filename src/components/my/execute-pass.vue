@@ -10,7 +10,7 @@
         <ul class="execute-details ui-whitespace">
             <li class="padding-t-10 padding-b-5 font14">
                 <div class="margin-r-15">银行</div>
-                 <div class=" color-9b">{{passBank.bank_name}}({{passBank.number}})</div>
+                 <div class=" color-9b">{{passBank.bank_name}}({{passBank.shorter_bank_no}})</div>
             </li>
             <li class="padding-b-10 padding-b-5 font14">
                 <div class="margin-r-15">金额</div>

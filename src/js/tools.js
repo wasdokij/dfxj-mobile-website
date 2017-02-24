@@ -54,6 +54,23 @@ export function debounce(fn, delay) {
   }
 }
 
+export function _debounce(fn, delay) {
+    var timer = null;
+
+    return function () {
+        var context = this;
+        var args = arguments;
+        if (timer) {
+            return;
+        }
+        clearTimeout(timer);
+        timer = setTimeout(function(){
+          fn.apply(context, args);
+          timer = null;
+        }, delay);
+    }
+}
+
 // 深拷贝
 /*
 * 使用方法
@@ -107,5 +124,11 @@ export function loginError(res) {
     } else {
         window.location.pathname = '/xiaojin/login_register/login';
     }
+}
+
+export function assignData(obj, data) {
+    Object.keys(data).forEach(function (key) {
+        obj[key] = deepClone(data[key]);
+    });
 }
 
