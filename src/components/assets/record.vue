@@ -83,8 +83,7 @@ import { XHRGet } from '../../js/ajax.js';
             }
         },
         created () {
-        	document.title = this.title;
-            this.loadMore();
+        		document.title = this.title;
         },
         activated: function () {
         	document.title = this.title;
