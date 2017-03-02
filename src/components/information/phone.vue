@@ -13,11 +13,12 @@
         </ul>
     </div>
     <!--02-->
-    <router-link to="/xiugai">
-    <div class="ui-btn-wrap">
-        <button  class="ui-btn-kd ui-btn-yellow" >更改手机号</button>
-    </div>
-    </router-link>
+
+        <div class="ui-btn-wrap">
+            <router-link to="/phone1" class="click_a">
+                <button  class="ui-btn-kd ui-btn-yellow" >更改手机号</button>
+            </router-link>
+        </div>
     <!--03-->
     <div class="font12">
         <span class="margin-l-10 txt-color-ddd">一个手机号码只能作为一个账号的登录名，请谨慎更换</span>

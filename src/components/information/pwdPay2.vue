@@ -164,7 +164,8 @@
             }
                 XHRPost('/oriental_treasure/MySeting/forgetPayPasswordVerify', data, function (response) {
                     if (response.data.status == 1) {
-                        window.location.href = '/xiaojin/information/pwdPay3.html'
+                        //window.location.href = '/xiaojin/information/pwdPay3.html'
+                        _this.$router.push({path:'/padPay'})
                     } else {
                         _this.errorTip(response.data.info);
                     }

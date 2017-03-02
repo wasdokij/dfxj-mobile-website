@@ -2,32 +2,40 @@
 <div class="jin-wrap margin-t-10" >
     <!--01-->
     <ul class="ui-list ul-all ui-list-active border-b-1 border-t-1  jin-list-link">
-        <li class="ui-border-b" onclick="location.href='/xiaojin/information/name.html'">
-            <div class="ui-list-info">
-                <h4 class="ui-nowrap">常用名</h4>
-            </div>
-            <span class="font14 ui-txt-info">{{info.name}}</span>
+        <li>
+            <router-link to="/name" class="click_a">
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap">常用名</h4>
+                </div>
+                <span class="font14 ui-txt-info">{{info.name}}</span>
+            </router-link>
         </li>
-        <li class="ui-border-b" onclick="location.href='/xiaojin/information/inviter.html'">
-            <div class="ui-list-info">
-                <h4 class="ui-nowrap">邀请人</h4>
-            </div>
-            <span class="font14 ui-txt-info">{{info.yqr}}</span>
+        <li>
+            <router-link to="/inviter" class="click_a">
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap">邀请人</h4>
+                </div>
+                <span class="font14 ui-txt-info">{{info.yqr}}</span>
+            </router-link>
         </li>
-        <li onclick="location.href='/xiaojin/information/phone.html'">
-            <div class="ui-list-info">
-                <h4 class="ui-nowrap">手机号码</h4>
-            </div>
-            <span class="font14 ui-txt-info" >{{info.phone}}</span>
+        <li>
+            <router-link to="/phone" class="click_a">
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap">手机号码</h4>
+                </div>
+                <span class="font14 ui-txt-info" >{{info.phone}}</span>
+            </router-link>
         </li>
     </ul>
     <!--02-->
     <div class="possword border-b-1 border-t-1">
         <ul class="ui-list ul-all ui-list-active  jin-list-link">
-            <li onclick="location.href='/xiaojin/information/mima.html'">
-                <div class="ui-list-info">
-                    <h4 class="ui-nowrap ">密码管理</h4>
-                </div>
+            <li>
+                <router-link to="/mima" class="click_a">
+                    <div class="ui-list-info">
+                        <h4 class="ui-nowrap ">密码管理</h4>
+                    </div>
+                </router-link>
             </li>
         </ul>
     </div>

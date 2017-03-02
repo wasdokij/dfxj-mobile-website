@@ -140,10 +140,34 @@ import '../mock/test.js';
 import '../lib/layer.js';
 import '../lib/layer.css';
 import myIndex from 'components/my/index.vue';
+import Password from 'components/information/password.vue';
+import Name from 'components/information/name.vue';
+import Phone from 'components/information/phone.vue';
+import Phone01 from 'components/information/inviter01.vue';
+import Inviter from 'components/information/inviter.vue';
+import Mima from 'components/information/mima.vue';
+import Dlmima from 'components/information/close.vue';
+import Authentication from 'components/information/authentication.vue';
+import PwdPay from 'components/information/pwdPay.vue';
+import PwdPay1 from 'components/information/pwdPay1.vue';
+import PwdPay2 from 'components/information/pwdPay2.vue';
+import PwdPay3 from 'components/information/pwdPay3.vue';
 import { countdown } from '../tools.js';
 
 const routes = [
-    { path: '/', component: myIndex }
+    { path: '/', component: myIndex },
+    { path: '/password', component: Password},
+    { path: '/name', component: Name},
+    {path: '/phone',component: Phone},
+    { path: '/phone1', component: Phone01 },
+    { path: '/mima', component: Mima},
+    { path: '/dlmimna', component: Dlmima},
+    { path: '/inviter', component:Inviter},
+    {path: '/authentication',component: Authentication},
+    { path: '/pwdPay', component: PwdPay },
+    { path: '/pwdPay1', component: PwdPay1},
+    { path: '/pwdPay2', component: PwdPay2},
+    {path: '/pwdPay3',component: PwdPay3}
 ];
 const router = new VueRouter({
     // ES6缩写语法，相当于routes:routes

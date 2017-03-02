@@ -77,11 +77,13 @@
             });
         },
         successTip: function (msg) {
+            const _this = this;
             layer.open({
                 content: msg,
                 btn: ['确定'],
                 yes: function () {
-                    window.location.href = '/xiaojin/information/password.html'
+                    //window.location.href = '/xiaojin/information/password.html'
+                    _this.$router.push({path:'/password'});
                 }
             });
         },

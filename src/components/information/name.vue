@@ -64,7 +64,9 @@
                 _this.loadingShow = false;
 
                 if (response.data.status === 1) {
-                    window.location.href = '/xiaojin/information/password.html'
+                    //window.location.href = '/xiaojin/information/password.html'
+                    _this.$router.push({path:'password'});
+
                 }else{
                     _this.errorTip(response.data.info);
                 }

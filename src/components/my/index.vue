@@ -87,9 +87,11 @@
             </li>
         </ul>
         <ul class="box ui-border-b">
-            <li class="width-50 yz ui-border-r"  onclick="location.href='/xiaojin/information/password.html'">
-                <span class="font16 padding-t-20 padding-l-20" >个人设置</span>
-                <span class="txt-color-9b padding-b-20 padding-l-20 font14">修改个人信息</span>
+            <li class="width-50 yz ui-border-r">
+                <router-link to="/password" class="click_ax">
+                    <span class="font16 padding-t-20 padding-l-20" >个人设置</span>
+                    <span class="txt-color-9b padding-b-20 padding-l-20 font14">修改个人信息</span>
+                </router-link>
             </li>
             <li class="width-50 yz">
             </li>

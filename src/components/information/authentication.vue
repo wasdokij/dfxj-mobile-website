@@ -8,7 +8,7 @@
     </div>
     <div class="ui-btn-wrap">
         <!--<p class="jump text-center" style="display:block;padding:10px 0;">页面自动 <a id="href" href="javascript:history.back(-1);">跳转</a> 等待时间： <b id="wait">3</b></p>-->
-        <button class="ui-btn-lg ui-btn-danger" onclick="location.href='/xiaojin/mine/identity'">确定</button>
+            <button class="ui-btn-lg ui-btn-danger" onclick="location.href='/xiaojin/mine/identity'">确定</button>
     </div>
 
 </div>

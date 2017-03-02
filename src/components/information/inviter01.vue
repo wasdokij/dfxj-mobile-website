@@ -159,7 +159,8 @@
                         yes: function () {
                             layer.closeAll();
                             _this.info.input=_this.info.phone ;
-                            window.location.href = '/xiaojin/information/password.html'
+                            //window.location.href = '/xiaojin/information/password.html'
+                            _this.$router.push({path:'/password'});
                         }
                     });
                 }else{

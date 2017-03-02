@@ -164,7 +164,8 @@
                             _this.loadingShow = false;
                             _this.successingShow = true;
                             _this.dqyqr_name = _this.user.yqr;
-                            setInterval("window.location.href = '/xiaojin/information/password.html'","2000");
+                            //setInterval("window.location.href = '/xiaojin/information/password.html'","2000");
+                            setInterval("_this.$router.push({path:'/password'})",'2000');
 
                         }
                     })
