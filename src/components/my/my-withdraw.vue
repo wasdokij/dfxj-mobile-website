@@ -17,7 +17,7 @@
                 <div class="jin-box-align  padding-t-15 padding-b-20 line-h-nor ">
                     <div class="margin-r-10 font30 color-4a">￥</div>
                     <div class="recharge-input  font28 color-4a">
-                        <input type="tel"  placeholder="请输入金额" v-model="withdrawAll"  @focus="">
+                        <input type="tel"  placeholder="请输入金额" v-model="withdrawAll"  />
                     </div>
                 </div>
                 <div class="jin-justify-flex padding-t-10  padding-b-10 ui-border-t">
@@ -34,7 +34,6 @@
                     </p>
                 </div>
             </div>
-            <input type="hidden" name="psw" id="psw" value="" />
         </template>
          <bank-card
                 v-if="bank"
@@ -67,7 +66,6 @@
                 defaultInfo: {},
                 defaultBank:{},
                 withdrawAll:'',
-                psw:"",
                 switch:false
             }
         },
@@ -80,22 +78,18 @@
         watch: {
             withdrawAll: function (val, oldVal) {
                 var num = this.withdrawData.money;
-                var der = parseFloat(num.replace(/,/g, ''), 10);
-                console.log(der)
-                var der2 = parseFloat(val);
+                var reg = /^[0-9]+$/;
+                var der = parseInt(num.replace(/,/g, ''), 10);
+                var der2 = val;
                 if (der2 > der){
                     this.withdrawAll=der;
+                }
+                if (!reg.test(der2)){
+                    this.withdrawAll="";
                 }
             },
         },
         directives: {
-            focus: {
-                inserted: function (el, {value}) {
-                    if (value) {
-                        el.focus();
-                    }
-                }
-            }
         },
         methods:{
             onBank(){
@@ -107,7 +101,7 @@
             },
             onAll(){
                 var num = this.withdrawData.money;
-                this.withdrawAll=parseFloat(num.replace(/,/g, ''), 10);
+                this.withdrawAll=parseInt(num.replace(/,/g, ''), 10);
             },
             onWithdraw() {
                 var load = layer.open({ type: 2,shadeClose: false})
@@ -125,37 +119,45 @@
             },
             txFn() {
                 var _this=this;
-                layer.open({
-                    title: '请输入交易密码',
-                    content: '<input type="password" id="password" style="width:100%;height:40px; border:0;border-bottom:1px solid #ddd;">',
-                    shadeClose: false,
-                    btn: ['确认支付', '取消'],
-                    no: function () {
-                        layer.closeAll()
-                    },
-                    yes: function () {
-                        if(this.switch) return false;
-                        this.switch=true;
-                        const postData= {
-                            account:encrypt(_this.defaultBank.bank_card_no),
-                            money:encrypt(_this.withdrawAll),
-                            psw:encrypt(String(eval(document.getElementById('password').value)))
-                        };
-                        XHRPost('/oriental_treasure/Wallet/withdraw_apply',postData,function (msg) {
-                            if (msg.data.status == 0) {
-                                layer.open({
-                                    content: msg.data.info,
-                                    time: 2,
-                                    style: 'background-color:rgba(0,0,0,.8);color:#fff'
-                                });
-                            } else {
-                                 layer.closeAll()
-                                _this.executePass=true;
-                            }
-                            this.switch=false;
-                        }.bind(this));
-                    }
-                })
+                if (this.withdrawAll.length < 1){
+                    layer.open({
+                        content: '请输入正确金额!',
+                        time: 2,
+                        style: 'background-color:rgba(0,0,0,.8);color:#fff'
+                    });
+                }else {
+                    layer.open({
+                        title: '请输入交易密码',
+                        content: '<input type="password" id="password" style="width:100%;height:40px; border:0;border-bottom:1px solid #ddd;">',
+                        shadeClose: false,
+                        btn: ['确认支付', '取消'],
+                        no: function () {
+                            layer.closeAll()
+                        },
+                        yes: function () {
+                            if (this.switch) return false;
+                            this.switch = true;
+                            const postData = {
+                                account: encrypt(_this.defaultBank.bank_card_no),
+                                money: encrypt(_this.withdrawAll),
+                                psw: encrypt(String(document.getElementById('password').value))
+                            };
+                            XHRPost('/oriental_treasure/Wallet/withdraw_apply', postData, function (msg) {
+                                if (msg.data.status == 0) {
+                                    layer.open({
+                                        content: msg.data.info,
+                                        time: 2,
+                                        style: 'background-color:rgba(0,0,0,.8);color:#fff'
+                                    });
+                                } else {
+                                    layer.closeAll()
+                                    _this.executePass = true;
+                                }
+                                this.switch = false;
+                            }.bind(this));
+                        }
+                    })
+                }
             }
         }
     }

@@ -59,7 +59,7 @@
         },
         methods: {
             getDetails(){
-                	XHRGet('/oriental_treasure/billing/getInfo',{id:this.$route.query.plan},function (response) {
+                	XHRGet('/oriental_treasure/Billing/getInfo',{id:this.$route.query.plan},function (response) {
                         console.log(response)
                         this.data=response.data.data;
                     }.bind(this))

@@ -99,7 +99,7 @@
             // 分页
             loadMore: function () {
                	this.loadMoreTip = true;
-               	XHRGet('/oriental_treasure/billing/getlist',{limit:this.total, time:this.month, key:this.walletTypeKey},function (response) {
+               	XHRGet('/oriental_treasure/Billing/getlist',{limit:this.total, time:this.month, key:this.walletTypeKey},function (response) {
                     const data = response.data;
                     this.total= data.total;
                     this.loadingShow = false;
@@ -141,7 +141,7 @@
                 this.billData=[];
                 this.loadMore()
             },
-            // 搜索数据请求
+            // 搜索数据请求--
             childData(msg){
                 this.walletTypeKey=msg.keys;
                 this.walletType=msg.name;

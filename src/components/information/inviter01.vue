@@ -39,7 +39,7 @@
     <loading v-if="loadingShow"></loading>
 </div>
 </template>
-<script>
+<script type="text/jsx">
     import Vue from 'vue';
     import axios from 'axios';
     import '../../js/lib/layer.js';
@@ -49,10 +49,10 @@
     import { XHRPost} from '../../js/ajax.js';
     import { XHRGet} from '../../js/ajax.js';
     export default{
-        data(){
-        return{
+        data() {
+        return {
             info: {
-                input:"",
+                input: "",
                 yzm: "",
                 isA: "",
                 isB: "",

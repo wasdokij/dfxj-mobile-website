@@ -118,46 +118,7 @@
                     <div class="ui-col ui-col-33 txt-center bg-fe">{{key.rsE}}</div>
                     <div class="ui-col ui-col-33 txt-center bg-f7">{{key.rsF}}</div>
                 </li>
-                <!--<li class="box ui-row line-30">-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e3e3e3">2001~5000</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e9ebea">1600</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e3e3e3">800</div>-->
-                <!--</li>-->
-                <!--<li class="box ui-row line-30">-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-f7">5001~10000</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-fe">1200</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-f7">600</div>-->
-                <!--</li>-->
-                <!--<li class="box ui-row line-30">-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e3e3e3">1万~2万</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e9ebea">800</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e3e3e3">400</div>-->
-                <!--</li>-->
-                <!--<li class="box ui-row line-30">-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-f7">2万~5万</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-fe">400</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-f7">200</div>-->
-                <!--</li>-->
-                <!--<li class="box ui-row line-30">-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e3e3e3">5万~10万</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e9ebea">200</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e3e3e3">100</div>-->
-                <!--</li>-->
-                <!--<li class="box ui-row">-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-f7">10万~20万</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-fe">80</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-f7">40</div>-->
-                <!--</li>-->
-                <!--<li class="box ui-row line-30">-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e3e3e3">20万~50万</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e9ebea">40</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-e3e3e3">20</div>-->
-                <!--</li>-->
-                <!--<li class="box ui-row line-30">-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-f7">50万~100万</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-fe">20</div>-->
-                <!--<div class="ui-col ui-col-33 txt-center bg-f7">10</div>-->
-                <!--</li>-->
+
             </ul>
 
         </div>
@@ -176,7 +137,7 @@
         -webkit-border-radius: 200px;
     }
 </style>
-<script>
+<script type="text/jsx">
     import '../../js/lib/layer.js';
     import '../../js/lib/layer.css';
     import { countdown } from '../../js/tools.js';
@@ -217,7 +178,6 @@
 
         })
     }
-
 
     }
 </script>

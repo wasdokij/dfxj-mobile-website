@@ -1,58 +1,58 @@
 <template>
-    <div>
-       <div v-bind:class='{"dis_n" :info.isB,"dsp_p" :info.isA}'>
-        <div class="ui-border-t margin-t-15">
-            <form action="#" id="form">
-                <div class="ui-form-item ui-border-b bg-white">
-                    <label>姓名</label>
-                    <input class="text-right" type="text" name="name" v-model="info.user_name">
-                </div>
-                <div class="ui-form-item ui-border-b bg-white">
-                    <label>身份证号</label>
-                    <input type="text" id="idCard" name="idCard" placeholder="身份证号码" v-model="info.id_cart_phone" v-on:blur="test">
-                </div>
-                <div class="ui-form-item ui-form-item-link ui-border-tb bg-white margin-t-10" id="select-bank"  v-on:click="getGoto" >
-                    <label> {{info.bank_lx}}</label>
-                    <input type="text" id="bank" name="bank" value="" readonly="readonly"/>
-                </div>
-                <div class="ui-form-item ui-border-b bg-white">
-                    <label>银行卡号</label>
-                    <input type="tel" id="bank_number" name="bank_number" placeholder="输入银行卡号码"  v-model="info.bank_cart_phone" v-on:blur="test">
-                </div>
-            </form>
-        </div>
-        <div class="ui-whitespace font14 ui-txt-muted padding-t-5">
-            以上内容仅作为信息对比，空店将严格保密。
-        </div>
-        <div class="ui-btn-wrap">
-            <button class="ui-btn-lg ui-btn-primary" id="submit"  v-on:click="getNextgo" :disabled="disabled">下一步</button>
-        </div>
-       </div>
-        <!--选择银行弹框-->
-        <div  v-bind:class='{"dis_n" :info.isA,"dsp_p" :info.isB}'>
-            <div class="king-dialog c-up-before padding-b-15">
-                <div class="ui-whitespace padding-t-5 padding-b-5 bg-whitesmoke" >
-                    <p class="font14 ui-txt-info line-h-nor">选择银行进行验证</p>
-                </div>
-                <ul class="ui-list k-list ui-list-active" >
-                    <li class="ui-border-b" v-for="key in items" v-on:click="getGobank(key)" >
-                        <div class="ui-avatar k-avatar-s">
-                            <img :src="key.logo" alt=""/>
-                        </div>
-                        <div class="ui-list-info">
-                            <h4>{{key.bank_name}}({{key.bank_card_no}})</h4>
-                        </div>
-                    </li>
-                    <!--<li class="ui-border-b">-->
-                    <!--<div class="ui-avatar k-avatar-s" style="background-image: url(../../images/app2.png);"></div>-->
-                    <!--<div class="ui-list-info">-->
-                    <!--<h4>建设银行(1546)</h4>-->
-                    <!--</div>-->
-                    <!--</li>-->
-                </ul>
+<div>
+   <div v-bind:class='{"dis_n" :info.isB,"dsp_p" :info.isA}'>
+    <div class="ui-border-t margin-t-15">
+        <form action="#" id="form">
+            <div class="ui-form-item ui-border-b bg-white">
+                <label>姓名</label>
+                <input class="text-right" type="text" name="name" v-model="info.user_name">
             </div>
+            <div class="ui-form-item ui-border-b bg-white">
+                <label>身份证号</label>
+                <input type="text" id="idCard" name="idCard" placeholder="身份证号码" v-model="info.id_cart_phone">
+            </div>
+            <div class="ui-form-item ui-form-item-link ui-border-tb bg-white margin-t-10" id="select-bank"  v-on:click="getGoto" >
+                <label> {{info.bank_lx}}</label>
+                <input type="text" id="bank" name="bank" value="" readonly="readonly"/>
+            </div>
+            <div class="ui-form-item ui-border-b bg-white">
+                <label>银行卡号</label>
+                <input type="tel" id="bank_number" name="bank_number" placeholder="输入银行卡号码"  v-model="info.bank_cart_phone">
+            </div>
+        </form>
+    </div>
+    <div class="ui-whitespace font14 ui-txt-muted padding-t-5">
+        以上内容仅作为信息对比，空店将严格保密。
+    </div>
+    <div class="ui-btn-wrap">
+        <button class="ui-btn-lg ui-btn-primary" id="submit"  v-on:click="getNextgo" :disabled="!buttonEnable">下一步</button>
+    </div>
+   </div>
+    <!--选择银行弹框-->
+    <div  v-bind:class='{"dis_n" :info.isA,"dsp_p" :info.isB}'>
+        <div class="king-dialog c-up-before padding-b-15">
+            <div class="ui-whitespace padding-t-5 padding-b-5 bg-whitesmoke" >
+                <p class="font14 ui-txt-info line-h-nor">选择银行进行验证</p>
+            </div>
+            <ul class="ui-list k-list ui-list-active" >
+                <li class="ui-border-b" v-for="key in items" v-on:click="getGobank(key)" >
+                    <div class="ui-avatar k-avatar-s">
+                        <img :src="key.logo" alt=""/>
+                    </div>
+                    <div class="ui-list-info">
+                        <h4>{{key.bank_name}}({{key.bank_card_no}})</h4>
+                    </div>
+                </li>
+                <!--<li class="ui-border-b">-->
+                <!--<div class="ui-avatar k-avatar-s" style="background-image: url(../../images/app2.png);"></div>-->
+                <!--<div class="ui-list-info">-->
+                <!--<h4>建设银行(1546)</h4>-->
+                <!--</div>-->
+                <!--</li>-->
+            </ul>
         </div>
     </div>
+</div>
 
 </template>
 <style>
@@ -66,7 +66,7 @@
         background-size: 100% 100%;
     }
 </style>
-<script>
+<script type="text/jsx">
     import '../../js/lib/layer.js';
     import '../../js/lib/layer.css';
     import Loading from '../common/loading.vue';
@@ -78,23 +78,27 @@
     export default{
         data(){
         return{
-            disabled:true,
             info: {
-                isA:true,
-                isB:false,
-                user_name:"",
-                id_cart_phone:"",
-                bank_cart_phone:"",
-                bank_id:"",
-                bank_lx:""
+                isA: true,
+                isB: false,
+                user_name: "",
+                id_cart_phone: "",
+                bank_cart_phone: "",
+                bank_id: "",
+                bank_lx: ""
             },
             items: {
 
             },
             vle:{
-                bk_name:"",
-                bk_id:""
+                bk_name: "",
+                bk_id: ""
             }
+        }
+    },
+    computed: {
+        buttonEnable() {
+            return (this.info.id_cart_phone!= "" && this.info.bank_cart_phone!= "");
         }
     },
     mounted: function () {
@@ -150,12 +154,6 @@
             //console.log(this.vle.bk_id);
         },
         //失去焦点事件
-        test: function () {
-                const _this = this;
-                if (this.info.id_cart_phone != "" && this.info.bank_cart_phone != "" ) {
-                    _this.disabled = false;
-                }
-                                    },
         //最后一步提交
         getNextgo: function () {
             const _this = this;
@@ -164,14 +162,15 @@
                 bank_card_no:encrypt(this.info.bank_cart_phone),
                 bank_id: encrypt(this.vle.bk_id)
             }
-            XHRPost('/oriental_treasure/MySeting/forgetPayPasswordVerify', data, function (response) {
-                if (response.data.status == 1) {
-                    window.location.href = '/xiaojin/information/pwdPay3.html'
-                }else{
-                    _this.errorTip(response.data.info);
-                }
-            })
+                XHRPost('/oriental_treasure/MySeting/forgetPayPasswordVerify', data, function (response) {
+                    if (response.data.status == 1) {
+                        window.location.href = '/xiaojin/information/pwdPay3.html'
+                    } else {
+                        _this.errorTip(response.data.info);
+                    }
+                })
         }
         }
     }
 </script>
+

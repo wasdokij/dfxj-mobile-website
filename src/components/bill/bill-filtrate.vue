@@ -4,7 +4,7 @@
             <div class="ui-searchbar filtrate-input ">
                     <i class="jin-icon jin-icon-search font24" @click="onSeek"></i>
                 <div class="ui-searchbar-input">
-                    <input v-model="inputValue" type="text" class="jin-box-align font14"  placeholder="输入消息相关信息" v-focus >
+                    <input v-model="inputValue" type="text" class="jin-box-align font14"  placeholder="输入消息相关信息" />
                 </div>
             </div>
             <button class="ui-searchbar-cancel font14"
@@ -39,6 +39,7 @@
         data(){
             return {
                 inputValue:'',
+                inputName:'',
                 keywordList:"",
                 isActive:false,
                 focusStatus:true,
@@ -64,7 +65,8 @@
         },
         methods:{
             onKeyword(index) {
-                this.inputValue= index;
+                this.inputValue= index.name;
+                this.inputName= index;
                 this.onSeek();
             },
             emitEvent () {
@@ -76,7 +78,7 @@
             },
             onSeek(){
                 this.emitEvent();
-                this.$emit('child-data',this.inputValue);
+                this.$emit('child-data',this.inputName);
             }
         },
     }

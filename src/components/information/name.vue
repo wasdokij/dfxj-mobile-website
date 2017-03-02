@@ -21,7 +21,7 @@
     <!--底部-->
 </div>
 </template>
-<script>
+<script type="text/jsx">
     import '../../js/lib/layer.js';
     import '../../js/lib/layer.css';
     import Loading from '../common/loading.vue';
@@ -32,7 +32,7 @@
         data(){
         return{
             info:{
-                name:""
+                name: ""
             },
             loadingShow: false
         }

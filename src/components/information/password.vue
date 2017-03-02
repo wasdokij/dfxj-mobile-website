@@ -39,7 +39,7 @@
     <!---->
 </div>
 </template>
-<script>
+<script type="text/jsx">
     import { XHRGet} from '../../js/ajax.js';
     export default{
         data(){

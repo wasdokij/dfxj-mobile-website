@@ -25,7 +25,7 @@
                         <ul class="ui-list" @click="billDetails(key.id)">
                             <li class="">
                                 <div class="ui-avatar-s">
-                                    <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                                    <span style="background-color:#cecece"></span>
                                 </div>
                                 <div class="ui-list-info padding-r-0">
                                     <ul class="jin-justify-flex">

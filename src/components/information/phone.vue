@@ -6,7 +6,7 @@
             <li data-href="#">
                 <div class="rlt width-100">
                     <label class="ui-nowrap abs top-10">手机号</label>
-                    <input type="text"  class="ui-form-item input width-100 txt-color-d6" :placeholder="info.input" style="text-align:right;" id="name"/>
+                    <input type="text"  class="ui-form-item input width-100 txt-color-d6" :placeholder="info.input" style="text-align:right;" readonly="readonly" id="name"/>
                 </div>
 
             </li>
@@ -27,7 +27,7 @@
 <!--下一个页面-->
 
 </template>
-<script>
+<script type="text/jsx">
     import Vue from 'vue';
     import axios from 'axios';
     import '../../js/lib/layer.js';

@@ -4,11 +4,11 @@
     <form action="#" id="form">
         <div class="ui-form-item ui-border-b bg-white">
             <label>手机号</label>
-            <input type="tel" id="phone" name="phone" :placeholder="info.phone"  v-on:blur="test">
+            <input type="tel" id="phone" name="phone" :placeholder="info.phone" readonly="readonly">
         </div>
         <div class="ui-form-item ui-form-item-r  bg-white">
             <label>验证码</label>
-            <input type="text" id="code" name="code" placeholder="输入验证码" style="padding-left: 95px;padding-right: 120px;" v-model="info.code" v-on:blur="test">
+            <input type="text" id="code" name="code" placeholder="输入验证码" style="padding-left: 95px;padding-right: 120px;" v-model="info.code" >
              <span class="abs yzm cursor-pir a-r bg-yellow"  @click.prevent="getCode" v-if="getCodeBtnDisable">
                   {{ conut_time === "0s" ? '重获' : '获取' }}
              </span>
@@ -16,21 +16,21 @@
         </div>
         <div class="ui-form-item ui-border-tb bg-white margin-t-15">
             <label>新密码</label>
-            <input type="password" id="password" name="password" placeholder="输入新密码"  v-model="info.xpwd" v-on:blur="test"/>
+            <input type="password" id="password" name="password" placeholder="输入新密码"  v-model="info.xpwd" />
         </div>
         <div class="ui-form-item ui-border-b bg-white">
             <label>确认新密码</label>
-            <input type="password" id="password1" name="password1" placeholder="再次输入新密码"  v-model="info.qpwd" v-on:blur="test"/>
+            <input type="password" id="password1" name="password1" placeholder="再次输入新密码"  v-model="info.qpwd"/>
         </div>
     </form>
 </div>
 
 <div class="ui-btn-wrap">
-    <button class="ui-btn-lg ui-btn-primary" id="submit" :disabled=disabled v-on:click="goToNext">保存</button>
+    <button class="ui-btn-lg ui-btn-primary" id="submit" :disabled="!buttonEnable" v-on:click="goToNext">保存</button>
 </div>
     </div>
 </template>
-<script>
+<script type="text/jsx">
     import Vue from 'vue';
     import axios from 'axios';
     import '../../js/lib/layer.js';
@@ -44,15 +44,20 @@
         return{
             disabled : true,
             info: {
-                input:"",
+                input: "",
                 code: '',
-                phone:"",
-                yzm:"",
-                xpwd:"",
-                qpwd:""
+                phone: "",
+                yzm: "",
+                xpwd: "",
+                qpwd: ""
             },
             conut_time: 60,
             getCodeBtnDisable: true
+        }
+    },
+    computed: {
+        buttonEnable() {
+            return (this.info.xpwd!= "" && this.info.qpwd!="" && this.info.phone!= "");
         }
     },
     mounted: function () {
@@ -67,12 +72,6 @@
         checkPhone: function (phone) {
             const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);
             return tel;
-        },
-        test: function () {
-            const _this = this;
-            if (this.info.xpwd != "" && this.info.qpwd != "" && this.info.code!=" " && this.info.phone!=" ") {
-                _this.disabled = false;
-            }
         },
         //错误提示方法
         errorTip: function (msg) {
@@ -154,16 +153,19 @@
                 this.errorTip('请输入验证码！');
                 return false;
             }
-
-            XHRPost('/oriental_treasure/MySeting/forgetAndEditPayWord', data, function (response) {
-                console.log(response);
-                if (response.data.status == 1) {
-                    this.successTip(response.data.info);
-                }else(
+    if(this.info.xpwd === this.info.qpwd) {
+        XHRPost('/oriental_treasure/MySeting/forgetAndEditPayWord', data, function (response) {
+            console.log(response);
+            if (response.data.status == 1) {
+                this.successTip(response.data.info);
+            } else(
                     this.errorTip(response.data.info)
-                )
+            )
 
-            }.bind(this));
+        }.bind(this))
+    }else{
+        this.errorTip("两次密码不一致");
+    }
         },
 
     }
