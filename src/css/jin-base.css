@@ -65,6 +65,12 @@ button {
 .jin-icon-xiangyou:before {
   content: "\e600"; }
 
+.jin-icon-chenggong:before {
+  content: "\e6f3"; }
+
+.jin-icon-roundclosefill:before {
+  content: "\e631"; }
+
 .jin-icon-chongzhi:before {
   content: "\e608"; }
 
@@ -80,6 +86,9 @@ button {
 .jin-icon-icon:before {
   content: "\e6a9"; }
 
+.jin-icon-search:before {
+  content: "\e629"; }
+
 .jin-icon-construction:before {
   content: "\e62c"; }
 
@@ -92,6 +101,9 @@ button {
 .jin-icon-user:before {
   content: "\e6ad"; }
 
+.jin-icon-bank:before {
+  content: "\e601"; }
+
 .jin-icon-gantanhao:before {
   content: "\e6a2"; }
 
@@ -100,6 +112,9 @@ button {
 
 .jin-icon-dagou:before {
   content: "\e612"; }
+
+.jin-icon-shibai:before {
+  content: "\e63f"; }
 
 .jin-icon-renmai:before {
   content: "\e77f"; }
