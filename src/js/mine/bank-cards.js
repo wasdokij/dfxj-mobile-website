@@ -143,6 +143,9 @@ window.app = new Vue({
                     self.cardSelected.visible = false;
                     self.getCard();
                 }
+                if (res.data.status === 0) {
+                    self.cardSelected.visible = false;
+                }
                 api.layerOpen(res.data);
             }, function() {});
         },
