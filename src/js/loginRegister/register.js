@@ -2,6 +2,7 @@
 import '../lib/layer.js';
 import '../lib/layer.css';
 import { XHRPost } from '../ajax.js';
+import { XHRGet } from '../ajax.js';
 import { countdown } from '../tools.js';
 
 var login = new Vue({
@@ -87,7 +88,14 @@ var login = new Vue({
 						content: response.data.info,
 						time: 1.5,
 						end: function () {
-							window.location.href = '/xiaojin/index/index.html';
+							XHRGet('/oriental_treasure/Wechat/getUserOpenId', {}, function (response) {
+								layer.closeAll();
+								if (response.data.status === 1) {
+									window.location.href = response.data.data;
+								} else {
+									window.location.href = '/xiaojin/index/index.html';
+								}
+							}.bind(this));
 						}
 					});
 

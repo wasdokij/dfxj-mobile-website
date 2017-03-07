@@ -1,0 +1,123 @@
+@charset "UTF-8";
+body {
+  background: #ddd;
+  font-size: 14px; }
+
+[v-cloak] {
+  display: none; }
+
+/*������ɫ*/
+.bg-dbbe83 {
+  background: #dbbe83; }
+
+.bg-df4400 {
+  background: #df4400; }
+
+.bg-f49c22 {
+  background: #f49c22; }
+
+.bg-e38600 {
+  background: #e38600; }
+
+.bg-fabe00 {
+  background: #fabe00; }
+
+.bg-eaaa00 {
+  background: #eaaa00; }
+
+.bg-e3e3e3 {
+  background: #e3e3e3; }
+
+.bg-e9ebea {
+  background: #e9ebea; }
+
+.bg-f7 {
+  background: #f7f7f7; }
+
+.bg-fe {
+  background: #fefefe; }
+
+.box {
+  display: flex; }
+
+/*ͷ��*/
+@media screen and (min-width: 320px) {
+  .ui-avatar-s {
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 200px;
+    overflow: hidden; }
+  .line-40-s {
+    line-height: 30px; } }
+
+@media screen and (min-width: 321px) {
+  .ui-avatar-s {
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 200px;
+    overflow: hidden; }
+  .line-40-s {
+    line-height: 40px; } }
+
+/*����*/
+.width-50 {
+  width: 50%; }
+
+.width-100 {
+  width: 100%; }
+
+.height-100 {
+  height: 100px; }
+
+.height-30 {
+  height: 30px; }
+
+.height-70 {
+  height: 70px; }
+
+.height-230 {
+  height: 300px; }
+
+.height-230 > li {
+  height: 30px; }
+
+/*������ɫ*/
+.txt-color-fff {
+  color: #fff; }
+
+.txt-color-yellow {
+  color: #FFCB00; }
+
+.txt-color-9b {
+  color: #9B9B9B; }
+
+/*�и�*/
+.line-40 {
+  line-height: 30px; }
+
+.line-100 {
+  line-height: 100px; }
+
+.line-30 {
+  line-height: 30px; }
+
+.line-70 {
+  line-height: 70px; }
+
+.line-16 {
+  line-height: 1.6; }
+
+/*�������뷽ʽ*/
+.txt-align-r {
+  text-align: right; }
+
+.txt-center {
+  text-align: center; }
+
+/*����*/
+.yellow-s {
+  margin-right: 5px;
+  width: 4px;
+  height: 18px;
+  background-color: #FFCB00;
+  border-radius: 200px; }

@@ -1,30 +1,36 @@
 <template>
-    <div class="filtrate-tk af-up-before af-up-move" style="opacity: 1;">
+    <div class="af-up-before af-up-move" style="opacity: 1;">
         <div class="bg-white">
             <div class="jin-box-center">
-                <div class="jin-box-align  jin-box-pack padding-t-15 padding-b-20">
-                    <div class="bill-details-avatar">
-                        <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
-                    </div>
-                    <div class="margin-l-10 font14">
-                        {{data.content}}
-                    </div>
+                <div class="padding-t-15 padding-b-20 font14" >
+                    {{data.typeName}}
                 </div>
-                <div class="padding-b-5 font24 line-h-nor"  v-bind:class="{'color-money':data.money >0}">{{data.money}}</div>
-                <div class="margin-b-20 font14 color-9b">订单已完成</div>
+                <div class="padding-b-5 font24 line-h-nor color-money">+{{data.money}}</div>
+                <div class="margin-b-20 font14 ui-txt-muted">{{data.typeName}}</div>
             </div>
-            <ul class=" buil-list  ui-border-t">
-                <li class="jin-justify-flex ui-border-b">
-                    <div class="font14 color-4a">付款方式</div>
-                    <div class="font12 color-9b">微股东支付</div>
-                </li>
-                <li class="jin-justify-flex ui-border-b">
-                    <div class="font14 color-4a">文章标题</div>
-                    <div class="font12 color-9b like-icon">  有没有可以称得上是真正的英雄的人有没</div>
+            <ul class=" buil-list ui-border-tb">
+                <li class="jin-justify-flex">
+                    <div class="font14">创建时间</div>
+                    <div class="font12 ui-txt-muted">{{data.add_date}}</div>
                 </li>
             </ul>
         </div>
-        <div class="return-btm text-center font14">  <router-link class="" to="/bill">返回账单列表</router-link ></div>
+        <ul class="ui-list ui-list-text ui-border-tb  margin-t-10">
+            <li class="margin-l-0 ui-border-b">
+                <h4 class="text-center font14">详细信息</h4>
+            </li>
+            <li>
+                <div class="jin-box-align jin-box-align ui-txt-muted font14">
+                    {{data.typeName}}
+                </div>
+                <div class="font14">+{{data.money}}</div>
+            </li>
+        </ul>
+        <router-link to="/bill">
+            <div class="return-btm text-center font14">
+                返回
+            </div>
+        </router-link >
     </div>
 </template>
 <style >
@@ -39,23 +45,25 @@
     }
 </style>
 <script>
+    import { XHRGet } from '../../js/ajax.js';
     export default{
         data(){
             return{
-                data:this.$route.query.plan
-            }
-        },
-        props:{
-            brotherData:{
-                default: ''
+                data:"",
             }
         },
         created: function() {
-            console.log("打印")
+            this.getDetails()
         },
         components:{
         },
-        methods:{
+        methods: {
+            getDetails(){
+                	XHRGet('/oriental_treasure/Billing/getInfo',{id:this.$route.query.plan},function (response) {
+                        console.log(response)
+                        this.data=response.data.data;
+                    }.bind(this))
+            }
         }
     }
 </script>

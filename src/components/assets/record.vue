@@ -83,8 +83,7 @@ import { XHRGet } from '../../js/ajax.js';
             }
         },
         created () {
-        	document.title = this.title;
-            this.loadMore();
+        		document.title = this.title;
         },
         activated: function () {
         	document.title = this.title;
@@ -180,6 +179,7 @@ import { XHRGet } from '../../js/ajax.js';
 	    border-bottom: 1px solid #e0e0e0;
 	}
 	.bill-list-type{
+		padding-bottom: 1px;
 	    -webkit-box-flex: 1;
 	    display: -webkit-box;
 	    -webkit-box-orient: vertical;
