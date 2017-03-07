@@ -101,6 +101,9 @@ button {
 .jin-icon-user:before {
   content: "\e6ad"; }
 
+.jin-icon-bank:before {
+  content: "\e601"; }
+
 .jin-icon-gantanhao:before {
   content: "\e6a2"; }
 

@@ -1,7 +1,7 @@
 //import '../mock/test.js';
 import '../lib/layer.js';
 import '../lib/layer.css';
-import { XHRPost } from '../ajax.js';
+import { XHRPost, XHRGet } from '../ajax.js';
 
 var login = new Vue({
 	el: '#login',
@@ -40,9 +40,16 @@ var login = new Vue({
 			var load = layer.open({ type: 2,shadeClose: false})
 			XHRPost(config.url, config.data, function (response) {
 				console.log(response)
-				layer.close(load);
 				if (response.data.status === 1) {
-					window.location.href = '/xiaojin/index/index.html'
+					XHRGet('/oriental_treasure/Wechat/getUserOpenId', {}, function (response) {
+						layer.close(load);
+						if (response.data.status === 1) {
+							window.location.href = response.data.data;
+						} else {
+							window.location.href = '/xiaojin/index/index.html';
+						}
+					}.bind(this));
+					
 				} else {
 					this.errorTip(response.data.info);
 				}

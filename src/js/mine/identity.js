@@ -12,24 +12,47 @@ window.app = new Vue({
     el: '#container',
     created() {
         this.isCert();
+        this.getWXConfig();
     },
     data: {
         certInfo: {
             id_card_no: '',
             real_name: '',
-            status: '',
+            status: 0, // 0 尚未认证，1 只有文字资料，2 认证完成
             verify_code: '',
             counting: '',
             countingNum: 60
         },
-        currentPage: 'home'
+        imgInfo: {
+            people: {
+                localId: '',
+                serverId: ''
+            },
+            flag: {
+                localId: '',
+                serverId: ''
+            }
+        },
+        currentPage: 'home',
     },
     computed: {
         visible() {
-            let isCert = !!this.certInfo.status;
+            // 身份认证面板
+            let status = this.certInfo.status;
+            let status0 = status == 0;
+            let status1 = status == 1;
+            let status2 = status == 2;
+            let idPanel = status != 0;
+            let panelInfo = status2 ? '认证通过' : '审核中';
+            //
             let home = this.currentPage === 'home';
             let addPage = this.currentPage === 'addPage';
-            return { isCert, home, addPage };
+            // 身份证上传部分
+            let imgInfo = this.imgInfo;
+            let peopleImg = !imgInfo.people.serverId;
+            let flagImg = !imgInfo.flag.serverId && !peopleImg;
+            let uploadButton = !imgInfo.people.serverId || !imgInfo.flag.serverId;
+            return { status0, status1, status2, idPanel, panelInfo, home, addPage, peopleImg, flagImg, uploadButton };
         }
     },
     methods: {
@@ -50,6 +73,7 @@ window.app = new Vue({
             }, function (res) {
                 if (res.data.status === 1) {
                     pageManager.go('addPage');
+                    self.certInfo.status = 1;
                 }
             }, function() {});
 
@@ -59,6 +83,88 @@ window.app = new Vue({
         },
         getVerifyCode() {
             _getVerifyCode(this);
+        },
+        getWXConfig(){
+            api.getWXConfig({
+                uri: encrypt(location.pathname)
+            }, res => {
+                console.log('wxconfiging', res);
+                if (res.data.status == 1) {
+                    let app = res.data.data;
+                    console.log('app', app);
+                    wx.config({
+                        // debug: true,
+                        debug: false,
+                        appId: app.appId || app.appid,
+                        timestamp: app.timestamp,
+                        nonceStr: app.nonceStr || app.noncestr,
+                        signature: app.signature,
+                        jsApiList: ['chooseImage', 'previewImage', 'uploadImage', 'downloadImage']
+                    });
+                }
+            }, () => {});
+        },
+        beginUpload() {
+            let self = this;
+            let type = 'people';
+            try {
+                type = self.imgInfo.people.serverId ? 'flag' : 'people';
+                // alert('type ' + JSON.stringify(type));
+            } catch (e) {
+                // alert('type error ' + JSON.stringify(e));
+            }
+            wx.chooseImage({
+                count: 1, // 默认9
+                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                success: function (res) {
+                    let localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                    // alert('type again ' + JSON.stringify(type));
+                    self.uploadImage(type, localIds[0]);
+                }
+            });
+        },
+        uploadImage(type, localId) {
+            let self = this;
+            // alert('type' + JSON.stringify(type));
+            wx.uploadImage({
+                localId: localId,
+                isShowProgressTips: 1,
+                success: function (res) {
+                    let serverId = res.serverId;
+                    api.uploadPhoto({
+                        serverId: encrypt(serverId),
+                        type: type === 'people' ? encrypt('id_card_temp') : encrypt('id_card_back_temp')
+                    }, function (res) {
+                        // 成功回调
+                        if (res.data.status == 1) {
+                            self.imgInfo[type].serverId = serverId;
+                            self.imgInfo[type].localId = localId;
+                        }
+                        // alert(JSON.stringify(self.imgInfo));
+                        // alert('res ' + JSON.stringify(res.data));
+                    }, function (res) {
+                        // 失败回调
+                        // alert('fail ' + JSON.stringify(res.data));
+                    })
+                }
+            })
+        },
+        confirmUpload() {
+            let self = this;
+
+            if (this.imgInfo.people.serverId && this.imgInfo.flag.serverId) {
+                api.confirmPhoto(function (res) {
+                    // alert('res ' + JSON.stringify(res));
+                    if (res.data.status === 1) {
+                        pageManager.go('home');
+                        self.certInfo.status = 2;
+                        self.isCert();
+                    }
+                }, function(e) {
+                    // alert('error ' + JSON.stringify(e));
+                });
+            }
         }
     }
 });
@@ -145,4 +251,14 @@ app.$watch('certInfo.counting', function (val, oldVal) {
     }
 });
 
-// 微信配置
+// app.$watch('currentPage', function (val, oldVal) {
+//     let self = this;
+//
+//     if (val === 'addPage') {
+//         self.certInfo.status = 1;
+//     }
+//     if (val === 'home') {
+//
+//     }
+// });
+
