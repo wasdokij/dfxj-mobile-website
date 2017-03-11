@@ -24,7 +24,7 @@
                     <p class="font12 color-9b">大小 8.2MB</p>
                 </div>
                 <div class="download--btn font14" 
-                	@click="changeLouter('http://120.76.157.205:9999/Gdcee.apk?n')">下载</div>
+                	@click="changeLouter('http://ftp.gdcee.com/Gdcee.apk')">下载</div>
             </li>
         </ul>
     </div>
