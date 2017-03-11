@@ -2,10 +2,8 @@
     <div>
         <div  class="discover-message-top padding-t-15 padding-b-15 bg-white">
             <div class="ui-whitespace jin-justify-flex margin-b-15">
-                <div class="message-nav-btn return-btn">
-                    <router-link class="display-b color-9b" to="/">
+                <div class="message-nav-btn return-btn" onclick="location.href='/xiaojin/my/index.html'">
                         <i class="jin-icon jin-icon-fanhui line-h-nor  font18"></i>
-                    </router-link>
                 </div>
                 <div class="message-nav-btn filtrate-btn font14" @click="onClick">筛选</div>
             </div>
@@ -44,8 +42,8 @@
                 <i class="ui-loading"></i>
             </div>
             <!--空缺状态 start -->
-            <div class="frame-nul margin-b-15 text-center" v-if="nullData">
-                <div class="discover-credit-panel-null"></div>
+            <div class="margin-b-15 text-center" v-if="nullData">
+                <img src="/jin2.0/images/null-data.png"/>
                 <div class="margin-t-10 font14 ui-txt-muted">空旷到可以成为一片森林</div>
             </div>
             <!--空缺状态 end-->
@@ -55,8 +53,6 @@
         </div>
     </div>
 </template>
-<style>
-</style>
 <script>
 
     import BillFiltrate from 'components/bill/bill-filtrate.vue';
@@ -94,6 +90,7 @@
             BillFiltrate,BillList
         },
         created() {
+            this.loadMore();
         },
         methods:{
             onClick(){
@@ -101,32 +98,32 @@
             },
             // 分页
             loadMore: function () {
-                this.loadMoreTip = true;
-                XHRGet('/oriental_treasure/billing/getlist',{limit:this.total, time:this.month, key:this.walletTypeKey},function (response) {
+               	this.loadMoreTip = true;
+               	XHRGet('/oriental_treasure/Billing/getlist',{limit:this.total, time:this.month, key:this.walletTypeKey},function (response) {
                     const data = response.data;
                     this.total= data.total;
                     this.loadingShow = false;
-                    this.loadMoreTip = false;
+               	    this.loadMoreTip = false;
                     if (this.billData.length != 0) {
-                        var beforeTitle = this.billData[this.billData.length - 1].title;
-                        var lastone = this.billData[this.billData.length - 1];
+                    	var beforeTitle = this.billData[this.billData.length - 1].title;
+                    	var lastone = this.billData[this.billData.length - 1];
                     }
                     for (let i = 0;i < data.data.length;i++) {
-                        if (data.data[i].title === beforeTitle) {
-                            lastone.list = lastone.list.concat(data.data[i].list)
-                        } else {
-                            this.billData.push(data.data[i]);
-                        }
+                    	if (data.data[i].title === beforeTitle) {
+                    		lastone.list = lastone.list.concat(data.data[i].list)
+                    	} else {
+                    		this.billData.push(data.data[i]);
+                    	}
                     }
                     if (data.data.length === 0) {
-                        this.loadend = true;
-                        this.busy = true;
-                    }else {
+				    	this.loadend = true;
+				    	this.busy = true;
+				    }else {
                         this.loadend = false;
-                        this.busy = false;
+				    	this.busy = false;
                     }
                     if (data.total === 0) {
-                        this.nullData = true;
+                    	this.nullData = true;
                     }else {
                         this.nullData = false;
                     }
@@ -136,15 +133,15 @@
             brotherData(msg){
                 this.billDetails=msg;
             },
-            // 月账单-月份
+             // 月账单-月份
             monthData(msg){
                 this.month=msg;
-                this.total= 0;
+                 this.total= 0;
                 this.walletType=msg;
                 this.billData=[];
                 this.loadMore()
             },
-            // 搜索数据请求
+            // 搜索数据请求--
             childData(msg){
                 this.walletTypeKey=msg.keys;
                 this.walletType=msg.name;

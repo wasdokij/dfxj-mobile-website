@@ -18,7 +18,7 @@
             </li>
         </ul>
         <div class="ui-whitespace padding-t-30">
-            <div class="recharge-btn btn-green text-center">完成</div>
+            <div class="recharge-btn btn-green text-center" onclick="location.href='/xiaojin/my'">完成</div>
         </div>
     </div>
 </template>

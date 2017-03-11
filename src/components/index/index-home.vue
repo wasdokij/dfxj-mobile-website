@@ -46,25 +46,11 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="ui-list ui-list-one jin-list-link ui-border-t">
-                    <li @click="changeLouter('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdcbafc192f16db2d&redirect_uri=http%3A%2F%2Fwp88.jilinpme.com%2Ftradewx%2fapp%2faccess%2fweixin%3fpaycode%3dwxdcbafc192f16db2d%26peerid%3d16284%26orgid%3d17271%26brokerid%3d-1&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect                     ')">
-                        <div class="xj-avatar-tiled">
-                            <span class="jl-bg"></span>
-                        </div>
-                        <div class="jin-list-info">
-                            <div class="ui-nowrap exchange-name">
-                                <div class="font14">吉商在线</div>
-                                <div class="font12 color-9b">5元起步，低门槛</div>
-                            </div>
-                            <div class="font12 color-f75c">立即体验</div>
-                        </div>
-                    </li>
-                </ul>
             </div>
             <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
         </div>
         <!--发售模式-->
-        <div class="bg-white margin-b-15">
+<!--        <div class="bg-white margin-b-15">
             <ul class="ui-list ui-list-text">
                 <li class="margin-l-0">
                     <div class="item-card-lable"></div>
@@ -80,7 +66,7 @@
                         </div>
                         <div class="ui-nowrap exchange-name line-h-16">
                             <h4 class="fnot14">吉商发售</h4>
-                            <!--<p class="font12 color-9b">开户审核中</p>-->
+                            &lt;!&ndash;<p class="font12 color-9b">开户审核中</p>&ndash;&gt;
                         </div>
                         <div class="dredge-btn" @click.stop="changeLouter('http://spfskh.jilinpme.com:2088/index.php/online/default/register?code=105010001')">
                         	立即开户
@@ -89,7 +75,7 @@
                 </ul>
             </div>
             <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
-        </div>
+        </div>-->
         
         <!--大娱乐-->
         <div class="bg-white margin-b-15">

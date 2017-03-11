@@ -7,6 +7,9 @@ body {
   display: -webkit-box;
   -webkit-box-align: center; }
 
+[v-cloak] {
+  display: none; }
+
 .txt-center {
   text-align: center; }
 
@@ -209,3 +212,20 @@ body {
   font-size: 10px;
   background-color: #f7f7f7;
   right: 0; }
+
+.click_a {
+  -webkit-box-align: center;
+  color: #000;
+  display: -webkit-box;
+  width: 100%;
+  height: 100%; }
+
+.click_ax {
+  display: block;
+  -webkit-box-align: center;
+  color: #000;
+  width: 100%;
+  height: 100%; }
+
+.yz > a > span {
+  display: block; }

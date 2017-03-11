@@ -31,9 +31,6 @@
                 </p>
             </div>
         </li>
-<<<<<<< HEAD
-        <li>
-=======
         <!--<li>
 >>>>>>> master
             <div class="box-align">
@@ -44,6 +41,5 @@
         </li>
 =======
         </li>-->
->>>>>>> master
     </ul>
 </template>

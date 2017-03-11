@@ -97,7 +97,7 @@ import { XHRGet } from '../../js/ajax.js';
 			this.getData();
 		},
 		activated: function () {
-        	document.title = this.title;
+        		document.title = this.title;
         },
 		methods: {
 			getData: function() {

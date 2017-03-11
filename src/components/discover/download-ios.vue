@@ -3,21 +3,6 @@
         <ul class="ui-list download-list ui-whitespace ui-border-b">
             <li class="margin-l-0">
                 <div class="ui-list-thumb">
-                    <span style="background-image:url(/jin2.0/images/app2.png)"></span>
-                </div>
-                <div class="ui-nowrap download-name line-h-16">
-                    <h4 class="fnot14">吉林国际</h4>
-                    <p class="font12 color-9b">大小 11.5MB</p>
-                </div>
-                <div class="download--btn font14" 
-  		  @click="changeLouter('https://itunes.apple.com/cn/app/ji-lin-guo-ji-shang-pin-jiao/id1003663106?mt=8')">
-      		             下载
-                </div>
-            </li>
-        </ul>
-        <ul class="ui-list download-list ui-whitespace ui-border-b">
-            <li class="margin-l-0">
-                <div class="ui-list-thumb">
                     <span style="background-image:url(/jin2.0/images/app3.png)"></span>
                 </div>
                 <div class="ui-nowrap download-name line-h-16">
