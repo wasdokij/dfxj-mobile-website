@@ -61,6 +61,8 @@ window.app = new Vue({
             api.isCert(res => {
                 console.log('res', res);
                 if (res.data.status === 1) tools.assignData(self.certInfo, res.data.data);
+
+                api.layerOpen(res.data);
             }, function() {});
         },
         goNext() {
@@ -75,6 +77,7 @@ window.app = new Vue({
                     pageManager.go('addPage');
                     self.certInfo.status = 1;
                 }
+                api.layerOpen(res.data);
             }, function() {});
 
         },
@@ -102,6 +105,8 @@ window.app = new Vue({
                         jsApiList: ['chooseImage', 'previewImage', 'uploadImage', 'downloadImage']
                     });
                 }
+
+                api.layerOpen(res.data);
             }, () => {});
         },
         beginUpload() {
@@ -161,6 +166,7 @@ window.app = new Vue({
                         self.certInfo.status = 2;
                         self.isCert();
                     }
+                    api.layerOpen(res.data);
                 }, function(e) {
                     // alert('error ' + JSON.stringify(e));
                 });
@@ -228,6 +234,7 @@ function fnFactory(app) {
                 self.certInfo.counting = true;
                 // self.certInfo.dialogShow = true;
             }
+            api.layerOpen(res.data);
         }, function() {
             self.certInfo.counting = false;
         })

@@ -100,7 +100,7 @@ import { XHRGet } from '../../js/ajax.js';
                     	var beforeTitle = this.info[this.info.length - 1].title;
                     	var lastone = this.info[this.info.length - 1];
                     }
-                   
+
                     for (let i = 0;i < data.data.length;i++) {
                     	if (data.data[i].title === beforeTitle) {
                     		lastone.list = lastone.list.concat(data.data[i].list)
@@ -109,7 +109,7 @@ import { XHRGet } from '../../js/ajax.js';
                     	}
                     }
                     console.log(this.info)
-                   
+
                     if (data.data.length === 0) {
 				    	this.loadend = true;
 				    	this.busy = true;

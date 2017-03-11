@@ -1,12 +1,3 @@
-# dfxj-mobile-website
-东方小金微信端开发工程目录
-
-现在存在的问题：
-1）每个人的gulpfile.js中build的路径部分均不同，现在每次从master中git pull下来，本地gulpfile.js都会变成线上的版本，从而引发冲突。
-
-2）现在git origin master仓库中有npm.log， src/css/maps等废弃文件，每个人都应该在本地手动解除git对这些文件的监听
-
-解决方案：
 1）通用的的git提交流程：
 
 第一步：git status，查看本地git仓库状态

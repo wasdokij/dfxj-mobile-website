@@ -27,23 +27,23 @@ const CDN = '/jin2.0';
 
 // build的路径
 let huangXingBin = {
-    html: '/Users/gttx/Documents/6464/root/application/index/view/',
-    resources: '/Users/gttx/Documents/6464/root/public/static/'
+    html: '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/',
+    resources: '/Users/gttx/Documents/jin-wechat/root/public/jin2.0/'
 };
 let huangEnJing = {
     html: '/Users/enjing/Documents/myWebProject/king/kongdian_api/application/xiaojin/view/',
     resources: '/Users/enjing/Documents/myWebProject/king/kongdian_api/public/jin2.0/'
 };
 let qinHaiLang = {
-    html: 'F:/heshi/application/index/view/',
-    resources: 'F:/heshi/public/static/'
+    html: 'F:/dfxj2/application/xiaojin/view/',
+    resources: 'F:/dfxj2/public/jin2.0/'
 };
 let luYuQiu = {
 	html: '../kongdian_hs/application/index/view/',
 	resources: '../kongdian_hs/public/static/'
 };
 
-let targetRoute = huangEnJing;
+let targetRoute = huangXingBin;
 
 var webpackConfig = {
 	resolve: {
@@ -310,13 +310,22 @@ gulp.task('build', function () {
         })
     })
     
+<<<<<<< HEAD
+=======
+    //watch([src.components]).on('change', function () {
+        // console.log('change', arguments);
+       // runSequence('components:build', function () {
+              // cp('./public/**/*','../kongdian_api/public/jin2.0/');
+//          cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
+       // })
+    //})
+>>>>>>> 7ecfb5a6ffdf11ce12632f2f57adf99ec01bcc60
 
     watch([src.views]).on('change', function() {
 		runSequence('views:build', function () {
             cp('./public/views/**/*.html', targetRoute.html);
         })
 	});
-
 });
 gulp.task('css:build', function () {
 	return gulp.src(src.css)

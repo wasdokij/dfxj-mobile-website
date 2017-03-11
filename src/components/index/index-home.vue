@@ -45,6 +45,7 @@
                         </div>
                     </li>
                 </ul>
+
                 <ul class="ui-list ui-list-one jin-list-link ui-border-t">
                     <li @click="changeLouter('#')">
                         <div class="xj-avatar-tiled">
@@ -90,7 +91,7 @@
                 </ul>
             </div>
             <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
-        </div>
+        </div>-->
         
         <!--大娱乐-->
         <div class="bg-white margin-b-15">
