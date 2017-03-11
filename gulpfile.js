@@ -27,8 +27,8 @@ const CDN = '/jin2.0';
 
 // build的路径
 let huangXingBin = {
-    html: '/Users/gttx/Documents/6464/root/application/index/view/',
-    resources: '/Users/gttx/Documents/6464/root/public/static/'
+    html: '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/',
+    resources: '/Users/gttx/Documents/jin-wechat/root/public/jin2.0/'
 };
 let huangEnJing = {
     html: '/Users/enjing/Documents/myWebProject/king/kongdian_api/application/xiaojin/view/',
@@ -43,7 +43,11 @@ let luYuQiu = {
 	resources: '../kongdian_hs/public/static/'
 };
 
+<<<<<<< HEAD
 let targetRoute = qinHaiLang;
+=======
+let targetRoute = huangXingBin;
+>>>>>>> 090c4d7f832074edab4ccbbd9093a94a9d3b5f84
 
 var webpackConfig = {
 	resolve: {
