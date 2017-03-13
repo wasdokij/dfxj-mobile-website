@@ -40,7 +40,7 @@
                         <div class="jin-list-info">
                             <div class="ui-nowrap exchange-name">
                                 <div class="font14">得发黄金商城</div>
-                                <div class="font12 color-9b">参考国际实时金价</div>
+                                <div class="font12 color-9b">全款或预付款买卖</div>
                             </div>
                         </div>
                     </li>
@@ -91,7 +91,7 @@
                 </ul>
             </div>
             <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
-        </div>-->
+        </div>
         
         <!--大娱乐-->
         <div class="bg-white margin-b-15">

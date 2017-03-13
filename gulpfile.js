@@ -43,7 +43,7 @@ let luYuQiu = {
 	resources: '../kongdian_hs/public/static/'
 };
 
-let targetRoute = huangXingBin;
+let targetRoute = huangEnJing;
 
 var webpackConfig = {
 	resolve: {
@@ -309,17 +309,6 @@ gulp.task('build', function () {
             cp('./public/**/*',targetRoute.resources);
         })
     })
-    
-<<<<<<< HEAD
-=======
-    //watch([src.components]).on('change', function () {
-        // console.log('change', arguments);
-       // runSequence('components:build', function () {
-              // cp('./public/**/*','../kongdian_api/public/jin2.0/');
-//          cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
-       // })
-    //})
->>>>>>> 7ecfb5a6ffdf11ce12632f2f57adf99ec01bcc60
 
     watch([src.views]).on('change', function() {
 		runSequence('views:build', function () {
