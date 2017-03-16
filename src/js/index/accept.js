@@ -17,5 +17,5 @@ var V = new Vue({
     	const userSn = getQueryString('user_sn');
     	this.userSn = userSn;
     },
-    
 });
+

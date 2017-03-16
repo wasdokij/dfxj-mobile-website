@@ -15,7 +15,7 @@
         <div class="padding-tb-30 margin-t-10 bg-white">
             <div class="discover-credit-panel-null">
             </div>
-            <div class="margin-t-10 text-center font14 color-9b">空旷到可以成为一片森林</div>
+            <div class="margin-t-10 text-center font14 color-9b">暂无兑换记录</div>
         </div>
         <!--空缺状态 end-->
     </div>

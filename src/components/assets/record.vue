@@ -9,9 +9,12 @@
             <div class="ui-whitespace font35">信息资产记录</div>
         </div>
         <div
-        	v-infinite-scroll="loadMore"
+        		v-infinite-scroll="loadMore"
 	        infinite-scroll-disabled="busy"
-	        infinite-scroll-distance="0"  style="overflow: auto;height:calc(100vh - 128px );-webkit-overflow-scrolling: touch;">
+	        infinite-scroll-distance="0"
+	        style="overflow: auto;height:calc(100vh - 128px );
+	        -webkit-overflow-scrolling: touch;"
+	    >
 	        <div class="bill-border-t ui-border-b" v-for="items in info">
 	            <h4 class="time-tile ui-whitespace font14 ui-border-b">{{items.title}}</h4>
 	            <ul class="ui-list bill-list-nor" v-for="item in items.list">
@@ -100,7 +103,7 @@ import { XHRGet } from '../../js/ajax.js';
                     	var beforeTitle = this.info[this.info.length - 1].title;
                     	var lastone = this.info[this.info.length - 1];
                     }
-                   
+
                     for (let i = 0;i < data.data.length;i++) {
                     	if (data.data[i].title === beforeTitle) {
                     		lastone.list = lastone.list.concat(data.data[i].list)
@@ -109,7 +112,7 @@ import { XHRGet } from '../../js/ajax.js';
                     	}
                     }
                     console.log(this.info)
-                   
+
                     if (data.data.length === 0) {
 				    	this.loadend = true;
 				    	this.busy = true;
@@ -122,7 +125,7 @@ import { XHRGet } from '../../js/ajax.js';
             // 查看详情
             recordDetail(id) {
                 this.$router.push({path:'/recordDetail',query: { id: id  }})
-            }
+            },
         }
     }
 </script>

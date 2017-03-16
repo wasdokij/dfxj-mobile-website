@@ -21,7 +21,12 @@ window.app = new Vue({
             listRows: 10,
             totalRows: 0,
             other_count: {},
-            my_inviting: {},
+            my_inviting: {
+                level_name: '',
+                real_name: '',
+                user_name: '',
+                wechat_avatar: ''
+            },
             status: 0
         },
         searchPeopleState: {
@@ -66,12 +71,15 @@ window.app = new Vue({
             let data = this.searchPeopleResult.data;
             let searchType = this.searchPeopleState.searchType;
             let nullResult = data.length === 0 && searchType && !this.searchBusy;
+            // 我的邀请人
+            let showMyInviting = this.peopleData.my_inviting.level_name !== '';
             return {
                 homePage: !this.hash,
                 searchPage,
                 searchType: !search && searchPage && !searchType,
                 searchResult: data.length > 0 && searchPage,
-                nullResult
+                nullResult,
+                showMyInviting
             }
         },
         searchBusyComputed: function () {

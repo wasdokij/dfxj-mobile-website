@@ -31,7 +31,6 @@
 				getCodeBtnDisable: true,
 			}
 		},
-
 		methods: {
 			checkPhone: function (phone) {
 				const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);

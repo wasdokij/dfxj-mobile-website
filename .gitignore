@@ -4,6 +4,8 @@
 node_modules
 public
 src/css/maps
+gulpfile.js
 src/tmp
 .project
+npm-debug.log
 Yarn.lock
