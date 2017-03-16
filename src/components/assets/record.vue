@@ -9,9 +9,12 @@
             <div class="ui-whitespace font35">信息资产记录</div>
         </div>
         <div
-        	v-infinite-scroll="loadMore"
+        		v-infinite-scroll="loadMore"
 	        infinite-scroll-disabled="busy"
-	        infinite-scroll-distance="0"  style="overflow: auto;height:calc(100vh - 128px );-webkit-overflow-scrolling: touch;">
+	        infinite-scroll-distance="0"
+	        style="overflow: auto;height:calc(100vh - 128px );
+	        -webkit-overflow-scrolling: touch;"
+	    >
 	        <div class="bill-border-t ui-border-b" v-for="items in info">
 	            <h4 class="time-tile ui-whitespace font14 ui-border-b">{{items.title}}</h4>
 	            <ul class="ui-list bill-list-nor" v-for="item in items.list">
@@ -122,7 +125,7 @@ import { XHRGet } from '../../js/ajax.js';
             // 查看详情
             recordDetail(id) {
                 this.$router.push({path:'/recordDetail',query: { id: id  }})
-            }
+            },
         }
     }
 </script>
