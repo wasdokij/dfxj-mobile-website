@@ -136,7 +136,16 @@
 //})
 import Vue from 'vue';
 import axios from 'axios';
-import '../mock/test.js';
+console.log('process', process); // process.env.NODE_ENV
+    var isq = 5;
+    if (process.env.NODE_ENV === 'production') {
+        //import '../mock/test.js';
+        isq = 1;
+    } else {
+        isq = 2;
+    }
+isq = 2 ? "import '../mock/test01.js'": "import '../mock/test.js'";
+console.log(isq = 2 ? "import '../mock/test01.js'": "import '../mock/test.js'");
 import '../lib/layer.js';
 import '../lib/layer.css';
 import myIndex from 'components/my/index.vue';
@@ -161,7 +170,7 @@ const routes = [
     {path: '/phone',component: Phone},
     { path: '/phone1', component: Phone01 },
     { path: '/mima', component: Mima},
-    { path: '/dlmimna', component: Dlmima},
+    { path: '/dlmima', component: Dlmima},
     { path: '/inviter', component:Inviter},
     {path: '/authentication',component: Authentication},
     { path: '/pwdPay', component: PwdPay },

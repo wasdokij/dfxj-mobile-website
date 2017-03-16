@@ -39,8 +39,8 @@ let qinHaiLang = {
     resources: 'F:/heshi/public/static/'
 };
 let luYuQiu = {
-	html: '../kongdian_hs/application/index/view/',
-	resources: '../kongdian_hs/public/static/'
+	html: '../kongdian_api/application/xiaojin/view/',
+	resources: '../kongdian_api/public/jin2.0/'
 };
 
 let targetRoute = luYuQiu;
@@ -103,12 +103,22 @@ var webpackConfig = {
 
 		]
 	},
-	plugins: [],
+	plugins: [
+		new webpack.ProvidePlugin({
+			ENV: "./env/"+ (process.env.NODE_ENV || "development")
+		})
+	],
 	babel: { //配置babel
 		"presets": ["es2015",'stage-2'],
 		"plugins": ["transform-runtime"]
 	}
 };
+
+// 添加环境变量
+console.log('=================================process=========================================', process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'production') {
+	// webpackConfig
+}
 
 const processes = [
 	autoprefixer({browsers: ['last 2 version', 'safari 5', 'opera 12.1', 'ios 6', 'android 4', '> 10%']}),
