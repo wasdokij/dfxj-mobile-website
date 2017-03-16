@@ -32,8 +32,8 @@
                 </li>
             </ul>
             <div>
-                <ul class="ui-list ui-list-one jin-list-link ui-border-t">
-                    <li @click="changeLouter('#')">
+                <ul class="ui-list ui-list-one jin-list-link ui-border-t ui-list-active">
+                    <li @click="onlineTip">
                         <div class="xj-avatar-tiled">
                             <span class="gw-bg" style="background-image: url(/jin2.0/images/icon-df.png)"></span>
                         </div>
@@ -46,8 +46,8 @@
                     </li>
                 </ul>
 
-                <ul class="ui-list ui-list-one jin-list-link ui-border-t">
-                    <li @click="changeLouter('#')">
+                <ul class="ui-list ui-list-one jin-list-link ui-border-t ui-list-active">
+                    <li @click="getWenBaoHuiUrl">
                         <div class="xj-avatar-tiled">
                             <span class="gw-bg" style="background-image: url(/jin2.0/images/icon-wb.png)"></span>
                         </div>
@@ -93,33 +93,6 @@
             <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
         </div>
         
-        <!--大娱乐-->
-        <div class="bg-white margin-b-15">
-            <ul class="ui-list ui-list-text">
-                <li class="margin-l-0">
-                    <div class="item-card-lable"></div>
-                    <div class="ui-list-info font14">大娱乐</div>
-                </li>
-            </ul>
-            <div>
-                <ul class="ui-list jin-sell-list ui-whitespace ui-border-t">
-                    <li class="margin-l-0 ui-border-t"
-                    	@click="changeLouter('http://jin.weigudong.cn/index.php/Gdcee/detail.html')">
-                        <div class="ui-avatar">
-                            <span class="jsfs-bg" :style="{backgroundImage: 'url(/jin2.0/images/app3.png)'}"></span>
-                        </div>
-                        <div class="ui-nowrap exchange-name line-h-16">
-                            <h4 class="fnot14">广东深文所</h4>
-                        </div>
-                        <div class="dredge-btn" 
-                        	@click.stop="changeLouter('http://jin.weigudong.cn/index.php/Gdcee/index.html')">
-                        	立即开户
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <h5 class="padding-t-15 padding-b-15 font10 text-center color-9b ui-border-t">投资有风险，入市须谨慎</h5>
-        </div>
     </div>
 </template>
 <style>
@@ -150,15 +123,36 @@
         components:{
         },
         methods: {
-        	//路由导航
-        	changeLouter: function (url) {
-        		if (this.isLogin === true) {
-        			window.location.href = url;
-        		} else {
-        			 window.location.href="/xiaojin/login_register/login.html"
-        		}
+        		onlineTip() {
+        			layer.open({
+        				content: '即将上线，敬请期待！',
+        				btn: ['确定'],
+        				yes: function () {
+        					layer.closeAll();
+        				}
+        			})
+        		},
+        		//请求文宝汇的地址
+        		getWenBaoHuiUrl() {
+        			layer.open({ type: 2,shadeClose: false });
+        			XHRGet('/oriental_treasure/Index/getWenBaoHuiUrl', {},function (response) {
+        				layer.closeAll();
+                		window.location.href = response.data.data;
+                		if (response.data.status === 0) {
+                			window.location.href="/xiaojin/login_register/login.html";
+                		}
+            		});	
+        		},
         		
-        	},
+	        	//路由导航
+	        	changeLouter: function (url) {
+	        		if (this.isLogin === true) {
+	        			window.location.href = url;
+	        		} else {
+	        			 window.location.href="/xiaojin/login_register/login.html"
+	        		}
+	        		
+	        	},
             onIsLogin(){
                 var _this = this;
                 var load = layer.open({ type: 2,shadeClose: false})
