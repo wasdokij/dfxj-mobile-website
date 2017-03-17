@@ -169,7 +169,7 @@ body {
 .id-alert {
   width: 100px;
   height: 120px;
-  background: url(/jin2.0/images/id-alert.png);
+  background: url(../../images/id-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -178,7 +178,7 @@ body {
 .bank-alert {
   width: 120px;
   height: 120px;
-  background: url(/jin2.0/images/bank-alert.png);
+  background: url(../../images/bank-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -187,7 +187,7 @@ body {
 .know-alert {
   width: 120px;
   height: 120px;
-  background: url(/jin2.0/images/deve-alert.png);
+  background: url(../../images/deve-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;

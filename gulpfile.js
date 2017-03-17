@@ -45,6 +45,7 @@ let luYuQiu = {
 
 let targetRoute = qinHaiLang;
 
+
 var webpackConfig = {
 	resolve: {
 		root: path.join(__dirname, 'node_modules'),
