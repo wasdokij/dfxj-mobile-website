@@ -13,6 +13,9 @@
         	</li>
         </ul>
         <ul class="invite-accept-panel jin-box-center padding-b-20">
+        		<li class="invite-accept-input font14">
+                 <input type="tel" v-model="userName" placeholder="输入您的姓名" />
+            </li>
             <li class="invite-accept-input font14">
                  <input type="tel" v-model="phone" placeholder="输入您的手机号" />
             </li>
@@ -53,7 +56,8 @@
     	props: ['userSn'],
         data () {
             return{
-            	phone: '',
+            		userName: '',
+            		phone: '',
 				code: '',
 				pwd: '',
 				inviting_sn: this.userSn,
@@ -72,22 +76,22 @@
         },
         
         created: function () {
-        	this.getUserInfo ();
-        },
+	        	this.getUserInfo ();
+	    },
         
        	methods: {
        		getUserInfo () {
-        		XHRPost('/oriental_treasure/Index/getUserInfoByUserSn',
-        		{user_sn: encrypt(this.inviting_sn)},function (responese) {
-        			console.log(responese)
-        			if (responese.data.status === 1) {
-        				this.avatar = responese.data.data.wechat_avatar;
-        				this.name = responese.data.data.user_name;
-        			}
-        		}.bind(this));
-        	},
-	    	//验证手机
-	    	checkPhone: function (phone) {
+	        		XHRPost('/oriental_treasure/Index/getUserInfoByUserSn',
+	        		{user_sn: encrypt(this.inviting_sn)},function (responese) {
+	        			console.log(responese)
+	        			if (responese.data.status === 1) {
+	        				this.avatar = responese.data.data.wechat_avatar;
+	        				this.name = responese.data.data.user_name;
+	        			}
+	        		}.bind(this));
+	        	},
+		    	//验证手机
+		    	checkPhone: function (phone) {
 				const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);
 				return tel;
 			},
@@ -104,7 +108,7 @@
 			},
 			
 			//获取验证码
-	    	getCode: function () {
+	    		getCode: function () {
 				const tel = this.checkPhone(this.phone)
 				if (!tel) {
 					this.errorTip('手机号码有误！');
@@ -142,11 +146,19 @@
 			goToRegister: function () {
 				console.log(this.inviting_sn)
 				var	data = {
+					user_name: '',
 					cellphone: '',
 					verify_code: '',
 					password: '',
 					inviting_sn: encrypt(this.inviting_sn),
 				};
+				
+				if (this.userName.trim() != '') {
+					data.user_name = encrypt(this.userName.trim());
+				} else {
+					this.errorTip('请输入您的姓名');
+					return false;
+				}
 				
 				const tel = this.checkPhone(this.phone);
 				if (tel) {

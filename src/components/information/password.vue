@@ -10,7 +10,7 @@
                 <span class="font14 ui-txt-info">{{info.name}}</span>
             </router-link>
         </li>
-        <li>
+        <li class="ui-border-t">
             <router-link to="/inviter" class="click_a">
                 <div class="ui-list-info">
                     <h4 class="ui-nowrap">邀请人</h4>
@@ -18,7 +18,7 @@
                 <span class="font14 ui-txt-info">{{info.yqr}}</span>
             </router-link>
         </li>
-        <li>
+        <li class="ui-border-t">
             <router-link to="/phone" class="click_a">
                 <div class="ui-list-info">
                     <h4 class="ui-nowrap">手机号码</h4>

@@ -74,6 +74,17 @@
     },
 
     methods: {
+        goTopwd:function() {
+            this.$router.push({path: '/password'});
+            //window.location.reload();
+        },
+        //定时器1秒
+        goTOnext:function() {
+            const _this = this;
+            setTimeout( function() {
+                _this.goTopwd();
+            },1000);
+        },
         checkPhone: function (phone) {
             const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);
             return tel;
@@ -160,7 +171,7 @@
                             layer.closeAll();
                             _this.info.input=_this.info.phone ;
                             //window.location.href = '/xiaojin/information/password.html'
-                            _this.$router.push({path:'/password'});
+                            _this.goTopwd();
                         }
                     });
                 }else{

@@ -9,9 +9,12 @@
             <div class="ui-whitespace font35">信息资产记录</div>
         </div>
         <div
-        	v-infinite-scroll="loadMore"
+        		v-infinite-scroll="loadMore"
 	        infinite-scroll-disabled="busy"
-	        infinite-scroll-distance="0"  style="overflow: auto;height:calc(100vh - 128px );-webkit-overflow-scrolling: touch;">
+	        infinite-scroll-distance="0"
+	        style="overflow: auto;height:calc(100vh - 128px );
+	        -webkit-overflow-scrolling: touch;"
+	    >
 	        <div class="bill-border-t ui-border-b" v-for="items in info">
 	            <h4 class="time-tile ui-whitespace font14 ui-border-b">{{items.title}}</h4>
 	            <ul class="ui-list bill-list-nor" v-for="item in items.list">
@@ -56,14 +59,16 @@
 		    <div class="ui-loading-wrap ba-wi" v-if="loadend">
 		        <p class="font14 ui-txt-muted"><span class="no-more-data">已经到底了</span></p>
 		    </div>
+		    
+		    <!--空缺状态 start -->
+	        <div class="jin-box-center" style="height: 100%;" v-if="nullData">
+	            <img class="ver-middle" src="/jin2.0/images/null-data.png" width="120"/>
+	            <div class="margin-t-10 font14 ui-txt-muted">还没有记录哦</div>
+	        </div>
+	        <!--空缺状态 end-->
 	        
 	    </div>
-        <!--空缺状态 start -->
-        <div class="margin-b-15 text-center" v-if="nullData">
-            <img src="/jin2.0/images/null-data.png"/>
-            <div class="margin-t-10 font14 ui-txt-muted">空旷到可以成为一片森林</div>
-        </div>
-        <!--空缺状态 end-->
+        
     </div>
 </template>
 
@@ -111,18 +116,19 @@ import { XHRGet } from '../../js/ajax.js';
                     console.log(this.info)
 
                     if (data.data.length === 0) {
-				    	this.loadend = true;
-				    	this.busy = true;
+				    		this.loadend = true;
+				    		this.busy = true;
 				    }
                     if (data.total_count === 0) {
-                    	this.nullData = true;
+                    		this.nullData = true;
+                    		this.loadend = false;
                     }
                	}.bind(this))
             },
             // 查看详情
             recordDetail(id) {
                 this.$router.push({path:'/recordDetail',query: { id: id  }})
-            }
+            },
         }
     }
 </script>

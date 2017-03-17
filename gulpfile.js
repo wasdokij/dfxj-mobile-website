@@ -35,19 +35,15 @@ let huangEnJing = {
     resources: '/Users/enjing/Documents/myWebProject/king/kongdian_api/public/jin2.0/'
 };
 let qinHaiLang = {
-    html: 'F:/dfxj2/application/xiaojin/view/',
-    resources: 'F:/dfxj2/public/jin2.0/'
+    html: '/Users/qhl/svn/kongdian_api/application/index/view/',
+    resources: '/Users/qhl/svn/kongdian_api/public/jin2.0/'
 };
 let luYuQiu = {
-	html: '../kongdian_hs/application/index/view/',
-	resources: '../kongdian_hs/public/static/'
+	html: '../kongdian_api/application/xiaojin/view/',
+	resources: '../kongdian_api/public/jin2.0/'
 };
 
-<<<<<<< HEAD
 let targetRoute = qinHaiLang;
-=======
-let targetRoute = huangXingBin;
->>>>>>> 090c4d7f832074edab4ccbbd9093a94a9d3b5f84
 
 var webpackConfig = {
 	resolve: {
@@ -106,12 +102,22 @@ var webpackConfig = {
 
 		]
 	},
-	plugins: [],
+	plugins: [
+		new webpack.ProvidePlugin({
+			ENV: "./env/"+ (process.env.NODE_ENV || "development")
+		})
+	],
 	babel: { //配置babel
 		"presets": ["es2015",'stage-2'],
 		"plugins": ["transform-runtime"]
 	}
 };
+
+// 添加环境变量
+console.log('=================================process=========================================', process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'production') {
+	// webpackConfig
+}
 
 const processes = [
 	autoprefixer({browsers: ['last 2 version', 'safari 5', 'opera 12.1', 'ios 6', 'android 4', '> 10%']}),
@@ -313,14 +319,6 @@ gulp.task('build', function () {
             cp('./public/**/*',targetRoute.resources);
         })
     })
-    
-    //watch([src.components]).on('change', function () {
-        // console.log('change', arguments);
-       // runSequence('components:build', function () {
-              // cp('./public/**/*','../kongdian_api/public/jin2.0/');
-//          cp('./public/**/*','/Users/gttx/Documents/jin-wechat/root/public/jin2.0/');
-       // })
-    //})
 
     watch([src.views]).on('change', function() {
 		runSequence('views:build', function () {
