@@ -35,15 +35,16 @@ let huangEnJing = {
     resources: '/Users/enjing/Documents/myWebProject/king/kongdian_api/public/jin2.0/'
 };
 let qinHaiLang = {
-    html: 'F:/dfxj2/application/xiaojin/view/',
-    resources: 'F:/dfxj2/public/jin2.0/'
+    html: '/Users/qhl/svn/kongdian_api/application/index/view/',
+    resources: '/Users/qhl/svn/kongdian_api/public/jin2.0/'
 };
 let luYuQiu = {
 	html: '../kongdian_api/application/xiaojin/view/',
 	resources: '../kongdian_api/public/jin2.0/'
 };
 
-let targetRoute = huangEnJing;
+let targetRoute = qinHaiLang;
+
 
 var webpackConfig = {
 	resolve: {
