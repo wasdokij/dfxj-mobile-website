@@ -28,7 +28,7 @@
                 <li class="margin-l-0">
                     <div class="item-card-lable"></div>
                     <div class="ui-list-info font14">商城模式</div>
-                    <a href="/xiaojin/index/rule.html"><span class="font12 ui-txt-warning">即将上线</span></a>
+                    <a href="/xiaojin/index/rule.html"><span class="font12 ui-txt-warning">详细说明</span></a>
                 </li>
             </ul>
             <div>
