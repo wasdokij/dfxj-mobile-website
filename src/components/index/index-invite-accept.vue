@@ -14,7 +14,7 @@
         </ul>
         <ul class="invite-accept-panel jin-box-center padding-b-20">
         		<li class="invite-accept-input font14">
-                 <input type="tel" v-model="userName" placeholder="输入您的姓名" />
+                 <input type="text" v-model="userName" placeholder="输入您的姓名" />
             </li>
             <li class="invite-accept-input font14">
                  <input type="tel" v-model="phone" placeholder="输入您的手机号" />
