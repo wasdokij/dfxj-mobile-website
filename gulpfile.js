@@ -43,7 +43,7 @@ let luYuQiu = {
 	resources: '../kongdian_api/public/jin2.0/'
 };
 
-let targetRoute = huangEnJing;
+let targetRoute = qinHaiLang;
 
 
 var webpackConfig = {
