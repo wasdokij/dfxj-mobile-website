@@ -137,7 +137,7 @@ window.app = new Vue({
             let self = this;
 
             api.deleteCard({
-                id: encrypt(id)
+                id: encrypt(String(id))
             }, function (res) {
                 if (res.data.status === 1) {
                     self.cardSelected.visible = false;

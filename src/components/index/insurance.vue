@@ -19,15 +19,15 @@
             <li class="invite-accept-input font14">
                  <input type="tel" v-model="phone" placeholder="输入您的手机号" />
             </li>
-            <!--<li class="invite-accept-input jin-justify-flex font14">-->
-                <!--<input type="text" v-model="code" placeholder="输入验证码" />-->
-                <!--<div class="invite-accept-gain font12" v-if="getCodeBtnDisable === true" @click="getCode">-->
-                	<!--{{ conut_time === 0 ? '重新获取' : '获取' }}-->
-                <!--</div>-->
-                <!--<div class="invite-accept-gain btn-gray font12" v-if="getCodeBtnDisable === false">-->
-                	<!--{{ conut_time }}-->
-                <!--</div>-->
-            <!--</li>-->
+            <!--<li class="invite-accept-input jin-justify-flex font14">
+                <input type="text" v-model="code" placeholder="输入验证码" />
+                <div class="invite-accept-gain font12" v-if="getCodeBtnDisable === true" @click="getCode">
+                	{{ conut_time === 0 ? '重新获取' : '获取' }}
+                </div>
+                <div class="invite-accept-gain btn-gray font12" v-if="getCodeBtnDisable === false">
+                	{{ conut_time }}
+                </div>
+            </li>-->
             <li class="invite-accept-input font14">
                  <input type="password" v-model="pwd" placeholder="设置登录密码" />
             </li>
@@ -166,8 +166,10 @@
 				if (this.code) {
 					data.verify_code = encrypt(this.code);
 				} else {
-					this.errorTip('请输入验证码');
-					return false;
+					// 临时修改
+					data.verify_code = encrypt(this.code);
+//					this.errorTip('请输入验证码');
+//					return false;
 				}
 				
 				const pwd = /^(\w){6,15}$/.test(this.pwd);

@@ -76,8 +76,10 @@ var login = new Vue({
 			if (this.code) {
 				config.data.verify_code = encrypt(this.code);
 			} else {
-				this.errorTip('请输入验证码');
-				return false;
+				// 临时修改
+				config.data.verify_code = encrypt(this.code);
+//				this.errorTip('请输入验证码');
+//				return false;
 			}
 			if (pwd) {
 				config.data.password = encrypt(this.pwd);
