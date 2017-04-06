@@ -51,28 +51,42 @@
                 }
             });
         },
+        goTomy: function() {
+            this.$router.push({path:'/password'})
+        },
+        goTonext: function(){
+            //this.$router.push({path:'/password'});
+            const _this = this;
+            setInterval(function () {
+                _this.goTomy()
+            },2000);
+            console.log(6);
+
+        },
         goToLogin: function() {
             const data = {
                 user_name:encrypt(this.info.name)
             };
-            const _this = this;
+            //const _this = this;
             //console.log(this.info.name);
             this.loadingShow = true;
             XHRPost('/oriental_treasure/MySeting/editUserName', data, function (response) {
                 //console.log(response);
                 //console.log(data.input);
-                _this.loadingShow = false;
-
+                this.loadingShow = false;
+                const _this = this;
                 if (response.data.status === 1) {
                     //window.location.href = '/xiaojin/information/password.html'
-                    _this.$router.push({path:'password'});
-
+                    //_this.$router.push({path:'/password'});
+                    this.goTonext();
+                    console.log(55555);
                 }else{
                     _this.errorTip(response.data.info);
                 }
-            });
+            }.bind(this));
 
         }
+
     }
     }
 </script>

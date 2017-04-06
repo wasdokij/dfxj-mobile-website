@@ -4,13 +4,14 @@
             <span class="font16">你正在为{{ phone }}重置支付密码</span>
         </div>
         <ul class="ui-list jin-list-link ui-list-active ui-border-tb">
-            <router-link to="/pwdPay1" class="click_a">
-                <li class="ui-border-t padding-t-5 padding-b-5">
+            <li class="ui-border-t padding-t-5 padding-b-5">
+                <router-link to="/pwdPay1" class="click_a">
                     <div class="ui-list-info">
                         <h4>我记得原支付密码</h4>
                     </div>
-                </li>
-            </router-link>
+                </router-link>
+            </li>
+
         </ul>
         <ul class="ui-list jin-list-link ui-list-active ui-border-tb margin-t-10">
             <li class="ui-border-t padding-t-5 padding-b-5"  v-on:click="goAuthentication">

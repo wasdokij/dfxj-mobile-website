@@ -141,6 +141,17 @@
                     this.isA = true;
                 }
             },
+     //跳到password页面
+            goTopwd: function(){
+                this.$router.push({path:'/password'})
+            },
+     //定时器  2秒
+            goTonext:function(){
+                const _this = this;
+              setInterval( function(){
+                  _this.goTopwd();
+                },2000)
+            },
             goQuxiao: function () {
                 this.isA = false;
                 this.isB = true;
@@ -166,6 +177,7 @@
                             _this.dqyqr_name = _this.user.yqr;
                             //setInterval("window.location.href = '/xiaojin/information/password.html'","2000");
                             setInterval("_this.$router.push({path:'/password'})",'2000');
+                            _this.goTonext();
 
                         }
                     })

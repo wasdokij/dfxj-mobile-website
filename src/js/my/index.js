@@ -161,7 +161,7 @@ const routes = [
     {path: '/phone',component: Phone},
     { path: '/phone1', component: Phone01 },
     { path: '/mima', component: Mima},
-    { path: '/dlmimna', component: Dlmima},
+    { path: '/dlmima', component: Dlmima},
     { path: '/inviter', component:Inviter},
     {path: '/authentication',component: Authentication},
     { path: '/pwdPay', component: PwdPay },

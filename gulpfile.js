@@ -39,9 +39,8 @@ let qinHaiLang = {
     resources: 'F:/heshi/public/static/'
 };
 let luYuQiu = {
-	html: '../kongdian_hs/application/index/view/',
-	resources: '../kongdian_hs/public/static/'
-};
+	html:'../../svn/kongdian_api/application/xiaojin/view/',
+    resources: '../../svn/kongdian_api/public/jin2.0/'};
 
 let targetRoute = luYuQiu;
 
