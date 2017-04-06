@@ -24,6 +24,7 @@ window.app = new Vue({
                 self.isCert = true;
                 tools.assignData(self.ownerInfo, res.data.data);
             }
+            api.layerOpen(res.data);
         }, () => {});
     },
     data: {
@@ -136,12 +137,16 @@ window.app = new Vue({
             let self = this;
 
             api.deleteCard({
-                id: encrypt(id)
+                id: encrypt(String(id))
             }, function (res) {
                 if (res.data.status === 1) {
                     self.cardSelected.visible = false;
                     self.getCard();
                 }
+                if (res.data.status === 0) {
+                    self.cardSelected.visible = false;
+                }
+                api.layerOpen(res.data);
             }, function() {});
         },
         closeDialog() {

@@ -3,15 +3,15 @@
 		<div class="form-item form-item-bg-gray form-item-btn-r">
 			<label class="jin-icon jin-icon-chongzhi font20 text-color-red-dark" style="margin-top: -16px;"></label>
 			<input id="blur" class="text-color-red-dark" type="tel" name="phone" v-model="phone" placeholder="手机号" />
-			<span class="code-btn" @click.prevent="getCode" v-if="getCodeBtnDisable">
-				{{ conut_time === 0 ? '重新获取' : '获取验证码' }}
-			</span>
-			<span class="code-btn" disabled v-if="getCodeBtnDisable == false">{{ conut_time }}</span>
+			<!--<span class="code-btn" @click.prevent="getCode" v-if="getCodeBtnDisable">-->
+				<!--{{ conut_time === 0 ? '重新获取' : '获取验证码' }}-->
+			<!--</span>-->
+			<!--<span class="code-btn" disabled v-if="getCodeBtnDisable == false">{{ conut_time }}</span>-->
 		</div>
-		<div class="form-item form-item-bg-gray">
-			<label class="jin-icon jin-icon-xinxi font18 text-color-red-dark"></label>
-			<input class="text-color-red-dark" type="text" name="code" v-model="code" placeholder="输入验证码"/>
-		</div>
+		<!--<div class="form-item form-item-bg-gray">-->
+			<!--<label class="jin-icon jin-icon-xinxi font18 text-color-red-dark"></label>-->
+			<!--<input class="text-color-red-dark" type="text" name="code" v-model="code" placeholder="输入验证码"/>-->
+		<!--</div>-->
 		<div class="padding-t-20">
 			<button class="jin-btn jin-btn-red-gradient" @click="goToNext">下一步</button>
 		</div>
@@ -31,7 +31,6 @@
 				getCodeBtnDisable: true,
 			}
 		},
-
 		methods: {
 			checkPhone: function (phone) {
 				const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);

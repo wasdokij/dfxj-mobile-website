@@ -86,8 +86,8 @@
   line-height: 16px;
 }
 .download-hint-panel .close{
-  top: 0;
-  right: 0;
+  top: 20px;
+  right: 5px;
   color: #FFC234
 }
 .download-list>li{
@@ -212,9 +212,18 @@ box-shadow: 0 2px 5px 0 rgba(255,62,41,0.34);
 .discover-credit-top .filtrate-btn{
     width: 60px;
 }
+.frame-nul{
+  display: -webkit-box;
+  width: 100%;
+  min-height: 250px;
+  -webkit-box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
 .discover-credit-panel-null{
-  width: 50%;
-  padding-top: 34%;
+  width: 30%;
+  padding-top: 20%;
   margin-left: auto;
   margin-right: auto;
   background-size: cover;

@@ -27,22 +27,25 @@ const CDN = '/jin2.0';
 
 // build的路径
 let huangXingBin = {
-    html: '/Users/gttx/Documents/6464/root/application/index/view/',
-    resources: '/Users/gttx/Documents/6464/root/public/static/'
+    html: '/Users/gttx/Documents/jin-wechat/root/application/xiaojin/view/',
+    resources: '/Users/gttx/Documents/jin-wechat/root/public/jin2.0/'
 };
 let huangEnJing = {
     html: '/Users/enjing/Documents/myWebProject/king/kongdian_api/application/xiaojin/view/',
     resources: '/Users/enjing/Documents/myWebProject/king/kongdian_api/public/jin2.0/'
 };
 let qinHaiLang = {
-    html: 'F:/heshi/application/index/view/',
-    resources: 'F:/heshi/public/static/'
+    html: '/Users/qhl/svn/kongdian_api/application/index/view/',
+    resources: '/Users/qhl/svn/kongdian_api/public/jin2.0/'
 };
 let luYuQiu = {
 	html:'../../svn/kongdian_api/application/xiaojin/view/',
     resources: '../../svn/kongdian_api/public/jin2.0/'};
 
+
+
 let targetRoute = luYuQiu;
+
 
 var webpackConfig = {
 	resolve: {
@@ -62,7 +65,6 @@ var webpackConfig = {
         'vue': 'Vue',
 //      'axios': 'axios',
         'vue-router': 'VueRouter',
-        'vuex': 'Vuex',
         'vue-infinite-scroll': 'infiniteScroll'
     },
 	module: {
@@ -102,12 +104,22 @@ var webpackConfig = {
 
 		]
 	},
-	plugins: [],
+	plugins: [
+		new webpack.ProvidePlugin({
+			ENV: "./env/"+ (process.env.NODE_ENV || "development")
+		})
+	],
 	babel: { //配置babel
 		"presets": ["es2015",'stage-2'],
 		"plugins": ["transform-runtime"]
 	}
 };
+
+// 添加环境变量
+console.log('=================================process=========================================', process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'production') {
+	// webpackConfig
+}
 
 const processes = [
 	autoprefixer({browsers: ['last 2 version', 'safari 5', 'opera 12.1', 'ios 6', 'android 4', '> 10%']}),
@@ -161,7 +173,7 @@ gulp.task('sass', function () {
 	.pipe(gulp.dest('./public/css'));
 });
 gulp.task('reload', function () {
-	
+
 	webpackConfig.plugins.push(new webpack.DefinePlugin({
 		NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'dev'
 	}));
@@ -174,9 +186,9 @@ gulp.task('reload', function () {
 			notify: false
 		});
 		dev();// watch
-		
+
 	});
-	
+
 });
 function dev() {
 	watch([src.views]).on('change', function() {
@@ -202,7 +214,7 @@ function dev() {
 	watch([src.js], function (event) {
 		var paths = watchPath(event, src.js, './public/js/');
 		var sp = paths.srcPath.indexOf('\\') > -1 ? '\\' : '/';
-		
+
 		if(paths.srcPath.split(sp).length === 3) { // 共有库情况,要编译所有js
 			compileJS(['./src/js/**/*.js','!./src/js/lib/*.js']);
 		} else { // 否则 只编译变动js
@@ -253,7 +265,7 @@ gulp.task('ugjs:build', function () {
 function compileJS(path,dest) {
 	dest = dest || './public';
 	webpackConfig.output.publicPath = BUILD === 'PUBLIC' ? ''+ CDN +'/' : '/';
-	
+
 	return gulp.src(path)
 	.pipe(named(function (file) {
 		var path = JSON.parse(JSON.stringify(file)).history[0];
@@ -315,7 +327,6 @@ gulp.task('build', function () {
             cp('./public/views/**/*.html', targetRoute.html);
         })
 	});
-
 });
 gulp.task('css:build', function () {
 	return gulp.src(src.css)
@@ -330,7 +341,7 @@ gulp.task('css:build', function () {
 	.pipe(gulp.dest(dist.css))
 	// .pipe(rev.manifest()) 暂时不加版本控制
 	// .pipe(gulp.dest(dist.css))
-	
+
 });
 function build(cb) {
 	runSequence('clean','sass', 'css:build','js:build', 'ugjs:build', 'views:build', 'images', 'fonts',function() {

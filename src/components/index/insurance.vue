@@ -1,6 +1,6 @@
 <template>
     <div class="jin-wrap bg-white">
-        <div class="home-top home-accept-bg"></div>
+        <div class="home-top home-accept-bg" style="background-image: url('/jin2.0/images/bx-invite-banner.jpg')"></div>
         <ul class="ui-list jin-list ui-whitespace"  :style="{backgroundColor: '#EFF3F6'}">
         	<li>
         		<div class="ui-avatar">
@@ -31,9 +31,8 @@
             <li class="invite-accept-input font14">
                  <input type="password" v-model="pwd" placeholder="设置登录密码" />
             </li>
-            <li class="invite-accept-btn margin-t-15" @click="goToRegister">立即领取</li>
+            <li class="invite-accept-btn margin-t-15" @click="goToRegister">注册</li>
         </ul>
-        <accept-text></accept-text>
     </div>
 </template>
 <style scoped>
@@ -51,30 +50,26 @@
 <script>
  	import { XHRPost } from '../../js/ajax.js';
 	import { countdown, getQueryString } from '../../js/tools.js';
-	import acceptText from 'components/index/index-invite-accept-text.vue';
     export default{
-    	props: ['userSn'],
-        data () {
-            return{
-            		userName: '',
-            		phone: '',
-				code: '',
-				pwd: '',
-				inviting_sn: this.userSn,
-				conut_time: 60,
-				getCodeBtnDisable: true,
-				url: {
-					getCodeUrl: '/oriental_treasure/register_and_login/sendPhoneCode',
-					registerUrl: '/oriental_treasure/register_and_login/goRegister',
-				},
-				avatar: '',
-            	name: '',
-            }
-        },
-        components:{
-            acceptText
-        },
-        
+    		props: ['userSn'],
+	        data () {
+	            return{
+	            		userName: '',
+	            		phone: '',
+					code: '',
+					pwd: '',
+					inviting_sn: this.userSn,
+					conut_time: 60,
+					getCodeBtnDisable: true,
+					url: {
+						getCodeUrl: '/oriental_treasure/register_and_login/sendPhoneCode',
+						registerUrl: '/oriental_treasure/register_and_login/goRegister',
+					},
+					avatar: '',
+	            	name: '',
+	            }
+	        },
+	        
         created: function () {
 	        	this.getUserInfo ();
 	    },
@@ -90,7 +85,7 @@
 	        			}
 	        		}.bind(this));
 	        	},
-		    	//验证手机
+		    	// 验证手机
 		    	checkPhone: function (phone) {
 				const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);
 				return tel;
@@ -107,7 +102,7 @@
 				});
 			},
 			
-			//获取验证码
+			// 获取验证码
 	    		getCode: function () {
 				const tel = this.checkPhone(this.phone)
 				if (!tel) {
@@ -142,7 +137,7 @@
 				}.bind(this));
 				
 			},
-			//提交注册资料
+			// 提交注册资料
 			goToRegister: function () {
 				console.log(this.inviting_sn)
 				var	data = {
@@ -195,7 +190,7 @@
 							content: response.data.info,
 							time: 1.5,
 							end: function () {
-								window.location.href = '/xiaojin/index/index.html';
+								window.location.href = 'http://www.zgzrjt.com.cn/homeinfo/insurancecompany.html';
 							}
 						});
 	

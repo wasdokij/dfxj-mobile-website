@@ -11,7 +11,6 @@
                     </div>
                 </router-link>
             </li>
-
         </ul>
         <ul class="ui-list jin-list-link ui-list-active ui-border-tb margin-t-10">
             <li class="ui-border-t padding-t-5 padding-b-5"  v-on:click="goAuthentication">

@@ -8,6 +8,7 @@ import { countdown } from '../tools.js';
 var login = new Vue({
 	el: '#register',
 	data: {
+		userName: '',
 		phone: '',
 		code: '',
 		pwd: '',
@@ -56,6 +57,7 @@ var login = new Vue({
 				url: '/oriental_treasure/register_and_login/goRegister',
 //				url: '/api_login',
 				data: {
+					user_name: '',
 					cellphone: encrypt(this.phone),
 					verify_code: '',
 					password: '',
@@ -63,13 +65,21 @@ var login = new Vue({
 				},
 			}
 			
+			if (this.userName.trim() != '') {
+				config.data.user_name = encrypt(this.userName.trim());
+			} else {
+				this.errorTip('请输入您的姓名');
+				return false;
+			}
 			
 			const pwd = /^(\w){6,15}$/.test(this.pwd);
 			if (this.code) {
 				config.data.verify_code = encrypt(this.code);
 			} else {
-				this.errorTip('请输入验证码');
-				return false;
+				// 临时修改
+				config.data.verify_code = encrypt(this.code);
+//				this.errorTip('请输入验证码');
+//				return false;
 			}
 			if (pwd) {
 				config.data.password = encrypt(this.pwd);

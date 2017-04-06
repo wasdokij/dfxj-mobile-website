@@ -3,7 +3,7 @@
         <ul class="credits-top jin-justify-flex margin-b-10 bg-white">
             <li @click="latelyHref">
                 <i class="credits-icon" style=""></i>
-                <div><i class="color-f75c">0</i>积分</div>
+                <div><i class="color-f75c">{{score < 1 ? '0' : score}}</i>积分</div>
             </li>
             <li @click="creditsDetailsHref">
                 <i class="credits-icon" style="background-position: 4px -49px;"></i>
@@ -36,19 +36,29 @@
 </style>
 <script>
     import Developing from 'components/discover/developing.vue';
+    import { XHRGet } from '../../js/ajax.js';
     export default{
         data(){
             return{
                 developing:false,
                 exchangeList:[
                     "","","", "","","",
-                ]
+                ],
+                score:""
             }
+        },
+        created(){
+          this.myScore()
         },
         components:{
             Developing
         },
         methods: {
+            myScore() {
+                XHRGet('/oriental_treasure/MyCenter/myScoreDetail',{page:this.page},function (response) {
+                    this.score=response.data.data.total_score;
+                }.bind(this))
+            },
             onDeveloping(){
                 this.developing = true
             },

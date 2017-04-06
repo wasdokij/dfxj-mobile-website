@@ -6,7 +6,7 @@
             </ul>
         </div>
         <div class="download-hint-panel ui-whitespace" v-if="close">
-            <i class="jin-icon jin-icon-roundclosefill close abs font35 line-h-nor" @click="onClose"></i>
+            <i class="jin-icon jin-icon-roundclosefill close abs font18 line-h-nor" @click="onClose"></i>
             <p class="download-hint-txt margin-l-5">
                 温馨提示：如果点击下载没有反应，请点击右上角，选择在浏览器中打开，然后再下载即可
             </p>

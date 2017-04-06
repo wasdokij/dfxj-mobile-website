@@ -83,6 +83,7 @@
                 btn: ['确定'],
                 yes: function () {
                     //window.location.href = '/xiaojin/information/password.html'
+                    layer.closeAll();
                     _this.$router.push({path:'/password'});
                 }
             });
