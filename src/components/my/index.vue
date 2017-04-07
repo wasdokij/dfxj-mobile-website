@@ -93,7 +93,11 @@
                     <span class="txt-color-9b padding-b-20 padding-l-20 font14">修改个人信息</span>
                 </router-link>
             </li>
-            <li class="width-50 yz">
+            <li class="width-50 yz" v-on:click="getAccount">
+                <!--<router-link to="/account" class="click_ax">-->
+                    <span class="font16 padding-t-20 padding-l-20" >交易账号</span>
+                    <span class="txt-color-9b padding-b-20 padding-l-20 font14">{{accountNumber === ""?"0":accountNumber}}个</span>
+                <!--</router-link>-->
             </li>
         </ul>
     </div>
@@ -170,6 +174,7 @@ export default{
         user_bank_count: "",
         wechat_avatar: "",
         status:"",
+        accountNumber: "",
         //日期有关
         nowMonth: "",
         nowDate: "",
@@ -209,6 +214,7 @@ mounted: function () {
         _this.level_name = response.data.data.level_name;
         _this.score = response.data.data.score;
         _this.wechat_avatar = response.data.data.wechat_avatar;
+        _this.accountNumber = response.data.data.account_count;
         //
         if(response.data.data.real_name === ''){
             _this.real_name = "未验证";
@@ -276,6 +282,14 @@ methods: {
     getKnow:function(){
         this.info.isE = false;
         this.info.isF = true;
+    },
+    getAccount:function(){
+        //const _this = this;
+        if(this.accountNumber === 0) {
+            this.$router.push({path:"/NoAccount"})
+        } else {
+            this.$router.push({path:"/account"})
+        }
     }
 
 }

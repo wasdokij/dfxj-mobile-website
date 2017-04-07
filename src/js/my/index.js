@@ -161,6 +161,8 @@ import PwdPay from 'components/information/pwdPay.vue';
 import PwdPay1 from 'components/information/pwdPay1.vue';
 import PwdPay2 from 'components/information/pwdPay2.vue';
 import PwdPay3 from 'components/information/pwdPay3.vue';
+import Account from 'components/my/account.vue'
+import NoAccount from 'components/my/noAccount.vue'
 import { countdown } from '../tools.js';
 
 const routes = [
@@ -176,7 +178,9 @@ const routes = [
     { path: '/pwdPay', component: PwdPay },
     { path: '/pwdPay1', component: PwdPay1},
     { path: '/pwdPay2', component: PwdPay2},
-    {path: '/pwdPay3',component: PwdPay3}
+    {path: '/pwdPay3',component: PwdPay3},
+    {path: '/account',component: Account},
+    {path: '/noAccount',component: NoAccount}
 ];
 const router = new VueRouter({
     // ES6缩写语法，相当于routes:routes
